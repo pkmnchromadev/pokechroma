@@ -1289,7 +1289,7 @@ static void SetBattledTrainersFlags(void)
     FlagSet(GetTrainerAFlag());
 }
 
-static void UNUSED SetBattledTrainerFlag(void)
+static void SetBattledTrainerFlag(void)
 {
     FlagSet(GetTrainerAFlag());
 }

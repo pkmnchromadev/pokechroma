@@ -2834,8 +2834,9 @@ static void GetScoreResults(struct DodrioGame_ScoreResults *dst, u8 playerId)
     *dst = sGame->scoreResults[playerId];
 }
 
+// Unused
 // Returns where the specified player's score ranks, 0 being first (highest score)
-static u8 UNUSED GetScoreRanking(u8 playerId)
+static u8 GetScoreRanking(u8 playerId)
 {
     u8 i, ranking = 0;
     u8 numPlayers = sGame->numPlayers;
@@ -3067,12 +3068,12 @@ static const u8 *const sDebug_PlayerNames[] =
     sText_Digits
 };
 
-static void UNUSED Debug_UpdateNumPlayers(void)
+static void Debug_UpdateNumPlayers(void)
 {
     sGame->numPlayers = GetLinkPlayerCount();
 }
 
-static void UNUSED Debug_SetPlayerNamesAndResults(void)
+static void Debug_SetPlayerNamesAndResults(void)
 {
     u8 i, playerId;
 
@@ -4252,7 +4253,8 @@ static void SetBerryAnim(u16 id, u8 animNum)
     StartSpriteAnim(&gSprites[*sBerrySpriteIds[id]], animNum);
 }
 
-static void UNUSED UnusedSetSpritePos(u8 spriteId)
+// Unused
+static void UnusedSetSpritePos(u8 spriteId)
 {
     gSprites[spriteId].x = 20 * spriteId + 50;
     gSprites[spriteId].y = 50;
@@ -4484,7 +4486,8 @@ static void InitGameGfx(struct DodrioGame_Gfx *ptr)
     SetGfxFunc(LoadGfx);
 }
 
-static void UNUSED FreeAllWindowBuffers_(void)
+// Unused
+static void FreeAllWindowBuffers_(void)
 {
     FreeAllWindowBuffers();
 }

@@ -1108,14 +1108,15 @@ static u8 GetSelectionIdFromPartyId(u8 partyId)
     return partyId - numEggs;
 }
 
-static u8 UNUSED GetPartyIdFromSelectionId_(u8 selectionId)
+// Unused
+static u8 GetPartyIdFromSelectionId_(u8 selectionId)
 {
     return GetPartyIdFromSelectionId(selectionId);
 }
 
 static void LoadAndCreateUpDownSprites(void)
 {
-    u16 i;
+    u16 i, spriteId;
 
     LoadSpriteSheet(&sSpriteSheet_UpDown);
     LoadSpritePalette(&sSpritePalette_UpDown);
@@ -1125,7 +1126,7 @@ static void LoadAndCreateUpDownSprites(void)
     {
         if (sInfo->enhancements[i] != 0)
         {
-            u16 spriteId = CreateSprite(&sSpriteTemplate_UpDown, sUpDownCoordsOnGraph[i][0], sUpDownCoordsOnGraph[i][1], 0);
+            spriteId = CreateSprite(&sSpriteTemplate_UpDown, sUpDownCoordsOnGraph[i][0], sUpDownCoordsOnGraph[i][1], 0);
             if (spriteId != MAX_SPRITES)
             {
                 if (sInfo->enhancements[i] != 0) // Always true here
@@ -1136,23 +1137,19 @@ static void LoadAndCreateUpDownSprites(void)
     }
 }
 
-#define tTimer data[0]
-
 static void SpriteCB_UpDown(struct Sprite *sprite)
 {
-    if (sprite->tTimer < 6)
+    if (sprite->data[0] < 6)
         sprite->y2 -= 2;
-    else if (sprite->tTimer < 12)
+    else if (sprite->data[0] < 12)
         sprite->y2 += 2;
 
-    if (++sprite->tTimer > 60)
+    if (++sprite->data[0] > 60)
     {
         DestroySprite(sprite);
         sInfo->numEnhancements--;
     }
 }
-
-#undef tTimer
 
 static void LoadPartyInfo(void)
 {
@@ -1615,15 +1612,12 @@ static void LoadConditionGfx(void)
     LoadSpritePalette(&spritePalette);
 }
 
-#define sSpeed   data[0]
-#define sTargetX data[1]
-
 static void CreateConditionSprite(void)
 {
     u16 i;
     s16 xDiff, xStart;
     int yStart = 17;
-    int speed = 8;
+    int var = 8;
     struct Sprite **sprites = sMenu->condition;
     const struct SpriteTemplate *template = &sSpriteTemplate_Condition;
 
@@ -1632,9 +1626,9 @@ static void CreateConditionSprite(void)
         u8 spriteId = CreateSprite(template, i * xDiff + xStart, yStart, 0);
         if (spriteId != MAX_SPRITES)
         {
-            gSprites[spriteId].sSpeed = speed;
-            gSprites[spriteId].sTargetX = (i * xDiff) | 0x20;
-            gSprites[spriteId].data[2] = i; // Unused
+            gSprites[spriteId].data[0] = var;
+            gSprites[spriteId].data[1] = (i * xDiff) | 0x20;
+            gSprites[spriteId].data[2] = i;
             StartSpriteAnim(&gSprites[spriteId], i);
             sprites[i] = &gSprites[spriteId];
         }
@@ -1663,15 +1657,11 @@ static void SpriteCB_Condition(struct Sprite *sprite)
 {
     s16 prevX = sprite->x;
 
-    // Slide onscreen
-    sprite->x += sprite->sSpeed;
-
-    // Check if target position has been reached/surpassed
-    if ((prevX <= sprite->sTargetX && sprite->x >= sprite->sTargetX)
-     || (prevX >= sprite->sTargetX && sprite->x <= sprite->sTargetX))
+    sprite->x += sprite->data[0];
+    if ((prevX <= sprite->data[1] && sprite->x >= sprite->data[1])
+     || (prevX >= sprite->data[1] && sprite->x <= sprite->data[1]))
     {
-        // End slide onscreen, become static sprite.
-        sprite->x = sprite->sTargetX;
+        sprite->x = sprite->data[1];
         sprite->callback = SpriteCallbackDummy;
     }
 }

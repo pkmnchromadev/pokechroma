@@ -34,8 +34,8 @@ static const struct {
     }
 };
 
-// See berry_fix_program.c
-static void UNUSED LoadBerryFixGraphics(u32 idx)
+// Unused. See berry_fix_program.c
+static void LoadBerryFixGraphics(u32 idx)
 {
     REG_DISPCNT = 0;
     REG_BG0HOFS = 0;

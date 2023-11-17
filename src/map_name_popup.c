@@ -198,32 +198,13 @@ static const u8 *const sBattlePyramid_MapHeaderStrings[FRONTIER_STAGES_PER_CHALL
     sText_Pyramid,
 };
 
-static bool8 UNUSED StartMenu_ShowMapNamePopup(void)
+// Unused
+static bool8 StartMenu_ShowMapNamePopup(void)
 {
     HideStartMenu();
     ShowMapNamePopup();
     return TRUE;
 }
-
-// States and data defines for Task_MapNamePopUpWindow
-enum {
-    STATE_SLIDE_IN,
-    STATE_WAIT,
-    STATE_SLIDE_OUT,
-    STATE_UNUSED,
-    STATE_ERASE,
-    STATE_END,
-    STATE_PRINT, // For some reason the first state is numerically last.
-};
-
-#define POPUP_OFFSCREEN_Y  40
-#define POPUP_SLIDE_SPEED  2
-
-#define tState         data[0]
-#define tOnscreenTimer data[1]
-#define tYOffset       data[2]
-#define tIncomingPopUp data[3]
-#define tPrintTimer    data[4]
 
 void ShowMapNamePopup(void)
 {
@@ -231,19 +212,16 @@ void ShowMapNamePopup(void)
     {
         if (!FuncIsActiveTask(Task_MapNamePopUpWindow))
         {
-            // New pop up window
             sPopupTaskId = CreateTask(Task_MapNamePopUpWindow, 90);
-            SetGpuReg(REG_OFFSET_BG0VOFS, POPUP_OFFSCREEN_Y);
-            gTasks[sPopupTaskId].tState = STATE_PRINT;
-            gTasks[sPopupTaskId].tYOffset = POPUP_OFFSCREEN_Y;
+            SetGpuReg(REG_OFFSET_BG0VOFS, 40);
+            gTasks[sPopupTaskId].data[0] = 6;
+            gTasks[sPopupTaskId].data[2] = 40;
         }
         else
         {
-            // There's already a pop up window running.
-            // Hurry the old pop up offscreen so the new one can appear.
-            if (gTasks[sPopupTaskId].tState != STATE_SLIDE_OUT)
-                gTasks[sPopupTaskId].tState = STATE_SLIDE_OUT;
-            gTasks[sPopupTaskId].tIncomingPopUp = TRUE;
+            if (gTasks[sPopupTaskId].data[0] != 2)
+                gTasks[sPopupTaskId].data[0] = 2;
+            gTasks[sPopupTaskId].data[3] = 1;
         }
     }
 }
@@ -252,65 +230,61 @@ static void Task_MapNamePopUpWindow(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
-    switch (task->tState)
+    switch (task->data[0])
     {
-    case STATE_PRINT:
-        // Wait, then create and print the pop up window
-        if (++task->tPrintTimer > 30)
+    case 6:
+        task->data[4]++;
+        if (task->data[4] > 30)
         {
-            task->tState = STATE_SLIDE_IN;
-            task->tPrintTimer = 0;
+            task->data[0] = 0;
+            task->data[4] = 0;
             ShowMapNamePopUpWindow();
         }
         break;
-    case STATE_SLIDE_IN:
-        // Slide the window onscreen.
-        task->tYOffset -= POPUP_SLIDE_SPEED;
-        if (task->tYOffset <= 0 )
+    case 0:
+        task->data[2] -= 2;
+        if (task->data[2] <= 0 )
         {
-            task->tYOffset = 0;
-            task->tState = STATE_WAIT;
+            task->data[2] = 0;
+            task->data[0] = 1;
             gTasks[sPopupTaskId].data[1] = 0;
         }
         break;
-    case STATE_WAIT:
-        // Wait while the window is fully onscreen.
-        if (++task->tOnscreenTimer > 120)
+    case 1:
+        task->data[1]++;
+        if (task->data[1] > 120 )
         {
-            task->tOnscreenTimer = 0;
-            task->tState = STATE_SLIDE_OUT;
+            task->data[1] = 0;
+            task->data[0] = 2;
         }
         break;
-    case STATE_SLIDE_OUT:
-        // Slide the window offscreen.
-        task->tYOffset += POPUP_SLIDE_SPEED;
-        if (task->tYOffset >= POPUP_OFFSCREEN_Y)
+    case 2:
+        task->data[2] += 2;
+        if (task->data[2] > 39)
         {
-            task->tYOffset = POPUP_OFFSCREEN_Y;
-            if (task->tIncomingPopUp)
+            task->data[2] = 40;
+            if (task->data[3])
             {
-                // A new pop up window is incoming,
-                // return to the first state to show it.
-                task->tState = STATE_PRINT;
-                task->tPrintTimer = 0;
-                task->tIncomingPopUp = FALSE;
+                task->data[0] = 6;
+                task->data[4] = 0;
+                task->data[3] = 0;
             }
             else
             {
-                task->tState = STATE_ERASE;
+                task->data[0] = 4;
                 return;
             }
         }
         break;
-    case STATE_ERASE:
+    case 4:
         ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
-        task->tState = STATE_END;
+        task->data[0] = 5;
         break;
-    case STATE_END:
+    case 5:
         HideMapNamePopUpWindow();
         return;
     }
-    SetGpuReg(REG_OFFSET_BG0VOFS, task->tYOffset);
+    SetGpuReg(REG_OFFSET_BG0VOFS, task->data[2]);
 }
 
 void HideMapNamePopUpWindow(void)

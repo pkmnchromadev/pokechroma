@@ -3556,7 +3556,8 @@ static void CreateGridSprites(void)
     }
 }
 
-static void UNUSED DestroyGridSprites(void)
+// Unused
+static void DestroyGridSprites(void)
 {
     u8 i;
     for (i = 0; i < NUM_ROULETTE_SLOTS; i++)
@@ -4352,7 +4353,7 @@ static void CreateShroomishSprite(struct Sprite *ball)
         {116, 44},
         {116, 112}
     };
-    struct Roulette UNUSED *roulette;
+    struct Roulette *roulette;
 
     t = ball->data[7] - 2;
     roulette = sRoulette;  // Unnecessary, needed to match

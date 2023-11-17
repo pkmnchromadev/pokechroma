@@ -193,7 +193,8 @@ u8 RecordedBattle_GetBattlerAction(u32 actionType, u8 battlerId)
     }
 }
 
-static u8 UNUSED GetRecordedBattleMode(void)
+// Unused
+static u8 GetRecordedBattleMode(void)
 {
     return sRecordMode;
 }

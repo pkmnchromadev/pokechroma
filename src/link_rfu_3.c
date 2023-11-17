@@ -342,7 +342,7 @@ void RfuSendQueue_Reset(struct RfuSendQueue *queue)
     queue->full = FALSE;
 }
 
-static void UNUSED RfuUnusedQueue_Reset(struct RfuUnusedQueue *queue)
+static void RfuUnusedQueue_Reset(struct RfuUnusedQueue *queue)
 {
     s32 i;
     s32 j;
@@ -514,7 +514,7 @@ bool8 RfuBackupQueue_Dequeue(struct RfuBackupQueue *queue, u8 *src)
     return TRUE;
 }
 
-static void UNUSED RfuUnusedQueue_Enqueue(struct RfuUnusedQueue *queue, u8 *data)
+static void RfuUnusedQueue_Enqueue(struct RfuUnusedQueue *queue, u8 *data)
 {
     s32 i;
 
@@ -533,7 +533,7 @@ static void UNUSED RfuUnusedQueue_Enqueue(struct RfuUnusedQueue *queue, u8 *data
     }
 }
 
-static bool8 UNUSED RfuUnusedQueue_Dequeue(struct RfuUnusedQueue *queue, u8 *dest)
+static bool8 RfuUnusedQueue_Dequeue(struct RfuUnusedQueue *queue, u8 *dest)
 {
     s32 i;
 
@@ -549,10 +549,11 @@ static bool8 UNUSED RfuUnusedQueue_Dequeue(struct RfuUnusedQueue *queue, u8 *des
     return TRUE;
 }
 
+// Unused
 // Populates an array with a sequence of numbers (which numbers depends on the mode)
 // and sets the final element to the total of the other elements
 #define SEQ_ARRAY_MAX_SIZE 200
-static void UNUSED PopulateArrayWithSequence(u8 *arr, u8 mode)
+static void PopulateArrayWithSequence(u8 *arr, u8 mode)
 {
     s32 i;
     u8 rval;
@@ -606,7 +607,7 @@ static void UNUSED PopulateArrayWithSequence(u8 *arr, u8 mode)
 
 // File boundary here maybe?
 
-static void UNUSED PkmnStrToASCII(u8 *asciiStr, const u8 *pkmnStr)
+static void PkmnStrToASCII(u8 *asciiStr, const u8 *pkmnStr)
 {
     s32 i;
 
@@ -615,7 +616,7 @@ static void UNUSED PkmnStrToASCII(u8 *asciiStr, const u8 *pkmnStr)
     asciiStr[i] = 0;
 }
 
-static void UNUSED ASCIIToPkmnStr(u8 *pkmnStr, const u8 *asciiStr)
+static void ASCIIToPkmnStr(u8 *pkmnStr, const u8 *asciiStr)
 {
     s32 i;
 

@@ -256,7 +256,7 @@ static void DoBrailleRegisteelEffect(void)
 }
 
 // theory: another commented out DoBrailleWait and Task_BrailleWait.
-static void UNUSED DoBrailleWait(void)
+static void DoBrailleWait(void)
 {
 }
 

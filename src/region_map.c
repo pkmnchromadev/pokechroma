@@ -1434,12 +1434,14 @@ static void FreeRegionMapCursorSprite(void)
     }
 }
 
-static void UNUSED SetUnkCursorSpriteData(void)
+// Unused
+static void SetUnkCursorSpriteData(void)
 {
     sRegionMap->cursorSprite->data[3] = TRUE;
 }
 
-static void UNUSED ClearUnkCursorSpriteData(void)
+// Unused
+static void ClearUnkCursorSpriteData(void)
 {
     sRegionMap->cursorSprite->data[3] = FALSE;
 }

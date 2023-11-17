@@ -64,7 +64,8 @@ bool8 ScriptMenu_MultichoiceWithDefault(u8 left, u8 top, u8 multichoiceId, bool8
     }
 }
 
-static u16 UNUSED GetLengthWithExpandedPlayerName(const u8 *str)
+// Unused
+static u16 GetLengthWithExpandedPlayerName(const u8 *str)
 {
     u16 length = 0;
 

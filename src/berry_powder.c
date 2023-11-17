@@ -15,7 +15,8 @@
 
 static EWRAM_DATA u8 sBerryPowderVendorWindowId = 0;
 
-static const struct BgTemplate UNUSED sBerryPowderBgTemplates[] =
+// Unused
+static const struct BgTemplate sBerryPowderBgTemplates[] =
 {
     {
         .bg = 0,
@@ -56,9 +57,10 @@ static const struct BgTemplate UNUSED sBerryPowderBgTemplates[] =
 };
 
 // ? Part of the BG templates?
-static const u32 UNUSED sUnknown[] = {0xFF, 0x00};
+static const u32 sUnknown[] = {0xFF, 0x00};
 
-static const struct WindowTemplate UNUSED sBerryPowderWindowTemplates[] =
+// Unused
+static const struct WindowTemplate sBerryPowderWindowTemplates[] =
 {
     {
         .bg = 0,
@@ -175,7 +177,7 @@ bool8 GiveBerryPowder(u32 amountToAdd)
     }
 }
 
-static bool8 UNUSED TakeBerryPowder_(u32 cost)
+static bool8 TakeBerryPowder_(u32 cost)
 {
     u32 *powder = &gSaveBlock2Ptr->berryCrush.berryPowderAmount;
     if (!HasEnoughBerryPowder_(cost))
