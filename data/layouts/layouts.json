@@ -94,10 +94,10 @@
     {
       "id": "LAYOUT_LITTLEROOT_TOWN",
       "name": "LittlerootTown_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 28,
+      "height": 28,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_CanvasTown",
       "border_filepath": "data/layouts/LittlerootTown/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown/map.bin"
     },
@@ -164,10 +164,10 @@
     {
       "id": "LAYOUT_ROUTE101",
       "name": "Route101_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 38,
+      "height": 70,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_CanvasTown",
       "border_filepath": "data/layouts/Route101/border.bin",
       "blockdata_filepath": "data/layouts/Route101/map.bin"
     },
