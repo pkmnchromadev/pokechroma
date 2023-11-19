@@ -1885,11 +1885,17 @@
 	YES = 1
 	NO  = 0
 
+	MSGBOX_SUB_DEFAULT = 0
+	MSGBOX_SUB_WOOD = 1
+	MSGBOX_SUB_METAL = 7
+
 	@ Buffers the given text and calls the relevant standard message script (see gStdScripts).
-	.macro msgbox text:req, type=MSGBOX_DEFAULT
-	loadword 0, \text
-	callstd \type
-	.endm
+	.macro msgbox text:req, type=MSGBOX_DEFAULT, subtype=MSGBOX_SUB_DEFAULT
+    loadword 0, \text
+    loadbyte 1, \type
+    loadbyte 2, \subtype
+    callstd \type
+    .endm
 
 	@ Gives 'amount' of the specified 'item' to the player and prints a message with fanfare.
 	@ If the player doesn't have space for all the items then as many are added as possible, the

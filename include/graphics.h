@@ -4,6 +4,12 @@
 // overworld
 extern const u32 gMessageBox_Gfx[];
 extern const u16 gMessageBox_Pal[];
+extern const u32 gMessageBoxWood_Gfx[];
+extern const u16 gMessageBoxWood_Pal[];
+extern const u32 gMessageBoxMetal_Gfx[];
+extern const u16 gMessageBoxMetal_Pal[];
+extern const u32 gSignBox_Gfx[];
+extern const u16 gSignBox_Pal[];
 
 // pokeballs
 extern const u32 gBallGfx_Poke[];

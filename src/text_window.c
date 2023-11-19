@@ -6,6 +6,20 @@
 #include "bg.h"
 #include "graphics.h"
 
+#define MSGBOX_SUB_DEFAULT 0
+#define MSGBOX_SUB_WOOD 1
+#define MSGBOX_SUB_METAL 7
+#define MSGBOX_NPC 2
+#define MSGBOX_SIGN 3
+#define MSGBOX_DEFAULT 4
+#define MSGBOX_YESNO 5
+#define MSGBOX_AUTOCLOSE 6
+#define MSGBOX_GETPOINTS 9
+
+// message box loading
+static EWRAM_DATA u8 sMsgBoxType = MSGBOX_DEFAULT;
+static EWRAM_DATA u8 sMsgBoxSubType = MSGBOX_SUB_DEFAULT;
+
 const u8 gTextWindowFrame1_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");
 static const u8 sTextWindowFrame2_Gfx[] = INCBIN_U8("graphics/text_window/2.4bpp");
 static const u8 sTextWindowFrame3_Gfx[] = INCBIN_U8("graphics/text_window/3.4bpp");
@@ -92,8 +106,13 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gMessageBox_Gfx, 0x1C0, destOffset);
-    LoadPalette(GetOverworldTextboxPalettePtr(), palOffset, PLTT_SIZE_4BPP);
+    //Call LoadMsgBox to loas proper graphics and palette
+    const u32 *currentMessageBox_Gfx;
+    const u16 *currentMessageBox_Pal;
+    LoadMsgBox(&currentMessageBox_Gfx, &currentMessageBox_Pal);
+   
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), currentMessageBox_Gfx, 0x1C0, destOffset);
+    LoadPalette(currentMessageBox_Pal, palOffset, 0x20);
 }
 
 void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
@@ -194,4 +213,46 @@ void LoadUserWindowBorderGfxOnBg(u8 bg, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, PLTT_SIZE_4BPP);
+}
+
+// Multiple Message Boxes
+// I don't remember who originally did this but thanks... :)
+//
+// Set the current type and subtype of t-box
+void SetMsgBox(u8 type, u8 subtype)
+{
+    sMsgBoxType = type;
+    sMsgBoxSubType = subtype;
+}
+
+// Load t-box graphics depending on type and subtype
+// This method is an example. What you put here depends on what each type and subtype of t-box will look like
+void LoadMsgBox(const u32 **graphic, const u16 **palette)
+{
+    switch(sMsgBoxType)
+    {
+    case MSGBOX_SIGN: //The posters have 3 associated with them. This will be explained later in the tutorial.
+        if(sMsgBoxSubType == MSGBOX_SUB_WOOD)
+        {
+            *graphic = gMessageBoxWood_Gfx;
+            *palette = gMessageBoxWood_Pal;
+        }
+        else if(sMsgBoxSubType == MSGBOX_SUB_METAL)
+        {
+            *graphic = gMessageBoxMetal_Gfx;
+            *palette = gMessageBoxMetal_Pal;
+        }
+        else
+        {
+            *graphic = gMessageBox_Gfx;
+            *palette = gMessageBox_Pal;
+        }
+        break;
+    default:
+        *graphic = gMessageBox_Gfx;
+        *palette = gMessageBox_Pal;
+        break;
+    }
+    //This resets the loaded type and subtype to default.
+    SetMsgBox(MSGBOX_DEFAULT, MSGBOX_SUB_DEFAULT);
 }

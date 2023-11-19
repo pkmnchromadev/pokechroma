@@ -3,6 +3,9 @@
 
 #define WINDOW_FRAMES_COUNT 20
 
+void SetMsgBox(u8 type, u8 subtype);
+void LoadMsgBox(const u32 **graphic, const u16 **palette);
+
 struct TilesPal
 {
     const u8 *tiles;
