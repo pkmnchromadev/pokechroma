@@ -210,3 +210,9 @@ const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_CanvasTown[] = INCBIN_U16("data/tilesets/secondary/canvas_town/metatiles.bin");
 const u16 gMetatileAttributes_CanvasTown[] = INCBIN_U16("data/tilesets/secondary/canvas_town/metatile_attributes.bin");
+
+const u16 gMetatiles_RossanoTown[] = INCBIN_U16("data/tilesets/secondary/rossano_town/metatiles.bin");
+const u16 gMetatileAttributes_RossanoTown[] = INCBIN_U16("data/tilesets/secondary/rossano_town/metatile_attributes.bin");
+
+const u16 gMetatiles_TrevisoCity[] = INCBIN_U16("data/tilesets/secondary/treviso_city/metatiles.bin");
+const u16 gMetatileAttributes_TrevisoCity[] = INCBIN_U16("data/tilesets/secondary/treviso_city/metatile_attributes.bin");

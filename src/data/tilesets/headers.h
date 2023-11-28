@@ -836,3 +836,25 @@ const struct Tileset gTileset_CanvasTown =
     .metatileAttributes = gMetatileAttributes_CanvasTown,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_RossanoTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RossanoTown,
+    .palettes = gTilesetPalettes_RossanoTown,
+    .metatiles = gMetatiles_RossanoTown,
+    .metatileAttributes = gMetatileAttributes_RossanoTown,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_TrevisoCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_TrevisoCity,
+    .palettes = gTilesetPalettes_TrevisoCity,
+    .metatiles = gMetatiles_TrevisoCity,
+    .metatileAttributes = gMetatileAttributes_TrevisoCity,
+    .callback = NULL,
+};
