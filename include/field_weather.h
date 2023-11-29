@@ -143,9 +143,9 @@ extern const u16 gFogPalette[];
 
 enum
 {
-    GAMMA_NONE,
-    GAMMA_NORMAL,
-    GAMMA_ALT,
+    COLOR_MAP_NONE,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_CONTRAST,
 };
 
 void UpdatePaletteGammaType(u8 index, u8 gammaType);
@@ -162,7 +162,7 @@ void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex
 void FadeScreen(u8 mode, s8 delay);
 bool8 IsWeatherNotFadingIn(void);
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex);
-void ApplyWeatherGammaShiftToPal(u8 paletteIndex);
+void ApplyWeatherColorMapToPal(u8 paletteIndex);
 void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette);
 void ResetDroughtWeatherPaletteLoading(void);
 bool8 LoadDroughtWeatherPalettes(void);

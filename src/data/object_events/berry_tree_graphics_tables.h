@@ -54,30 +54,30 @@ static const struct SpriteFrameImage sPicTable_RawstBerryTree[] = {
 
 const u16 gBerryTreePaletteTagTable_Rawst[] = {OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_3};
 
-static const struct SpriteFrameImage sPicTable_FigyBerryTree[] = {
+static const struct SpriteFrameImage sPicTable_ChestoBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
     overworld_frame(gObjectEventPic_BerryTreeSprout, 2, 2, 0),
     overworld_frame(gObjectEventPic_BerryTreeSprout, 2, 2, 1),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 0),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 1),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 2),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 3),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 4),
-    overworld_frame(gObjectEventPic_FigyBerryTree, 2, 4, 5),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 0),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 1),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 2),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 3),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 4),
+    overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 5),
 };
 
 const u16 gBerryTreePaletteTagTable_Aspear[] = {OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_2};
 
-static const struct SpriteFrameImage sPicTable_LeppaBerryTree[] = {
+static const struct SpriteFrameImage sPicTable_AspearBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
     overworld_frame(gObjectEventPic_BerryTreeSprout, 2, 2, 0),
     overworld_frame(gObjectEventPic_BerryTreeSprout, 2, 2, 1),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 0),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 1),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 2),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 3),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 4),
-    overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 5),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 0),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 1),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 2),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 3),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 4),
+    overworld_frame(gObjectEventPic_AspearBerryTree, 2, 4, 5),
 };
 
 const u16 gBerryTreePaletteTagTable_Leppa[] = {OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_2, OBJ_EVENT_PAL_TAG_NPC_2};
