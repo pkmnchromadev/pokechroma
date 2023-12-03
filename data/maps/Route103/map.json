@@ -12,7 +12,18 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "map": "MAP_PETALBURG_CITY",
+      "offset": -5,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_TREVISO_BRIDGE_LIGHTHOUSE_EXT",
+      "offset": 52,
+      "direction": "up"
+    }
+  ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",

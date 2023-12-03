@@ -216,3 +216,6 @@ const u16 gMetatileAttributes_RossanoTown[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_TrevisoCity[] = INCBIN_U16("data/tilesets/secondary/treviso_city/metatiles.bin");
 const u16 gMetatileAttributes_TrevisoCity[] = INCBIN_U16("data/tilesets/secondary/treviso_city/metatile_attributes.bin");
+
+const u16 gMetatiles_PlayersHouse[] = INCBIN_U16("data/tilesets/secondary/players_house/metatiles.bin");
+const u16 gMetatileAttributes_PlayersHouse[] = INCBIN_U16("data/tilesets/secondary/players_house/metatile_attributes.bin");
