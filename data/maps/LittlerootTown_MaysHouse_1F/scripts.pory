@@ -93,7 +93,7 @@ LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor:: @ 81F89AE
 	waitmovement 0
 	applymovement 4, Common_Movement_Delay48
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement 4, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
 	waitmovement 0
 	special GetRivalSonDaughterString
@@ -151,7 +151,7 @@ LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom:: @ 81F8A4C
 	lockall
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, FEMALE
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFastestRight
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
 	end
@@ -215,7 +215,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival:: @ 81F8A8B
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_PlayerFaceMay:: @ 81F8B2A
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -235,9 +235,9 @@ LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2:: @ 81F8B4B
 	return
 
 LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer0: @ 81F8B56
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -251,9 +251,9 @@ LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer1: @ 81F8B5E
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer2: @ 81F8B62
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -281,48 +281,48 @@ LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs2:: @ 81F8B8E
 LittlerootTown_MaysHouse_1F_Movement_PlayerWatchMayExit0: @ 81F8BA0
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_PlayerWatchMayExit1: @ 81F8BA4
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_16
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_PlayerWatchMayExit2: @ 81F8BAB
 	delay_16
 	delay_8
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs0: @ 81F8BAF
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs1: @ 81F8BB5
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2: @ 81F8BBF
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	step_end
@@ -415,23 +415,3 @@ RivalsHouse_1F_Text_DoYouHavePokemon: @ 81F9262
 	.string "Do you already have your\n"
 	.string "own POKéMON?$"
 `
-
-script SkipsHouse_Object_Woman {
-	if (var(VAR_CANVASTOWN_RIVALBATTLE) == 0) {
-		msgbox(format("{COLOR RED}Hey {PLAYER}!\nHow have you been?\p{COLOR GREEN}Skip{COLOR RED} is up in his room right now.\pHe said he was going to be busy, but I'm sure you two will catch up outside."), MSGBOX_NPC)
-		end
-	} elif (flag(FLAG_RECIEVED_TOWN_MAP) == false) {
-		lock
-		faceplayer
-		msgbox(format("{COLOR RED}Hey {PLAYER}!\nHow have you been doing?\pOh, I haven't heard from {COLOR GREEN}Skip{COLOR RED} in a while now...\pI meant to give this to him...\nbut you can have it instead!"), MSGBOX_AUTOCLOSE)
-		giveitem(ITEM_TOWN_MAP, 1)
-		msgbox(format("{COLOR RED}That map will allow you to see where you are at all times!\pSo if you ever get lost, you can refer to that!"), MSGBOX_AUTOCLOSE)
-		setflag(FLAG_RECIEVED_TOWN_MAP)
-		release
-		end
-	} else {
-		msgbox(format("{COLOR RED}Hey {PLAYER}!\nHow have you been doing?\pHave you seen {COLOR GREEN}Skip{COLOR RED} recently?\pI get worried for him, he's quite reckless -- just like me when I was a trainer...\pBut I'm sure he's fine..."), MSGBOX_NPC)
-		end
-	}
-	
-}

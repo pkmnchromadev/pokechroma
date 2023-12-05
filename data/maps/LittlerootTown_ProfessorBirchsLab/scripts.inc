@@ -191,8 +191,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex:: @ 81F9E80
 	delay 10
 	playse SE_CLICK
 	delay 20
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -204,8 +204,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex:: @ 81F9E80
 	delay 20
 	applymovement LOCALID_BIRCH, LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex
 	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
@@ -236,11 +236,11 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment:: @ 81F9F3C
 
 LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes: @ 81F9F46
 	walk_left
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	delay_16
 	delay_16
 	walk_right
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	delay_16
 	delay_16
 	walk_right
@@ -251,7 +251,7 @@ LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes: @ 81F9F46
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex: @ 81F9F58
@@ -263,7 +263,7 @@ LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex: @ 81F9F58
 	walk_up
 	walk_up
 	walk_left
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter:: @ 81F9F62
@@ -310,7 +310,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Cyndaquil:: @ 81F9FBB
 	release
 	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6
 	goto_if_ge LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_CYNDAQUIL, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeCyndaquil, MSGBOX_YESNO
@@ -323,7 +323,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Totodile:: @ 81F9FEF
 	release
 	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6
 	goto_if_ge LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_TOTODILE, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeTotodile, MSGBOX_YESNO
@@ -336,7 +336,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Chikorita:: @ 81FA023
 	release
 	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6
 	goto_if_ge LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_CHIKORITA, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeChikorita, MSGBOX_YESNO
@@ -553,7 +553,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -611,7 +611,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls:: @ 81FA
 
 LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer: @ 81FA3E0
 	walk_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Machine:: @ 81FA3E3

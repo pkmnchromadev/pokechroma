@@ -2,7 +2,7 @@ raw `
 LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
 	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_BrendansHouse_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_BrendansHouse_1F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlayersHouse_1F_Mapscript2_Init
+@	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlayersHouse_1F_Mapscript2_Init
 @	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_BrendansHouse_1F_OnFrame
 	.byte 0
 
@@ -98,7 +98,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor:: @ 81F785E
 	waitmovement 0
 	applymovement 4, Common_Movement_Delay48
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	applymovement 4, LittlerootTown_BrendansHouse_1F_Movement_RivalMomApproach
 	waitmovement 0
 	special GetRivalSonDaughterString
@@ -121,7 +121,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom:: @ 81F78A3
 	lockall
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, MALE
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFastestLeft
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
 	end
@@ -185,7 +185,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival:: @ 81F78E2
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan:: @ 81F7981
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -205,9 +205,9 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2:: @ 81F79A2
 	return
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0: @ 81F79AD
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -221,9 +221,9 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1: @ 81F79B5
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2: @ 81F79B9
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	walk_up
@@ -251,48 +251,48 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2:: @ 81F79E5
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit0: @ 81F79F7
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit1: @ 81F79FB
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_16
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit2: @ 81F7A02
 	delay_16
 	delay_8
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0: @ 81F7A06
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1: @ 81F7A0C
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2: @ 81F7A16
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	walk_up
 	walk_up
 	step_end
@@ -449,187 +449,91 @@ PlayersHouse_1F_Text_StillUnknownPokemon: @ 81F83A1
 	.string "MOM: Well, isn't that something!\n"
 	.string "There are still unknown POKéMON.$"
 `
-raw `
-PlayersHouse_1F_Mapscript2_Init::
-	map_script_2 VAR_PLAYERSHOUSE_GETPOKEMON, 0, PlayersHouse_Mapscript_GetPokemon
-	.2byte 0
-`
-const MOM_ID = 2
-const DAD_ID = 1
-const SKIP_ID = 3
-const PLAYER_ID = OBJ_EVENT_ID_PLAYER
 
-script PlayersHouse_Mapscript_GetPokemon {
-    if (var(VAR_PLAYERSHOUSE_GETPOKEMON) == 0) {
-        lockall
-		setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
-		applymovement(PLAYER_ID, Common_Movement_WalkInPlaceFastestLeft)
-        delay(20)
-        applymovement(MOM_ID, Common_Movement_WalkInPlaceRight)
+const DAD = 1
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+
+script PlayersHouse_trg_DadBeforeExit {
+	lockall
+	applymovement(DAD, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	applymovement(DAD, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	msgbox(format("Dad: {COLOR BLUE}Wait!\nI have something for you."), MSGBOX_AUTOCLOSE)
+	waitbuttonpress
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if(var(VAR_TEMP_1) == 7) {
+		applymovement(PLAYER, PlayersHouse_Movement_0)
 		waitmovement(0)
-		msgbox(format("Mom: {COLOR RED}Now, it's time for you two to make the biggest decision of your Pokémon journey!\pChoosing your starter Pokémon!"), MSGBOX_AUTOCLOSE)
-		waitmessage
-		applymovement(SKIP_ID, Common_Movement_ExclamationMark)
+		return
+	} elif(var(VAR_TEMP_1) == 8) {
+		applymovement(PLAYER, PlayersHouse_Movement_1)
 		waitmovement(0)
-		playse(SE_PIN)
-		waitse
-		playse(SE_BIKE_HOP)
-		applymovement(SKIP_ID, Common_Movement_JumpInPlaceLeft)
+		return
+	} elif(var(VAR_TEMP_1) == 9) {
+		applymovement(PLAYER, PlayersHouse_Movement_2)
 		waitmovement(0)
-		applymovement(SKIP_ID, Common_Movement_WalkInPlaceUp)
-		waitmovement(0)
-		delay(10)
-		msgbox(format("Skip: {COLOR GREEN}{PLAYER}{COLOR BLUE}!\pI'm so excited to finally be picking our starter Pokémon!\pGo ahead!\nI'll let you pick yours first."))
-		waitmessage
-		applymovement(SKIP_ID, Common_Movement_WalkInPlaceLeft)
-		waitmovement(0)
-		delay(5)
-		applymovement(MOM_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		msgbox(format("Mom: {COLOR RED}Now go ahead {COLOR GREEN}{PLAYER}{COLOR RED}, choose your starter!"))
-		waitmessage
-		closemessage
-		delay(10)
-		special(ChooseStarter)
-		waitstate
-		fadeoutbgm(0)
-		if (var(VAR_STARTER_MON) == 0) {
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GREY} received a {COLOR GREEN}Rowlet"))
-			waitse
-		} elif (var(VAR_STARTER_MON) == 1) {
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GREY} received a {COLOR GREEN}Chimchar"))
-			waitse
-		} elif (var(VAR_STARTER_MON) == 2) {
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GREY} received a {COLOR GREEN}Froakie"))
-			waitse
-		}
-		playbgm(MUS_LITTLEROOT, 0)
-		msgbox(format("Mom: {COLOR RED}Would you like to nickname your Pokemon?"), MSGBOX_YESNO)
-		if (var(VAR_RESULT) == YES) {
-			setvar(VAR_0x8004, 0)
-			call(Common_EventScript_NameReceivedPartyMon)
-		}
-		delay(5)
-		msgbox(format("Mom: {COLOR RED}Now, {COLOR GREEN}Skip{COLOR RED}, go ahead and choose yours.\p{COLOR DARK_GREY}Skip: {COLOR BLUE}Hmmmm..."))
-		waitmessage
-		delay(40)
-		closemessage
-		applymovement(SKIP_ID, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		playse(SE_PIN)
-		waitse
-		msgbox(format("Skip: {COLOR BLUE}I know who I'm going to choose!"))
-		closemessage
-		applymovement(SKIP_ID, Common_Movement_WalkInPlaceLeft)
-		waitmovement(0)
-		delay(20)
-		if (var(VAR_STARTER_MON) == 0) { //player chose rowlet, rival is chimchar
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("Skip received a {COLOR GREEN}Chimchar"))
-			waitse
-		} elif (var(VAR_STARTER_MON) == 1) { //player chose chimchar, rival is froakie
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("Skip received a {COLOR GREEN}Froakie"))
-			waitse
-		} elif (var(VAR_STARTER_MON) == 2) { //player chose froakie, rival is rowlet
-			playse(MUS_RG_OBTAIN_KEY_ITEM)
-			msgbox(format("Skip received a {COLOR GREEN}Rowlet"))
-			waitse
-		}
-		applymovement(SKIP_ID, Common_Movement_JumpInPlaceLeft)
-		waitmovement(0)
-		applymovement(SKIP_ID, Common_Movement_WalkInPlaceUp)
-		waitmovement(0)
-		msgbox(format("Skip: {COLOR BLUE}I can't believe we have our first Pokémon finally!\pI'm gonna go tell my Mom!"))
-		closemessage
-		delay(10)
-		applymovement(SKIP_ID, PlayersHouse_GetPokemon_Movement_0)
-		waitmovement(0)
-		playse(SE_EXIT)
-		removeobject(SKIP_ID)
-		delay(10)
-		applymovement(MOM_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		delay(10)
-		removeobject(4)
-		msgbox(format("Mom: {COLOR RED}Well {COLOR GREEN}Skip{COLOR RED} left in a hurry!\p{PLAYER}, will you do me a favor and give him these?"))
-		closemessage
-		delay(5)
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} received the Pokédex!"))
-		waitfanfare
-		setflag(FLAG_SYS_POKEDEX_GET)
-		#special(EnableNationalPokedex)
-		special(SetUnlockedPokedexFlags)
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} received the Trainer Card!"))
-		waitfanfare
-		delay(10)
-		msgbox(format("Mom: {COLOR RED}The {COLOR GREEN}Trainer Card{COLOR RED} is your official identification for the {COLOR GREEN}Ryoko Pokémon League{COLOR RED}."), MSGBOX_AUTOCLOSE)
-		delay(10)
-		applymovement(DAD_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		msgbox(format("Dad: {COLOR BLUE}These shoes will also help you get around from place to place faster."), MSGBOX_AUTOCLOSE)
-		delay(5)
-		applymovement(DAD_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} received the Running Shoes!"))
-		waitfanfare
-		setflag(FLAG_SYS_B_DASH)
-		setflag(FLAG_RECEIVED_RUNNING_SHOES)
-		applymovement(MOM_ID, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		applymovement(MOM_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		playse(SE_PIN)
-		delay(15)
-		msgbox(format("Mom: {COLOR RED}Oh!\nI must get going!\p{COLOR GREEN}{PLAYER}{COLOR RED}, please feel free to visit my Pokémon Lab in {COLOR GREEN}Myst City{COLOR RED}!"), MSGBOX_AUTOCLOSE)
-		delay(5)
-		applymovement(MOM_ID, PlayersHouse_GetPokemon_Movement_1)
-		waitmovement(0)
-		removeobject(MOM_ID)
-		delay(10)
-		applymovement(DAD_ID, Common_Movement_WalkInPlaceRight)
-		waitmovement(0)
-		msgbox(format("Dad: {COLOR BLUE}Now then!\pStart your Pokémon journey!\pIf you and your Pokémon need some resting, please feel free to come talk to me!"), MSGBOX_AUTOCLOSE)
-		setflag(FLAG_CANVASTOWN_GETPOKEMON)
-		setvar(VAR_PLAYERSHOUSE_GETPOKEMON, 1)
-		setflag(FLAG_SYS_POKEMON_GET)
-		clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-		cleartrainerflag(TRAINER_SKIP_GRASS_1)
-		cleartrainerflag(TRAINER_SKIP_FIRE_1)
-		cleartrainerflag(TRAINER_SKIP_WATER_1)
-		releaseall
-		end
+		return
 	}
+	goto(PlayersHouse_es_DadBeforeExit)
 }
-movement PlayersHouse_GetPokemon_Movement_0 {
-	walk_fast_down
-	walk_fast_right * 4
-	walk_fast_down
-	delay_8
-	walk_in_place_down
+script PlayersHouse_es_DadBeforeExit {
+	msgbox(format("Dad: {COLOR BLUE}Wow... you've grown so fast!\pNow that you're old enough to own a {COLOR GREEN}{PKMN}{COLOR BLUE} now, I'd like you to have this."). MSGBOX_AUTOCLOSE)
+	waitmessage
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	msgbox(format("{PLAYER} receieved the {COLOR GREEN}PokéGear"), MSGBOX_AUTOCLOSE)
+	setflag(FLAG_SYS_POKENAV_GET)
+	setflag(FLAG_RECEIVED_POKENAV)
+	setflag(FLAG_ADDED_MATCH_CALL_TO_POKENAV)
+	waitfanfare
+	msgbox(format("Dad: {COLOR BLUE}Now, try calling up your friend {COLOR GREEN}Skip{COLOR BLUE}."), MSGBOX_DEFAULT)
+	goto(PlayersHouse_es_DadBeforeExit_PokegearTutorial)
 }
-movement PlayersHouse_GetPokemon_Movement_1 {
-	walk_up
-	walk_right * 4
-	walk_down * 3
-	walk_right * 3
-	walk_down
-	delay_8
-	walk_in_place_down
+script PlayersHouse_es_DadBeforeExit_PokegearTutorial {
+	special(ScriptMenu_CreateStartMenuForPokenavTutorial)
+	waitstate
+	switch (var(VAR_RESULT)) {
+		case 0:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 1:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 2:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 4:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 5:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 6:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case 7:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+		case MULTI_B_PRESSED:
+			goto(PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear)
+	}
+	special(OpenPokenavForTutorial)
+	waitstate
+	# rest of the interaction
+}
+script PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear {
+	msgbox(format("Please select the {COLOR GREEN}PokéGear"), MSGBOX_DEFAULT)
+	closemessage
+	delay(10)
+	goto(PlayersHouse_Event_DadBeforeExit_PokegearTutorial)
 }
 
-script PlayersHouse_Object_Dad {
-	lock
-	faceplayer
-	msgbox(format("Dad: {COLOR BLUE}Hey {PLAYER}!\pYou look tired.\nLet's get you some rest..."))
-	call(Common_EventScript_OutOfCenterPartyHeal)
-	msgbox(format("Dad: {COLOR BLUE}There, now you and your Pokémon are all rested up!"), MSGBOX_AUTOCLOSE)
-	release
-	end
+movement PlayersHouse_Movement_0 {
+	walk_down
+	walk_left * 2
+	walk_in_place_up
+}
+
+movement PlayersHouse_Movement_1 {
+	walk_left * 2
+	walk_in_place_up
+}
+movement PlayersHouse_Movement_2 {
+	walk_up
+	walk_left * 2
+	walk_in_place_up
 }

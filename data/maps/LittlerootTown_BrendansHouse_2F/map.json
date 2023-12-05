@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_PLAYERSHOUSE_DADENTERSROOM"
+      "flag": "FLAG_PLAYERSHOUSE_DAD_STATE"
     }
   ],
   "warp_events": [
@@ -38,25 +38,10 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_PLAYERSHOUSE_HASPLAYEREMAILED",
-      "var_value": "0",
-      "script": "PlayersHouse_Trigger_HasPlayerEmailed"
-    }
+
   ],
   "bg_events": [
-    {
-      "type": "sign",
-      "x": 0,
-      "y": 2,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "PlayersHouse_Script_PlayerEmail"
-    }
+
   ],
   "allow_bike": "",
   "allow_escape_rope": "",
