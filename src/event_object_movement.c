@@ -435,6 +435,40 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
+// unique palettes
+#define OBJ_EVENT_PAL_GIRL_1                      0x1124
+#define OBJ_EVENT_PAL_GIRL_2                      0x1125
+#define OBJ_EVENT_PAL_GIRL_3                      0x1126
+#define OBJ_EVENT_PAL_RICH_BOY                    0x1127
+#define OBJ_EVENT_PAL_WOMAN_1                     0x1128
+#define OBJ_EVENT_PAL_FAT_MAN                     0x1129
+#define OBJ_EVENT_PAL_POKEFAN                     0x112A
+#define OBJ_EVENT_PAL_EXPERT                      0x112B
+#define OBJ_EVENT_PAL_COOK                        0x112C
+#define OBJ_EVENT_PAL_OLD_MAN                     0x112D
+#define OBJ_EVENT_PAL_OLD_WOMAN                   0x112E
+#define OBJ_EVENT_PAL_PICNICKER_CAMPER            0x112F
+#define OBJ_EVENT_PAL_YOUNGSTER                   0x1130
+#define OBJ_EVENT_PAL_BUG_CATCHER                 0x1131
+#define OBJ_EVENT_PAL_MANIAC                      0x1132
+#define OBJ_EVENT_PAL_HEX_MANIAC                  0x1133
+#define OBJ_EVENT_PAL_BLACK_BELT                  0x1134
+#define OBJ_EVENT_PAL_LASS                        0x1135
+#define OBJ_EVENT_PAL_GENTLEMAN                   0x1136
+#define OBJ_EVENT_PAL_FISHERMAN                   0x1137
+#define OBJ_EVENT_PAL_HIKER                       0x1138
+#define OBJ_EVENT_PAL_NURSE                       0x1139
+#define OBJ_EVENT_PAL_PROF_BIRCH                  0x113A
+#define OBJ_EVENT_PAL_ACE_TRAINER                 0x113B
+#define OBJ_EVENT_PAL_ARTIST_F                    0x113C
+#define OBJ_EVENT_PAL_ARTIST_M                    0x113D
+#define OBJ_EVENT_PAL_PROTO_GRUNT                 0x113E
+#define OBJ_EVENT_PAL_ENGINEER                    0x113F
+#define OBJ_EVENT_PAL_OFFICER                     0x1140
+#define OBJ_EVENT_PAL_STEVEN                      0x1141
+#define OBJ_EVENT_PAL_WALLY                       0x1142
+#define OBJ_EVENT_PAL_PSYCHIC                     0x1143
+// end
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -481,6 +515,38 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
+    // new
+    {gObjectEventPal_Girl1, OBJ_EVENT_PAL_GIRL_1},
+    {gObjectEventPal_Girl2, OBJ_EVENT_PAL_GIRL_2},
+    {gObjectEventPal_Girl3, OBJ_EVENT_PAL_GIRL_3},
+    {gObjectEventPal_RichBoy, OBJ_EVENT_PAL_RICH_BOY},
+    {gObjectEventPal_Woman1, OBJ_EVENT_PAL_WOMAN_1},
+    {gObjectEventPal_FatMan, OBJ_EVENT_PAL_FAT_MAN},
+    {gObjectEventPal_Pokefan, OBJ_EVENT_PAL_POKEFAN},
+    {gObjectEventPal_Expert, OBJ_EVENT_PAL_EXPERT},
+    {gObjectEventPal_Cook, OBJ_EVENT_PAL_COOK},
+    {gObjectEventPal_OldMan, OBJ_EVENT_PAL_OLD_MAN},
+    {gObjectEventPal_OldWoman, OBJ_EVENT_PAL_OLD_WOMAN},
+    {gObjectEventPal_PicnickerCamper, OBJ_EVENT_PAL_PICNICKER_CAMPER},
+    {gObjectEventPal_Youngster, OBJ_EVENT_PAL_YOUNGSTER},
+    {gObjectEventPal_BugCatcher, OBJ_EVENT_PAL_BUG_CATCHER},
+    {gObjectEventPal_Maniac, OBJ_EVENT_PAL_MANIAC},
+    {gObjectEventPal_HexManiac, OBJ_EVENT_PAL_HEX_MANIAC},
+    {gObjectEventPal_BlackBelt, OBJ_EVENT_PAL_BLACK_BELT},
+    {gObjectEventPal_Lass, OBJ_EVENT_PAL_LASS},
+    {gObjectEventPal_Gentleman, OBJ_EVENT_PAL_GENTLEMAN},
+    {gObjectEventPal_Fisherman, OBJ_EVENT_PAL_FISHERMAN},
+    {gObjectEventPal_Hiker, OBJ_EVENT_PAL_HIKER},
+    {gObjectEventPal_Nurse, OBJ_EVENT_PAL_NURSE},
+    {gObjectEventPal_ProfBirch, OBJ_EVENT_PAL_PROF_BIRCH},
+    {gObjectEventPal_AceTrainer, OBJ_EVENT_PAL_ACE_TRAINER},
+    {gObjectEventPal_ArtistM, OBJ_EVENT_PAL_ARTIST_M},
+    {gObjectEventPal_ArtistF, OBJ_EVENT_PAL_ARTIST_F},
+    {gObjectEventPal_ProtoGrunt, OBJ_EVENT_PAL_PROTO_GRUNT},
+    {gObjectEventPal_Engineer, OBJ_EVENT_PAL_ENGINEER},
+    {gObjectEventPal_Officer, OBJ_EVENT_PAL_OFFICER},
+    {gObjectEventPal_Steven, OBJ_EVENT_PAL_STEVEN},
+    {gObjectEventPal_Wally, OBJ_EVENT_PAL_WALLY},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else

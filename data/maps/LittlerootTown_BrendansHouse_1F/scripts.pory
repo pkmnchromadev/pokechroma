@@ -472,13 +472,16 @@ script PlayersHouse_trg_DadBeforeExit {
 		applymovement(PLAYER, PlayersHouse_Movement_2)
 		waitmovement(0)
 	}
+	setvar(VAR_TEMP_3, 1)
 	applymovement(DAD, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	goto(PlayersHouse_es_DadBeforeExit)
 }
 script PlayersHouse_es_DadBeforeExit {
 	lockall
-	faceplayer
+	if (var(VAR_TEMP_3) != 1) {
+		faceplayer
+	}
 	if (var(VAR_PLAYERSHOUSE_STATE) == 1) {
 		msgbox(format("Dad: {COLOR BLUE}Wow... you've grown up so fast!\pNow that you're leaving home, I'd like you to take this."). MSGBOX_AUTOCLOSE)
 		waitmessage

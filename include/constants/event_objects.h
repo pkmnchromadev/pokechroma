@@ -1,10 +1,10 @@
 #ifndef GUARD_CONSTANTS_EVENT_OBJECTS_H
 #define GUARD_CONSTANTS_EVENT_OBJECTS_H
 
-#define OBJ_EVENT_GFX_BRENDAN_NORMAL               0
-#define OBJ_EVENT_GFX_BRENDAN_MACH_BIKE            1
-#define OBJ_EVENT_GFX_BRENDAN_SURFING              2
-#define OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE           3
+#define OBJ_EVENT_GFX_DYSON_NORMAL                 0 // rename
+#define OBJ_EVENT_GFX_DYSON_MACH_BIKE              1 //
+#define OBJ_EVENT_GFX_DYSON_SURFING                2 //
+#define OBJ_EVENT_GFX_DYSON_FIELD_MOVE             3 //
 #define OBJ_EVENT_GFX_QUINTY_PLUMP                 4
 #define OBJ_EVENT_GFX_NINJA_BOY                    5
 #define OBJ_EVENT_GFX_TWIN                         6
@@ -29,7 +29,7 @@
 #define OBJ_EVENT_GFX_POKEFAN_M                   25
 #define OBJ_EVENT_GFX_WOMAN_4                     26
 #define OBJ_EVENT_GFX_COOK                        27
-#define OBJ_EVENT_GFX_LINK_RECEPTIONIST           28
+#define OBJ_EVENT_GFX_LINK_RECEPTIONIST           28 //-
 #define OBJ_EVENT_GFX_OLD_MAN                     29
 #define OBJ_EVENT_GFX_OLD_WOMAN                   30
 #define OBJ_EVENT_GFX_CAMPER                      31
@@ -52,13 +52,13 @@
 #define OBJ_EVENT_GFX_GENTLEMAN                   48
 #define OBJ_EVENT_GFX_SAILOR                      49
 #define OBJ_EVENT_GFX_FISHERMAN                   50
-#define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M        51
-#define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F        52
+#define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M        51 //-
+#define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F        52 //-
 #define OBJ_EVENT_GFX_TUBER_F                     53
 #define OBJ_EVENT_GFX_TUBER_M                     54
 #define OBJ_EVENT_GFX_HIKER                       55
-#define OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M        56
-#define OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F        57
+#define OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M        56 //-
+#define OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F        57 //-
 #define OBJ_EVENT_GFX_NURSE                       58
 #define OBJ_EVENT_GFX_ITEM_BALL                   59
 #define OBJ_EVENT_GFX_BERRY_TREE                  60
@@ -68,15 +68,15 @@
 #define OBJ_EVENT_GFX_PROF_BIRCH                  64
 #define OBJ_EVENT_GFX_MAN_4                       65
 #define OBJ_EVENT_GFX_MAN_5                       66
-#define OBJ_EVENT_GFX_REPORTER_M                  67
-#define OBJ_EVENT_GFX_REPORTER_F                  68
-#define OBJ_EVENT_GFX_BARD                        69
-#define OBJ_EVENT_GFX_ANABEL                      70
-#define OBJ_EVENT_GFX_TUCKER                      71
-#define OBJ_EVENT_GFX_GRETA                       72
-#define OBJ_EVENT_GFX_SPENSER                     73
-#define OBJ_EVENT_GFX_NOLAND                      74
-#define OBJ_EVENT_GFX_LUCY                        75
+#define OBJ_EVENT_GFX_ACE_TRAINER_M               67 // reporter_m -> ace_trainer_m
+#define OBJ_EVENT_GFX_ACE_TRAINER_F               68 // reporter_f -> ace_trainer_f
+#define OBJ_EVENT_GFX_BARD                        69 //-
+#define OBJ_EVENT_GFX_PSYCHIC_F                   70 // anabel -> psychic_f
+#define OBJ_EVENT_GFX_ARTIST_F                    71 // tucker -> artist_f
+#define OBJ_EVENT_GFX_GRETA                       72 //-
+#define OBJ_EVENT_GFX_SPENSER                     73 //-
+#define OBJ_EVENT_GFX_NOLAND                      74 //-
+#define OBJ_EVENT_GFX_LUCY                        75 //-
 #define OBJ_EVENT_GFX_UNUSED_NATU_DOLL            76
 #define OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL       77
 #define OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL        78
@@ -86,7 +86,7 @@
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
 #define OBJ_EVENT_GFX_MART_EMPLOYEE               83
 #define OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN          84
-#define OBJ_EVENT_GFX_TEALA                       85
+#define OBJ_EVENT_GFX_TEALA                       85 //-
 #define OBJ_EVENT_GFX_BREAKABLE_ROCK              86
 #define OBJ_EVENT_GFX_PUSHABLE_BOULDER            87
 #define OBJ_EVENT_GFX_MR_BRINEYS_BOAT             88
@@ -100,7 +100,7 @@
 #define OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY        96
 #define OBJ_EVENT_GFX_BIRCHS_BAG                  97
 #define OBJ_EVENT_GFX_ZIGZAGOON_1                 98
-#define OBJ_EVENT_GFX_ARTIST                      99
+#define OBJ_EVENT_GFX_ARTIST_M                    99 // artist -> artist_m
 #define OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL       100
 #define OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE    101
 #define OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE    102
@@ -118,25 +118,25 @@
 #define OBJ_EVENT_GFX_CABLE_CAR                  114
 #define OBJ_EVENT_GFX_SCIENTIST_2                115
 #define OBJ_EVENT_GFX_DEVON_EMPLOYEE             116
-#define OBJ_EVENT_GFX_AQUA_MEMBER_M              117
-#define OBJ_EVENT_GFX_AQUA_MEMBER_F              118
-#define OBJ_EVENT_GFX_MAGMA_MEMBER_M             119
-#define OBJ_EVENT_GFX_MAGMA_MEMBER_F             120
-#define OBJ_EVENT_GFX_SIDNEY                     121
-#define OBJ_EVENT_GFX_PHOEBE                     122
-#define OBJ_EVENT_GFX_GLACIA                     123
-#define OBJ_EVENT_GFX_DRAKE                      124
-#define OBJ_EVENT_GFX_ROXANNE                    125
-#define OBJ_EVENT_GFX_BRAWLY                     126
-#define OBJ_EVENT_GFX_WATTSON                    127
-#define OBJ_EVENT_GFX_FLANNERY                   128
-#define OBJ_EVENT_GFX_NORMAN                     129
-#define OBJ_EVENT_GFX_WINONA                     130
-#define OBJ_EVENT_GFX_LIZA                       131
-#define OBJ_EVENT_GFX_TATE                       132
-#define OBJ_EVENT_GFX_WALLACE                    133
-#define OBJ_EVENT_GFX_STEVEN                     134
-#define OBJ_EVENT_GFX_WALLY                      135
+#define OBJ_EVENT_GFX_PROTO_GRUNT_M              117 // aqua -> proto
+#define OBJ_EVENT_GFX_PROTO_GRUNT_F              118 // ...
+#define OBJ_EVENT_GFX_ENGINEER                   119 // magma_m -> engineer
+#define OBJ_EVENT_GFX_OFFICER                    120 // magma_f -> officer
+#define OBJ_EVENT_GFX_SIDNEY                     121 // (e4 1)
+#define OBJ_EVENT_GFX_PHOEBE                     122 // (e4 2)
+#define OBJ_EVENT_GFX_GLACIA                     123 // (e4 3)
+#define OBJ_EVENT_GFX_DRAKE                      124 // (e4 4)
+#define OBJ_EVENT_GFX_ROXANNE                    125 // (leader 1)
+#define OBJ_EVENT_GFX_BRAWLY                     126 // (leader 2)
+#define OBJ_EVENT_GFX_WATTSON                    127 // (leader 3)
+#define OBJ_EVENT_GFX_FLANNERY                   128 // (leader 4)
+#define OBJ_EVENT_GFX_NORMAN                     129 // (leader 5)
+#define OBJ_EVENT_GFX_WINONA                     130 // (leader 6)
+#define OBJ_EVENT_GFX_LIZA                       131 // (leader 7)
+#define OBJ_EVENT_GFX_TATE                       132 // (leader 8)
+#define OBJ_EVENT_GFX_WALLACE                    133 // -
+#define OBJ_EVENT_GFX_STEVEN                     134 // steven -> lars
+#define OBJ_EVENT_GFX_WALLY                      135 // wally -> skip
 #define OBJ_EVENT_GFX_LITTLE_BOY_3               136
 #define OBJ_EVENT_GFX_BRENDAN_FISHING            137
 #define OBJ_EVENT_GFX_MAY_FISHING                138
@@ -196,7 +196,7 @@
 #define OBJ_EVENT_GFX_MAY_WATERING               192
 #define OBJ_EVENT_GFX_BRENDAN_DECORATING         193
 #define OBJ_EVENT_GFX_MAY_DECORATING             194
-#define OBJ_EVENT_GFX_ARCHIE                     195
+#define OBJ_EVENT_GFX_ARCHIE                     195 // archie -> proto_apollo
 #define OBJ_EVENT_GFX_MAXIE                      196
 #define OBJ_EVENT_GFX_KYOGRE_FRONT               197
 #define OBJ_EVENT_GFX_GROUDON_FRONT              198
