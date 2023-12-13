@@ -1063,3 +1063,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/RossanoPass_North/scripts.inc"
 
 	.include "data/maps/TrevisoBridge_LighthouseExt/scripts.inc"
+
+	.include "data/maps/RossanoTown_Library/scripts.inc"

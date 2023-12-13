@@ -460,35 +460,53 @@ script PlayersHouse_trg_DadBeforeExit {
 	waitmovement(0)
 	applymovement(DAD, Common_Movement_ExclamationMark)
 	waitmovement(0)
-	msgbox(format("Dad: {COLOR BLUE}Wait!\nI have something for you."), MSGBOX_AUTOCLOSE)
-	waitbuttonpress
+	msgbox(format("Dad: {COLOR BLUE}Wait {PLAYER}!\nI have a gift for you!"), MSGBOX_AUTOCLOSE)
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
-	if(var(VAR_TEMP_1) == 7) {
+	if (var(VAR_TEMP_1) == 7) {
 		applymovement(PLAYER, PlayersHouse_Movement_0)
 		waitmovement(0)
-		return
-	} elif(var(VAR_TEMP_1) == 8) {
+	} elif (var(VAR_TEMP_1) == 8) {
 		applymovement(PLAYER, PlayersHouse_Movement_1)
 		waitmovement(0)
-		return
-	} elif(var(VAR_TEMP_1) == 9) {
+	} elif (var(VAR_TEMP_1) == 9) {
 		applymovement(PLAYER, PlayersHouse_Movement_2)
 		waitmovement(0)
-		return
 	}
+	applymovement(DAD, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
 	goto(PlayersHouse_es_DadBeforeExit)
 }
 script PlayersHouse_es_DadBeforeExit {
-	msgbox(format("Dad: {COLOR BLUE}Wow... you've grown so fast!\pNow that you're old enough to own a {COLOR GREEN}{PKMN}{COLOR BLUE} now, I'd like you to have this."). MSGBOX_AUTOCLOSE)
-	waitmessage
-	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
-	msgbox(format("{PLAYER} receieved the {COLOR GREEN}PokéGear"), MSGBOX_AUTOCLOSE)
-	setflag(FLAG_SYS_POKENAV_GET)
-	setflag(FLAG_RECEIVED_POKENAV)
-	setflag(FLAG_ADDED_MATCH_CALL_TO_POKENAV)
-	waitfanfare
-	msgbox(format("Dad: {COLOR BLUE}Now, try calling up your friend {COLOR GREEN}Skip{COLOR BLUE}."), MSGBOX_DEFAULT)
-	goto(PlayersHouse_es_DadBeforeExit_PokegearTutorial)
+	lockall
+	faceplayer
+	if (var(VAR_PLAYERSHOUSE_STATE) == 1) {
+		msgbox(format("Dad: {COLOR BLUE}Wow... you've grown up so fast!\pNow that you're leaving home, I'd like you to take this."). MSGBOX_AUTOCLOSE)
+		waitmessage
+		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+		msgbox(format("{PLAYER} receieved the {COLOR GREEN}PokéGear"))
+		setflag(FLAG_SYS_POKENAV_GET)
+		setflag(FLAG_RECEIVED_POKENAV)
+		setflag(FLAG_ADDED_MATCH_CALL_TO_POKENAV)
+		waitfanfare
+		msgbox(format("Dad: {COLOR BLUE}Feels like yesterday went I was teaching you type advantages...\pTime flies{PAUSE 5}.{PAUSE 5}.{PAUSE 5}.{PAUSE 5}\p{COLOR DARK_GREY}Dad: {COLOR BLUE}Now, try out that fancy new tech of yours!\pTry calling your friend {COLOR GREEN}Skip{COLOR BLUE}."), MSGBOX_AUTOCLOSE)
+		goto(PlayersHouse_es_DadBeforeExit_PokegearTutorial)
+		end
+	} elif (var(VAR_PLAYERSHOUSE_STATE) == 2) {
+		msgbox(format("Dad: {COLOR BLUE}Don't be late to see {COLOR GREEN}Professor Cypress{COLOR BLUE}!"), MSGBOX_AUTOCLOSE)
+		releaseall
+		end
+	} else {
+		msgbox(format("Dad: {COLOR BLUE}Come by to see your old man?\pYou should rest up while you're here."), MSGBOX_DEFAULT)
+		delay(5)
+		fadescreen(FADE_TO_BLACK)
+		delay(10)
+		playfanfare(MUS_HEAL)
+		waitfanfare
+		special(HealPlayerParty)
+		msgbox(format("Dad: {COLOR BLUE}Thanks for stopping by {PLAYER}.\pStay safe out there, don't forget to come home once in a while!"), MSGBOX_AUTOCLOSE)
+		releaseall
+		end
+	}
 }
 script PlayersHouse_es_DadBeforeExit_PokegearTutorial {
 	special(ScriptMenu_CreateStartMenuForPokenavTutorial)
@@ -513,13 +531,28 @@ script PlayersHouse_es_DadBeforeExit_PokegearTutorial {
 	}
 	special(OpenPokenavForTutorial)
 	waitstate
-	# rest of the interaction
+	applymovement(DAD,Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Dad: {COLOR BLUE}Good!\pNow that you're all setup with the {COLOR GREEN}PokéGear{COLOR BLUE}, you can call home too!"), MSGBOX_AUTOCLOSE)
+	delay(20)
+	playfanfare(MUS_REGISTER_MATCH_CALL)
+	msgbox(format("Registered {COLOR GREEN}Dad{COLOR DARK_GREY} as a contact in the {COLOR GREEN}PokéGear{COLOR BLUE}"), MSGBOX_DEFAULT)
+	waitfanfare
+	closemessage
+	msgbox(format("Dad: {COLOR BLUE}Quickly now, the professor will be showing up any minute!"), MSGBOX_AUTOCLOSE)
+	applymovement(DAD, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	setvar(VAR_PLAYERSHOUSE_STATE, 2)
+	releaseall
+	end
 }
 script PlayersHouse_DadBeforeExit_txt_PleaseSelectPokegear {
-	msgbox(format("Please select the {COLOR GREEN}PokéGear"), MSGBOX_DEFAULT)
+	applymovement(DAD, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Dad: {COLOR BLUE}Try using the {COLOR GREEN}PokéGear"), MSGBOX_DEFAULT)
 	closemessage
-	delay(10)
-	goto(PlayersHouse_Event_DadBeforeExit_PokegearTutorial)
+	delay(15)
+	goto(PlayersHouse_es_DadBeforeExit_PokegearTutorial)
 }
 
 movement PlayersHouse_Movement_0 {

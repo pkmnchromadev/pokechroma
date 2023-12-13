@@ -604,8 +604,8 @@
     {
       "id": "LAYOUT_POKEMON_CENTER_1F",
       "name": "PokemonCenter_1F_Layout",
-      "width": 14,
-      "height": 9,
+      "width": 15,
+      "height": 16,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/PokemonCenter_1F/border.bin",
@@ -4430,6 +4430,16 @@
       "secondary_tileset": "gTileset_TrevisoCity",
       "border_filepath": "data/layouts/TrevisoBridge_LighthouseExt/border.bin",
       "blockdata_filepath": "data/layouts/TrevisoBridge_LighthouseExt/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROSSANO_TOWN_LIBRARY",
+      "name": "RossanoTown_Library_Layout",
+      "width": 20,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/RossanoTown_Library/border.bin",
+      "blockdata_filepath": "data/layouts/RossanoTown_Library/map.bin"
     }
   ]
 }
