@@ -134,6 +134,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_UP_LEFT_STAIR_WARP]              = TILE_FLAG_UNUSED,
     [MB_DOWN_RIGHT_STAIR_WARP]           = TILE_FLAG_UNUSED,
     [MB_DOWN_LEFT_STAIR_WARP]            = TILE_FLAG_UNUSED,
+    [MB_SIGNPOST]                        = TILE_FLAG_UNUSED,
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -1524,5 +1525,8 @@ bool8 MetatileBehavior_IsDirectionalStairWarp(u8 metatileBehavior)
         return TRUE;
     else
         return FALSE;
+bool8 MetatileBehavior_IsSignpost(u8 mb)
+{
+    return (mb == MB_SIGNPOST);
 }
 

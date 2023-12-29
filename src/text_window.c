@@ -5,6 +5,7 @@
 #include "palette.h"
 #include "bg.h"
 #include "graphics.h"
+#include "menu.h"
 
 #define MSGBOX_SUB_DEFAULT 0
 #define MSGBOX_SUB_WOOD 1
@@ -259,4 +260,11 @@ void LoadMsgBox(const u32 **graphic, const u16 **palette)
     }
     //This resets the loaded type and subtype to default.
     SetMsgBox(MSGBOX_DEFAULT, MSGBOX_SUB_DEFAULT);
+}
+void LoadSignPostWindowFrameGfx(void)
+{
+    // TODO signpost msgbox frames
+    //LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gUnknown_8470B0C, 0x260, destOffset);
+    //LoadPalette(GetWindowFrameTilesPal(1), palIdx, 32);
+    LoadMessageBoxAndBorderGfx();
 }
