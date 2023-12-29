@@ -468,6 +468,10 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_STEVEN                      0x1141
 #define OBJ_EVENT_PAL_WALLY                       0x1142
 #define OBJ_EVENT_PAL_PSYCHIC                     0x1143
+#define OBJ_EVENT_PAL_MART_EMPLOYEE               0x1144
+#define OBJ_EVENT_PAL_MAN_3                       0x1145
+#define OBJ_EVENT_PAL_MAN_4                       0x1146
+#define OBJ_EVENT_PAL_MAN_5                       0x1147
 // end
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
@@ -547,6 +551,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Officer, OBJ_EVENT_PAL_OFFICER},
     {gObjectEventPal_Steven, OBJ_EVENT_PAL_STEVEN},
     {gObjectEventPal_Wally, OBJ_EVENT_PAL_WALLY},
+    {gObjectEventPal_MartEmployee, OBJ_EVENT_PAL_MART_EMPLOYEE},
+    {gObjectEventPal_Man3, OBJ_EVENT_PAL_MAN_3},
+    {gObjectEventPal_Man4, OBJ_EVENT_PAL_MAN_4},
+    {gObjectEventPal_Man5, OBJ_EVENT_PAL_MAN_5},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else

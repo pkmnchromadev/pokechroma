@@ -1,10 +1,10 @@
 raw `
-LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
-	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_BrendansHouse_1F_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_BrendansHouse_1F_OnTransition
+@LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
+@	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_BrendansHouse_1F_OnLoad
+@	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_BrendansHouse_1F_OnTransition
 @	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlayersHouse_1F_Mapscript2_Init
 @	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_BrendansHouse_1F_OnFrame
-	.byte 0
+@	.byte 0
 
 LittlerootTown_BrendansHouse_1F_OnLoad: @ 81F7765
 	compare VAR_LITTLEROOT_INTRO_STATE, 6
@@ -451,8 +451,29 @@ PlayersHouse_1F_Text_StillUnknownPokemon: @ 81F83A1
 `
 
 const DAD = 1
+const SKIP = 3
+const CYPRESS = 2
+const BAG = 4
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
+
+mapscripts LittlerootTown_BrendansHouse_1F_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		switch (var(VAR_CANVAS_TOWN_STATE)) {
+			case 2:
+				setobjectxyperm(DAD, 9, 7)
+				setobjectmovementtype(DAD, MOVEMENT_TYPE_FACE_UP)
+				setobjectxyperm(SKIP, 5, 7)
+				setobjectmovementtype(SKIP, MOVEMENT_TYPE_FACE_LEFT)
+				setobjectxyperm(CYPRESS, 2, 6)
+				setobjectmovementtype(CYPRESS, MOVEMENT_TYPE_FACE_RIGHT)
+				setobjectxyperm(BAG, 3, 6)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_CANVAS_TOWN_STATE, 2: PlayersHouse_EventScript_CypressGivePokemon
+	]
+}
 
 script PlayersHouse_trg_DadBeforeExit {
 	lockall
@@ -460,6 +481,8 @@ script PlayersHouse_trg_DadBeforeExit {
 	waitmovement(0)
 	applymovement(DAD, Common_Movement_ExclamationMark)
 	waitmovement(0)
+	playse(SE_PIN)
+	waitse
 	msgbox(format("Dad: {COLOR BLUE}Wait {PLAYER}!\nI have a gift for you!"), MSGBOX_AUTOCLOSE)
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	if (var(VAR_TEMP_1) == 7) {
@@ -495,11 +518,11 @@ script PlayersHouse_es_DadBeforeExit {
 		goto(PlayersHouse_es_DadBeforeExit_PokegearTutorial)
 		end
 	} elif (var(VAR_PLAYERSHOUSE_STATE) == 2) {
-		msgbox(format("Dad: {COLOR BLUE}Don't be late to see {COLOR GREEN}Professor Cypress{COLOR BLUE}!"), MSGBOX_AUTOCLOSE)
+		msgbox(format("Dad: {COLOR BLUE}Don't be late to see {COLOR GREEN}Professor Cypress{COLOR BLUE}!"), MSGBOX_NPC)
 		releaseall
 		end
 	} else {
-		msgbox(format("Dad: {COLOR BLUE}Come by to see your old man?\pYou should rest up while you're here."), MSGBOX_DEFAULT)
+		msgbox(format("Dad: {COLOR BLUE}Come by to see your old man?\pYou should rest up while you're here."), MSGBOX_NPC)
 		delay(5)
 		fadescreen(FADE_TO_BLACK)
 		delay(10)
@@ -572,4 +595,144 @@ movement PlayersHouse_Movement_2 {
 	walk_up
 	walk_left * 2
 	walk_in_place_up
+}
+
+script PlayersHouse_EventScript_CypressGivePokemon {
+	lockall
+	applymovement(PLAYER, Common_Movement_FaceLeft)
+	waitmovement(0)
+	delay(16)
+	applymovement(DAD, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	delay(8)
+	applymovement(DAD, PlayersHouse_Movement_CypressGivePokemon_0)
+	waitmovement(0)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}Thank you for the tea and hospitality."))
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	applymovement(DAD, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}{PLAYER}, Skip.\pThere comes a time in every great Pokèmon Trainer's journey where they must chose their Starter Pokèmon.\pLuckily for you two, I have some diverse choices from around the world!\pGo ahead.\NPick!"), MSGBOX_AUTOCLOSE)
+	delay(8)
+	applymovement(PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	applymovement(SKIP, PlayersHouse_Movement_CypressGivePokemon_1)
+	waitmovement(0)
+	msgbox(format("Skip: {COLOR BLUE}{PLAYER}!\NIt's finally our moment!\pGo ahead {PLAYER},\NYou choose first!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	delay(4)
+	applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+	special(ChooseStarter)
+	waitstate
+	setflag(FLAG_SYS_POKEMON_GET)
+	fadeoutbgm(0)
+	playse(MUS_RG_OBTAIN_KEY_ITEM)
+	switch (var(VAR_STARTER_MON)) {
+		case 0: msgbox(format("Cypress: {COLOR RED}Exotic!{WAIT_SE}\pYou chose the {COLOR GREEN}Grass Quill{COLOR RED} Pokémon from the {COLOR GREEN}Alola Region{COLOR RED}, Rowlet!"))
+		case 1: msgbox(format("Cypress: {COLOR RED}Fiery!{WAIT_SE}\pYou chose the {COLOR GREEN}Chimp{COLOR RED} Pokémon from the {COLOR GREEN}Sinnoh Region{COLOR RED}, Chimchar!"))
+		case 2: msgbox(format("Cypress: {COLOR RED}Bubbling!{WAIT_SE}\pYou chose the {COLOR GREEN}Bubble Frog{COLOR RED} Pokémon from the {COLOR GREEN}Kalos Region{COLOR RED}, Froakie!"))
+	}
+	fadeinbgm(1)
+	msgbox(format("Cypress: {COLOR RED}Would you like to give a nickname to your new Pokémon?"), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_0x8004, 0)
+		call(Common_EventScript_NameReceivedPartyMon)
+	}
+	delay(8)
+	applymovement(SKIP, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("Skip: {COLOR BLUE}Hm...\NI think I'll choose this one!"),)
+	playse(MUS_RG_OBTAIN_KEY_ITEM)
+	switch (var(MUS_RG_OBTAIN_KEY_ITEM)) {
+		# player chooses rowlet, rival chooses chimchar
+		case 0: msgbox(format("{COLOR GREEN}Skip {COLOR DARK_GREY}chose {COLOR GREEN}Chimchar{COLOR DARK_GREY}!"))
+		# player chooses chimchar, rival chooses froakie
+		case 1: msgbox(format("{COLOR GREEN}Skip {COLOR DARK_GREY}chose {COLOR GREEN}Froakie{COLOR DARK_GREY}!"))
+		# player chooses froakie, rival chooses rowlet
+		case 2: msgbox(format("{COLOR GREEN}Skip {COLOR DARK_GREY}chose {COLOR GREEN}Rowlet{COLOR DARK_GREY}!"))
+	}
+	waitse
+	applymovement(SKIP, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	delay(4)
+	applymovement(PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	applymovement(SKIP, PlayersHouse_Movement_CypressGivePokemon_2)
+	msgbox(format("Skip: {COLOR BLUE}{PLAYER}!\pWe're finally Pokémon Trainers!\p.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}\pI'm gonna get a head start!\pSee ya slowpoke!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, PlayersHouse_Movement_CypressGivePokemon_3)
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(SKIP)
+	waitse
+	applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+	applymovement(DAD, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Dad: {COLOR BLUE}That boy...\NHe'll never change."), MSGBOX_AUTOCLOSE)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}Nonsense!\pTrainers grow alongside their Pokémon.\p{COLOR DARK_GREY}Cypress: {COLOR RED}{PLAYER}...\pThis journey isn't going to come without roadblocks.\pGrow with your Pokémon and challenge yourself!\pDuring your journey, I'd like if you'd use this."), MSGBOX_AUTOCLOSE)
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GREY} received the {COLOR GREEN}Ryoko Pokédex"))
+	waitfanfare
+	setflag(FLAG_SYS_POKEDEX_GET)
+	delay(8)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	removeobject(BAG)
+	delay(4)
+	msgbox(format("Cypress: {COLOR RED}The {COLOR GREEN}Pokédex{COLOR RED} is the Pokémon Encyclopedia.\pDiscovering and capturing new Pokémon will update its entry.\pI would like for you and Skip to complete the {COLOR GREEN}Ryoko Pokédex{COLOR RED} as my new assistants.\p{COLOR DARK_GREY}Cypress:{COLOR RED} Now, I must be on my way.\pLots of research to continue!\p{PLAYER}, please feel free to visit my lab in {COLOR GREEN}San Brio City{COLOR RED}!"), MSGBOX_AUTOCLOSE)
+	applymovement(CYPRESS, PlayersHouse_Movement_CypressGivePokemon_4)
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(CYPRESS)
+	waitse
+	delay(8)
+	applymovement(DAD, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Dad: {COLOR BLUE}Wow...\pI can't believe your starting your Pokémon journey.\pI remember when I began mine{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}\pAh--\NEnough about me!\pHere {PLAYER}, you're gonna need some of these."), MSGBOX_AUTOCLOSE)
+	giveitem(ITEM_POKE_BALL, 10)
+	msgbox(format("Dad: {COLOR BLUE}Don't forget to call home!\pIf you ever need anything, I'll be here.\pNow go {PLAYER}!\NI'll be rootin' for you!"), MSGBOX_AUTOCLOSE)
+	setflag(FLAG_ADVENTURE_STARTED)
+	setflag(FLAG_PLAYERSHOUSE_DOWNSTAIRS_STATE)
+	addvar(VAR_CANVAS_TOWN_STATE, 1)
+	setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
+	releaseall
+	end
+}
+
+movement PlayersHouse_Movement_CypressGivePokemon_0 {
+	walk_down
+	walk_left * 7
+	walk_up
+}
+movement PlayersHouse_Movement_CypressGivePokemon_1 {
+	walk_in_place_fast_left
+	delay_1
+	walk_in_place_fast_left
+	delay_8
+	walk_in_place_up
+}
+movement PlayersHouse_Movement_CypressGivePokemon_2 {
+	walk_in_place_fast_up * 4
+}
+movement PlayersHouse_Movement_CypressGivePokemon_3 {
+	walk_fast_down
+	walk_fast_right * 4
+	walk_fast_down
+	delay_4
+	walk_in_place_down
+}
+movement PlayersHouse_Movement_CypressGivePokemon_4 {
+	walk_up
+	walk_left
+	walk_down * 3
+	walk_right * 8
+	walk_down
+	delay_4
+	walk_in_place_down
 }

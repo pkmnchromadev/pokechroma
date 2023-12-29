@@ -27,29 +27,29 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 20,
-      "y": 52,
+      "x": 13,
+      "y": 41,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route101_EventScript_Youngster",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "CanvasPath_Trainer_Youngster",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
-      "x": 7,
-      "y": 61,
+      "x": 37,
+      "y": 71,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route101_EventScript_Boy",
-      "flag": "FLAG_HIDE_ROUTE_101_BOY"
+      "script": "CanvasPath_Object_MartEmployee",
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
@@ -61,7 +61,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route101_EventScript_Youngster",
+      "script": "CanvasPath_Object_OldWoman",
       "flag": "0"
     },
     {
@@ -72,9 +72,9 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route101_EventScript_Youngster",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "CanvasPath_Trainer_BugCatcher",
       "flag": "0"
     },
     {
@@ -87,7 +87,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CanvasPath_Object_Fisherman",
       "flag": "0"
     },
     {
@@ -100,15 +100,58 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CanvasPath_ItemBall_FullHeal",
+      "flag": "FLAG_ITEM_CANVAS_PATH_FULL_HEAL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SKIP",
+      "x": 38,
+      "y": 71,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CanvasPath_EventScript_SkipCypressEncounter",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PROF_CYPRESS",
+      "x": 39,
+      "y": 71,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CANVAS_TOWN_SKIP"
     }
   ],
   "warp_events": [
 
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 64,
+      "elevation": 0,
+      "var": "VAR_CANVAS_TOWN_STATE",
+      "var_value": "1",
+      "script": "CanvasPath_Trigger_SkipCypressEncounter"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 64,
+      "elevation": 0,
+      "var": "VAR_CANVAS_TOWN_STATE",
+      "var_value": "1",
+      "script": "CanvasPath_Trigger_SkipCypressEncounter"
+    }
   ],
   "bg_events": [
     {
@@ -117,23 +160,23 @@
       "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route101_EventScript_RouteSign"
+      "script": "CanvasPath_Sign_RouteSign_2"
     },
     {
       "type": "sign",
       "x": 11,
-      "y": 64,
+      "y": 65,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route101_EventScript_RouteSign"
+      "script": "CanvasPath_Sign_RouteSign_1"
     },
     {
       "type": "hidden_item",
       "x": 12,
       "y": 49,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
+      "item": "ITEM_ORAN_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_CANVAS_PATH_ORAN_BERRY"
     }
   ]
 }

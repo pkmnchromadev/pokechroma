@@ -1565,8 +1565,8 @@
 	.byte 0xc9
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro signmsg
+	@ After using this command, all standard message boxes will use the signpost frame.
+	.macro setmessagebox type:req, subtype:req
 	.byte 0xca
 	.endm
 

@@ -41,7 +41,7 @@ raw `
 
 
 LittlerootTown_OnTransition:
-	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_VISITED_CANVAS_TOWN
 	call Common_EventScript_SetupRivalGfxId
 	@call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
 	@call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
@@ -52,7 +52,7 @@ LittlerootTown_OnTransition:
 	@all_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
 	@call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_HideMapNamePopup
 	@call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
-	call_if_eq VAR_CANVAS_TOWN_STATE, 0, CanvasTown_Mapscript_GetPokemonEvent
+	@call_if_eq VAR_CANVAS_TOWN_STATE, 0, CanvasTown_Mapscript_GetPokemonEvent
 	end
 
 LittlerootTown_EventScript_LeftLabAfterDexUpgrade::
@@ -1027,17 +1027,75 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
 const SKIP = 4
 
-mapscripts LittlerootTown_Mapscripts {
+mapscripts LittlerootTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		switch (var(VAR_CANVAS_TOWN_STATE)) {
-			case 0: setobjectxy(SKIP, 19, 20)
+			case 0: setobjectxyperm(SKIP, 19, 18)
 		}
 	}
-	MAP_SCRIPT_ON_FRAME [
+	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_CANVAS_TOWN_STATE, 0: CanvasTown_EventScript_GetPokemonEvent
 	]
 }
 
+//eventscripts
 script CanvasTown_EventScript_GetPokemonEvent {
+	lockall
+	applymovement(SKIP, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	applymovement(SKIP, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitse
+	playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
+	msgbox(format("Skip: {COLOR BLUE}Ah, there you are slowpoke!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, CanvasTown_Movement_GetPokemonEvent_0)
+	waitmovement(0)
+	msgbox(format("Skip: {COLOR BLUE}{PLAYER}...\NIt's finally time!\pWe have the opportunity to work with the famous {COLOR GREEN}Professor Cypress{COLOR BLUE}!\pMaybe she'll see my potential as a Pokémon Trainer!\pHmmm{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\pI should catch a wild Pokémon to impress the Professor!\pThen she'll definitely make me one of her assistants!\p{COLOR DARK_GREY}Skip: {COLOR BLUE}I'm gonna find her first!\NSee ya slowpoke!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, CanvasTown_Movement_GetPokemonEvent_1)
+	waitmovement(0)
+	setobjectxyperm(SKIP, 4, 17)
+	fadenewbgm(MUS_LITTLEROOT)
+	setvar(VAR_CANVAS_TOWN_STATE, 1)
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	#hideobjectat(SKIP, MAP_LITTLEROOT_TOWN)
+	removeobject(SKIP, MAP_LITTLEROOT_TOWN)
+	setflag(FLAG_CANVAS_TOWN_SKIP)
+	releaseall
+	end
+}
 
+movement CanvasTown_Movement_GetPokemonEvent_0 {
+	walk_right * 3
+	walk_in_place_up
+}
+movement CanvasTown_Movement_GetPokemonEvent_1 {
+	walk_fast_left * 11
+}
+
+//signs
+script CanvasTown_Sign_TownSign {
+	msgbox(format("{COLOR LIGHT_BLUE}Canvas Town{COLOR DARK_GREY}\n{FONT_SMALL}“A Blank Slate”"), MSGBOX_SIGN, MSGBOX_SUB_DEFAULT)
+	end
+}
+script CanvasTown_Sign_RivalsHouse {
+	msgbox(format("Skip's House"), MSGBOX_SIGN, MSGBOX_SUB_METAL)
+	end
+}
+script CanvasTown_Sign_PlayersHouse {
+	msgbox(format("{PLAYER}'s House"), MSGBOX_SIGN, MSGBOX_SUB_METAL)
+	end
+}
+
+//npcs
+script CanvasTown_Object_FatMan {
+	msgbox(format("{COLOR BLUE}Technology is incredible!\pDid you know the {COLOR GREEN}PokéGear{COLOR BLUE} has a map function to see {COLOR GREEN}Ryoko{COLOR BLUE}?\pYou can also use it to call contacts from anywhere!"), MSGBOX_NPC)
+	end
+}
+script CanvasTown_Object_LittleGirl {
+	msgbox(format("{COLOR RED}You should be careful when exploring.\pWild Pokémon can attack you in the tall grass!"), MSGBOX_NPC)
+	end
+}
+script CanvasTown_Object_Boy {
+	msgbox(format("{COLOR BLUE}I love tending to my farm.\NI prefer the quiet life of {COLOR GREEN}Canvas Town{COLOR BLUE}."), MSGBOX_NPC)
+	end
 }

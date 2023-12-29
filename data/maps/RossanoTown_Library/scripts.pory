@@ -1,1 +1,128 @@
-mapscripts RossanoTown_Library_MapScripts {}
+const GRUNT = 8
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const LIB = 9
+
+mapscripts RossanoTown_Library_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        switch (var(VAR_ROSSANO_TOWN_STATE)) {
+            case 1:
+                removeobject(GRUNT)
+        }
+    }
+}
+script RossanoLibrary_Object_Librarian {
+    msgbox(format("{COLOR RED}Welcome to the {COLOR GREEN}Rossano Library{COLOR RED}.\pPlease feel free to indulge yourself in our fine selection of books!\pAnd please stay quiet."), MSGBOX_NPC)
+    end
+}
+script RossanoLibrary_Object_Artist {
+    lock
+    faceplayer
+    msgbox(format("{COLOR RED}I'm trying to find a book about modern art...\pMaybe I should go to a museum."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_Maniac {
+    lock
+    faceplayer
+    msgbox(format("{COLOR BLUE}Have you ever heard of psuedo-science?\pIt's fascinating!\pI wonder why other scientists don't talk about these breakthroughs in modern medicine."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_SchoolKid {
+    lock
+    faceplayer
+    msgbox(format("{COLOR BLUE}I come here to study for school.\pIt's a lot quieter than my home."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_LittleBoy {
+    lock
+    faceplayer
+    msgbox(format("{COLOR BLUE}I can't reach the top shelf!"), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_Girl {
+    lock
+    faceplayer
+    msgbox(format("{COLOR RED}Horticulture books are abundant here!\pI love learning ways to mantain my garden."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_Woman {
+    lock
+    faceplayer
+    msgbox(format("{COLOR RED}I can't focus with this guy across the table...\pBut the kid downstairs is super annoying.\pUgh."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
+    waitmovement(0)
+    end
+}
+script RossanoLibrary_Object_Chad {
+    lock
+    faceplayer
+    msgbox(format("Chad: {COLOR BLUE}I once read that the Unova region's Subway system truly tests your battle skills.\pPerhaps I will visit one day.."), MSGBOX_AUTOCLOSE)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight)
+    waitmovement(0)
+    end
+}
+
+script RossanoLibrary_Object_GruntTakesBook {
+    lock
+    delay(4)
+    applymovement(GRUNT, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    msgbox(format("???: {COLOR BLUE}{FONT_SMALL}Which book is it..."), MSGBOX_AUTOCLOSE)
+    delay(8)
+    applymovement(GRUNT, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    delay(12)
+    applymovement(GRUNT, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    msgbox(format("???: {COLOR BLUE}{FONT_SMALL}All of these books are dusty!"), MSGBOX_AUTOCLOSE)
+    delay(8)
+    applymovement(GRUNT, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+    msgbox(format("???: {COLOR BLUE}Ah-ha!\NFound it!"), MSGBOX_AUTOCLOSE)
+    delay(8)
+    faceplayer
+    delay(8)
+    applymovement(GRUNT, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("???: {COLOR BLUE}H{PAUSE 5}-{PAUSE 10}Hey kid!\NNothin' to see here!\pI'm not stealin' anything!\p{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\N{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\pOkay!\NFine!\pYou caught me stealin'!\pBut you're not tellin' anyone!"), MSGBOX_AUTOCLOSE)
+    trainerbattle_no_intro(TRAINER_PROTO_GRUNT_1, format("Drats!\pBoss ain't gonna be happy about this ruckus..."))
+    msgbox(format("???: {COLOR BLUE}Oh great,\NBoss ain't gonna be happy...\pYou didn't see nothin' kid!"), MSGBOX_AUTOCLOSE)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    if (var(VAR_TEMP_1) == 4) {
+        applymovement(GRUNT, RossanoLibrary_Movement_GruntTakesBook_0)
+        waitmovement(0)
+    } else {
+        applymovement(GRUNT, RossanoLibrary_Movement_GruntTakesBook_1)
+        waitmovement(0)
+    }
+    playse(SE_EXIT)
+    removeobject(GRUNT)
+    setflag(FLAG_ROSSANO_LIBRARY_GRUNT)
+    waitse
+    setvar(VAR_ROSSANO_TOWN_STATE, 1)
+    releaseall
+    end
+}
+movement RossanoLibrary_Movement_GruntTakesBook_0 {
+    walk_fast_right
+    walk_fast_down * 2
+    walk_fast_right * 6
+    walk_fast_up * 2
+    walk_in_place_left
+}
+movement RossanoLibrary_Movement_GruntTakesBook_1 {
+    walk_fast_down * 2
+    walk_fast_right * 7
+    walk_fast_up * 2
+    walk_in_place_left
+}

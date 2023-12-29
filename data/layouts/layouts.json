@@ -95,7 +95,7 @@
       "id": "LAYOUT_LITTLEROOT_TOWN",
       "name": "LittlerootTown_Layout",
       "width": 28,
-      "height": 28,
+      "height": 26,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CanvasTown",
       "border_filepath": "data/layouts/LittlerootTown/border.bin",
@@ -114,10 +114,10 @@
     {
       "id": "LAYOUT_DEWFORD_TOWN",
       "name": "DewfordTown_Layout",
-      "width": 48,
-      "height": 48,
+      "width": 44,
+      "height": 42,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_TrevisoCity",
+      "secondary_tileset": "gTileset_CalcoridgeCity",
       "border_filepath": "data/layouts/DewfordTown/border.bin",
       "blockdata_filepath": "data/layouts/DewfordTown/map.bin"
     },
@@ -165,7 +165,7 @@
       "id": "LAYOUT_ROUTE101",
       "name": "Route101_Layout",
       "width": 40,
-      "height": 70,
+      "height": 72,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CanvasTown",
       "border_filepath": "data/layouts/Route101/border.bin",
@@ -194,10 +194,10 @@
     {
       "id": "LAYOUT_ROUTE104",
       "name": "Route104_Layout",
-      "width": 40,
-      "height": 80,
+      "width": 36,
+      "height": 32,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_CalcoridgeCity",
       "border_filepath": "data/layouts/Route104/border.bin",
       "blockdata_filepath": "data/layouts/Route104/map.bin"
     },
@@ -535,7 +535,7 @@
       "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
       "name": "LittlerootTown_BrendansHouse_1F_Layout",
       "width": 12,
-      "height": 11,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/LittlerootTown_BrendansHouse_1F/border.bin",
@@ -555,7 +555,7 @@
       "id": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
       "name": "LittlerootTown_MaysHouse_1F_Layout",
       "width": 12,
-      "height": 11,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/LittlerootTown_MaysHouse_1F/border.bin",
@@ -574,18 +574,18 @@
     {
       "id": "LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
       "name": "LittlerootTown_ProfessorBirchsLab_Layout",
-      "width": 13,
-      "height": 13,
+      "width": 12,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_Lab",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLab/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLab/map.bin"
     },
     {
       "id": "LAYOUT_HOUSE1",
       "name": "House1_Layout",
-      "width": 10,
-      "height": 9,
+      "width": 12,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/House1/border.bin",
@@ -594,8 +594,8 @@
     {
       "id": "LAYOUT_HOUSE2",
       "name": "House2_Layout",
-      "width": 11,
-      "height": 8,
+      "width": 12,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/House2/border.bin",
@@ -1354,10 +1354,10 @@
     {
       "id": "LAYOUT_MT_CHIMNEY",
       "name": "MtChimney_Layout",
-      "width": 40,
-      "height": 47,
+      "width": 39,
+      "height": 30,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Lavaridge",
+      "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MtChimney/border.bin",
       "blockdata_filepath": "data/layouts/MtChimney/map.bin"
     },
@@ -4434,12 +4434,32 @@
     {
       "id": "LAYOUT_ROSSANO_TOWN_LIBRARY",
       "name": "RossanoTown_Library_Layout",
-      "width": 20,
-      "height": 16,
+      "width": 14,
+      "height": 28,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BattleDome",
+      "secondary_tileset": "gTileset_Library",
       "border_filepath": "data/layouts/RossanoTown_Library/border.bin",
       "blockdata_filepath": "data/layouts/RossanoTown_Library/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "MtIgnis_B1F_Layout",
+      "width": 36,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MtIgnis_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/MtIgnis_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROSSANO_TOWN_HOUSE3",
+      "name": "RossanoTown_House3_Layout",
+      "width": 12,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/RossanoTown_House3/border.bin",
+      "blockdata_filepath": "data/layouts/RossanoTown_House3/map.bin"
     }
   ]
 }

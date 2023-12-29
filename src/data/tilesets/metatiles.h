@@ -219,3 +219,9 @@ const u16 gMetatileAttributes_TrevisoCity[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_PlayersHouse[] = INCBIN_U16("data/tilesets/secondary/players_house/metatiles.bin");
 const u16 gMetatileAttributes_PlayersHouse[] = INCBIN_U16("data/tilesets/secondary/players_house/metatile_attributes.bin");
+
+const u16 gMetatiles_CalcoridgeCity[] = INCBIN_U16("data/tilesets/secondary/calcoridge_city/metatiles.bin");
+const u16 gMetatileAttributes_CalcoridgeCity[] = INCBIN_U16("data/tilesets/secondary/calcoridge_city/metatile_attributes.bin");
+
+const u16 gMetatiles_Library[] = INCBIN_U16("data/tilesets/secondary/library/metatiles.bin");
+const u16 gMetatileAttributes_Library[] = INCBIN_U16("data/tilesets/secondary/library/metatile_attributes.bin");

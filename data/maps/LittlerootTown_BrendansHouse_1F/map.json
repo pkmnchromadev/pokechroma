@@ -26,12 +26,51 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PlayersHouse_es_DadBeforeExit",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PROF_CYPRESS",
+      "x": 8,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PLAYERSHOUSE_DOWNSTAIRS_STATE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SKIP",
+      "x": 9,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PLAYERSHOUSE_DOWNSTAIRS_STATE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+      "x": 10,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PLAYERSHOUSE_DOWNSTAIRS_STATE"
     }
   ],
   "warp_events": [
     {
       "x": 9,
-      "y": 9,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN",
       "dest_warp_id": "1"

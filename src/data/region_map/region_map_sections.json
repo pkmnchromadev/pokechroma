@@ -2,179 +2,179 @@
   "map_sections": [
     {
       "map_section": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "LITTLEROOT TOWN",
-      "x": 4,
-      "y": 11,
+      "name": "Canvas Town",
+      "x": 15,
+      "y": 13,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_OLDALE_TOWN",
-      "name": "OLDALE TOWN",
-      "x": 4,
-      "y": 9,
+      "name": "Rossano Town",
+      "x": 14,
+      "y": 11,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
-      "x": 2,
-      "y": 14,
-      "width": 1,
+      "name": "Calcoridge City",
+      "x": 8,
+      "y": 9,
+      "width": 2,
       "height": 1
     },
     {
       "map_section": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
-      "x": 5,
-      "y": 3,
+      "name": "Sebserto City",
+      "x": 9,
+      "y": 13,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_FALLARBOR_TOWN",
-      "name": "FALLARBOR TOWN",
-      "x": 3,
-      "y": 0,
+      "name": "Ventosa Town",
+      "x": 4,
+      "y": 5,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_VERDANTURF_TOWN",
-      "name": "VERDANTURF TOWN",
-      "x": 4,
-      "y": 6,
+      "name": "Camp Vesuvius",
+      "x": 9,
+      "y": 5,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_PACIFIDLOG_TOWN",
-      "name": "PACIFIDLOG TOWN",
-      "x": 17,
-      "y": 10,
+      "name": "Carisea Resort",
+      "x": 18,
+      "y": 6,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_PETALBURG_CITY",
-      "name": "PETALBURG CITY",
-      "x": 1,
+      "name": "Treviso City",
+      "x": 11,
       "y": 9,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SLATEPORT_CITY",
-      "name": "SLATEPORT CITY",
-      "x": 8,
-      "y": 10,
+      "name": "Marport City",
+      "x": 19,
+      "y": 1,
       "width": 1,
-      "height": 2
+      "height": 1
     },
     {
       "map_section": "MAPSEC_MAUVILLE_CITY",
-      "name": "MAUVILLE CITY",
-      "x": 8,
-      "y": 6,
+      "name": "Alnerwick City",
+      "x": 23,
+      "y": 1,
       "width": 2,
       "height": 1
     },
     {
       "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
-      "x": 0,
-      "y": 5,
-      "width": 1,
+      "name": "San Brio City",
+      "x": 12,
+      "y": 2,
+      "width": 2,
       "height": 2
     },
     {
       "map_section": "MAPSEC_FORTREE_CITY",
-      "name": "FORTREE CITY",
-      "x": 12,
-      "y": 0,
+      "name": "Matsu Village",
+      "x": 26,
+      "y": 4,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_LILYCOVE_CITY",
-      "name": "LILYCOVE CITY",
-      "x": 18,
-      "y": 3,
+      "name": "Vega City",
+      "x": 20,
+      "y": 8,
       "width": 2,
-      "height": 1
+      "height": 2
     },
     {
       "map_section": "MAPSEC_MOSSDEEP_CITY",
-      "name": "MOSSDEEP CITY",
-      "x": 24,
-      "y": 5,
-      "width": 2,
+      "name": "South Cape City",
+      "x": 27,
+      "y": 8,
+      "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SOOTOPOLIS_CITY",
-      "name": "SOOTOPOLIS CITY",
+      "name": "Enclave City",
       "x": 21,
-      "y": 7,
+      "y": 12,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_EVER_GRANDE_CITY",
-      "name": "EVER GRANDE CITY",
-      "x": 27,
-      "y": 8,
-      "width": 1,
-      "height": 2
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_101",
-      "name": "ROUTE 101",
-      "x": 4,
-      "y": 10,
+      "name": "Ryoko League",
+      "x": 7,
+      "y": 1,
       "width": 1,
       "height": 1
     },
     {
+      "map_section": "MAPSEC_ROUTE_101",
+      "name": "Canvas Path",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "height": 2
+    },
+    {
       "map_section": "MAPSEC_ROUTE_102",
-      "name": "ROUTE 102",
-      "x": 2,
+      "name": "Rossano Foothills",
+      "x": 13,
+      "y": 11,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_ROUTE_103",
+      "name": "Treviso Bridge",
+      "x": 12,
       "y": 9,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_103",
-      "name": "ROUTE 103",
-      "x": 4,
-      "y": 8,
-      "width": 4,
+      "map_section": "MAPSEC_ROUTE_104",
+      "name": "Treviso Pass",
+      "x": 10,
+      "y": 9,
+      "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_104",
-      "name": "ROUTE 104",
-      "x": 0,
-      "y": 7,
-      "width": 1,
-      "height": 3
-    },
-    {
       "map_section": "MAPSEC_ROUTE_105",
-      "name": "ROUTE 105",
-      "x": 0,
+      "name": "Sebserto Desert",
+      "x": 9,
       "y": 10,
       "width": 1,
       "height": 3
     },
     {
       "map_section": "MAPSEC_ROUTE_106",
-      "name": "ROUTE 106",
-      "x": 0,
-      "y": 13,
-      "width": 2,
-      "height": 1
+      "name": "Vesuvius Climb",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "height": 3
     },
     {
       "map_section": "MAPSEC_ROUTE_107",
@@ -450,10 +450,10 @@
     },
     {
       "map_section": "MAPSEC_MT_CHIMNEY",
-      "name": "MT. CHIMNEY",
-      "x": 6,
-      "y": 2,
-      "width": 1,
+      "name": "Ignis Cave",
+      "x": 11,
+      "y": 11,
+      "width": 2,
       "height": 1
     },
     {
@@ -498,9 +498,9 @@
     },
     {
       "map_section": "MAPSEC_NEW_MAUVILLE",
-      "name": "NEW MAUVILLE",
-      "x": 8,
-      "y": 7,
+      "name": "Lighthouse West",
+      "x": 13,
+      "y": 8,
       "width": 1,
       "height": 1
     },
@@ -522,11 +522,11 @@
     },
     {
       "map_section": "MAPSEC_MT_PYRE",
-      "name": "MT. PYRE",
-      "x": 16,
-      "y": 4,
-      "width": 1,
-      "height": 1
+      "name": "Mount Vesuvius",
+      "x": 10,
+      "y": 6,
+      "width": 2,
+      "height": 2
     },
     {
       "map_section": "MAPSEC_AQUA_HIDEOUT_OLD",
@@ -610,9 +610,9 @@
     },
     {
       "map_section": "MAPSEC_JAGGED_PASS",
-      "name": "JAGGED PASS",
-      "x": 6,
-      "y": 3,
+      "name": "Lighthouse East",
+      "x": 26,
+      "y": 9,
       "width": 1,
       "height": 1
     },
@@ -714,25 +714,25 @@
     },
     {
       "map_section": "MAPSEC_VIRIDIAN_CITY",
-      "name": "VIRIDIAN CITY",
-      "x": 0,
-      "y": 0,
-      "width": 1,
+      "name": "NoName4",
+      "x": 3,
+      "y": 13,
+      "width": 2,
       "height": 1
     },
     {
       "map_section": "MAPSEC_PEWTER_CITY",
-      "name": "PEWTER CITY",
-      "x": 0,
-      "y": 0,
+      "name": "NoName1",
+      "x": 3,
+      "y": 9,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_CERULEAN_CITY",
-      "name": "CERULEAN CITY",
-      "x": 0,
-      "y": 0,
+      "name": "NoName3",
+      "x": 1,
+      "y": 11,
       "width": 1,
       "height": 1
     },
@@ -762,9 +762,9 @@
     },
     {
       "map_section": "MAPSEC_FUCHSIA_CITY",
-      "name": "FUCHSIA CITY",
+      "name": "NoName2",
       "x": 0,
-      "y": 0,
+      "y": 8,
       "width": 1,
       "height": 1
     },
@@ -1402,11 +1402,11 @@
     },
     {
       "map_section": "MAPSEC_MT_EMBER",
-      "name": "MT. EMBER",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
+      "name": "Mt. Ignis",
+      "x": 11,
+      "y": 12,
+      "width": 2,
+      "height": 3
     },
     {
       "map_section": "MAPSEC_BERRY_FOREST",

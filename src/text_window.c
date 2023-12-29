@@ -65,6 +65,10 @@ static const u16 sTextWindowFrame20_Pal[] = INCBIN_U16("graphics/text_window/20.
 static const u16 sTextWindowPalettes[][16] =
 {
     INCBIN_U16("graphics/text_window/message_box.gbapal"),
+    INCBIN_U16("graphics/text_window/message_box_wood.gbapal"), 
+    INCBIN_U16("graphics/text_window/message_box_metal.gbapal"), 
+    INCBIN_U16("graphics/text_window/message_box_metal.gbapal"),
+    INCBIN_U16("graphics/text_window/sign_box.gbapal"), 
     INCBIN_U16("graphics/text_window/text_pal1.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal2.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal3.gbapal"),
@@ -244,8 +248,8 @@ void LoadMsgBox(const u32 **graphic, const u16 **palette)
         }
         else
         {
-            *graphic = gMessageBox_Gfx;
-            *palette = gMessageBox_Pal;
+            *graphic = gSignBox_Gfx;
+            *palette = gSignBox_Pal;
         }
         break;
     default:

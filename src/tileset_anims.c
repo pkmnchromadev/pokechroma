@@ -685,8 +685,8 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_SandEdge(timer / 16);
     if (timer % 16 == 3)
         QueueAnimTiles_General_Waterfall(timer / 16);
-    if (timer % 16 == 4)
-        QueueAnimTiles_General_LandWaterEdge(timer / 16);
+    //if (timer % 16 == 4)
+    //    QueueAnimTiles_General_LandWaterEdge(timer / 16);
 }
 
 static void TilesetAnim_Building(u16 timer)

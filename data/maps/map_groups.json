@@ -94,7 +94,8 @@
     "Underwater_Route105",
     "Underwater_Route125",
     "RossanoPass_North",
-    "TrevisoBridge_LighthouseExt"
+    "TrevisoBridge_LighthouseExt",
+    "RossanoTown_House3"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -432,7 +433,8 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave"
+    "MeteorFalls_StevensCave",
+    "MtIgnis_B1F"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

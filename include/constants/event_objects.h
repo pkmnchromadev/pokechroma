@@ -65,7 +65,7 @@
 #define OBJ_EVENT_GFX_BERRY_TREE_EARLY_STAGES     61
 #define OBJ_EVENT_GFX_BERRY_TREE_LATE_STAGES      62
 #define OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE           63
-#define OBJ_EVENT_GFX_PROF_BIRCH                  64
+#define OBJ_EVENT_GFX_PROF_CYPRESS                  64
 #define OBJ_EVENT_GFX_MAN_4                       65
 #define OBJ_EVENT_GFX_MAN_5                       66
 #define OBJ_EVENT_GFX_ACE_TRAINER_M               67 // reporter_m -> ace_trainer_m
@@ -136,7 +136,7 @@
 #define OBJ_EVENT_GFX_TATE                       132 // (leader 8)
 #define OBJ_EVENT_GFX_WALLACE                    133 // -
 #define OBJ_EVENT_GFX_STEVEN                     134 // steven -> lars
-#define OBJ_EVENT_GFX_WALLY                      135 // wally -> skip
+#define OBJ_EVENT_GFX_SKIP                      135 // wally -> skip
 #define OBJ_EVENT_GFX_LITTLE_BOY_3               136
 #define OBJ_EVENT_GFX_BRENDAN_FISHING            137
 #define OBJ_EVENT_GFX_MAY_FISHING                138

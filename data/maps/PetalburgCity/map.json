@@ -22,15 +22,20 @@
       "map": "MAP_ROUTE103",
       "offset": 5,
       "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE104",
+      "offset": 0,
+      "direction": "left"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
-      "x": 16,
-      "y": 27,
+      "x": 29,
+      "y": 15,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -39,11 +44,11 @@
       "flag": "FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 31,
-      "y": 22,
+      "graphics_id": "OBJ_EVENT_GFX_SKIP",
+      "x": 39,
+      "y": 21,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -79,10 +84,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
-      "x": 6,
-      "y": 25,
+      "x": 16,
+      "y": 16,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",

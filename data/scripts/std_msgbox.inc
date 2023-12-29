@@ -1,6 +1,7 @@
 Std_MsgboxNPC:
 	lock
 	faceplayer
+	setmessagebox 0x1 0x2
 	message NULL
 	waitmessage
 	waitbuttonpress
@@ -9,6 +10,7 @@ Std_MsgboxNPC:
 
 Std_MsgboxSign:
 	lockall
+	setmessagebox 0x1 0x2
 	message NULL
 	waitmessage
 	waitbuttonpress
@@ -16,18 +18,21 @@ Std_MsgboxSign:
 	return
 
 Std_MsgboxDefault:
+	setmessagebox 0x1 0x2
 	message NULL
 	waitmessage
 	waitbuttonpress
 	return
 
 Std_MsgboxYesNo:
+	setmessagebox 0x1 0x2
 	message NULL
 	waitmessage
 	yesnobox 20, 8
 	return
 
 Std_MsgboxGetPoints:
+	setmessagebox 0x1 0x2
 	message NULL
 	playfanfare MUS_OBTAIN_B_POINTS
 	waitfanfare

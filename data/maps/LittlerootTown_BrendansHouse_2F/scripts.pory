@@ -345,6 +345,7 @@ script PlayersHouse_Mapscript_DadEnterRoom {
 		setvar(VAR_PLAYERSHOUSE_STATE, 1)
 		setflag(FLAG_PLAYERSHOUSE_DAD_STATE)
 		setflag(FLAG_HIDE_MAP_NAME_POPUP)
+		setflag(FLAG_SYS_B_DASH)
 		releaseall
 		end
 	}

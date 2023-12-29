@@ -688,27 +688,29 @@ PlayersHouse_Mapscript_DadEnterRoom_1:
 # 347 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 # 348 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+	setflag FLAG_SYS_B_DASH
+# 349 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	releaseall
 	end
 
 
-# 353 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-PlayersHouse_Movement_DadEnterRoom_0:
 # 354 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	walk_in_place_slow_right
+PlayersHouse_Movement_DadEnterRoom_0:
 # 355 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	delay_16
+	walk_in_place_slow_right
 # 356 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	walk_in_place_left
+	delay_16
 # 357 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	delay_8
+	walk_in_place_left
 # 358 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+	delay_8
+# 359 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 360 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-PlayersHouse_Movement_DadEnterRoom_1:
 # 361 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+PlayersHouse_Movement_DadEnterRoom_1:
+# 362 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	walk_in_place_slow_left
 	step_end
 

@@ -1,0 +1,498 @@
+raw `
+.set LOCALID_BIRCH, 2
+.set LOCALID_ZIGZAGOON, 4
+
+@Route101_MapScripts::
+@	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
+@	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route101_OnFrame
+@	.byte 0
+
+Route101_OnTransition:
+	call ProfBirch_EventScript_UpdateLocation
+	end
+
+Route101_OnFrame:
+	map_script_2 VAR_ROUTE101_STATE, 0, Route101_EventScript_HideMapNamePopup
+	.2byte 0
+
+Route101_EventScript_HideMapNamePopup::
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_ROUTE101_STATE, 1
+	end
+
+Route101_EventScript_StartBirchRescue::
+	lockall
+	playbgm MUS_HELP, TRUE
+	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
+	closemessage
+	setobjectxy LOCALID_BIRCH, 0, 15
+	setobjectxy LOCALID_ZIGZAGOON, 0, 16
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
+	waitmovement 0
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
+	waitmovement 0
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
+	waitmovement 0
+	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_ROUTE101_STATE, 2
+	releaseall
+	end
+
+Route101_EventScript_PreventExitSouth::
+	lockall
+	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
+	waitmovement 0
+	releaseall
+	end
+
+Route101_EventScript_PreventExitWest::
+	lockall
+	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
+	waitmovement 0
+	releaseall
+	end
+
+Route101_EventScript_PreventExitNorth::
+	lockall
+	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
+	waitmovement 0
+	releaseall
+	end
+
+Route101_Movement_PreventExitSouth:
+	walk_up
+	step_end
+
+Route101_Movement_PreventExitWest:
+	walk_right
+	step_end
+
+Route101_Movement_PreventExitNorth:
+	walk_down
+	step_end
+
+Route101_Movement_ZigzagoonChaseInCircles:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+Route101_Movement_ZigzagoonChase1:
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	step_end
+
+@ Leftover data? This command is unused.
+	step_end
+
+Route101_Movement_ZigzagoonFaceBirch:
+	walk_in_place_fast_left
+	walk_in_place_fast_left
+	walk_in_place_fast_left
+	walk_in_place_fast_left
+	step_end
+
+Route101_Movement_EnterScene:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_in_place_faster_left
+	step_end
+
+Route101_Movement_BirchRunInCircles:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+Route101_Movement_BirchRunAway1:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+@ Leftover data? This command is unused.
+	step_end
+
+Route101_Movement_BirchFaceZigzagoon:
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	step_end
+
+Route101_Movement_Unused1:
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_Unused2:
+	walk_up
+	walk_left
+	walk_up
+	step_end
+
+Route101_EventScript_Youngster::
+	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
+	end
+
+Route101_EventScript_Boy::
+	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_NPC
+	end
+
+Route101_EventScript_RouteSign::
+	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
+	end
+
+Route101_EventScript_BirchsBag::
+	lock
+	faceplayer
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_ZIGZAGOON
+	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	special ChooseStarter
+	waitstate
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
+	waitmovement 0
+	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
+	special HealPlayerParty
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
+	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+	waitstate
+	release
+	end
+
+Route101_EventScript_HideMayInBedroom::
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	return
+
+Route101_EventScript_HideBrendanInBedroom::
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	return
+
+Route101_Movement_BirchApproachPlayer:
+	walk_right
+	step_end
+
+Route101_Text_HelpMe:
+	.string "H-help me!$"
+
+Route101_Text_PleaseHelp:
+	.string "Hello! You over there!\n"
+	.string "Please! Help!\p"
+	.string "In my BAG!\n"
+	.string "There's a POKé BALL!$"
+
+Route101_Text_DontLeaveMe:
+	.string "Wh-Where are you going?!\n"
+	.string "Don't leave me like this!$"
+
+Route101_Text_YouSavedMe:
+	.string "PROF. BIRCH: Whew…\p"
+	.string "I was in the tall grass studying wild\n"
+	.string "POKéMON when I was jumped.\p"
+	.string "You saved me.\n"
+	.string "Thanks a lot!\p"
+	.string "Oh?\p"
+	.string "Hi, you're {PLAYER}{KUN}!\p"
+	.string "This is not the place to chat, so come\n"
+	.string "by my POKéMON LAB later, okay?$"
+
+Route101_Text_TakeTiredPokemonToPokeCenter:
+	.string "If POKéMON get tired, take them to\n"
+	.string "a POKéMON CENTER.\p"
+	.string "There's a POKéMON CENTER in OLDALE\n"
+	.string "TOWN right close by.$"
+
+Route101_Text_WildPokemonInTallGrass:
+	.string "Wild POKéMON will jump out at you in\n"
+	.string "tall grass.\p"
+	.string "If you want to catch POKéMON, you have\n"
+	.string "to go into the tall grass and search.$"
+
+Route101_Text_RouteSign:
+	.string "ROUTE 101\n"
+	.string "{UP_ARROW} OLDALE TOWN$"
+`
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const SKIP = 7
+const CYPRESS = 8
+
+mapscripts Route101_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		switch (var(VAR_CANVAS_TOWN_STATE)) {
+			case 1:
+				setobjectxyperm(SKIP, 7, 64)
+				setobjectmovementtype(SKIP, MOVEMENT_TYPE_LOOK_AROUND)
+				setobjectxyperm(CYPRESS, 17, 61)
+				removeobject(CYPRESS, MAP_ROUTE101)
+			case 3:
+				setobjectxyperm(2, 7, 61)
+		}
+	}
+}
+
+script CanvasPath_Trigger_SkipCypressEncounter {
+	lockall
+	setobjectmovementtype(SKIP, MOVEMENT_TYPE_FACE_RIGHT)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if (var(VAR_TEMP_0) == 6) {
+		applymovement(SKIP, Common_Movement_WalkInPlaceLeft)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceRight)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 8) {
+		applymovement(SKIP, Common_Movement_WalkInPlaceRight)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+	}
+	applymovement(SKIP, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	playse(SE_PIN)
+	waitse
+	#playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
+	delay(8)
+	goto(CanvasPath_EventScript_SkipCypressEncounter)
+}
+script CanvasPath_EventScript_SkipCypressEncounter {
+	lockall
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if (var(VAR_TEMP_0) == 7) {
+		faceplayer
+	}
+	msgbox(format("Skip: {COLOR BLUE}Took ya long enough!\pOkay{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\NIt's time.\pCome on {PLAYER}, watch me catch my first Pokémon!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, CanvasPath_Movement_SkipCypressEncounter_0)
+	delay(10)
+	if (var(VAR_TEMP_0) == 6) {
+		applymovement(PLAYER, CanvasPath_Movement_SkipCypressEncounter_p1)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 8) {
+		applymovement(PLAYER, CanvasPath_Movement_SkipCypressEncounter_p0)
+		waitmovement(0)
+		delay(8)
+	} elif (var(VAR_TEMP_0) == 7) {
+		applymovement(PLAYER, CanvasPath_Movement_SkipCypressEncounter_p2)
+		waitmovement(0)
+	}
+	clearflag(FLAG_CANVAS_TOWN_SKIP)
+	addobject(CYPRESS, MAP_ROUTE101)
+	setobjectxyperm(CYPRESS, 17, 61)
+	setobjectmovementtype(SKIP, MOVEMENT_TYPE_FACE_RIGHT)
+	delay(8)
+	applymovement(SKIP, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Skip: {COLOR BLUE}Alright, all I have to do is walk into the grass..."))
+	delay(12)
+	msgbox(format("???: {COLOR RED}Stop right there!"), MSGBOX_AUTOCLOSE)
+	applymovement(SKIP, Common_Movement_ExclamationMark)
+	applymovement(PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	playse(SE_PIN)
+	waitse
+	playbgm(MUS_RG_OAK, FALSE)
+	//fadenewbgm(MUS_RG_OAK)
+	applymovement(CYPRESS, CanvasPath_Movement_SkipCypressEncounter_1)
+	waitmovement(0)
+	msgbox(format("???: {COLOR RED}What do you two think you're doing?"))
+	msgbox(format("Skip: {COLOR BLUE}P{PAUSE 5}-{PAUSE 10}Professor Cypress!"))
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	delay(12)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}You two don't seem to have a Pokèmon between you.\pWhat's the meaning of going into the tall grass!\pIt worries me what people like that would do to Pokèmon..."), MSGBOX_DEFAULT)
+	applymovement(SKIP, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	playse(SE_PIN)
+	waitse
+	msgbox(format("Skip: {COLOR BLUE}No!{PAUSE 16}\N{PLAYER} had nothing to do with running into the tall grass.\pIt was my idea{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}"), MSGBOX_DEFAULT)
+	msgbox(format("Cypress: {COLOR RED}Hm.{PAUSE 12}\NI can't knock your honesty."), MSGBOX_DEFAULT)
+	waitmovement(0)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}{FONT_SMALL}... They tried to go in the tall grass because they wanted Pokèmon...\pHmm... What to do...?\pIs it wise to set them on this path?"), MSGBOX_DEFAULT)
+	delay(10)
+	applymovement(CYPRESS, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}You two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
+	while (var(VAR_RESULT) != YES) {
+		msgbox(format("Cypress: {COLOR RED}...{PAUSE 12}\NSorry, I don't think I quiet heard that.\pYou two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
+	}
+	msgbox(format("Skip: {COLOR BLUE}Yes!\NA thousand times yes!\pOur answer will never change."), MSGBOX_DEFAULT)
+	msgbox(format("Cypress: {COLOR RED}Very well then!\pI will entrust you two with your very own Pokèmon."))
+	closemessage
+	applymovement(CYPRESS, CanvasPath_Movement_SkipCypressEncounter_2)
+	waitmovement(0)
+	msgbox(format("Cypress: {COLOR RED}How about we bring this somewhere safer?"), MSGBOX_AUTOCLOSE)
+	# end of script, teleport into players house
+	setflag(FLAG_CANVAS_TOWN_SKIP)
+	addvar(VAR_CANVAS_TOWN_STATE, 1)
+	warp(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 5, 6)
+	releaseall
+	end
+}
+
+movement CanvasPath_Movement_SkipCypressEncounter_0 {
+	walk_up * 3
+	walk_right * 2
+}
+movement CanvasPath_Movement_SkipCypressEncounter_p0 {
+	walk_up * 2
+	walk_right
+}
+movement CanvasPath_Movement_SkipCypressEncounter_p2 {
+	walk_up * 3
+	walk_right * 2
+}
+movement CanvasPath_Movement_SkipCypressEncounter_p1 {
+	walk_up * 2
+	walk_right * 3
+}
+movement CanvasPath_Movement_SkipCypressEncounter_1 {
+	walk_left * 7
+}
+movement CanvasPath_Movement_SkipCypressEncounter_2 {
+	walk_in_place_up
+	delay_8
+	walk_in_place_right
+	delay_8
+	walk_in_place_left
+	delay_8
+}
+
+//objects
+script CanvasPath_Sign_RouteSign_1 {
+	msgbox(format("{COLOR LIGHT_GREEN}Canvas Path\p{COLOR DARK_GREY}{UP_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+	end
+}
+script CanvasPath_Sign_RouteSign_2 {
+	msgbox(format("{COLOR LIGHT_GREEN}Canvas Path\p{COLOR DARK_GREY}{LEFT_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+	end
+}
+script CanvasPath_Object_MartEmployee {
+	lock
+	faceplayer
+	if (flag(FLAG_CANVAS_PATH_MART_EMPLOYEE) != true) {
+		msgbox(format("{COLOR BLUE}Hey there trainer!\pEvery good trainer needs to heal up once in a while.\pPlease visit the PokéCenter in {COLOR GREEN}Rossano Town{COLOR BLUE} for all your medicine needs!\pHere, try a sample!"))
+		giveitem(ITEM_POTION, 1)
+		setflag(FLAG_CANVAS_PATH_MART_EMPLOYEE)
+	} else {
+		faceplayer
+		msgbox(format("{COLOR BLUE}Every good trainer needs to heal up once in a while.\pPotions and other medicines are readily available for purchase at your local PokéCenter"), MSGBOX_AUTOCLOSE)
+	}
+	releaseall
+	end
+}
+script CanvasPath_Object_OldWoman {
+	msgbox(format("{COLOR RED}I use to be a Pokémon Trainer back in my day.\pNow I enjoy sitting here watching young trainers battle."), MSGBOX_NPC)
+	end
+}
+script CanvasPath_Object_Fisherman {
+	msgbox(format("{COLOR RED}I've seen many other oceans and seas all around the world, but byfar this is the bluest!"), MSGBOX_NPC)
+	end
+}
+script CanvasPath_ItemBall_FullHeal { // FLAG_ITEM_CANVAS_PATH_FULL_HEAL
+	finditem(ITEM_FULL_HEAL)
+	end
+}
+
+//trainerbattles
+script CanvasPath_Trainer_Youngster {
+	trainerbattle_single(TRAINER_YOUNGSTER_CODY, format("{COLOR BLUE}Is this your first Pokémon battle?"), format("Wow!"))
+	msgbox(format("{COLOR BLUE}When you make eye contact with a Pokémon Trainer, you're in for a battle!"), MSGBOX_NPC)
+	end
+}
+script CanvasPath_Trainer_BugCatcher {
+	trainerbattle_single(TRAINER_BUGCATCHER_ISAIAH, format("{COLOR BLUE}Bugs!\NI love bugs!"), format("No!\NMy bugs!"))
+	msgbox(format("{COLOR BLUE}Ryoko has plenty of bugs, especially butterfly-like Pokémon!"), MSGBOX_NPC)
+	end
+}
+
