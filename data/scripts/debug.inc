@@ -138,27 +138,35 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	release
 	end
 
 Debug_EventScript_Script_2::
+	release
 	end
 
 Debug_EventScript_Script_3::
+	release
 	end
 
 Debug_EventScript_Script_4::
+	release
 	end
 
 Debug_EventScript_Script_5::
+	release
 	end
 
 Debug_EventScript_Script_6::
+	release
 	end
 
 Debug_EventScript_Script_7::
+	release
 	end
 
 Debug_EventScript_Script_8::
+	release
 	end
 
 Debug_CheckSaveBlock::
@@ -280,21 +288,6 @@ Debug_BerryWeedsDisabled::
 DebugText_BerryWeedsDisabled:
 	.string "OW_BERRY_WEEDS is disabled.\n"
 	.string "Unable to force weeds onto berry trees.$"
-
-.endif
-
-Debug_FlagsAndVarNotSetBattleConfigMessage::
-	lockall
-	message Debug_FlagsAndVarNotSetBattleConfigMessage_Text
-	waitmessage
-	waitbuttonpress
-	releaseall
-	end
-
-Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
-	.string "Feature unavailable! Please define a\n"
-	.string "usable flag and a usable var in:\l"
-	.string "'include/config/battle.h'!$"
 
 Debug_EventScript_InflictStatus1::
 	lockall
@@ -445,3 +438,15 @@ Debug_EventScript_InflictStatus1_Text_Freeze:
 
 Debug_EventScript_InflictStatus1_Text_Frostbite:
 	.string "Frostbite$"
+
+Debug_EventScript_EWRAMCounters::
+	callnative CheckEWRAMCounters
+	msgbox Debug_EventScript_EWRAMCounters_Text, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_EventScript_EWRAMCounters_Text::
+	.string "Follower Steps: {STR_VAR_1}.\n"
+	.string "Fishing Chain: {STR_VAR_2}.$"
+
+.endif

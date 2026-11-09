@@ -3,10 +3,10 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
-#include "field_weather.h"
 #include "sound.h"
 #include "sprite.h"
 #include "constants/songs.h"
+#include "constants/event_objects.h"
 
 #define ROTATING_GATE_TILE_TAG 0x1300
 #define ROTATING_GATE_PUZZLE_MAX 12
@@ -247,6 +247,7 @@ static const struct OamData sOamData_RotatingGateLarge =
     .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 2,
+    .paletteNum = 2,
     .affineParam = 0,
 };
 
@@ -263,6 +264,7 @@ static const struct OamData sOamData_RotatingGateRegular =
     .size = SPRITE_SIZE(32x32),
     .tileNum = 0,
     .priority = 2,
+    .paletteNum = 2,
     .affineParam = 0,
 };
 
@@ -460,11 +462,10 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_RotatingGate[] =
     sSpriteAffineAnim_RotatingClockwise270to360Faster,
 };
 
-
 static const struct SpriteTemplate sSpriteTemplate_RotatingGateLarge =
 {
     .tileTag = ROTATING_GATE_TILE_TAG,
-    .paletteTag = 0x1103, // OBJ_EVENT_PAL_TAG_NPC_1
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
     .oam = &sOamData_RotatingGateLarge,
     .anims = sSpriteAnimTable_RotatingGateLarge,
     .images = NULL,
@@ -475,7 +476,7 @@ static const struct SpriteTemplate sSpriteTemplate_RotatingGateLarge =
 static const struct SpriteTemplate sSpriteTemplate_RotatingGateRegular =
 {
     .tileTag = ROTATING_GATE_TILE_TAG,
-    .paletteTag = 0x1103, // OBJ_EVENT_PAL_TAG_NPC_1
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
     .oam = &sOamData_RotatingGateRegular,
     .anims = sSpriteAnimTable_RotatingGateRegular,
     .images = NULL,
@@ -739,23 +740,17 @@ static u8 RotatingGate_CreateGate(u8 gateId, s16 deltaX, s16 deltaY)
 
     template.tileTag = gate->shape + ROTATING_GATE_TILE_TAG;
 
-    spriteId = CreateSprite(&template, 0, 0, 0x94);
+    spriteId = CreateSprite(&template, 0, 0, 0x93);
     if (spriteId == MAX_SPRITES)
         return MAX_SPRITES;
 
     x = gate->x + MAP_OFFSET;
     y = gate->y + MAP_OFFSET;
 
-    if (template.paletteTag != 0xFFFF)
-    {
-        LoadObjectEventPalette(template.paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(template.paletteTag), COLOR_MAP_CONTRAST);
-    }
-
     sprite = &gSprites[spriteId];
+    UpdateSpritePaletteByTemplate(&template, sprite);
     sprite->data[0] = gateId;
     sprite->coordOffsetEnabled = 1;
-    sprite->oam.paletteNum = IndexOfSpritePaletteTag(template.paletteTag);
 
     GetMapCoordsFromSpritePos(x + deltaX, y + deltaY, &sprite->x, &sprite->y);
     RotatingGate_HideGatesOutsideViewport(sprite);

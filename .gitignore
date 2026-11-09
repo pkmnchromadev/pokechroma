@@ -41,3 +41,4 @@ prefabs.json
 *.js
 chroma_assets/
 src/data/map_group_count.h
+tools/trainerproc/trainerproc

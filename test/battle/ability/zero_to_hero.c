@@ -11,16 +11,16 @@ SINGLE_BATTLE_TEST("Zero to Hero transforms Palafin when it switches out")
         TURN { SWITCH(player, 1); }
         TURN { SWITCH(player, 0); }
     } SCENE {
-        MESSAGE("Palafin, that's enough! Come back!");
-        MESSAGE("Go! Wobbuffet!");
-        MESSAGE("Wobbuffet, that's enough! Come back!");
-        MESSAGE("Go! Palafin!");
+        SWITCH_OUT_MESSAGE("Palafin");
+        SEND_IN_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Palafin");
         ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
         MESSAGE("Palafin underwent a heroic transformation!");
     } THEN { EXPECT_EQ(player->species, SPECIES_PALAFIN_HERO); }
 }
 
-SINGLE_BATTLE_TEST("Zero to Hero can't be surpressed by Neutralizing Gas")
+SINGLE_BATTLE_TEST("Zero to Hero can't be suppressed by Neutralizing Gas")
 {
     GIVEN {
         PLAYER(SPECIES_PALAFIN_ZERO) { Ability(ABILITY_ZERO_TO_HERO); }
@@ -96,28 +96,6 @@ SINGLE_BATTLE_TEST("Gastro Acid, Worry Seed, and Simple Beam fail if the target 
     }
 }
 
-SINGLE_BATTLE_TEST("Role Play, Skill Swap, and Entrainment fail if either Pokémon has Zero to Hero")
-{
-    u16 move;
-
-    PARAMETRIZE { move = MOVE_ROLE_PLAY; }
-    PARAMETRIZE { move = MOVE_SKILL_SWAP; }
-    PARAMETRIZE { move = MOVE_ENTRAINMENT; }
-
-    GIVEN {
-        ASSUME(gMovesInfo[MOVE_ROLE_PLAY].effect == EFFECT_ROLE_PLAY);
-        ASSUME(gMovesInfo[MOVE_SKILL_SWAP].effect == EFFECT_SKILL_SWAP);
-        ASSUME(gMovesInfo[MOVE_ENTRAINMENT].effect == EFFECT_ENTRAINMENT);
-        PLAYER(SPECIES_PALAFIN_ZERO) { Ability(ABILITY_ZERO_TO_HERO); }
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, move); }
-    } SCENE {
-        NOT ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("But it failed!");
-    }
-}
-
 SINGLE_BATTLE_TEST("Transform doesn't apply the heroic transformation message when copying Palafin")
 {
     GIVEN {
@@ -156,6 +134,52 @@ SINGLE_BATTLE_TEST("Imposter doesn't apply the heroic transformation message whe
             MESSAGE("Foe Ditto underwent a heroic transformation!");
         }
     } THEN { EXPECT_EQ(player->species, SPECIES_PALAFIN_HERO); }
+}
+
+SINGLE_BATTLE_TEST("Zero to Hero's message displays correctly after all battlers fainted - Player")
+{
+    GIVEN {
+        ASSUME(gMovesInfo[MOVE_EXPLOSION].effect == EFFECT_EXPLOSION);
+        PLAYER(SPECIES_PALAFIN_ZERO);
+        PLAYER(SPECIES_WOBBUFFET) { HP(1);}
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_FLIP_TURN); SEND_OUT(player, 1); }
+        TURN { MOVE(opponent, MOVE_EXPLOSION); SEND_OUT(player, 0); SEND_OUT(opponent, 1); }
+        TURN { MOVE(player, MOVE_TACKLE); MOVE(opponent, MOVE_TACKLE); }
+    } SCENE {
+        HP_BAR(opponent, hp: 0);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, opponent);
+        // Everyone faints.
+        SEND_IN_MESSAGE("Palafin");
+        MESSAGE("2 sent out Wobbuffet!");
+        ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
+        MESSAGE("Palafin underwent a heroic transformation!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Zero to Hero's message displays correctly after all battlers fainted - Opponent")
+{
+    GIVEN {
+        ASSUME(gMovesInfo[MOVE_EXPLOSION].effect == EFFECT_EXPLOSION);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_PALAFIN_ZERO);
+        OPPONENT(SPECIES_WOBBUFFET) { HP(1);}
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_FLIP_TURN); SEND_OUT(opponent, 1); }
+        TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_EXPLOSION); SEND_OUT(player, 1); SEND_OUT(opponent, 0); }
+        TURN { MOVE(opponent, MOVE_TACKLE); MOVE(player, MOVE_TACKLE); }
+    } SCENE {
+        HP_BAR(player, hp: 0);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, player);
+        // Everyone faints.
+        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("2 sent out Palafin!");
+        ABILITY_POPUP(opponent, ABILITY_ZERO_TO_HERO);
+        MESSAGE("Foe Palafin underwent a heroic transformation!");
+    }
 }
 
 // Write Trace test and move this one to that file (including every other ability that can't be copied)

@@ -428,35 +428,6 @@ static const u8 sBackAnimationIds[] =
     [(BACK_ANIM_SHAKE_GLOW_BLUE - 1) * 3]         = ANIM_SHAKE_GLOW_BLUE_FAST, ANIM_SHAKE_GLOW_BLUE, ANIM_SHAKE_GLOW_BLUE_SLOW,
 };
 
-static const u8 sBackAnimNatureModTable[NUM_NATURES] =
-{
-    [NATURE_HARDY]   = 0,
-    [NATURE_LONELY]  = 2,
-    [NATURE_BRAVE]   = 0,
-    [NATURE_ADAMANT] = 0,
-    [NATURE_NAUGHTY] = 0,
-    [NATURE_BOLD]    = 1,
-    [NATURE_DOCILE]  = 1,
-    [NATURE_RELAXED] = 1,
-    [NATURE_IMPISH]  = 0,
-    [NATURE_LAX]     = 1,
-    [NATURE_TIMID]   = 2,
-    [NATURE_HASTY]   = 0,
-    [NATURE_SERIOUS] = 1,
-    [NATURE_JOLLY]   = 0,
-    [NATURE_NAIVE]   = 0,
-    [NATURE_MODEST]  = 2,
-    [NATURE_MILD]    = 2,
-    [NATURE_QUIET]   = 2,
-    [NATURE_BASHFUL] = 2,
-    [NATURE_RASH]    = 1,
-    [NATURE_CALM]    = 1,
-    [NATURE_GENTLE]  = 2,
-    [NATURE_SASSY]   = 1,
-    [NATURE_CAREFUL] = 2,
-    [NATURE_QUIRKY]  = 1,
-};
-
 static const union AffineAnimCmd sMonAffineAnim_0[] =
 {
     AFFINEANIMCMD_FRAME(256, 256, 0, 0),
@@ -579,7 +550,7 @@ void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, u8 backAnimSet)
     nature = GetNature(&gPlayerParty[gBattlerPartyIndexes[battlerId]]);
 
     // * 3 below because each back anim has 3 variants depending on nature
-    animId = 3 * backAnimSet + sBackAnimNatureModTable[nature];
+    animId = 3 * backAnimSet + gNaturesInfo[nature].backAnim;
     gTasks[taskId].tAnimId = sBackAnimationIds[animId];
 }
 
@@ -4583,29 +4554,24 @@ static void ShrinkGrowVibrate(struct Sprite *sprite)
     }
     else
     {
-        u8 posY_unsigned;
-        s8 posY_signed;
-        s32 posY;
-        s16 index = (u16)(sprite->data[2] % sprite->data[6] * 256) / sprite->data[6] % 256;
+        s8 sinY;
+        u16 y;
+        s16 index = ((u16)(sprite->data[2] % sprite->data[6] * 256) / sprite->data[6]) % 256;
         if (sprite->data[2] % 2 == 0)
         {
             sprite->data[4] = Sin(index, 32) + 256;
             sprite->data[5] = Sin(index, 32) + 256;
-            posY_unsigned = Sin(index, 32);
-            posY_signed = posY_unsigned;
+            sinY = Sin(index, 32);
         }
         else
         {
             sprite->data[4] = Sin(index, 8) + 256;
             sprite->data[5] = Sin(index, 8) + 256;
-            posY_unsigned = Sin(index, 8);
-            posY_signed = posY_unsigned;
+            sinY = Sin(index, 8);
         }
 
-        posY = posY_signed;
-        if (posY < 0)
-            posY += 7;
-        sprite->y2 = (u32)(posY) >> 3;
+        y = sinY / 8;
+        sprite->y2 = y;
         HandleSetAffineData(sprite, sprite->data[4], sprite->data[5], 0);
     }
 

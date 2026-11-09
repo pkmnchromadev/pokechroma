@@ -1041,14 +1041,10 @@ static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
 {
     Overworld_ResetStateAfterDigEscRope();
     if (I_KEY_ESCAPE_ROPE < GEN_8)
-    {
-        RemoveUsedItem();
-    }
-    else
-    {
-        CopyItemName(gSpecialVar_ItemId, gStringVar2);
-        StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
-    }
+        RemoveBagItem(gSpecialVar_ItemId, 1);
+
+    CopyItemName(gSpecialVar_ItemId, gStringVar2);
+    StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
     gTasks[taskId].data[0] = 0;
     DisplayItemMessageOnField(taskId, gStringVar4, Task_UseDigEscapeRopeOnField);
 }
@@ -1254,11 +1250,11 @@ bool32 CannotUseItemsInBattle(u16 itemId, struct Pokemon *mon)
             cannotUse = TRUE;
         break;
     case EFFECT_ITEM_RESTORE_PP:
-        if (ItemId_GetEffect(itemId)[6] == ITEM4_HEAL_PP)
+        if (ItemId_GetEffect(itemId)[4] == ITEM4_HEAL_PP)
         {
             for (i = 0; i < MAX_MON_MOVES; i++)
             {
-                if (GetMonData(mon, MON_DATA_PP1 + i) < CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + i), GetMonData(mon, MON_DATA_PP_BONUSES), i));
+                if (GetMonData(mon, MON_DATA_PP1 + i) < CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + i), GetMonData(mon, MON_DATA_PP_BONUSES), i))
                     break;
             }
             if (i == MAX_MON_MOVES)
@@ -1422,7 +1418,9 @@ void Task_UseHoneyOnField(u8 taskId)
 static void ItemUseOnFieldCB_Honey(u8 taskId)
 {
     Overworld_ResetStateAfterDigEscRope();
-    RemoveUsedItem();
+    RemoveBagItem(gSpecialVar_ItemId, 1);
+    CopyItemName(gSpecialVar_ItemId, gStringVar2);
+    StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
     gTasks[taskId].data[0] = 0;
     DisplayItemMessageOnField(taskId, gStringVar4, Task_UseHoneyOnField);
 }

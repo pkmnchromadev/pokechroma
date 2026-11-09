@@ -90,3 +90,22 @@ SINGLE_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6")
         }
     }
 }
+
+SINGLE_BATTLE_TEST("Belly Drum's HP cost doesn't trigger effects that trigger on damage taken")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_AIR_BALLOON); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_BELLY_DRUM); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
+        MESSAGE("Wobbuffet cut its own HP and maximized ATTACK!");
+        NOT MESSAGE("Wobbuffet's Air Balloon popped!");
+    }
+}
+
+TO_DO_BATTLE_TEST("Belly Drum maximizes the user's Attack stat, even when below 0");
+TO_DO_BATTLE_TEST("Belly Drum minimizes the user's Attack stat if it has Contrary"); // Should still say "maximized attack"
+TO_DO_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6, even with Contrary");
+TO_DO_BATTLE_TEST("Belly Drum deducts HP if the user has contrary and is at -6");

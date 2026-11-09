@@ -682,6 +682,7 @@ static void Task_DoDoorWarp(u8 taskId)
     struct Task *task = &gTasks[taskId];
     s16 *x = &task->data[2];
     s16 *y = &task->data[3];
+    struct ObjectEvent *followerObject = GetFollowerObject();
 
     switch (task->tState)
     {
@@ -689,6 +690,12 @@ static void Task_DoDoorWarp(u8 taskId)
         FreezeObjectEvents();
         PlayerGetDestCoords(x, y);
         PlaySE(GetDoorSoundEffect(*x, *y - 1));
+        if (followerObject)
+        {
+            // Put follower into pokeball
+            ClearObjectEventMovement(followerObject, &gSprites[followerObject->spriteId]);
+            ObjectEventSetHeldMovement(followerObject, MOVEMENT_ACTION_ENTER_POKEBALL);
+        }
         task->data[1] = FieldAnimateDoorOpen(*x, *y - 1);
         task->tState = 1;
         break;
@@ -1165,6 +1172,9 @@ static void Task_OrbEffect(u8 taskId)
         tState = 4;
         break;
     case 4:
+        // If the caller script is delayed after starting the orb effect, a `waitstate` might be reached *after*
+        // we enable the ScriptContext in case 2; enabling it here as well avoids softlocks in this scenario
+        ScriptContext_Enable();
         if (--tShakeDelay == 0)
         {
             s32 panning;
@@ -1352,7 +1362,7 @@ static void Task_ExitStairs(u8 taskId)
     default:
         if (WaitForWeatherFadeIn() == TRUE)
         {
-            CameraObjectReset1();
+            CameraObjectReset();
             UnlockPlayerFieldControls();
             DestroyTask(taskId);
         }
@@ -1424,7 +1434,7 @@ static void Task_StairWarp(u8 taskId)
     case 0:
         LockPlayerFieldControls();
         FreezeObjectEvents();
-        CameraObjectReset2();
+        CameraObjectFreeze();
         data[0]++;
         break;
     case 1:

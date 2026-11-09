@@ -1,5 +1,6 @@
 	.align 2
 gCryTable::
+.if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
 	cry Cry_Bulbasaur
 	cry Cry_Ivysaur
@@ -1707,7 +1708,7 @@ gCryTable::
 	cry Cry_Goodra
 .endif @ P_FAMILY_GOOMY
 .if P_FAMILY_KLEFKI == TRUE
-	cry Cry_Klefki
+	cry_uncomp Cry_Klefki @ Cannot be heard unless we use cry_uncomp here.
 .endif @ P_FAMILY_KLEFKI
 .if P_FAMILY_PHANTUMP == TRUE
 	cry Cry_Phantump
@@ -1786,7 +1787,7 @@ gCryTable::
 .endif @ P_FAMILY_CRABRAWLER
 .if P_FAMILY_ORICORIO == TRUE
 	cry Cry_OricorioBaile
-	cry Cry_OricorioPomPom
+	cry_uncomp Cry_OricorioPomPom @ Cannot be heard unless we use cry_uncomp here.
 	cry Cry_OricorioPau
 	cry Cry_OricorioSensu
 .endif @ P_FAMILY_ORICORIO
@@ -2423,9 +2424,11 @@ gCryTable::
 .if P_FAMILY_PECHARUNT == TRUE
 	cry Cry_Pecharunt
 .endif @ P_FAMILY_PECHARUNT
+.endif @ P_CRIES_ENABLED
 
 	.align 2
 gCryTable_Reverse::
+.if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
 	cry_reverse Cry_Bulbasaur
 	cry_reverse Cry_Ivysaur
@@ -4133,7 +4136,7 @@ gCryTable_Reverse::
 	cry_reverse Cry_Goodra
 .endif @ P_FAMILY_GOOMY
 .if P_FAMILY_KLEFKI == TRUE
-	cry_reverse Cry_Klefki
+	cry_reverse_uncomp Cry_Klefki @ Cannot be heard unless we use cry_reverse_uncomp here.
 .endif @ P_FAMILY_KLEFKI
 .if P_FAMILY_PHANTUMP == TRUE
 	cry_reverse Cry_Phantump
@@ -4212,7 +4215,7 @@ gCryTable_Reverse::
 .endif @ P_FAMILY_CRABRAWLER
 .if P_FAMILY_ORICORIO == TRUE
 	cry_reverse Cry_OricorioBaile
-	cry_reverse Cry_OricorioPomPom
+	cry_reverse_uncomp Cry_OricorioPomPom @ Cannot be heard unless we use cry_reverse_uncomp here.
 	cry_reverse Cry_OricorioPau
 	cry_reverse Cry_OricorioSensu
 .endif @ P_FAMILY_ORICORIO
@@ -4849,3 +4852,4 @@ gCryTable_Reverse::
 .if P_FAMILY_PECHARUNT == TRUE
 	cry_reverse Cry_Pecharunt
 .endif @ P_FAMILY_PECHARUNT
+.endif @ P_CRIES_ENABLED

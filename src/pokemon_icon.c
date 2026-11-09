@@ -2,12 +2,11 @@
 #include "graphics.h"
 #include "mail.h"
 #include "palette.h"
-#include "pokemon_debug.h"
+#include "pokemon_sprite_visualizer.h"
 #include "pokemon_icon.h"
 #include "sprite.h"
 #include "data.h"
-
-#define POKE_ICON_BASE_PAL_TAG 56000
+#include "constants/pokemon_icon.h"
 
 struct MonIconSpriteTemplate
 {

@@ -6,8 +6,12 @@
 - Once you have your remote set up, run the command `git pull RHH expansion/1.Y.Z`.
 ```
 
-## 🌋 *IMPORTANT CHANGES* 🌋
-* We deleted the whole repo LOL by @AsparagusEduardo in https://github.com/rh-hideout/pokeemerald-expansion/pull/3367
+## 🌋 *REFACTORS* 🌋
+📜 = Uses a migration script.
+* N/A
+
+## 💥 *Softlock/Crash fixes* 💥
+* N/A
 
 ## 🧬 General 🧬
 ### Added
@@ -18,11 +22,40 @@
 * N/A
 
 ## ✨ Feature Branches ✨
-### Added
+### ***TheXaman's Debug Menu***:
+#### Added
 * N/A
-### Changed
+#### Changed
 * N/A
-### Fixed
+#### Fixed
+* N/A
+### ***TheXaman's HGSS Pokédex Plus***:
+#### Added
+* N/A
+#### Changed
+* N/A
+#### Fixed
+* N/A
+### ***SBird/Karathan's Dynamic Multichoices***:
+#### Added
+* N/A
+#### Changed
+* N/A
+#### Fixed
+* N/A
+### ***ghoulslash's Saveblock Cleansing***:
+#### Added
+* N/A
+#### Changed
+* N/A
+#### Fixed
+* N/A
+### ***merrp/aarant's Followers***
+#### Added
+* N/A
+#### Changed
+* N/A
+#### Fixed
 * N/A
 
 ## 🐉 Pokémon 🐉
@@ -94,7 +127,7 @@
 
 
 ## New Contributors
-* Tony
+* N/A
 
 **Full Changelog**: https://github.com/rh-hideout/pokeemerald-expansion/compare/expansion/1.Y.Z...expansion/1.Y.Z
 

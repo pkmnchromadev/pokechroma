@@ -10,8 +10,8 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Aura Wheel raises Speed; fails if the user is not Morpeko")
 {
     u16 species;
-    PARAMETRIZE{ species = SPECIES_WOBBUFFET; }
-    PARAMETRIZE{ species = SPECIES_MORPEKO; }
+    PARAMETRIZE { species = SPECIES_WOBBUFFET; }
+    PARAMETRIZE { species = SPECIES_MORPEKO; }
     GIVEN {
         PLAYER(species);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -49,3 +49,5 @@ SINGLE_BATTLE_TEST("Aura Wheel changes type depending on Morpeko's form")
         MESSAGE("It's super effective!");
     }
 }
+
+TO_DO_BATTLE_TEST("Aura Wheel can be used by Pokémon transformed into Morpeko");

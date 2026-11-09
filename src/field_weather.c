@@ -20,6 +20,13 @@
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
+enum
+{
+    COLOR_MAP_NONE,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_CONTRAST,
+};
+
 struct RGBColor
 {
     u16 r:5;
@@ -105,9 +112,7 @@ void (*const gWeatherPalStateFuncs[])(void) =
 
 // This table specifies which of the color maps should be
 // applied to each of the background and sprite palettes.
-// NOTE: EWRAM is NOLOAD, so these intended values were never applied at boot (table starts at 0).
-EWRAM_DATA u8 ALIGNED(2) sBasePaletteColorMapTypes[32];
-#if 0 // intended initial values, kept for reference
+static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
 {
     // background palettes
     COLOR_MAP_DARK_CONTRAST,
@@ -129,22 +134,21 @@ EWRAM_DATA u8 ALIGNED(2) sBasePaletteColorMapTypes[32];
     // sprite palettes
     COLOR_MAP_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
-    COLOR_MAP_CONTRAST,
-    COLOR_MAP_CONTRAST,
-    COLOR_MAP_CONTRAST,
-    COLOR_MAP_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
-    COLOR_MAP_CONTRAST,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
 };
-#endif
 
 const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
 
@@ -247,6 +251,7 @@ static void Task_WeatherMain(u8 taskId)
 
 static void None_Init(void)
 {
+    Weather_SetBlendCoeffs(8, 12); // Indoor shadows
     gWeatherPtr->targetColorMapIndex = 0;
     gWeatherPtr->colorMapStepDelay = 0;
 }
@@ -275,7 +280,6 @@ static void BuildColorMaps(void)
     u16 brightnessDelta;
     u16 colorMapIndex;
     u16 baseBrightness;
-    u32 remainingBrightness;
     s16 diff;
 
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
@@ -303,11 +307,7 @@ static void BuildColorMaps(void)
             }
 
             baseBrightness = curBrightness;
-            remainingBrightness = 0x1f00 - curBrightness;
-            if ((0x1f00 - curBrightness) < 0)
-                remainingBrightness += 0xf;
-
-            brightnessDelta = remainingBrightness / (NUM_WEATHER_COLOR_MAPS - 3);
+            brightnessDelta = (0x1f00 - curBrightness) / (NUM_WEATHER_COLOR_MAPS - 3);
             if (colorVal < 12)
             {
                 // For shadows (color values < 12), the remaining color mappings are
@@ -860,10 +860,10 @@ static bool8 UNUSED IsFirstFrameOfWeatherFadeIn(void)
         return FALSE;
 }
 
-void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
+void LoadCustomWeatherSpritePalette(const u16 *palette)
 {
-    LoadSpritePalette(palette);
-    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
+    UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
 }
 
 static void LoadDroughtWeatherPalette(u8 *palsIndex, u8 *palsOffset)
@@ -1106,8 +1106,10 @@ void ResetPreservedPalettesInWeather(void)
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
 }
 
-void UpdatePaletteGammaType(u8 index, u8 gammaType)
+bool32 IsWeatherAlphaBlend(void)
 {
-    if (index != 0xFF)
-        sBasePaletteColorMapTypes[index + 16] = gammaType;
+    return (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL
+         || gWeatherPtr->currWeather == WEATHER_FOG_DIAGONAL
+         || gWeatherPtr->currWeather == WEATHER_UNDERWATER_BUBBLES
+         || gWeatherPtr->currWeather == WEATHER_UNDERWATER);
 }
