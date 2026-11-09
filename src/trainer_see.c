@@ -69,9 +69,9 @@ static const u32 sEmotion_HeartGfx[] = INCBIN_U32("graphics/field_effects/pics/e
 static const u16 sEmotion_Palette[] = INCBIN_U16("graphics/field_effects/pics/emotes/emotions.gbapal");
 static const u32 sEmotion_DoubleExclamationMarkGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_double_exclamation.4bpp");
 static const u32 sEmotion_XGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_x.4bpp");
-static const u16 sGfx_Emoticons[] = INCBIN_U16("graphics/misc/emoticons.4bpp");
+static const u16 sGfx_Emoticons[] = INCGFX_U16("graphics/misc/emoticons.png", ".4bpp", "-mwidth 2 -mheight 2");
 // HGSS emote graphics ripped by Lemon on The Spriters Resource: https://www.spriters-resource.com/ds_dsi/pokemonheartgoldsoulsilver/sheet/30497/
-static const u8 sEmotion_Gfx[] = INCBIN_U8("graphics/misc/emotes.4bpp");
+static const u8 sEmotion_Gfx[] = INCGFX_U8("graphics/misc/emotes.png", ".4bpp", "-mwidth 2 -mheight 2");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -492,7 +492,7 @@ bool8 CheckForTrainersWantingBattle(void)
 
         if (gNoOfApproachingTrainers > 1)
             break;
-        if (GetMonsStateToDoubles_2() != PLAYER_HAS_TWO_USABLE_MONS) // one trainer found and cant have a double battle
+        if (GetMonsStateToDoubles_2() != PLAYER_HAS_TWO_USABLE_MONS) // one trainer found and can't have a double battle
             break;
     }
 
