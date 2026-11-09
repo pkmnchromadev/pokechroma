@@ -9,7 +9,7 @@
 #include "script.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
-EWRAM_DATA u8 gWalkAwayFromSignInhibitTimer = 0;
+EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *, bool32);
 static void StartDrawFieldMessage(void);
@@ -32,7 +32,7 @@ static void Task_DrawFieldMessage(u8 taskId)
     switch (task->tState)
     {
         case 0:
-           if (IsMsgSignPost())
+            if (gMsgIsSignPost)
                 LoadSignPostWindowFrameGfx();
             else
                 LoadMessageBoxAndBorderGfx();

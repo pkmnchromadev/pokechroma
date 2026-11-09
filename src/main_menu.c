@@ -257,6 +257,26 @@ static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin
 static const u16 sBirchSpeechBgGradientPal[] = INCBIN_U16("graphics/birch_speech/bg2.gbapal");
 static const u16 sBirchSpeechPlatformBlackPal[] = {RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK};
 
+static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
+static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
+static const u8 gJPText_No1MSubCircuit[] = _("1Mサブきばんが ささっていません！");
+static const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.");
+
+static const u8 gText_MainMenuNewGame[] = _("New Game");
+static const u8 gText_MainMenuContinue[] = _("Continue");
+static const u8 gText_MainMenuOption[] = _("Settings");
+static const u8 gText_MainMenuMysteryGift[] = _("Mystery Gift");
+static const u8 gText_MainMenuMysteryGift2[] = _("Mystery Gift");
+static const u8 gText_MainMenuMysteryEvents[] = _("Mystery Events");
+static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nconnected.");
+static const u8 gText_MysteryGiftCantUse[] = _("Mystery Gift can't be used while\nthe Wireless Adapter is attached.");
+static const u8 gText_MysteryEventsCantUse[] = _("Mystery Events can't be used while\nthe Wireless Adapter is attached.");
+
+static const u8 gText_ContinueMenuPlayer[] = _("PLAYER");
+static const u8 gText_ContinueMenuTime[] = _("TIME");
+static const u8 gText_ContinueMenuPokedex[] = _("Pokédex");
+static const u8 gText_ContinueMenuBadges[] = _("BADGES");
+
 #define MENU_LEFT 2
 #define MENU_TOP_WIN0 1
 #define MENU_TOP_WIN1 5
@@ -454,54 +474,54 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
 };
 
 static const struct MenuAction sMenuActions_Gender[] = {
-    {gText_BirchBoy, {NULL}},
-    {gText_BirchGirl, {NULL}}
+    {COMPOUND_STRING("Boy"), {NULL}},
+    {COMPOUND_STRING("Girl"), {NULL}}
 };
 
 static const u8 *const sMalePresetNames[] = {
-    gText_DefaultNameStu,
-    gText_DefaultNameMilton,
-    gText_DefaultNameTom,
-    gText_DefaultNameKenny,
-    gText_DefaultNameReid,
-    gText_DefaultNameJude,
-    gText_DefaultNameJaxson,
-    gText_DefaultNameEaston,
-    gText_DefaultNameWalker,
-    gText_DefaultNameTeru,
-    gText_DefaultNameJohnny,
-    gText_DefaultNameBrett,
-    gText_DefaultNameSeth,
-    gText_DefaultNameTerry,
-    gText_DefaultNameCasey,
-    gText_DefaultNameDarren,
-    gText_DefaultNameLandon,
-    gText_DefaultNameCollin,
-    gText_DefaultNameStanley,
-    gText_DefaultNameQuincy
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson"),
+    COMPOUND_STRING("Dyson")
 };
 
 static const u8 *const sFemalePresetNames[] = {
-    gText_DefaultNameKimmy,
-    gText_DefaultNameTiara,
-    gText_DefaultNameBella,
-    gText_DefaultNameJayla,
-    gText_DefaultNameAllie,
-    gText_DefaultNameLianna,
-    gText_DefaultNameSara,
-    gText_DefaultNameMonica,
-    gText_DefaultNameCamila,
-    gText_DefaultNameAubree,
-    gText_DefaultNameRuthie,
-    gText_DefaultNameHazel,
-    gText_DefaultNameNadine,
-    gText_DefaultNameTanja,
-    gText_DefaultNameYasmin,
-    gText_DefaultNameNicola,
-    gText_DefaultNameLillie,
-    gText_DefaultNameTerra,
-    gText_DefaultNameLucy,
-    gText_DefaultNameHalie
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara"),
+    COMPOUND_STRING("Clara")
 };
 
 // The number of male vs. female names is assumed to be the same.

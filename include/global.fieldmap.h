@@ -130,7 +130,7 @@ struct MapEvents
 struct MapConnection
 {
     u8 direction;
-    u32 offset;
+    s32 offset;
     u8 mapGroup;
     u8 mapNum;
 };
@@ -196,7 +196,7 @@ struct ObjectEvent
              u32 hideReflection:1;
              u32 shiny:1; // OW mon shininess
              u32 padding:3;
-    /*0x04*/ u16 graphicsId; // 11 bits for species; high 5 bits for form
+    /*0x04*/ u16 graphicsId; // 12 bits for species; high 4 bits for form
     /*0x06*/ u8 movementType;
     /*0x07*/ u8 trainerType;
     /*0x08*/ u8 localId;
@@ -298,11 +298,9 @@ enum
     COLLISION_ISOLATED_HORIZONTAL_RAIL,
     COLLISION_VERTICAL_RAIL,
     COLLISION_HORIZONTAL_RAIL,
-    //sideways_stairs
+    COLLISION_STAIR_WARP,
     COLLISION_SIDEWAYS_STAIRS_TO_RIGHT,
-    COLLISION_SIDEWAYS_STAIRS_TO_LEFT,
-    //stair warps
-    COLLISION_STAIR_WARP
+    COLLISION_SIDEWAYS_STAIRS_TO_LEFT
 };
 
 // player running states

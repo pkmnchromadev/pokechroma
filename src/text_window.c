@@ -120,6 +120,12 @@ void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
     LoadPalette(currentMessageBox_Pal, palOffset, 0x20);
 }
 
+void LoadSignBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gSignBox_Gfx, 0x1C0, destOffset); // pokechroma: custom sign frame art
+    LoadPalette(gSignBox_Pal, palOffset, PLTT_SIZE_4BPP);
+}
+
 void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadUserWindowBorderGfx(windowId, destOffset, palOffset);
@@ -260,11 +266,4 @@ void LoadMsgBox(const u32 **graphic, const u16 **palette)
     }
     //This resets the loaded type and subtype to default.
     SetMsgBox(MSGBOX_DEFAULT, MSGBOX_SUB_DEFAULT);
-}
-void LoadSignPostWindowFrameGfx(void)
-{
-    // TODO signpost msgbox frames
-    //LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gUnknown_8470B0C, 0x260, destOffset);
-    //LoadPalette(GetWindowFrameTilesPal(1), palIdx, 32);
-    LoadMessageBoxAndBorderGfx();
 }
