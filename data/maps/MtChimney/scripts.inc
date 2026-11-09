@@ -1709,6 +1709,12 @@ IgnisCave1F_Object_Engineer::
 	end
 
 
+IgnisCave1F_ItemBall_EscapeRope::
+# 865 "data/maps/MtChimney/scripts.pory"
+	finditem ITEM_ESCAPE_ROPE, 1
+	end
+
+
 IgnisCave1F_Trainer_Hiker_Text_0:
 # 856 "data/maps/MtChimney/scripts.pory"
 	.string "{COLOR BLUE}Ho!\n"

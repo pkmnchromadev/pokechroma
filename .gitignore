@@ -22,7 +22,6 @@ sound/songs/midi/*.s
 tools/agbcc
 tools/poryscript
 *.map
-*.ld
 *.bat
 *.dump
 *.sa*
@@ -41,3 +40,4 @@ prefabs.json
 *.sym
 *.js
 chroma_assets/
+src/data/map_group_count.h

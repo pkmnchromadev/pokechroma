@@ -67,6 +67,8 @@ static const u32 sEmotion_ExclamationMarkGfx[] = INCBIN_U32("graphics/field_effe
 static const u32 sEmotion_QuestionMarkGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_question.4bpp");
 static const u32 sEmotion_HeartGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_heart.4bpp");
 static const u16 sEmotion_Palette[] = INCBIN_U16("graphics/field_effects/pics/emotes/emotions.gbapal");
+static const u32 sEmotion_DoubleExclamationMarkGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_double_exclamation.4bpp");
+static const u32 sEmotion_XGfx[] = INCBIN_U32("graphics/field_effects/pics/emotes/emotion_x.4bpp");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -141,6 +143,14 @@ static const struct SpriteFrameImage sSpriteImageTable_ExclamationQuestionMark[]
     {
         .data = sEmotion_QuestionMarkGfx,
         .size = sizeof(sEmotion_QuestionMarkGfx)
+    },
+    {
+        .data = sEmotion_DoubleExclamationMarkGfx,
+        .size = sizeof(sEmotion_DoubleExclamationMarkGfx)
+    },
+    {
+        .data = sEmotion_XGfx,
+        .size = sizeof(sEmotion_XGfx)
     }
 };
 
@@ -164,10 +174,25 @@ static const union AnimCmd sSpriteAnim_Icons2[] =
     ANIMCMD_END
 };
 
+
+static const union AnimCmd sSpriteAnim_Icons3[] =
+{
+    ANIMCMD_FRAME(2, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons4[] =
+{
+    ANIMCMD_FRAME(3, 60),
+    ANIMCMD_END
+};
+
 static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 {
     sSpriteAnim_Icons1,
-    sSpriteAnim_Icons2
+    sSpriteAnim_Icons2,
+    sSpriteAnim_Icons3,
+    sSpriteAnim_Icons4
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
@@ -637,7 +662,7 @@ static void Task_SetBuriedTrainerMovement(u8 taskId)
     struct Task *task = &gTasks[taskId];
     struct ObjectEvent *objEvent;
 
-    LoadWordFromTwoHalfwords(&task->tObjEvent, (u32 *)&objEvent);
+    LoadWordFromTwoHalfwords((u16*) &task->tObjEvent, (u32 *)&objEvent);
     if (!task->data[7])
     {
         ObjectEventClearHeldMovement(objEvent);
@@ -659,7 +684,7 @@ static void Task_SetBuriedTrainerMovement(u8 taskId)
 // Called when a buried Trainer has the reveal_trainer movement applied, from direct interaction
 void SetBuriedTrainerMovement(struct ObjectEvent *objEvent)
 {
-    StoreWordInTwoHalfwords(&gTasks[CreateTask(Task_SetBuriedTrainerMovement, 0)].tObjEvent, (u32)objEvent);
+    StoreWordInTwoHalfwords((u16*) &gTasks[CreateTask(Task_SetBuriedTrainerMovement, 0)].tObjEvent, (u32)objEvent);
 }
 
 void DoTrainerApproach(void)
@@ -705,7 +730,7 @@ void TryPrepareSecondApproachingTrainer(void)
 
 u8 FldEff_ExclamationMarkIcon(void)
 {
-    u8 spriteId, paletteNum;
+    u8 spriteId;
 
     LoadObjectEventPalette(0x1100); //LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_BRENDAN)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
@@ -743,6 +768,27 @@ u8 FldEff_HeartIcon(void)
         SetIconSpriteData(sprite, FLDEFF_HEART_ICON, 0);
         sprite->oam.paletteNum = 2;
     }
+
+    return 0;
+}
+
+
+u8 FldEff_DoubleExclMarkIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 2);
+
+    return 0;
+}
+
+u8 FldEff_XIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 3);
 
     return 0;
 }
