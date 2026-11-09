@@ -9,12 +9,14 @@ Std_MsgboxNPC:
 	return
 
 Std_MsgboxSign:
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	lockall
 	setmessagebox 0x1 0x2
 	message NULL
 	waitmessage
 	waitbuttonpress
 	releaseall
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	return
 
 Std_MsgboxDefault:

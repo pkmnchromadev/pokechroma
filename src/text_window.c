@@ -100,6 +100,9 @@ static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
     {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal}
 };
 
+static const u16 sTextWindowDexNavFrame[] = INCBIN_U16("graphics/text_window/dexnav_pal.gbapal");
+static const struct TilesPal sDexNavWindowFrame = {gTextWindowFrame1_Gfx, sTextWindowDexNavFrame};
+
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
@@ -266,4 +269,10 @@ void LoadMsgBox(const u32 **graphic, const u16 **palette)
     }
     //This resets the loaded type and subtype to default.
     SetMsgBox(MSGBOX_DEFAULT, MSGBOX_SUB_DEFAULT);
+}
+
+void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sDexNavWindowFrame.tiles, 0x120, destOffset);
+    LoadPalette(sDexNavWindowFrame.pal, palOffset, 32);
 }
