@@ -115,7 +115,7 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     //Call LoadMsgBox to loas proper graphics and palette
-    const u32 *currentMessageBox_Gfx;
+    const u8 *currentMessageBox_Gfx;
     const u16 *currentMessageBox_Pal;
     LoadMsgBox(&currentMessageBox_Gfx, &currentMessageBox_Pal);
    
@@ -241,7 +241,7 @@ void SetMsgBox(u8 type, u8 subtype)
 
 // Load t-box graphics depending on type and subtype
 // This method is an example. What you put here depends on what each type and subtype of t-box will look like
-void LoadMsgBox(const u32 **graphic, const u16 **palette)
+void LoadMsgBox(const u8 **graphic, const u16 **palette)
 {
     switch(sMsgBoxType)
     {
