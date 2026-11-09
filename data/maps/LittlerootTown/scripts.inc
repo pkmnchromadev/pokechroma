@@ -329,7 +329,7 @@ LittlerootTown_EventScript_GoInsideWithMom::
 # 165 "data/maps/LittlerootTown/scripts.pory"
 	setvar VAR_LITTLEROOT_INTRO_STATE, 3
 # 166 "data/maps/LittlerootTown/scripts.pory"
-	hideobjectat OBJ_EVENT_ID_PLAYER, 0
+	hideplayer
 # 167 "data/maps/LittlerootTown/scripts.pory"
 	closedoor VAR_0x8004, VAR_0x8005
 # 168 "data/maps/LittlerootTown/scripts.pory"
