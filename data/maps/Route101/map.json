@@ -3,7 +3,6 @@
   "name": "Route101",
   "layout": "LAYOUT_ROUTE101",
   "music": "MUS_ROUTE101",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_101",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -179,5 +178,6 @@
       "item": "ITEM_ORAN_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_CANVAS_PATH_ORAN_BERRY"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

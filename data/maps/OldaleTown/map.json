@@ -3,7 +3,6 @@
   "name": "OldaleTown",
   "layout": "LAYOUT_OLDALE_TOWN",
   "music": "MUS_RG_CELADON",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_OLDALE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -170,5 +169,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RossanoTown_Sign_RouteSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
