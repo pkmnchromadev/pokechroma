@@ -1074,3 +1074,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/MtIgnis_B1F/scripts.inc"
 
 	.include "data/maps/RossanoTown_House3/scripts.inc"
+
+	.include "data/maps/TrevisoPass_Gatehouse/scripts.inc"

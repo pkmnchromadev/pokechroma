@@ -66,6 +66,7 @@
 #define MAP_ROSSANO_PASS_NORTH            (57 | (0 << 8))
 #define MAP_TREVISO_BRIDGE_LIGHTHOUSE_EXT (58 | (0 << 8))
 #define MAP_ROSSANO_TOWN_HOUSE3           (59 | (0 << 8))
+#define MAP_TREVISO_PASS_GATEHOUSE        (60 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))

@@ -74,7 +74,8 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
 
 gFieldEffectScript_ExclamationMarkIcon1::
-	field_eff_callnative FldEff_ExclamationMarkIcon
+	@field_eff_callnative FldEff_ExclamationMarkIcon
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect11, FldEff_ExclamationMarkIcon
 	field_eff_end
 
 gFieldEffectScript_UseCutOnTallGrass::
@@ -207,7 +208,8 @@ gFieldEffectScript_FlyIn::
 	field_eff_end
 
 gFieldEffectScript_QuestionMarkIcon::
-	field_eff_callnative FldEff_QuestionMarkIcon
+	@field_eff_callnative FldEff_QuestionMarkIcon
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect11, FldEff_QuestionMarkIcon
 	field_eff_end
 
 gFieldEffectScript_FeetInFlowingWater::

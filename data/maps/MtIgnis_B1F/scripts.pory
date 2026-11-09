@@ -1,1 +1,20 @@
-mapscripts MtIgnis_B1F_MapScripts {}
+mapscripts MtIgnis_B1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        setflashlevel(5)
+    }
+}
+
+script IgnisCaveB1F_Trainer_Hiker {
+    trainerbattle_single(TRAINER_HIKER_JONATHAN, format("{COLOR BLUE}It's dark down here, isn't it?"), format("Bright enough to fight!"))
+    msgbox(format("{COLOR BLUE}The caverns below get even darker."), MSGBOX_NPC)
+    end
+}
+script IgnisCaveB1F_Trainer_BlackBelt {
+    trainerbattle_single(TRAINER_BLACKBELT_JACKSON, format("{COLOR BLUE}Did I catch you off guard?"), format("Well played!"))
+    msgbox(format("{COLOR BLUE}Always stay on guard, you never know when something is lurking."), MSGBOX_NPC)
+    end
+}
+script IgnisCaveB1F_ItemBall_FireStone {
+    finditem(ITEM_FIRE_STONE)
+    end
+}

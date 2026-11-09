@@ -225,3 +225,9 @@ const u16 gMetatileAttributes_CalcoridgeCity[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_Library[] = INCBIN_U16("data/tilesets/secondary/library/metatiles.bin");
 const u16 gMetatileAttributes_Library[] = INCBIN_U16("data/tilesets/secondary/library/metatile_attributes.bin");
+
+const u16 gMetatiles_SebsertoDesert[] = INCBIN_U16("data/tilesets/secondary/sebserto_desert/metatiles.bin");
+const u16 gMetatileAttributes_SebsertoDesert[] = INCBIN_U16("data/tilesets/secondary/sebserto_desert/metatile_attributes.bin");
+
+const u16 gMetatiles_Gatehouse[] = INCBIN_U16("data/tilesets/secondary/gatehouse/metatiles.bin");
+const u16 gMetatileAttributes_Gatehouse[] = INCBIN_U16("data/tilesets/secondary/gatehouse/metatile_attributes.bin");

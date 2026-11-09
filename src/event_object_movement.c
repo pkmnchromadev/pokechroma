@@ -472,6 +472,11 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_MAN_3                       0x1145
 #define OBJ_EVENT_PAL_MAN_4                       0x1146
 #define OBJ_EVENT_PAL_MAN_5                       0x1147
+#define OBJ_EVENT_PAL_BREAKABLE_ROCK              0x1148
+#define OBJ_EVENT_PAL_CUTTABLE_TREE               0x1149
+#define OBJ_EVENT_PAL_PUSHABLE_BOULDER            0x114A
+#define OBJ_EVENT_PAL_ITEM_BALL                   0x114B
+#define FLD_EFF_PAL_MOUNTAIN_DISGUISE             0x114C
 // end
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
@@ -555,6 +560,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Man3, OBJ_EVENT_PAL_MAN_3},
     {gObjectEventPal_Man4, OBJ_EVENT_PAL_MAN_4},
     {gObjectEventPal_Man5, OBJ_EVENT_PAL_MAN_5},
+    {gObjectEventPal_BreakableRock, OBJ_EVENT_PAL_BREAKABLE_ROCK},
+    {gObjectEventPal_CuttableTree, OBJ_EVENT_PAL_CUTTABLE_TREE},
+    {gObjectEventPal_PushableBoulder, OBJ_EVENT_PAL_PUSHABLE_BOULDER},
+    {gObjectEventPal_ItemBall, OBJ_EVENT_PAL_ITEM_BALL},
+    {gFieldEffectObjectPal_MountainDisguise, FLD_EFF_PAL_MOUNTAIN_DISGUISE},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else

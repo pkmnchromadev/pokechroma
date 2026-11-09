@@ -25,70 +25,78 @@ static const struct TrainerMon sParty_GruntAquaHideout2[] = {
 
 static const struct TrainerMon sParty_GruntAquaHideout3[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_ZUBAT,
+    .lvl = 4,
+    .species = SPECIES_SPEAROW,
+    },
+    {
+    .lvl = 4,
+    .species = SPECIES_SPEAROW,
     }
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout4[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_CARVANHA,
+    .lvl = 6,
+    .species = SPECIES_ROLYCOLY,
     }
 };
 
 static const struct TrainerMon sParty_GruntSeafloorCavern1[] = {
     {
-    .lvl = 36,
-    .species = SPECIES_POOCHYENA,
+    .lvl = 5,
+    .species = SPECIES_ROLYCOLY,
+    },
+    {
+    .lvl = 6,
+    .species = SPECIES_ROCKRUFF,
     }
 };
 
 static const struct TrainerMon sParty_GruntSeafloorCavern2[] = {
     {
-    .lvl = 36,
-    .species = SPECIES_CARVANHA,
+    .lvl = 7,
+    .species = SPECIES_MIENFOO,
+    },
+    {
+    .lvl = 5,
+    .species = SPECIES_CROAGUNK,
     }
 };
 
 static const struct TrainerMon sParty_GruntSeafloorCavern3[] = {
     {
-    .lvl = 36,
-    .species = SPECIES_ZUBAT,
+    .lvl = 6,
+    .species = SPECIES_CATERPIE,
+    },
+    {
+    .lvl = 7,
+    .species = SPECIES_METAPOD,
+    },
+    {
+    .lvl = 8,
+    .species = SPECIES_BUTTERFREE,
     }
 };
 
 static const struct TrainerMon sParty_Gabrielle1[] = {
     {
-    .lvl = 26,
-    .species = SPECIES_SKITTY,
+    .lvl = 8,
+    .species = SPECIES_ODDISH,
     },
     {
-    .lvl = 26,
-    .species = SPECIES_POOCHYENA,
-    },
-    {
-    .lvl = 26,
-    .species = SPECIES_ZIGZAGOON,
-    },
-    {
-    .lvl = 26,
-    .species = SPECIES_LOTAD,
-    },
-    {
-    .lvl = 26,
-    .species = SPECIES_SEEDOT,
-    },
-    {
-    .lvl = 26,
-    .species = SPECIES_TAILLOW,
+    .lvl = 7,
+    .species = SPECIES_BUDEW,
     }
 };
 
 static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
     {
-    .lvl = 9,
-    .species = SPECIES_POOCHYENA,
+    .lvl = 8,
+    .species = SPECIES_TEDDIURSA,
+    },
+    {
+    .lvl = 8,
+    .species = SPECIES_SPEWPA,
     }
 };
 

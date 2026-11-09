@@ -1525,6 +1525,7 @@ bool8 MetatileBehavior_IsDirectionalStairWarp(u8 metatileBehavior)
         return TRUE;
     else
         return FALSE;
+}
 bool8 MetatileBehavior_IsSignpost(u8 mb)
 {
     return (mb == MB_SIGNPOST);

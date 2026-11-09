@@ -1160,14 +1160,14 @@ static u8 GetFacingSignpostType(u16 metatileBehavior, u8 playerDirection)
 static void SetUpWalkIntoSignScript(const u8 *script, u8 playerDirection)
 {
     gSpecialVar_Facing = playerDirection;
-    ScriptContext1_SetupScript(script);
+    ScriptContext_SetupScript(script);
     SetWalkingIntoSignVars();
     MsgSetSignPost();
 }
 
 static const u8 *GetSignpostScriptAtMapPosition(struct MapPosition *position)
 {
-    const struct BgEvent *event = GetBackgroundEventAtPosition(&gMapHeader, position->x - 7, position->y - 7, position->height);
+    const struct BgEvent *event = GetBackgroundEventAtPosition(&gMapHeader, position->x - 7, position->y - 7, position->elevation);
     if (event == NULL)
         return NULL;
     if (event->bgUnion.script != NULL)
@@ -1187,7 +1187,7 @@ static void Task_OpenStartMenu(u8 taskId)
 
 void FieldInput_HandleCancelSignpost(struct FieldInput *input)
 {
-    if (ScriptContext1_IsScriptSetUp() == TRUE)
+    if (ScriptContext_IsEnabled() == TRUE)
     {
         if (gWalkAwayFromSignInhibitTimer != 0)
         {
@@ -1198,13 +1198,13 @@ void FieldInput_HandleCancelSignpost(struct FieldInput *input)
             //ClearMsgBoxCancelableState();
             if (input->dpadDirection != 0 && GetPlayerFacingDirection() != input->dpadDirection)
             {
-                ScriptContext1_SetupScript(EventScript_CancelMessageBox);
-                ScriptContext2_Enable();
+                ScriptContext_SetupScript(EventScript_CancelMessageBox);
+                LockPlayerFieldControls();
             }
             else if (input->pressedStartButton)
             {
-                ScriptContext1_SetupScript(EventScript_CancelMessageBox);
-                ScriptContext2_Enable();
+                ScriptContext_SetupScript(EventScript_CancelMessageBox);
+                LockPlayerFieldControls();
                 if (!FuncIsActiveTask(Task_OpenStartMenu))
                     CreateTask(Task_OpenStartMenu, 8);
             }

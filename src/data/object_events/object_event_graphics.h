@@ -188,6 +188,7 @@ const u32 gObjectEventPic_Nurse[] = INCBIN_U32("graphics/object_events/pics/peop
 const u16 gObjectEventPal_Nurse[] = INCBIN_U16("graphics/object_events/pics/people/nurse.gbapal");
 
 const u32 gObjectEventPic_ItemBall[] = INCBIN_U32("graphics/object_events/pics/misc/item_ball.4bpp");
+const u16 gObjectEventPal_ItemBall[] = INCBIN_U16("graphics/object_events/pics/misc/item_ball.gbapal");
 
 const u32 gObjectEventPic_ProfBirch[] = INCBIN_U32("graphics/object_events/pics/people/prof_birch.4bpp");
 const u16 gObjectEventPal_ProfBirch[] = INCBIN_U16("graphics/object_events/pics/people/prof_birch.gbapal");
@@ -321,8 +322,11 @@ const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");
 const u32 gObjectEventPic_BigRegisteelDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_registeel_doll.4bpp");
 const u32 gObjectEventPic_CuttableTree[] = INCBIN_U32("graphics/object_events/pics/misc/cuttable_tree.4bpp");
+const u16 gObjectEventPal_CuttableTree[] = INCBIN_U16("graphics/object_events/pics/misc/cuttable_tree.gbapal"); // 
 const u32 gObjectEventPic_BreakableRock[] = INCBIN_U32("graphics/object_events/pics/misc/breakable_rock.4bpp");
+const u16 gObjectEventPal_BreakableRock[] = INCBIN_U16("graphics/object_events/pics/misc/breakable_rock.gbapal"); // 
 const u32 gObjectEventPic_PushableBoulder[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_boulder.4bpp");
+const u16 gObjectEventPal_PushableBoulder[] = INCBIN_U16("graphics/object_events/pics/misc/pushable_boulder.gbapal"); // 
 const u32 gObjectEventPic_MrBrineysBoat[] = INCBIN_U32("graphics/object_events/pics/misc/mr_brineys_boat.4bpp");
 const u32 gObjectEventPic_Fossil[] = INCBIN_U32("graphics/object_events/pics/misc/fossil.4bpp");
 const u32 gObjectEventPic_SubmarineShadow[] = INCBIN_U32("graphics/object_events/pics/misc/submarine_shadow.4bpp");
@@ -425,6 +429,7 @@ const u32 gFieldEffectObjectPic_JumpSmallSplash[] = INCBIN_U32("graphics/field_e
 const u32 gFieldEffectObjectPic_WaterSurfacing[] = INCBIN_U32("graphics/field_effects/pics/water_surfacing.4bpp");
 const u32 gFieldEffectObjectPic_TreeDisguise[] = INCBIN_U32("graphics/field_effects/pics/tree_disguise.4bpp");
 const u32 gFieldEffectObjectPic_MountainDisguise[] = INCBIN_U32("graphics/field_effects/pics/mountain_disguise.4bpp");
+const u16 gFieldEffectObjectPal_MountainDisguise[] = INCBIN_U16("graphics/field_effects/pics/mountain_disguise.gbapal"); //
 const u32 gFieldEffectObjectPic_SandDisguisePlaceholder[] = INCBIN_U32("graphics/field_effects/pics/sand_disguise_placeholder.4bpp");
 const u32 gFieldEffectObjectPic_HotSpringsWater[] = INCBIN_U32("graphics/field_effects/pics/hot_springs_water.4bpp");
 const u16 gFieldEffectPal_Ash[] = INCBIN_U16("graphics/field_effects/palettes/ash.gbapal");
@@ -461,3 +466,5 @@ const u32 gObjectEventPic_Lugia[] = INCBIN_U32("graphics/object_events/pics/poke
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
 const u32 gObjectEventPic_HoOh[] = INCBIN_U32("graphics/object_events/pics/pokemon/ho_oh.4bpp");
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
+
+const u16 gFieldEffectPal_Emotes[] = INCBIN_U16("graphics/field_effects/pics/emotes/emotions.gbapal");
