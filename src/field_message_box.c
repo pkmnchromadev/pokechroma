@@ -32,10 +32,9 @@ static void Task_DrawFieldMessage(u8 taskId)
     switch (task->tState)
     {
         case 0:
-            if (gMsgIsSignPost)
-                LoadSignPostWindowFrameGfx();
-            else
-                LoadMessageBoxAndBorderGfx();
+            // pokechroma: signposts use the custom message box system (LoadMsgBox picks sign/wood/metal
+            // art from msgbox's type/subtype), so always load the regular dialogue frame here.
+            LoadMessageBoxAndBorderGfx();
             task->tState++;
             break;
            task->tState++;

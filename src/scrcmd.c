@@ -2478,8 +2478,8 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
 
 bool8 ScrCmd_setmessagebox(struct ScriptContext * ctx)
 {
-    u8 type = ScriptReadByte(ctx);
-    u8 subtype = ScriptReadByte(ctx);
+    u8 type = ctx->data[1];     // set by msgbox (loadbyte 1, type)
+    u8 subtype = ctx->data[2];  // set by msgbox (loadbyte 2, subtype)
     
     SetMsgBox(type, subtype);
     return FALSE;

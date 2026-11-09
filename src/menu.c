@@ -49,7 +49,7 @@ struct Menu
 
 static u16 AddWindowParameterized(u8, u8, u8, u8, u8, u8, u16);
 static void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
-static void WindowFunc_DrawSignFrame(u8, u8, u8, u8, u8, u8);
+static void UNUSED WindowFunc_DrawSignFrame(u8, u8, u8, u8, u8, u8);
 static inline void *GetWindowFunc_DialogueFrame(void);
 static void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_ClearStdWindowAndFrame(u8, u8, u8, u8, u8, u8);
@@ -224,7 +224,7 @@ void LoadSignPostWindowFrameGfx(void)
     LoadUserWindowBorderGfx(0, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
 }
 
-static void WindowFunc_DrawSignFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
+static void UNUSED WindowFunc_DrawSignFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
 {
     FillBgTilemapBufferRect(bg,
             DLG_WINDOW_BASE_TILE_NUM + 0,
@@ -328,7 +328,7 @@ static void WindowFunc_DrawSignFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 wi
 
 static inline void *GetWindowFunc_DialogueFrame(void)
 {
-    return (gMsgIsSignPost ? WindowFunc_DrawSignFrame : WindowFunc_DrawDialogueFrame);
+    return WindowFunc_DrawDialogueFrame; // pokechroma: custom sign art uses the dialogue frame layout
 }
 
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram)

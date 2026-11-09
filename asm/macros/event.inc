@@ -1683,11 +1683,11 @@
 	.byte 0xc9
 	.endm
 
-	@ Sets the message box frame type and subtype (see MSGBOX_* in src/text_window.c) for the next message.
+	@ Applies the message box frame type/subtype that msgbox stored in script data registers 1 and 2
+	@ (msgbox does loadbyte 1, type / loadbyte 2, subtype). The arguments name those registers and are
+	@ not emitted; the handler (ScrCmd_setmessagebox) reads ctx->data[1] and ctx->data[2].
 	.macro setmessagebox type:req, subtype:req
 	.byte 0xca
-	.byte \type
-	.byte \subtype
 	.endm
 
 	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
