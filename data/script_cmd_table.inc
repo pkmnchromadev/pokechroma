@@ -3,7 +3,7 @@
 @ 'RunScriptImmediatelyUntilEffect'.
 	.ifndef SCRIPT_CMD_TABLE_ENTRY_MACRO
 	.set SCRIPT_CMD_TABLE_ENTRY_MACRO, 1
-	.macro script_cmd_table_entry constant:req value:req, requests_effects=0
+	.macro script_cmd_table_entry constant:req, value:req, requests_effects=0
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 	.if \requests_effects == 0
 	.4byte \value
@@ -225,7 +225,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_LOADHELP                      ScrCmd_nop1,                        requests_effects=1  @ 0xc8
 	script_cmd_table_entry SCR_OP_UNLOADHELP                    ScrCmd_nop1,                        requests_effects=1  @ 0xc9
 	script_cmd_table_entry SCR_OP_SETMESSAGEBOX                ScrCmd_setmessagebox                                     @ 0xca
-	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_nop1,                        requests_effects=1  @ 0xcb
+	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_normalmsg,                   requests_effects=1  @ 0xcb
 	script_cmd_table_entry SCR_OP_COMPAREHIDDENVAR              ScrCmd_nop1,                        requests_effects=1  @ 0xcc
 	script_cmd_table_entry SCR_OP_SETMODERNFATEFULENCOUNTER     ScrCmd_setmodernfatefulencounter,   requests_effects=1  @ 0xcd
 	script_cmd_table_entry SCR_OP_CHECKMODERNFATEFULENCOUNTER   ScrCmd_checkmodernfatefulencounter, requests_effects=1  @ 0xce
@@ -253,6 +253,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_DYNMULTIPUSH                  ScrCmd_dynmultipush,                requests_effects=1  @ 0xe4
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xe5
 	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xe6
+	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_signmsg,                     requests_effects=1  @ 0xe7 (pokechroma: 0xca is setmessagebox)
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::
