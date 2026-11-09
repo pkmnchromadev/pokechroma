@@ -39,6 +39,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE103_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
       "x": 71,
       "y": 11,
@@ -195,12 +196,8 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
+  "warp_events": [],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
