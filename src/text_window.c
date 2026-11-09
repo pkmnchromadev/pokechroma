@@ -20,6 +20,7 @@
 // message box loading
 static EWRAM_DATA u8 sMsgBoxType; // EWRAM is NOLOAD: an initializer was never applied; 0 falls to the same default branch as MSGBOX_DEFAULT
 static EWRAM_DATA u8 sMsgBoxSubType = MSGBOX_SUB_DEFAULT;
+static const u16 sStdTextWindow_Gfx[]  = INCBIN_U16("graphics/text_window/std.4bpp");
 
 const u8 gTextWindowFrame1_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");
 static const u8 sTextWindowFrame2_Gfx[] = INCBIN_U8("graphics/text_window/2.4bpp");
@@ -121,6 +122,12 @@ void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
    
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), currentMessageBox_Gfx, 0x1C0, destOffset);
     LoadPalette(currentMessageBox_Pal, palOffset, 0x20);
+}
+
+void LoadStdWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sStdTextWindow_Gfx, 0x120, destOffset);
+    LoadPalette(GetTextWindowPalette(3), palOffset, PLTT_SIZE_4BPP);
 }
 
 void LoadSignBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)

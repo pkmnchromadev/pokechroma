@@ -206,14 +206,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route103_EventScript_RouteSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 29,
-      "y": 16,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
     }
   ]
 }

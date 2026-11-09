@@ -187,9 +187,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "weather",
@@ -308,30 +306,6 @@
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL"
     },
     {
-      "type": "hidden_item",
-      "x": 28,
-      "y": 19,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    },
-    {
-      "type": "hidden_item",
-      "x": 15,
-      "y": 47,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    },
-    {
-      "type": "hidden_item",
-      "x": 21,
-      "y": 70,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    },
-    {
       "type": "sign",
       "x": 30,
       "y": 11,
@@ -346,30 +320,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "NULL"
-    },
-    {
-      "type": "hidden_item",
-      "x": 32,
-      "y": 41,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    },
-    {
-      "type": "hidden_item",
-      "x": 21,
-      "y": 60,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    },
-    {
-      "type": "hidden_item",
-      "x": 36,
-      "y": 54,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
     }
   ]
 }

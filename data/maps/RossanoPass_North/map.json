@@ -65,20 +65,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 17,
-      "y": 19,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_SKIP_GABBY_INTERVIEW"
-    }
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }
