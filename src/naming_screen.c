@@ -1859,7 +1859,18 @@ static void SaveInputText(void)
     {
         if (sNamingScreen->textBuffer[i] != CHAR_SPACE && sNamingScreen->textBuffer[i] != EOS)
         {
-            StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 1);
+            // If there is space, prepend fixed-case character
+            if (DECAP_ENABLED && !DECAP_NICKNAMES
+             && (sNamingScreen->templateNum == NAMING_SCREEN_PLAYER
+                || sNamingScreen->templateNum == NAMING_SCREEN_NICKNAME
+                || sNamingScreen->templateNum == NAMING_SCREEN_CAUGHT_MON)
+             && sNamingScreen->textBuffer[GetTextEntryPosition()] == EOS)
+            {
+                *sNamingScreen->destBuffer = CHAR_FIXED_CASE;
+                StringCopyN(sNamingScreen->destBuffer + 1, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 0);
+            }
+            else
+                StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 1);
             break;
         }
     }
@@ -2587,5 +2598,3 @@ static const struct SpritePalette sSpritePalettes[] =
     {gNamingScreenMenu_Pal[4], PALTAG_OK_BUTTON},
     {}
 };
-
-

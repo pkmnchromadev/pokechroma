@@ -9,16 +9,16 @@
 #include "scanline_effect.h"
 #include "task.h"
 #include "trig.h"
+#include "constants/battle_partner.h"
 #include "constants/trainers.h"
-
-extern const u8 gBattleAnimBgCntSet[];
-extern const u8 gBattleAnimBgCntGet[];
 
 static void BattleIntroSlide1(u8);
 static void BattleIntroSlide2(u8);
 static void BattleIntroSlide3(u8);
 static void BattleIntroSlideLink(u8);
 static void BattleIntroSlidePartner(u8);
+
+static const u8 sBattleAnimBgCnts[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
 
 static const TaskFunc sBattleIntroSlideFuncs[] =
 {
@@ -38,33 +38,33 @@ void SetAnimBgAttribute(u8 bgId, u8 attributeId, u8 value)
 {
     if (bgId < 4)
     {
-        u32 bgCnt = GetGpuReg(gBattleAnimBgCntSet[bgId]);
+        u32 bgCnt = GetGpuReg(sBattleAnimBgCnts[bgId]);
         switch (attributeId)
         {
         case BG_ANIM_SCREEN_SIZE:
-            ((struct BgCnt *)&bgCnt)->screenSize = value;
+            ((vBgCnt *)&bgCnt)->screenSize = value;
             break;
         case BG_ANIM_AREA_OVERFLOW_MODE:
-            ((struct BgCnt *)&bgCnt)->areaOverflowMode = value;
+            ((vBgCnt *)&bgCnt)->areaOverflowMode = value;
             break;
         case BG_ANIM_MOSAIC:
-            ((struct BgCnt *)&bgCnt)->mosaic = value;
+            ((vBgCnt *)&bgCnt)->mosaic = value;
             break;
         case BG_ANIM_CHAR_BASE_BLOCK:
-            ((struct BgCnt *)&bgCnt)->charBaseBlock = value;
+            ((vBgCnt *)&bgCnt)->charBaseBlock = value;
             break;
         case BG_ANIM_PRIORITY:
-            ((struct BgCnt *)&bgCnt)->priority = value;
+            ((vBgCnt *)&bgCnt)->priority = value;
             break;
         case BG_ANIM_PALETTES_MODE:
-            ((struct BgCnt *)&bgCnt)->palettes = value;
+            ((vBgCnt *)&bgCnt)->palettes = value;
             break;
         case BG_ANIM_SCREEN_BASE_BLOCK:
-            ((struct BgCnt *)&bgCnt)->screenBaseBlock = value;
+            ((vBgCnt *)&bgCnt)->screenBaseBlock = value;
             break;
         }
 
-        SetGpuReg(gBattleAnimBgCntSet[bgId], bgCnt);
+        SetGpuReg(sBattleAnimBgCnts[bgId], bgCnt);
     }
 }
 
@@ -74,23 +74,23 @@ int GetAnimBgAttribute(u8 bgId, u8 attributeId)
 
     if (bgId < 4)
     {
-        bgCnt = GetGpuReg(gBattleAnimBgCntGet[bgId]);
+        bgCnt = GetGpuReg(sBattleAnimBgCnts[bgId]);
         switch (attributeId)
         {
         case BG_ANIM_SCREEN_SIZE:
-            return ((struct BgCnt *)&bgCnt)->screenSize;
+            return ((vBgCnt *)&bgCnt)->screenSize;
         case BG_ANIM_AREA_OVERFLOW_MODE:
-            return ((struct BgCnt *)&bgCnt)->areaOverflowMode;
+            return ((vBgCnt *)&bgCnt)->areaOverflowMode;
         case BG_ANIM_MOSAIC:
-            return ((struct BgCnt *)&bgCnt)->mosaic;
+            return ((vBgCnt *)&bgCnt)->mosaic;
         case BG_ANIM_CHAR_BASE_BLOCK:
-            return ((struct BgCnt *)&bgCnt)->charBaseBlock;
+            return ((vBgCnt *)&bgCnt)->charBaseBlock;
         case BG_ANIM_PRIORITY:
-            return ((struct BgCnt *)&bgCnt)->priority;
+            return ((vBgCnt *)&bgCnt)->priority;
         case BG_ANIM_PALETTES_MODE:
-            return ((struct BgCnt *)&bgCnt)->palettes;
+            return ((vBgCnt *)&bgCnt)->palettes;
         case BG_ANIM_SCREEN_BASE_BLOCK:
-            return ((struct BgCnt *)&bgCnt)->screenBaseBlock;
+            return ((vBgCnt *)&bgCnt)->screenBaseBlock;
         }
     }
 
@@ -104,7 +104,7 @@ void HandleIntroSlide(u8 terrain)
 {
     u8 taskId;
 
-    if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && gPartnerTrainerId != TRAINER_STEVEN_PARTNER && gPartnerTrainerId < TRAINER_CUSTOM_PARTNER)
+    if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
     {
         taskId = CreateTask(BattleIntroSlidePartner, 0);
     }
@@ -586,7 +586,7 @@ void DrawBattlerOnBg(int bgId, u8 x, u8 y, u8 battlerPosition, u8 paletteId, u8 
 {
     int i, j;
     int offset = tilesOffset;
-    CpuCopy16(gMonSpritesGfxPtr->sprites.ptr[battlerPosition], tiles, BG_SCREEN_SIZE);
+    CpuCopy16(gMonSpritesGfxPtr->spritesGfx[battlerPosition], tiles, BG_SCREEN_SIZE);
     LoadBgTiles(bgId, tiles, 0x1000, tilesOffset);
     for (i = y; i < y + 8; i++)
     {
@@ -603,7 +603,7 @@ static void UNUSED DrawBattlerOnBgDMA(u8 x, u8 y, u8 battlerPosition, u8 arg3, u
 {
     int i, j, offset;
 
-    DmaCopy16(3, gMonSpritesGfxPtr->sprites.ptr[battlerPosition] + BG_SCREEN_SIZE * arg3, (void *)BG_SCREEN_ADDR(0) + arg5, BG_SCREEN_SIZE);
+    DmaCopy16(3, gMonSpritesGfxPtr->spritesGfx[battlerPosition] + BG_SCREEN_SIZE * arg3, (void *)BG_SCREEN_ADDR(0) + arg5, BG_SCREEN_SIZE);
     offset = (arg5 >> 5) - (arg7 << 9);
     for (i = y; i < y + 8; i++)
     {

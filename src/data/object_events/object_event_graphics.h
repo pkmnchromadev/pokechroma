@@ -1,7 +1,6 @@
 // const u16 gObjectEventPal_NAME[] = INCBIN_U16("graphics/object_events/pics/people/NAME.gbapal");
 
-const u32 gObjectEventPic_BrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/dyson/walking.4bpp");
-const u32 gObjectEventPic_BrendanRunning[] = INCBIN_U32("graphics/object_events/pics/people/dyson/running.4bpp");
+const u32 gObjectEventPic_BrendanNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/dyson/walking.4bpp", "graphics/object_events/pics/people/dyson/running.4bpp");
 const u16 gObjectEventPal_Brendan[] = INCBIN_U16("graphics/object_events/palettes/dyson.gbapal");
 const u32 gObjectEventPic_RubySapphireBrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/walking.4bpp");
 const u32 gObjectEventPic_RubySapphireBrendanRunning[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/running.4bpp");
@@ -34,8 +33,7 @@ const u32 gObjectEventPic_MayDecorating[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_BrendanUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/dyson/underwater.4bpp");
 const u32 gObjectEventPic_MayUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/clara/underwater.4bpp");
 const u16 gObjectEventPal_PlayerUnderwater[] = INCBIN_U16("graphics/object_events/palettes/player_underwater.gbapal");
-const u32 gObjectEventPic_MayNormal[] = INCBIN_U32("graphics/object_events/pics/people/clara/walking.4bpp");
-const u32 gObjectEventPic_MayRunning[] = INCBIN_U32("graphics/object_events/pics/people/clara/running.4bpp");
+const u32 gObjectEventPic_MayNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/clara/walking.4bpp", "graphics/object_events/pics/people/clara/running.4bpp");
 const u16 gObjectEventPal_May[] = INCBIN_U16("graphics/object_events/palettes/clara.gbapal");
 const u16 gObjectEventPal_MayReflection[] = INCBIN_U16("graphics/object_events/palettes/clara_reflection.gbapal");
 const u32 gObjectEventPic_RubySapphireMayNormal[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_may/walking.4bpp");

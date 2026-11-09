@@ -18,7 +18,7 @@
 #define MSGBOX_GETPOINTS 9
 
 // message box loading
-static EWRAM_DATA u8 sMsgBoxType = MSGBOX_DEFAULT;
+static EWRAM_DATA u8 sMsgBoxType; // EWRAM is NOLOAD: an initializer was never applied; 0 falls to the same default branch as MSGBOX_DEFAULT
 static EWRAM_DATA u8 sMsgBoxSubType = MSGBOX_SUB_DEFAULT;
 
 const u8 gTextWindowFrame1_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");

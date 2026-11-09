@@ -1799,6 +1799,16 @@ void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
     ObjectEventTurn(&gObjectEvents[playerAvatar->objectEventId], direction);
 }
 
+// Expansion stores berry tree palettes as fixed palette slots; dynamic OW palettes
+// (ExpoSeed) load by tag instead, so map each slot to its NPC palette tag.
+static const u16 sBerryTreePalSlotToTag[] =
+{
+    [2] = OBJ_EVENT_PAL_TAG_NPC_1,
+    [3] = OBJ_EVENT_PAL_TAG_NPC_2,
+    [4] = OBJ_EVENT_PAL_TAG_NPC_3,
+    [5] = OBJ_EVENT_PAL_TAG_NPC_4,
+};
+
 static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     u8 berryStage;
@@ -1816,10 +1826,10 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
         if (berryId > ITEM_TO_BERRY(LAST_BERRY_INDEX))
             berryId = 0;
 
-        LoadObjectEventPalette(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
-        ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTablePointers[berryId][berryStage]);
+        LoadObjectEventPalette(sBerryTreePalSlotToTag[gBerryTreePaletteSlotTablePointers[berryId][berryStage]]);
+        ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTable[berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sBerryTreePalSlotToTag[gBerryTreePaletteSlotTablePointers[berryId][berryStage]]);
         UpdatePaletteGammaType(sprite->oam.paletteNum, COLOR_MAP_CONTRAST);
         StartSpriteAnim(sprite, berryStage);
     }

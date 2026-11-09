@@ -414,8 +414,8 @@
 
 // Below are used by AnimTask_ShakeMon2 and AnimTask_SetGrayscaleOrOriginalPal
 #define ANIM_PLAYER_LEFT      (MAX_BATTLERS_COUNT + 0)
-#define ANIM_PLAYER_RIGHT     (MAX_BATTLERS_COUNT + 1)
-#define ANIM_OPPONENT_LEFT    (MAX_BATTLERS_COUNT + 2)
+#define ANIM_OPPONENT_LEFT    (MAX_BATTLERS_COUNT + 1)
+#define ANIM_PLAYER_RIGHT     (MAX_BATTLERS_COUNT + 2)
 #define ANIM_OPPONENT_RIGHT   (MAX_BATTLERS_COUNT + 3)
 #define ANIM_ATTACKER_FORCE   (MAX_BATTLERS_COUNT + 4)
 
@@ -563,6 +563,10 @@
 #define B_ANIM_RAINBOW                  42
 #define B_ANIM_SEA_OF_FIRE              43
 #define B_ANIM_SWAMP                    44
+#define B_ANIM_TRICK_ROOM               45
+#define B_ANIM_WONDER_ROOM              46
+#define B_ANIM_MAGIC_ROOM               47
+#define B_ANIM_TAILWIND                 48
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -642,5 +646,8 @@
 #define F_PAL_ADJACENT            (F_PAL_DEF_SIDE | F_PAL_ATK_PARTNER)
 #define F_PAL_ALL_BUT_DEF         (F_PAL_ATK_SIDE | F_PAL_DEF_PARTNER)
 #define F_PAL_ALL_BUT_ATK_PARTNER (F_PAL_ATTACKER | F_PAL_DEF_SIDE)
+// The below are only used by AnimTask_BlendBattleAnimPal to get battler sprite palettes by position rather than by role.
+// It's redundant with F_PAL_BATTLERS, because they're only ever used together to refer to all the battlers at once.
+#define F_PAL_BATTLERS_2  (1 << 7 | 1 << 8 | 1 << 9 | 1 << 10)
 
 #endif // GUARD_CONSTANTS_BATTLE_ANIM_H
