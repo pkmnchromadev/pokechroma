@@ -2082,156 +2082,167 @@ CanvasTown_EventScript_GetPokemonEvent::
 # 1048 "data/maps/LittlerootTown/scripts.pory"
 	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
 # 1049 "data/maps/LittlerootTown/scripts.pory"
-	msgbox CanvasTown_EventScript_GetPokemonEvent_Text_0, MSGBOX_AUTOCLOSE
+	setspeaker CanvasTown_EventScript_GetPokemonEvent_Text_0
 # 1050 "data/maps/LittlerootTown/scripts.pory"
-	applymovement 4, CanvasTown_Movement_GetPokemonEvent_0
-# 1051 "data/maps/LittlerootTown/scripts.pory"
-	waitmovement 0
-# 1052 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_EventScript_GetPokemonEvent_Text_1, MSGBOX_AUTOCLOSE
-# 1053 "data/maps/LittlerootTown/scripts.pory"
-	applymovement 4, CanvasTown_Movement_GetPokemonEvent_1
-# 1054 "data/maps/LittlerootTown/scripts.pory"
+# 1051 "data/maps/LittlerootTown/scripts.pory"
+	applymovement 4, CanvasTown_Movement_GetPokemonEvent_0
+# 1052 "data/maps/LittlerootTown/scripts.pory"
 	waitmovement 0
+# 1053 "data/maps/LittlerootTown/scripts.pory"
+	setspeaker CanvasTown_EventScript_GetPokemonEvent_Text_0
+# 1054 "data/maps/LittlerootTown/scripts.pory"
+	msgbox CanvasTown_EventScript_GetPokemonEvent_Text_2, MSGBOX_AUTOCLOSE
 # 1055 "data/maps/LittlerootTown/scripts.pory"
-	setobjectxyperm 4, 4, 17
+	applymovement 4, CanvasTown_Movement_GetPokemonEvent_1
 # 1056 "data/maps/LittlerootTown/scripts.pory"
-	fadenewbgm MUS_LITTLEROOT
+	waitmovement 0
 # 1057 "data/maps/LittlerootTown/scripts.pory"
-	setvar VAR_CANVAS_TOWN_STATE, 1
+	setobjectxyperm 4, 4, 17
 # 1058 "data/maps/LittlerootTown/scripts.pory"
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	fadenewbgm MUS_LITTLEROOT
+# 1059 "data/maps/LittlerootTown/scripts.pory"
+	setvar VAR_CANVAS_TOWN_STATE, 1
 # 1060 "data/maps/LittlerootTown/scripts.pory"
-	removeobject 4, MAP_LITTLEROOT_TOWN
-# 1061 "data/maps/LittlerootTown/scripts.pory"
-	setflag FLAG_CANVAS_TOWN_SKIP
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
 # 1062 "data/maps/LittlerootTown/scripts.pory"
+	removeobject 4, MAP_LITTLEROOT_TOWN
+# 1063 "data/maps/LittlerootTown/scripts.pory"
+	setflag FLAG_CANVAS_TOWN_SKIP
+# 1064 "data/maps/LittlerootTown/scripts.pory"
 	releaseall
 	end
 
 
-# 1066 "data/maps/LittlerootTown/scripts.pory"
-CanvasTown_Movement_GetPokemonEvent_0:
-# 1067 "data/maps/LittlerootTown/scripts.pory"
-	walk_right
-# 1067 "data/maps/LittlerootTown/scripts.pory"
-	walk_right
-# 1067 "data/maps/LittlerootTown/scripts.pory"
-	walk_right
 # 1068 "data/maps/LittlerootTown/scripts.pory"
+CanvasTown_Movement_GetPokemonEvent_0:
+# 1069 "data/maps/LittlerootTown/scripts.pory"
+	walk_right
+# 1069 "data/maps/LittlerootTown/scripts.pory"
+	walk_right
+# 1069 "data/maps/LittlerootTown/scripts.pory"
+	walk_right
+# 1070 "data/maps/LittlerootTown/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 1070 "data/maps/LittlerootTown/scripts.pory"
+# 1072 "data/maps/LittlerootTown/scripts.pory"
 CanvasTown_Movement_GetPokemonEvent_1:
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
-# 1071 "data/maps/LittlerootTown/scripts.pory"
+# 1073 "data/maps/LittlerootTown/scripts.pory"
 	walk_fast_left
 	step_end
 
 CanvasTown_Sign_TownSign::
-# 1076 "data/maps/LittlerootTown/scripts.pory"
+# 1078 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Sign_TownSign_Text_0, MSGBOX_SIGN, MSGBOX_SUB_DEFAULT
 	end
 
 
 CanvasTown_Sign_RivalsHouse::
-# 1080 "data/maps/LittlerootTown/scripts.pory"
+# 1082 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Sign_RivalsHouse_Text_0, MSGBOX_SIGN, MSGBOX_SUB_METAL
 	end
 
 
 CanvasTown_Sign_PlayersHouse::
-# 1084 "data/maps/LittlerootTown/scripts.pory"
+# 1086 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Sign_PlayersHouse_Text_0, MSGBOX_SIGN, MSGBOX_SUB_METAL
 	end
 
 
 CanvasTown_Object_FatMan::
-# 1090 "data/maps/LittlerootTown/scripts.pory"
+# 1092 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Object_FatMan_Text_0, MSGBOX_NPC
 	end
 
 
 CanvasTown_Object_LittleGirl::
-# 1094 "data/maps/LittlerootTown/scripts.pory"
+# 1096 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Object_LittleGirl_Text_0, MSGBOX_NPC
 	end
 
 
 CanvasTown_Object_Boy::
-# 1098 "data/maps/LittlerootTown/scripts.pory"
+# 1100 "data/maps/LittlerootTown/scripts.pory"
 	msgbox CanvasTown_Object_Boy_Text_0, MSGBOX_NPC
 	end
 
 
 CanvasTown_EventScript_GetPokemonEvent_Text_0:
 # 1049 "data/maps/LittlerootTown/scripts.pory"
-	.string "Skip: {COLOR BLUE}Ah, there you are slowpoke!$"
+	.string "Skip$"
 
 CanvasTown_EventScript_GetPokemonEvent_Text_1:
-# 1052 "data/maps/LittlerootTown/scripts.pory"
-	.string "Skip: {COLOR BLUE}{PLAYER}...\n"
+# 1050 "data/maps/LittlerootTown/scripts.pory"
+	.string "Hey, look who finally decided to roll\n"
+	.string "outta bed!$"
+
+CanvasTown_EventScript_GetPokemonEvent_Text_2:
+# 1054 "data/maps/LittlerootTown/scripts.pory"
+	.string "{PLAYER}...\n"
 	.string "It's finally time!\p"
 	.string "We have the opportunity to work with\n"
-	.string "the famous {COLOR GREEN}Professor Cypress{COLOR BLUE}!\p"
+	.string "the famous {COLOR GREEN}Professor Cypress{COLOR DARK_GREY}!\p"
 	.string "Maybe she'll see my potential as a\n"
 	.string "Pokémon Trainer!\p"
 	.string "Hmmm{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\p"
+	.string "Wait!\p"
 	.string "I should catch a wild Pokémon to\n"
 	.string "impress the Professor!\p"
 	.string "Then she'll definitely make me one of\n"
 	.string "her assistants!\p"
-	.string "{COLOR DARK_GREY}Skip: {COLOR BLUE}I'm gonna find her first!\n"
+	.string "I'm gonna find her first!\n"
 	.string "See ya slowpoke!$"
 
 CanvasTown_Sign_TownSign_Text_0:
-# 1076 "data/maps/LittlerootTown/scripts.pory"
-	.string "{COLOR LIGHT_BLUE}Canvas Town{COLOR DARK_GREY}\n"
+# 1078 "data/maps/LittlerootTown/scripts.pory"
+	.string "{COLOR LIGHT_BLUE}- Canvas Town -{COLOR DARK_GREY}\n"
 	.string "{FONT_SMALL}“A Blank Slate”$"
 
 CanvasTown_Sign_RivalsHouse_Text_0:
-# 1080 "data/maps/LittlerootTown/scripts.pory"
+# 1082 "data/maps/LittlerootTown/scripts.pory"
 	.string "Skip's House$"
 
 CanvasTown_Sign_PlayersHouse_Text_0:
-# 1084 "data/maps/LittlerootTown/scripts.pory"
+# 1086 "data/maps/LittlerootTown/scripts.pory"
 	.string "{PLAYER}'s House$"
 
 CanvasTown_Object_FatMan_Text_0:
-# 1090 "data/maps/LittlerootTown/scripts.pory"
-	.string "{COLOR BLUE}Technology is incredible!\p"
-	.string "Did you know the {COLOR GREEN}PokéGear{COLOR BLUE} has a map\n"
-	.string "function to see {COLOR GREEN}Ryoko{COLOR BLUE}?\p"
+# 1092 "data/maps/LittlerootTown/scripts.pory"
+	.string "Did you know the {COLOR GREEN}PokéGear{COLOR DARK_GREY} has a map\n"
+	.string "function to see {COLOR GREEN}Ryoko{COLOR DARK_GREY}?\p"
 	.string "You can also use it to call contacts\n"
-	.string "from anywhere!$"
+	.string "from anywhere!\p"
+	.string "Technology is incredible!$"
 
 CanvasTown_Object_LittleGirl_Text_0:
-# 1094 "data/maps/LittlerootTown/scripts.pory"
-	.string "{COLOR RED}You should be careful when exploring.\p"
-	.string "Wild Pokémon can attack you in the tall\n"
-	.string "grass!$"
+# 1096 "data/maps/LittlerootTown/scripts.pory"
+	.string "My mommy told me that it's dangerous to\n"
+	.string "go out exploring.\p"
+	.string "She said the wild Pokémon can be scary.\p"
+	.string "But some of them are really cute!$"
 
 CanvasTown_Object_Boy_Text_0:
-# 1098 "data/maps/LittlerootTown/scripts.pory"
-	.string "{COLOR BLUE}I love tending to my farm.\n"
-	.string "I prefer the quiet life of {COLOR GREEN}Canvas Town{COLOR BLUE}.$"
+# 1100 "data/maps/LittlerootTown/scripts.pory"
+	.string "I love tending to my farm.\n"
+	.string "I prefer the quiet life of {COLOR GREEN}Canvas Town{COLOR DARK_GREY}.$"

@@ -191,7 +191,7 @@
     {
       "id": "LAYOUT_ROUTE102",
       "name": "Route102_Layout",
-      "width": 54,
+      "width": 70,
       "height": 38,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_RossanoTown",
@@ -4856,7 +4856,7 @@
       "id": "LAYOUT_ROSSANO_PASS_NORTH",
       "name": "RossanoPass_North_Layout",
       "width": 24,
-      "height": 22,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_TrevisoCity",
       "border_filepath": "data/layouts/RossanoPass_North/border.bin",

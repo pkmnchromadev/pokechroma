@@ -2358,7 +2358,8 @@ static void MoveSelectionDisplaySplitIcon(u32 battler){
 	int icon;
 
 	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
-	icon = GetBattleMoveCategory(moveInfo->moves[gMoveSelectionCursor[battler]]);
+	// Expansion added DAMAGE_CATEGORY_NONE = 0; the icon sheet starts at physical.
+	icon = GetBattleMoveCategory(moveInfo->moves[gMoveSelectionCursor[battler]]) - DAMAGE_CATEGORY_PHYSICAL;
 	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
 	BlitBitmapToWindow(B_WIN_DUMMY, sSplitIcons_Gfx + 0x80 * icon, 0, 0, 16, 16);
 	PutWindowTilemap(B_WIN_DUMMY);

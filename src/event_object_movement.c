@@ -530,6 +530,22 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
 #define OBJ_EVENT_PAL_PUSHABLE_BOULDER            0x1196
 #define OBJ_EVENT_PAL_ITEM_BALL                   0x1197
 #define FLD_EFF_PAL_MOUNTAIN_DISGUISE             0x1198
+#define OBJ_EVENT_PAL_ELITE4_PYXIS                0x1199
+#define OBJ_EVENT_PAL_ELITE4_HAILEY               0x119A
+#define OBJ_EVENT_PAL_ELITE4_RAVEN                0x119B
+#define OBJ_EVENT_PAL_ELITE4_DAPHNE               0x119C
+#define OBJ_EVENT_PAL_PROTO_ADMIN_HAUMEA          0x119D
+#define OBJ_EVENT_PAL_PROTO_ADMIN_ERIS            0x119E
+#define OBJ_EVENT_PAL_PROTO_ADMIN_CERES           0x119F
+#define OBJ_EVENT_PAL_PROTO_LEADER_APOLLO         0x11A0
+#define OBJ_EVENT_PAL_GYM_LILITH                  0x11A1
+#define OBJ_EVENT_PAL_GYM_LORRAINE                0x11A2
+#define OBJ_EVENT_PAL_GYM_BRUCE                   0x11A3
+#define OBJ_EVENT_PAL_GYM_EDGAR                   0x11A4
+#define OBJ_EVENT_PAL_GYM_AIREN                   0x11A5
+#define OBJ_EVENT_PAL_GYM_BERNIE                  0x11A6
+#define OBJ_EVENT_PAL_GYM_BRAIAN                  0x11A7
+#define OBJ_EVENT_PAL_GYM_JULES                   0x11A8
 // end
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -613,6 +629,22 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Man3, OBJ_EVENT_PAL_MAN_3},
     {gObjectEventPal_Man4, OBJ_EVENT_PAL_MAN_4},
     {gObjectEventPal_Man5, OBJ_EVENT_PAL_MAN_5},
+    {gObjectEventPal_Elite4Pyxis, OBJ_EVENT_PAL_ELITE4_PYXIS},
+    {gObjectEventPal_Elite4Hailey, OBJ_EVENT_PAL_ELITE4_HAILEY},
+    {gObjectEventPal_Elite4Raven, OBJ_EVENT_PAL_ELITE4_RAVEN},
+    {gObjectEventPal_Elite4Daphne, OBJ_EVENT_PAL_ELITE4_DAPHNE},
+    {gObjectEventPal_ProtoAdminHaumea, OBJ_EVENT_PAL_PROTO_ADMIN_HAUMEA},
+    {gObjectEventPal_ProtoAdminEris, OBJ_EVENT_PAL_PROTO_ADMIN_ERIS},
+    {gObjectEventPal_ProtoAdminCeres, OBJ_EVENT_PAL_PROTO_ADMIN_CERES},
+    {gObjectEventPal_ProtoLeaderApollo, OBJ_EVENT_PAL_PROTO_LEADER_APOLLO},
+    {gObjectEventPal_GymLilith, OBJ_EVENT_PAL_GYM_LILITH},
+    {gObjectEventPal_GymLorraine, OBJ_EVENT_PAL_GYM_LORRAINE},
+    {gObjectEventPal_GymBruce, OBJ_EVENT_PAL_GYM_BRUCE},
+    {gObjectEventPal_GymEdgar, OBJ_EVENT_PAL_GYM_EDGAR},
+    {gObjectEventPal_GymAiren, OBJ_EVENT_PAL_GYM_AIREN},
+    {gObjectEventPal_GymBernie, OBJ_EVENT_PAL_GYM_BERNIE},
+    {gObjectEventPal_GymBraian, OBJ_EVENT_PAL_GYM_BRAIAN},
+    {gObjectEventPal_GymJules, OBJ_EVENT_PAL_GYM_JULES},
     {gObjectEventPal_BreakableRock, OBJ_EVENT_PAL_BREAKABLE_ROCK},
     {gObjectEventPal_CuttableTree, OBJ_EVENT_PAL_CUTTABLE_TREE},
     {gObjectEventPal_PushableBoulder, OBJ_EVENT_PAL_PUSHABLE_BOULDER},

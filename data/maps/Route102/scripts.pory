@@ -112,16 +112,16 @@ Route102_Text_RouteSignPetalburg:
 `
 
 script RossanoFoothills_Sign_IgnisCave {
-    msgbox(format("{COLOR LIGHT_GREEN}Ignis Cave"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+    msgbox(format("{COLOR LIGHT_GREEN}- Ignis Cave -\n{FONT_SMALL}Inactive Lava Chambers Ahead"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
 	end
 }
 script RossanoFoothills_Sign_RouteSign {
-	msgbox(format("{COLOR LIGHT_GREEN}Rossano Foothills\p{COLOR DARK_GREY}{UP_ARROW} Treviso City\N{DOWN_ARROW} Ignis Cave"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+	msgbox(format("{COLOR LIGHT_GREEN}- Rossano Foothills -\p{COLOR DARK_GREY}{UP_ARROW} Treviso City\N{DOWN_ARROW} Ignis Cave"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
 	end	
 }
 
 script RossanoFoothills_Object_Boy {
-	msgbox(format("{COLOR BLUE}You can find all sorts of Pokémon between cities and towns.\p{COLOR GREEN}Ryoko{COLOR BLUE} has a vast diversity between Pokémon in {COLOR GREEN}West Ryoko{COLOR BLUE} and {COLOR GREEN}East Ryoko{COLOR BLUE}."), MSGBOX_NPC)
+	msgbox(format("You can find all sorts of Pokémon between cities and towns.\p{COLOR GREEN}Ryoko{COLOR DARK_GREY} has a vast diversity between Pokémon in {COLOR GREEN}West Ryoko{COLOR DARK_GREY} and {COLOR GREEN}East Ryoko{COLOR DARK_GREY}."), MSGBOX_NPC)
 	end
 }
 script RossanoFoothills_ItemBall_HyperPotion {
@@ -130,17 +130,17 @@ script RossanoFoothills_ItemBall_HyperPotion {
 }
 
 script RossanoFoothills_Trainer_BirdKeeper {
-	trainerbattle_single(TRAINER_BIRDKEEPER_CICERO, format("{COLOR BLUE}Me and my birds have the highground!"), format("It's over!\NThe highground wasn't enough!"))
-	msgbox(format("{COLOR BLUE}If a Pokémon has wings, it's my favorite!"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_BIRDKEEPER_CICERO, format("Caw!{PAUSE 16}\NCaw!\pFeathered friends, we have some prey!"), format("Caaaw!"))
+	msgbox(format("Caw!{PAUSE 16}\NCaw!\pWhat do you think of my bird call?"), MSGBOX_NPC)
 	end
 }
 script RossanoFoothills_Trainer_BugCatcher {
-	trainerbattle_single(TRAINER_BUGCATCHER_GABRIEL, format("{COLOR BLUE}I love looking for little critters in the wild."), format("Always more critters to find!"))
-	msgbox(format("{COLOR BLUE}You can find critters all around Ryoko, in all sorts and sizes!"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_BUGCATCHER_GABRIEL, format("Have you found any rare bugs?"), format("Always more critters to find!"))
+	msgbox(format("You can find critters all around Ryoko, in all sorts and sizes!"), MSGBOX_NPC)
 	end
 }
 script RossanoFoothills_Trainer_Lass {
-	trainerbattle_single(TRAINER_LASS_ELENA, format("{COLOR RED}Hey!\NYou looked at me!"), format("Okay...\NI saw you first..."))
-	msgbox(format("{COLOR RED}When a trainer sees you, be ready to battle!"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_LASS_ELENA, format("Hey!\NYou looked at me funny!"), format("Okay...\NI saw you first..."))
+	msgbox(format("When a trainer sees you, be ready to battle!"), MSGBOX_NPC)
 	end
 }

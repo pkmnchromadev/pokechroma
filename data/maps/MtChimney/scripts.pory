@@ -853,12 +853,12 @@ mapscripts MtChimney_MapScripts {
 }
 
 script IgnisCave1F_Trainer_Hiker {
-    trainerbattle_single(TRAINER_HIKER_FERNANDO, format("{COLOR BLUE}Ho!\NSpelunking is my favorite!"), MSGBOX_NPC)
-    msgbox(format("{COLOR BLUE}This cave here is used as a passage way between {COLOR GREEN}Rossano Town{COLOR BLUE} and {COLOR GREEN}Treviso City{COLOR BLUE}."), MSGBOX_NPC)
+    trainerbattle_single(TRAINER_HIKER_FERNANDO, format("Ho!\NSpelunking is my favorite!"), format("Phew...\nIt's a little toasty in here!"))
+    msgbox(format("This cave here is used as a passage way between {COLOR GREEN}Rossano Town{COLOR DARK_GREY} and {COLOR GREEN}Treviso City{COLOR DARK_GREY}."), MSGBOX_NPC)
     end
 }
 script IgnisCave1F_Object_Engineer {
-    msgbox(format("{COLOR BLUE}I'm digging for fossils!\pCome back later, maybe I'll have some relics to share!"), MSGBOX_NPC)
+    msgbox(format("I'm digging for fossils!\pCome back later, maybe I'll have some relics to share!"), MSGBOX_NPC)
     end
 }
 script IgnisCave1F_ItemBall_EscapeRope {

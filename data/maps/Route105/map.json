@@ -3,7 +3,6 @@
   "name": "Route105",
   "layout": "LAYOUT_ROUTE105",
   "music": "MUS_DESERT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_105",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -322,5 +321,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "NULL"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

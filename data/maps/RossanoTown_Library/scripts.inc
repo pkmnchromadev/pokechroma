@@ -130,149 +130,160 @@ RossanoLibrary_Object_GruntTakesBook::
 # 79 "data/maps/RossanoTown_Library/scripts.pory"
 	waitmovement 0
 # 80 "data/maps/RossanoTown_Library/scripts.pory"
-	msgbox RossanoLibrary_Object_GruntTakesBook_Text_0, MSGBOX_AUTOCLOSE
+	setspeaker RossanoLibrary_Object_GruntTakesBook_Text_0
 # 81 "data/maps/RossanoTown_Library/scripts.pory"
-	delay 8
-# 82 "data/maps/RossanoTown_Library/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceUp
-# 83 "data/maps/RossanoTown_Library/scripts.pory"
-	waitmovement 0
-# 84 "data/maps/RossanoTown_Library/scripts.pory"
-	delay 12
-# 85 "data/maps/RossanoTown_Library/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceUp
-# 86 "data/maps/RossanoTown_Library/scripts.pory"
-	waitmovement 0
-# 87 "data/maps/RossanoTown_Library/scripts.pory"
 	msgbox RossanoLibrary_Object_GruntTakesBook_Text_1, MSGBOX_AUTOCLOSE
-# 88 "data/maps/RossanoTown_Library/scripts.pory"
+# 82 "data/maps/RossanoTown_Library/scripts.pory"
 	delay 8
-# 89 "data/maps/RossanoTown_Library/scripts.pory"
+# 83 "data/maps/RossanoTown_Library/scripts.pory"
 	applymovement 8, Common_Movement_WalkInPlaceUp
-# 90 "data/maps/RossanoTown_Library/scripts.pory"
+# 84 "data/maps/RossanoTown_Library/scripts.pory"
 	waitmovement 0
-# 91 "data/maps/RossanoTown_Library/scripts.pory"
+# 85 "data/maps/RossanoTown_Library/scripts.pory"
+	delay 12
+# 86 "data/maps/RossanoTown_Library/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceUp
+# 87 "data/maps/RossanoTown_Library/scripts.pory"
+	waitmovement 0
+# 88 "data/maps/RossanoTown_Library/scripts.pory"
+	setspeaker RossanoLibrary_Object_GruntTakesBook_Text_0
+# 89 "data/maps/RossanoTown_Library/scripts.pory"
 	msgbox RossanoLibrary_Object_GruntTakesBook_Text_2, MSGBOX_AUTOCLOSE
+# 90 "data/maps/RossanoTown_Library/scripts.pory"
+	delay 8
+# 91 "data/maps/RossanoTown_Library/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceUp
 # 92 "data/maps/RossanoTown_Library/scripts.pory"
-	delay 8
-# 93 "data/maps/RossanoTown_Library/scripts.pory"
-	faceplayer
-# 94 "data/maps/RossanoTown_Library/scripts.pory"
-	delay 8
-# 95 "data/maps/RossanoTown_Library/scripts.pory"
-	applymovement 8, Common_Movement_ExclamationMark
-# 96 "data/maps/RossanoTown_Library/scripts.pory"
 	waitmovement 0
-# 97 "data/maps/RossanoTown_Library/scripts.pory"
+# 93 "data/maps/RossanoTown_Library/scripts.pory"
+	setspeaker RossanoLibrary_Object_GruntTakesBook_Text_0
+# 94 "data/maps/RossanoTown_Library/scripts.pory"
 	msgbox RossanoLibrary_Object_GruntTakesBook_Text_3, MSGBOX_AUTOCLOSE
+# 95 "data/maps/RossanoTown_Library/scripts.pory"
+	delay 8
+# 96 "data/maps/RossanoTown_Library/scripts.pory"
+	faceplayer
+# 97 "data/maps/RossanoTown_Library/scripts.pory"
+	delay 8
 # 98 "data/maps/RossanoTown_Library/scripts.pory"
-	trainerbattle_no_intro TRAINER_PROTO_GRUNT_1, RossanoLibrary_Object_GruntTakesBook_Text_4
+	applymovement 8, Common_Movement_ExclamationMark
 # 99 "data/maps/RossanoTown_Library/scripts.pory"
-	msgbox RossanoLibrary_Object_GruntTakesBook_Text_5, MSGBOX_AUTOCLOSE
+	waitmovement 0
 # 100 "data/maps/RossanoTown_Library/scripts.pory"
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	setspeaker RossanoLibrary_Object_GruntTakesBook_Text_0
 # 101 "data/maps/RossanoTown_Library/scripts.pory"
+	msgbox RossanoLibrary_Object_GruntTakesBook_Text_4, MSGBOX_AUTOCLOSE
+# 102 "data/maps/RossanoTown_Library/scripts.pory"
+	trainerbattle_no_intro TRAINER_PROTO_GRUNT_1, RossanoLibrary_Object_GruntTakesBook_Text_5
+# 103 "data/maps/RossanoTown_Library/scripts.pory"
+	setspeaker RossanoLibrary_Object_GruntTakesBook_Text_0
+# 104 "data/maps/RossanoTown_Library/scripts.pory"
+	msgbox RossanoLibrary_Object_GruntTakesBook_Text_6, MSGBOX_AUTOCLOSE
+# 105 "data/maps/RossanoTown_Library/scripts.pory"
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+# 106 "data/maps/RossanoTown_Library/scripts.pory"
 	compare VAR_TEMP_1, 4
 	goto_if_eq RossanoLibrary_Object_GruntTakesBook_2
-# 105 "data/maps/RossanoTown_Library/scripts.pory"
+# 110 "data/maps/RossanoTown_Library/scripts.pory"
 	applymovement 8, RossanoLibrary_Movement_GruntTakesBook_1
-# 106 "data/maps/RossanoTown_Library/scripts.pory"
+# 111 "data/maps/RossanoTown_Library/scripts.pory"
 	waitmovement 0
 RossanoLibrary_Object_GruntTakesBook_1:
-# 108 "data/maps/RossanoTown_Library/scripts.pory"
-	playse SE_EXIT
-# 109 "data/maps/RossanoTown_Library/scripts.pory"
-	removeobject 8
-# 110 "data/maps/RossanoTown_Library/scripts.pory"
-	setflag FLAG_ROSSANO_LIBRARY_GRUNT
-# 111 "data/maps/RossanoTown_Library/scripts.pory"
-	waitse
-# 112 "data/maps/RossanoTown_Library/scripts.pory"
-	setvar VAR_ROSSANO_TOWN_STATE, 1
 # 113 "data/maps/RossanoTown_Library/scripts.pory"
+	playse SE_EXIT
+# 114 "data/maps/RossanoTown_Library/scripts.pory"
+	removeobject 8
+# 115 "data/maps/RossanoTown_Library/scripts.pory"
+	setflag FLAG_ROSSANO_LIBRARY_GRUNT
+# 116 "data/maps/RossanoTown_Library/scripts.pory"
+	waitse
+# 117 "data/maps/RossanoTown_Library/scripts.pory"
+	setvar VAR_ROSSANO_TOWN_STATE, 1
+# 118 "data/maps/RossanoTown_Library/scripts.pory"
 	releaseall
 	end
 
 RossanoLibrary_Object_GruntTakesBook_2:
-# 102 "data/maps/RossanoTown_Library/scripts.pory"
+# 107 "data/maps/RossanoTown_Library/scripts.pory"
 	applymovement 8, RossanoLibrary_Movement_GruntTakesBook_0
-# 103 "data/maps/RossanoTown_Library/scripts.pory"
+# 108 "data/maps/RossanoTown_Library/scripts.pory"
 	waitmovement 0
 	goto RossanoLibrary_Object_GruntTakesBook_1
 
 
-# 116 "data/maps/RossanoTown_Library/scripts.pory"
-RossanoLibrary_Movement_GruntTakesBook_0:
-# 117 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 118 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_down
-# 118 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_down
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 119 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_right
-# 120 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_up
-# 120 "data/maps/RossanoTown_Library/scripts.pory"
-	walk_fast_up
 # 121 "data/maps/RossanoTown_Library/scripts.pory"
+RossanoLibrary_Movement_GruntTakesBook_0:
+# 122 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 123 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_down
+# 123 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_down
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 124 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_right
+# 125 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_up
+# 125 "data/maps/RossanoTown_Library/scripts.pory"
+	walk_fast_up
+# 126 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 123 "data/maps/RossanoTown_Library/scripts.pory"
+# 128 "data/maps/RossanoTown_Library/scripts.pory"
 RossanoLibrary_Movement_GruntTakesBook_1:
-# 124 "data/maps/RossanoTown_Library/scripts.pory"
+# 129 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_down
-# 124 "data/maps/RossanoTown_Library/scripts.pory"
+# 129 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_down
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 125 "data/maps/RossanoTown_Library/scripts.pory"
+# 130 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_right
-# 126 "data/maps/RossanoTown_Library/scripts.pory"
+# 131 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_up
-# 126 "data/maps/RossanoTown_Library/scripts.pory"
+# 131 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_fast_up
-# 127 "data/maps/RossanoTown_Library/scripts.pory"
+# 132 "data/maps/RossanoTown_Library/scripts.pory"
 	walk_in_place_left
 	step_end
 
 RossanoLibrary_Object_Librarian_Text_0:
 # 15 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR RED}Welcome to the {COLOR GREEN}Rossano Library{COLOR RED}.\p"
+	.string "Hello sweetie!\p"
+	.string "Welcome to the {COLOR GREEN}Rossano Public Library{COLOR DARK_GREY}.\p"
 	.string "Please feel free to indulge yourself in\n"
 	.string "our fine selection of books!\p"
 	.string "And please stay quiet.$"
 
 RossanoLibrary_Object_Artist_Text_0:
 # 21 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR RED}I'm trying to find a book about modern\n"
+	.string "I'm trying to find a book about modern\n"
 	.string "art...\p"
 	.string "Maybe I should go to a museum.$"
 
 RossanoLibrary_Object_Maniac_Text_0:
 # 29 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR BLUE}Have you ever heard of\n"
+	.string "Have you ever heard of\n"
 	.string "psuedo-science?\p"
 	.string "It's fascinating!\p"
 	.string "I wonder why other scientists don't\n"
@@ -281,22 +292,22 @@ RossanoLibrary_Object_Maniac_Text_0:
 
 RossanoLibrary_Object_SchoolKid_Text_0:
 # 37 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR BLUE}I come here to study for school.\p"
+	.string "I come here to study for school.\p"
 	.string "It's a lot quieter than my home.$"
 
 RossanoLibrary_Object_LittleBoy_Text_0:
 # 45 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR BLUE}I can't reach the top shelf!$"
+	.string "I can't reach the top shelf!$"
 
 RossanoLibrary_Object_Girl_Text_0:
 # 53 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR RED}Horticulture books are abundant here!\p"
+	.string "Horticulture books are abundant here!\p"
 	.string "I love learning ways to mantain my\n"
 	.string "garden.$"
 
 RossanoLibrary_Object_Woman_Text_0:
 # 61 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "{COLOR RED}I can't focus with this guy across the\n"
+	.string "I can't focus with this guy across the\n"
 	.string "table...\p"
 	.string "But the kid downstairs is super\n"
 	.string "annoying.\p"
@@ -304,44 +315,49 @@ RossanoLibrary_Object_Woman_Text_0:
 
 RossanoLibrary_Object_Chad_Text_0:
 # 69 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "Chad: {COLOR BLUE}I once read that the Unova\n"
-	.string "region's Subway system truly tests\l"
-	.string "your battle skills.\p"
+	.string "I once read that the Unova region's\n"
+	.string "Subway system truly tests your battle\l"
+	.string "skills.\p"
 	.string "Perhaps I will visit one day..$"
 
 RossanoLibrary_Object_GruntTakesBook_Text_0:
 # 80 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "???: {COLOR BLUE}{FONT_SMALL}Which book is it...$"
+	.string "???$"
 
 RossanoLibrary_Object_GruntTakesBook_Text_1:
-# 87 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "???: {COLOR BLUE}{FONT_SMALL}All of these books are dusty!$"
+# 81 "data/maps/RossanoTown_Library/scripts.pory"
+	.string "{FONT_SMALL}Which book is it...$"
 
 RossanoLibrary_Object_GruntTakesBook_Text_2:
-# 91 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "???: {COLOR BLUE}Ah-ha!\n"
-	.string "Found it!$"
+# 89 "data/maps/RossanoTown_Library/scripts.pory"
+	.string "{FONT_SMALL}Gah!\p"
+	.string "All of these books are dusty!$"
 
 RossanoLibrary_Object_GruntTakesBook_Text_3:
-# 97 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "???: {COLOR BLUE}H{PAUSE 5}-{PAUSE 10}Hey kid!\n"
-	.string "Nothin' to see here!\p"
-	.string "I'm not stealin' anything!\p"
-	.string "{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\n"
-	.string "{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\p"
-	.string "Okay!\n"
-	.string "Fine!\p"
-	.string "You caught me stealin'!\p"
-	.string "But you're not tellin' anyone!$"
+# 94 "data/maps/RossanoTown_Library/scripts.pory"
+	.string "Ah-ha!\n"
+	.string "Found it!$"
 
 RossanoLibrary_Object_GruntTakesBook_Text_4:
-# 98 "data/maps/RossanoTown_Library/scripts.pory"
+# 101 "data/maps/RossanoTown_Library/scripts.pory"
+	.string "H-{PAUSE 16}Hey kid!\n"
+	.string "N-{PAUSE 16}Nothin' to see here!\p"
+	.string "I'm not stealin' anything!\p"
+	.string "{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.\n"
+	.string "{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.\p"
+	.string "Okay!\n"
+	.string "Fine!\p"
+	.string "You caught me!\p"
+	.string "But you're not tellin' anyone!$"
+
+RossanoLibrary_Object_GruntTakesBook_Text_5:
+# 102 "data/maps/RossanoTown_Library/scripts.pory"
 	.string "Drats!\p"
 	.string "Boss ain't gonna be happy about this\n"
 	.string "ruckus...$"
 
-RossanoLibrary_Object_GruntTakesBook_Text_5:
-# 99 "data/maps/RossanoTown_Library/scripts.pory"
-	.string "???: {COLOR BLUE}Oh great,\n"
+RossanoLibrary_Object_GruntTakesBook_Text_6:
+# 104 "data/maps/RossanoTown_Library/scripts.pory"
+	.string "Gah{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}\n"
 	.string "Boss ain't gonna be happy...\p"
 	.string "You didn't see nothin' kid!$"

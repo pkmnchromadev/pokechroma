@@ -5,7 +5,7 @@ MtIgnis_B1F_MapScripts::
 
 MtIgnis_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 # 3 "data/maps/MtIgnis_B1F/scripts.pory"
-	setflashlevel 5
+	setflashlevel 3
 	return
 
 
@@ -41,7 +41,7 @@ IgnisCaveB1F_Trainer_Hiker_Text_1:
 
 IgnisCaveB1F_Trainer_Hiker_Text_2:
 # 9 "data/maps/MtIgnis_B1F/scripts.pory"
-	.string "{COLOR BLUE}The caverns below get even darker.$"
+	.string "The caverns below get even darker.$"
 
 IgnisCaveB1F_Trainer_BlackBelt_Text_0:
 # 13 "data/maps/MtIgnis_B1F/scripts.pory"
@@ -53,5 +53,5 @@ IgnisCaveB1F_Trainer_BlackBelt_Text_1:
 
 IgnisCaveB1F_Trainer_BlackBelt_Text_2:
 # 14 "data/maps/MtIgnis_B1F/scripts.pory"
-	.string "{COLOR BLUE}Always stay on guard, you never know\n"
+	.string "Always stay on guard, you never know\n"
 	.string "when something is lurking.$"

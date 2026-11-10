@@ -153,23 +153,24 @@ RossanoPC_Object_Boy::
 
 RossanoPC_Object_RuinManiac_Text_0:
 # 68 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "{COLOR BLUE}The foothills 'round here connect up to\n"
-	.string "{COLOR GREEN}Ignis Cave{COLOR BLUE}.\p"
-	.string "{COLOR GREEN}Ignis Cave{COLOR BLUE} makes up the dried-up lava\n"
-	.string "chambers of the dormant {COLOR GREEN}Mt. Ignis{COLOR BLUE}.$"
+	.string "Hoho!\p"
+	.string "The foothills 'round here connect up to\n"
+	.string "{COLOR GREEN}Ignis Cave{COLOR DARK_GREY}.\p"
+	.string "{COLOR GREEN}Ignis Cave{COLOR DARK_GREY} makes up the dried-up lava\n"
+	.string "chambers of the dormant {COLOR GREEN}Mt. Ignis{COLOR DARK_GREY}.$"
 
 RossanoPC_Object_Girl_Text_0:
 # 72 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "{COLOR RED}I recently visited the {COLOR GREEN}Kanto{COLOR RED} region.\p"
-	.string "I didn't realise how inconveinent\n"
-	.string "having a PokéMart is!$"
+	.string "I just came back from visiting {COLOR GREEN}Kanto{COLOR DARK_GREY}.\p"
+	.string "Who knew how convenient it is to have\n"
+	.string "the Poké Mart inside the Poké Center!$"
 
 RossanoPC_Object_Youngster_Text_0:
 # 76 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "{COLOR BLUE}I'm strapped for money.\p"
+	.string "I'm strapped for money.\p"
 	.string "Should I buy Potions, or Poké Balls?$"
 
 RossanoPC_Object_Boy_Text_0:
 # 80 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "{COLOR BLUE}Being able to sit down and relax here at\n"
-	.string "the PokéCenter is great.$"
+	.string "Being able to sit down and relax here at\n"
+	.string "the Poké Center is great.$"

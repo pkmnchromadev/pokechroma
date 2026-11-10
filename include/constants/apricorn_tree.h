@@ -85,6 +85,6 @@ enum ApricornType
 // Trees
 #define APRICORN_TREE_NONE 0
 
-#define APRICORN_TREE_COUNT 0
+#define APRICORN_TREE_COUNT 64
 
 #endif //GUARD_CONSTANTS_APRICORN_TREE_H

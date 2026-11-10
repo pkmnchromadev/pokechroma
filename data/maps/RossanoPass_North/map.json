@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ROUTE102",
-      "offset": -4,
+      "offset": -12,
       "direction": "down"
     },
     {
@@ -28,7 +28,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
       "x": 8,
-      "y": 15,
+      "y": 17,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -41,7 +41,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
       "x": 7,
-      "y": 15,
+      "y": 17,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

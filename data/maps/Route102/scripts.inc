@@ -269,39 +269,41 @@ RossanoFoothills_Trainer_Lass::
 
 RossanoFoothills_Sign_IgnisCave_Text_0:
 # 115 "data/maps/Route102/scripts.pory"
-	.string "{COLOR LIGHT_GREEN}Ignis Cave$"
+	.string "{COLOR LIGHT_GREEN}- Ignis Cave -\n"
+	.string "{FONT_SMALL}Inactive Lava Chambers Ahead$"
 
 RossanoFoothills_Sign_RouteSign_Text_0:
 # 119 "data/maps/Route102/scripts.pory"
-	.string "{COLOR LIGHT_GREEN}Rossano Foothills\p"
+	.string "{COLOR LIGHT_GREEN}- Rossano Foothills -\p"
 	.string "{COLOR DARK_GREY}{UP_ARROW} Treviso City\n"
 	.string "{DOWN_ARROW} Ignis Cave$"
 
 RossanoFoothills_Object_Boy_Text_0:
 # 124 "data/maps/Route102/scripts.pory"
-	.string "{COLOR BLUE}You can find all sorts of Pokémon\n"
+	.string "You can find all sorts of Pokémon\n"
 	.string "between cities and towns.\p"
-	.string "{COLOR GREEN}Ryoko{COLOR BLUE} has a vast diversity between\n"
-	.string "Pokémon in {COLOR GREEN}West Ryoko{COLOR BLUE} and {COLOR GREEN}East Ryoko{COLOR BLUE}.$"
+	.string "{COLOR GREEN}Ryoko{COLOR DARK_GREY} has a vast diversity between\n"
+	.string "Pokémon in {COLOR GREEN}West Ryoko{COLOR DARK_GREY} and {COLOR GREEN}East Ryoko{COLOR DARK_GREY}.$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_0:
 # 133 "data/maps/Route102/scripts.pory"
-	.string "{COLOR BLUE}Me and my birds have the highground!$"
+	.string "Caw!{PAUSE 16}\n"
+	.string "Caw!\p"
+	.string "Feathered friends, we have some prey!$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_1:
 # 133 "data/maps/Route102/scripts.pory"
-	.string "It's over!\n"
-	.string "The highground wasn't enough!$"
+	.string "Caaaw!$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_2:
 # 134 "data/maps/Route102/scripts.pory"
-	.string "{COLOR BLUE}If a Pokémon has wings, it's my\n"
-	.string "favorite!$"
+	.string "Caw!{PAUSE 16}\n"
+	.string "Caw!\p"
+	.string "What do you think of my bird call?$"
 
 RossanoFoothills_Trainer_BugCatcher_Text_0:
 # 138 "data/maps/Route102/scripts.pory"
-	.string "{COLOR BLUE}I love looking for little critters in the\n"
-	.string "wild.$"
+	.string "Have you found any rare bugs?$"
 
 RossanoFoothills_Trainer_BugCatcher_Text_1:
 # 138 "data/maps/Route102/scripts.pory"
@@ -309,13 +311,13 @@ RossanoFoothills_Trainer_BugCatcher_Text_1:
 
 RossanoFoothills_Trainer_BugCatcher_Text_2:
 # 139 "data/maps/Route102/scripts.pory"
-	.string "{COLOR BLUE}You can find critters all around Ryoko,\n"
+	.string "You can find critters all around Ryoko,\n"
 	.string "in all sorts and sizes!$"
 
 RossanoFoothills_Trainer_Lass_Text_0:
 # 143 "data/maps/Route102/scripts.pory"
-	.string "{COLOR RED}Hey!\n"
-	.string "You looked at me!$"
+	.string "Hey!\n"
+	.string "You looked at me funny!$"
 
 RossanoFoothills_Trainer_Lass_Text_1:
 # 143 "data/maps/Route102/scripts.pory"
@@ -324,5 +326,5 @@ RossanoFoothills_Trainer_Lass_Text_1:
 
 RossanoFoothills_Trainer_Lass_Text_2:
 # 144 "data/maps/Route102/scripts.pory"
-	.string "{COLOR RED}When a trainer sees you, be ready to\n"
+	.string "When a trainer sees you, be ready to\n"
 	.string "battle!$"

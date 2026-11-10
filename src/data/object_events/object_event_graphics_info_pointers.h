@@ -131,6 +131,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Winona;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Liza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tate;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wallace;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProtoAdminCeres;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProtoAdminEris;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProtoAdminHaumea;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProtoLeaderApollo;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
@@ -524,20 +528,24 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PROTO_GRUNT_F] =            &gObjectEventGraphicsInfo_AquaMemberF,
     [OBJ_EVENT_GFX_ENGINEER] =           &gObjectEventGraphicsInfo_MagmaMemberM,
     [OBJ_EVENT_GFX_OFFICER] =           &gObjectEventGraphicsInfo_MagmaMemberF,
-    [OBJ_EVENT_GFX_SIDNEY] =                   &gObjectEventGraphicsInfo_Sidney,
-    [OBJ_EVENT_GFX_PHOEBE] =                   &gObjectEventGraphicsInfo_Phoebe,
-    [OBJ_EVENT_GFX_GLACIA] =                   &gObjectEventGraphicsInfo_Glacia,
-    [OBJ_EVENT_GFX_DRAKE] =                    &gObjectEventGraphicsInfo_Drake,
-    [OBJ_EVENT_GFX_ROXANNE] =                  &gObjectEventGraphicsInfo_Roxanne,
-    [OBJ_EVENT_GFX_BRAWLY] =                   &gObjectEventGraphicsInfo_Brawly,
-    [OBJ_EVENT_GFX_WATTSON] =                  &gObjectEventGraphicsInfo_Wattson,
-    [OBJ_EVENT_GFX_FLANNERY] =                 &gObjectEventGraphicsInfo_Flannery,
-    [OBJ_EVENT_GFX_NORMAN] =                   &gObjectEventGraphicsInfo_Norman,
-    [OBJ_EVENT_GFX_WINONA] =                   &gObjectEventGraphicsInfo_Winona,
-    [OBJ_EVENT_GFX_LIZA] =                     &gObjectEventGraphicsInfo_Liza,
+    [OBJ_EVENT_GFX_ELITE4_DAPHNE] =                   &gObjectEventGraphicsInfo_Sidney,
+    [OBJ_EVENT_GFX_ELITE4_RAVEN] =                   &gObjectEventGraphicsInfo_Phoebe,
+    [OBJ_EVENT_GFX_ELITE4_HAILEY] =                   &gObjectEventGraphicsInfo_Glacia,
+    [OBJ_EVENT_GFX_ELITE4_PYXIS] =                    &gObjectEventGraphicsInfo_Drake,
+    [OBJ_EVENT_GFX_GYM_LILITH] =                  &gObjectEventGraphicsInfo_Roxanne,
+    [OBJ_EVENT_GFX_GYM_LORRAINE] =                   &gObjectEventGraphicsInfo_Brawly,
+    [OBJ_EVENT_GFX_GYM_BRUCE] =                  &gObjectEventGraphicsInfo_Wattson,
+    [OBJ_EVENT_GFX_GYM_EDGAR] =                 &gObjectEventGraphicsInfo_Flannery,
+    [OBJ_EVENT_GFX_GYM_AIREN] =                   &gObjectEventGraphicsInfo_Norman,
+    [OBJ_EVENT_GFX_GYM_BERNIE] =                   &gObjectEventGraphicsInfo_Winona,
+    [OBJ_EVENT_GFX_GYM_BRAIAN] =                     &gObjectEventGraphicsInfo_Liza,
     [OBJ_EVENT_GFX_TATE] =                     &gObjectEventGraphicsInfo_Tate,
-    [OBJ_EVENT_GFX_WALLACE] =                  &gObjectEventGraphicsInfo_Wallace,
-    [OBJ_EVENT_GFX_STEVEN] =                   &gObjectEventGraphicsInfo_Steven,
+    [OBJ_EVENT_GFX_GYM_JULES] =                  &gObjectEventGraphicsInfo_Wallace,
+    [OBJ_EVENT_GFX_PROTO_ADMIN_HAUMEA] =                  &gObjectEventGraphicsInfo_ProtoAdminHaumea,
+    [OBJ_EVENT_GFX_PROTO_ADMIN_CERES] =                  &gObjectEventGraphicsInfo_ProtoAdminCeres,
+    [OBJ_EVENT_GFX_PROTO_ADMIN_ERIS] =                  &gObjectEventGraphicsInfo_ProtoAdminEris,
+    [OBJ_EVENT_GFX_PROTO_LEADER_APOLLO] =                  &gObjectEventGraphicsInfo_ProtoLeaderApollo,
+    [OBJ_EVENT_GFX_LARS] =                   &gObjectEventGraphicsInfo_Steven,
     [OBJ_EVENT_GFX_SKIP] =                    &gObjectEventGraphicsInfo_Wally,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,

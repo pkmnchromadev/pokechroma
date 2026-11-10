@@ -348,7 +348,8 @@ script CanvasPath_EventScript_SkipCypressEncounter {
 	if (var(VAR_TEMP_0) == 7) {
 		faceplayer
 	}
-	msgbox(format("Skip: {COLOR BLUE}Took ya long enough!\pOkay{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\NIt's time.\pCome on {PLAYER}, watch me catch my first Pokémon!"), MSGBOX_AUTOCLOSE)
+	setspeaker("Skip")
+	msgbox(format("Took ya long enough!\pOkay{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\NIt's time.\pCome on {PLAYER}, watch me catch my first Pokémon!"), MSGBOX_AUTOCLOSE)
 	applymovement(SKIP, CanvasPath_Movement_SkipCypressEncounter_0)
 	delay(10)
 	if (var(VAR_TEMP_0) == 6) {
@@ -369,9 +370,11 @@ script CanvasPath_EventScript_SkipCypressEncounter {
 	delay(8)
 	applymovement(SKIP, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
-	msgbox(format("Skip: {COLOR BLUE}Alright, all I have to do is walk into the grass..."))
+	setspeaker("Skip")
+	msgbox(format("Alright, all I have to do is walk into the grass..."))
 	delay(12)
-	msgbox(format("???: {COLOR RED}Stop right there!"), MSGBOX_AUTOCLOSE)
+	setspeaker("???")
+	msgbox(format("Stop right there!"), MSGBOX_AUTOCLOSE)
 	applymovement(SKIP, Common_Movement_ExclamationMark)
 	applymovement(PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
@@ -381,41 +384,53 @@ script CanvasPath_EventScript_SkipCypressEncounter {
 	//fadenewbgm(MUS_RG_OAK)
 	applymovement(CYPRESS, CanvasPath_Movement_SkipCypressEncounter_1)
 	waitmovement(0)
-	msgbox(format("???: {COLOR RED}What do you two think you're doing?"))
-	msgbox(format("Skip: {COLOR BLUE}P{PAUSE 5}-{PAUSE 10}Professor Cypress!"))
+	setspeaker("???")
+	msgbox(format("What do you two think you're doing?"))
+	setspeaker("Skip")
+	msgbox(format("P{PAUSE 5}-{PAUSE 10}Professor Cypress!"))
 	applymovement(CYPRESS, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(12)
 	applymovement(CYPRESS, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	msgbox(format("Cypress: {COLOR RED}You two don't seem to have a Pokèmon between you.\pWhat's the meaning of going into the tall grass!\pIt worries me what people like that would do to Pokèmon..."), MSGBOX_DEFAULT)
+	setspeaker("Cypress")
+	msgbox(format("You two don't seem to have a Pokèmon between you.\pWhat's the meaning of going into the tall grass!\pIt worries me what people like that would do to Pokèmon..."), MSGBOX_DEFAULT)
 	applymovement(SKIP, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	playse(SE_PIN)
 	waitse
-	msgbox(format("Skip: {COLOR BLUE}No!{PAUSE 16}\N{PLAYER} had nothing to do with running into the tall grass.\pIt was my idea{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}"), MSGBOX_DEFAULT)
-	msgbox(format("Cypress: {COLOR RED}Hm.{PAUSE 12}\NI can't knock your honesty."), MSGBOX_DEFAULT)
+	setspeaker("Skip")
+	msgbox(format("No!{PAUSE 16}\N{PLAYER} had nothing to do with running into the tall grass.\pIt was my idea{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}"), MSGBOX_DEFAULT)
+	setspeaker("Cypress")
+	msgbox(format("Hm.{PAUSE 12}\NI can't knock your honesty."), MSGBOX_DEFAULT)
 	waitmovement(0)
 	applymovement(CYPRESS, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
-	msgbox(format("Cypress: {COLOR RED}{FONT_SMALL}... They tried to go in the tall grass because they wanted Pokèmon...\pHmm... What to do...?\pIs it wise to set them on this path?"), MSGBOX_DEFAULT)
+	setspeaker("Cypress")
+	msgbox(format("{FONT_SMALL}... They tried to go in the tall grass because they wanted Pokèmon...\pHmm... What to do...?\pIs it wise to set them on this path?"), MSGBOX_DEFAULT)
 	delay(10)
 	applymovement(CYPRESS, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	msgbox(format("Cypress: {COLOR RED}You two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
+	setspeaker("Cypress")
+	msgbox(format("You two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
 	while (var(VAR_RESULT) != YES) {
-		msgbox(format("Cypress: {COLOR RED}...{PAUSE 12}\NSorry, I don't think I quiet heard that.\pYou two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
+		setspeaker("Cypress")
+		msgbox(format("...{PAUSE 12}\NSorry, I don't think I quiet heard that.\pYou two.\NDo you truly love Pokèmon?"), MSGBOX_YESNO)
 	}
-	msgbox(format("Skip: {COLOR BLUE}Yes!\NA thousand times yes!\pOur answer will never change."), MSGBOX_DEFAULT)
-	msgbox(format("Cypress: {COLOR RED}Very well then!\pI will entrust you two with your very own Pokèmon."))
+	setspeaker("Skip")
+	msgbox(format("Yes!\NA thousand times yes!\pOur answer will never change."), MSGBOX_DEFAULT)
+	setspeaker("Cypress")
+	msgbox(format("Very well then!\pI will entrust you two with your very own Pokèmon."))
 	closemessage
 	applymovement(CYPRESS, CanvasPath_Movement_SkipCypressEncounter_2)
 	waitmovement(0)
-	msgbox(format("Cypress: {COLOR RED}How about we bring this somewhere safer?"), MSGBOX_AUTOCLOSE)
+	setspeaker("Cypress")
+	msgbox(format("How about we bring this somewhere safer?"), MSGBOX_AUTOCLOSE)
 	# end of script, teleport into players house
 	setflag(FLAG_CANVAS_TOWN_SKIP)
 	addvar(VAR_CANVAS_TOWN_STATE, 1)
 	warp(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 5, 6)
+	waitstate
 	releaseall
 	end
 }
@@ -450,33 +465,33 @@ movement CanvasPath_Movement_SkipCypressEncounter_2 {
 
 //objects
 script CanvasPath_Sign_RouteSign_1 {
-	msgbox(format("{COLOR LIGHT_GREEN}Canvas Path\p{COLOR DARK_GREY}{UP_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+	msgbox(format("{COLOR LIGHT_GREEN}- Canvas Path -\p{COLOR DARK_GREY}{UP_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
 	end
 }
 script CanvasPath_Sign_RouteSign_2 {
-	msgbox(format("{COLOR LIGHT_GREEN}Canvas Path\p{COLOR DARK_GREY}{LEFT_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
+	msgbox(format("{COLOR LIGHT_GREEN}- Canvas Path -\p{COLOR DARK_GREY}{LEFT_ARROW} Rossano Town\n{DOWN_ARROW} Canvas Town"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
 	end
 }
 script CanvasPath_Object_MartEmployee {
 	lock
 	faceplayer
 	if (flag(FLAG_CANVAS_PATH_MART_EMPLOYEE) != true) {
-		msgbox(format("{COLOR BLUE}Hey there trainer!\pEvery good trainer needs to heal up once in a while.\pPlease visit the PokéCenter in {COLOR GREEN}Rossano Town{COLOR BLUE} for all your medicine needs!\pHere, try a sample!"))
+		msgbox(format("Hey there trainer!\pEvery good trainer needs to heal up once in a while.\pPlease visit the PokéCenter in {COLOR GREEN}Rossano Town{COLOR DARK_GREY} for all your medicine needs!\pHere, try a sample!"))
 		giveitem(ITEM_POTION, 1)
 		setflag(FLAG_CANVAS_PATH_MART_EMPLOYEE)
 	} else {
 		faceplayer
-		msgbox(format("{COLOR BLUE}Every good trainer needs to heal up once in a while.\pPotions and other medicines are readily available for purchase at your local PokéCenter"), MSGBOX_AUTOCLOSE)
+		msgbox(format("Every good trainer needs to heal up once in a while.\pPotions and other medicines are readily available for purchase at your local PokéCenter"), MSGBOX_AUTOCLOSE)
 	}
 	releaseall
 	end
 }
 script CanvasPath_Object_OldWoman {
-	msgbox(format("{COLOR RED}I use to be a Pokémon Trainer back in my day.\pNow I enjoy sitting here watching young trainers battle."), MSGBOX_NPC)
+	msgbox(format("I use to be a Pokémon Trainer back in my day.\pNow I enjoy sitting here watching young trainers battle."), MSGBOX_NPC)
 	end
 }
 script CanvasPath_Object_Fisherman {
-	msgbox(format("{COLOR RED}I've seen many other oceans and seas all around the world, but byfar this is the bluest!"), MSGBOX_NPC)
+	msgbox(format("I've seen many other oceans and seas all around the world, but by far this is the bluest!"), MSGBOX_NPC)
 	end
 }
 script CanvasPath_ItemBall_FullHeal { // FLAG_ITEM_CANVAS_PATH_FULL_HEAL
@@ -486,13 +501,13 @@ script CanvasPath_ItemBall_FullHeal { // FLAG_ITEM_CANVAS_PATH_FULL_HEAL
 
 //trainerbattles
 script CanvasPath_Trainer_Youngster {
-	trainerbattle_single(TRAINER_YOUNGSTER_CODY, format("{COLOR BLUE}Is this your first Pokémon battle?"), format("Wow!"))
-	msgbox(format("{COLOR BLUE}When you make eye contact with a Pokémon Trainer, you're in for a battle!"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_YOUNGSTER_CODY, format("Is this your first Pokémon battle?"), format("Wow!"))
+	msgbox(format("When you make eye contact with a Pokémon Trainer, you're in for a battle!"), MSGBOX_NPC)
 	end
 }
 script CanvasPath_Trainer_BugCatcher {
-	trainerbattle_single(TRAINER_BUGCATCHER_ISAIAH, format("{COLOR BLUE}Bugs!\NI love bugs!"), format("No!\NMy bugs!"))
-	msgbox(format("{COLOR BLUE}Ryoko has plenty of bugs, especially butterfly-like Pokémon!"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_BUGCATCHER_ISAIAH, format("Bugs!\NI love bugs!"), format("No!\NMy bugs!"))
+	msgbox(format("Ryoko has plenty of bugs, especially butterfly-like Pokémon!"), MSGBOX_NPC)
 	end
 }
 

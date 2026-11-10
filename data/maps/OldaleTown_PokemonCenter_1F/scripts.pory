@@ -65,18 +65,18 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 `
 
 script RossanoPC_Object_RuinManiac {
-    msgbox(format("{COLOR BLUE}The foothills 'round here connect up to {COLOR GREEN}Ignis Cave{COLOR BLUE}.\p{COLOR GREEN}Ignis Cave{COLOR BLUE} makes up the dried-up lava chambers of the dormant {COLOR GREEN}Mt. Ignis{COLOR BLUE}."), MSGBOX_NPC)
+    msgbox(format("Hoho!\pThe foothills 'round here connect up to {COLOR GREEN}Ignis Cave{COLOR DARK_GREY}.\p{COLOR GREEN}Ignis Cave{COLOR DARK_GREY} makes up the dried-up lava chambers of the dormant {COLOR GREEN}Mt. Ignis{COLOR DARK_GREY}."), MSGBOX_NPC)
     end
 }
 script RossanoPC_Object_Girl {
-    msgbox(format("{COLOR RED}I recently visited the {COLOR GREEN}Kanto{COLOR RED} region.\pI didn't realise how inconveinent having a PokéMart is!"), MSGBOX_NPC)
+    msgbox(format("I just came back from visiting {COLOR GREEN}Kanto{COLOR DARK_GREY}.\pWho knew how convenient it is to have the Poké Mart inside the Poké Center!"), MSGBOX_NPC)
     end
 }
 script RossanoPC_Object_Youngster {
-    msgbox(format("{COLOR BLUE}I'm strapped for money.\pShould I buy Potions, or Poké Balls?"), MSGBOX_NPC)
+    msgbox(format("I'm strapped for money.\pShould I buy Potions, or Poké Balls?"), MSGBOX_NPC)
     end
 }
 script RossanoPC_Object_Boy {
-    msgbox(format("{COLOR BLUE}Being able to sit down and relax here at the PokéCenter is great."), MSGBOX_NPC)
+    msgbox(format("Being able to sit down and relax here at the Poké Center is great."), MSGBOX_NPC)
     end
 }

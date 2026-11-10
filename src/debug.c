@@ -3913,7 +3913,7 @@ static const u32 gDebugFollowerNPCGraphics[] =
 {
     OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
     OBJ_EVENT_GFX_RIVAL_MAY_NORMAL,
-    OBJ_EVENT_GFX_STEVEN,
+    OBJ_EVENT_GFX_LARS,
     OBJ_EVENT_GFX_SKIP, // pokechroma: Wally\'s object event slot is Skip
     OBJ_EVENT_GFX_RED,
     OBJ_EVENT_GFX_LEAF,

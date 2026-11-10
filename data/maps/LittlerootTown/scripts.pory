@@ -1046,10 +1046,12 @@ script CanvasTown_EventScript_GetPokemonEvent {
 	playse(SE_PIN)
 	waitse
 	playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
-	msgbox(format("Skip: {COLOR BLUE}Ah, there you are slowpoke!"), MSGBOX_AUTOCLOSE)
+	setspeaker("Skip")
+	msgbox(format("Hey, look who finally decided to roll outta bed!"), MSGBOX_AUTOCLOSE)
 	applymovement(SKIP, CanvasTown_Movement_GetPokemonEvent_0)
 	waitmovement(0)
-	msgbox(format("Skip: {COLOR BLUE}{PLAYER}...\NIt's finally time!\pWe have the opportunity to work with the famous {COLOR GREEN}Professor Cypress{COLOR BLUE}!\pMaybe she'll see my potential as a Pokémon Trainer!\pHmmm{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\pI should catch a wild Pokémon to impress the Professor!\pThen she'll definitely make me one of her assistants!\p{COLOR DARK_GREY}Skip: {COLOR BLUE}I'm gonna find her first!\NSee ya slowpoke!"), MSGBOX_AUTOCLOSE)
+	setspeaker("Skip")
+	msgbox(format("{PLAYER}...\NIt's finally time!\pWe have the opportunity to work with the famous {COLOR GREEN}Professor Cypress{COLOR DARK_GREY}!\pMaybe she'll see my potential as a Pokémon Trainer!\pHmmm{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\pWait!\pI should catch a wild Pokémon to impress the Professor!\pThen she'll definitely make me one of her assistants!\pI'm gonna find her first!\NSee ya slowpoke!"), MSGBOX_AUTOCLOSE)
 	applymovement(SKIP, CanvasTown_Movement_GetPokemonEvent_1)
 	waitmovement(0)
 	setobjectxyperm(SKIP, 4, 17)
@@ -1073,7 +1075,7 @@ movement CanvasTown_Movement_GetPokemonEvent_1 {
 
 //signs
 script CanvasTown_Sign_TownSign {
-	msgbox(format("{COLOR LIGHT_BLUE}Canvas Town{COLOR DARK_GREY}\n{FONT_SMALL}“A Blank Slate”"), MSGBOX_SIGN, MSGBOX_SUB_DEFAULT)
+	msgbox(format("{COLOR LIGHT_BLUE}- Canvas Town -{COLOR DARK_GREY}\n{FONT_SMALL}“A Blank Slate”"), MSGBOX_SIGN, MSGBOX_SUB_DEFAULT)
 	end
 }
 script CanvasTown_Sign_RivalsHouse {
@@ -1087,14 +1089,14 @@ script CanvasTown_Sign_PlayersHouse {
 
 //npcs
 script CanvasTown_Object_FatMan {
-	msgbox(format("{COLOR BLUE}Technology is incredible!\pDid you know the {COLOR GREEN}PokéGear{COLOR BLUE} has a map function to see {COLOR GREEN}Ryoko{COLOR BLUE}?\pYou can also use it to call contacts from anywhere!"), MSGBOX_NPC)
+	msgbox(format("Did you know the {COLOR GREEN}PokéGear{COLOR DARK_GREY} has a map function to see {COLOR GREEN}Ryoko{COLOR DARK_GREY}?\pYou can also use it to call contacts from anywhere!\pTechnology is incredible!"), MSGBOX_NPC)
 	end
 }
 script CanvasTown_Object_LittleGirl {
-	msgbox(format("{COLOR RED}You should be careful when exploring.\pWild Pokémon can attack you in the tall grass!"), MSGBOX_NPC)
+	msgbox(format("My mommy told me that it's dangerous to go out exploring.\pShe said the wild Pokémon can be scary.\pBut some of them are really cute!"), MSGBOX_NPC)
 	end
 }
 script CanvasTown_Object_Boy {
-	msgbox(format("{COLOR BLUE}I love tending to my farm.\NI prefer the quiet life of {COLOR GREEN}Canvas Town{COLOR BLUE}."), MSGBOX_NPC)
+	msgbox(format("I love tending to my farm.\NI prefer the quiet life of {COLOR GREEN}Canvas Town{COLOR DARK_GREY}."), MSGBOX_NPC)
 	end
 }

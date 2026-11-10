@@ -469,6 +469,60 @@ const u16 gTrainerPalette_LadyFrlg[] = INCGFX_U16("graphics/trainers/palettes/la
 const u32 gTrainerFrontPic_PainterFrlg[] = INCGFX_U32("graphics/trainers/front_pics/painter_frlg.png", ".4bpp.smol");
 const u16 gTrainerPalette_PainterFrlg[] = INCGFX_U16("graphics/trainers/palettes/painter_frlg.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_ProtoGruntM[] = INCGFX_U32("graphics/trainers/front_pics/proto_grunt_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoGruntM[] = INCGFX_U16("graphics/trainers/palettes/proto_grunt.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_ProtoGruntF[] = INCGFX_U32("graphics/trainers/front_pics/proto_grunt_f.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoGruntF[] = INCGFX_U16("graphics/trainers/palettes/proto_grunt.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_ProtoAdminHaumea[] = INCGFX_U32("graphics/trainers/front_pics/proto_admin_haumea.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoAdminHaumea[] = INCGFX_U16("graphics/trainers/palettes/proto_admin_haumea.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_ProtoAdminEris[] = INCGFX_U32("graphics/trainers/front_pics/proto_admin_eris.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoAdminEris[] = INCGFX_U16("graphics/trainers/palettes/proto_admin_eris.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_ProtoAdminCeres[] = INCGFX_U32("graphics/trainers/front_pics/proto_admin_ceres.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoAdminCeres[] = INCGFX_U16("graphics/trainers/palettes/proto_admin_ceres.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_ProtoLeaderApollo[] = INCGFX_U32("graphics/trainers/front_pics/proto_leader_apollo.png", ".4bpp.smol");
+const u16 gTrainerPalette_ProtoLeaderApollo[] = INCGFX_U16("graphics/trainers/palettes/proto_leader_apollo.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Elite4Daphne[] = INCGFX_U32("graphics/trainers/front_pics/elite_four_daphne.png", ".4bpp.smol");
+const u16 gTrainerPalette_Elite4Daphne[] = INCGFX_U16("graphics/trainers/palettes/elite_four_daphne.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Elite4Raven[] = INCGFX_U32("graphics/trainers/front_pics/elite_four_raven.png", ".4bpp.smol");
+const u16 gTrainerPalette_Elite4Raven[] = INCGFX_U16("graphics/trainers/palettes/elite_four_raven.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Elite4Hailey[] = INCGFX_U32("graphics/trainers/front_pics/elite_four_hailey.png", ".4bpp.smol");
+const u16 gTrainerPalette_Elite4Hailey[] = INCGFX_U16("graphics/trainers/palettes/elite_four_hailey.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Elite4Pyxis[] = INCGFX_U32("graphics/trainers/front_pics/elite_four_pyxis.png", ".4bpp.smol");
+const u16 gTrainerPalette_Elite4Pyxis[] = INCGFX_U16("graphics/trainers/palettes/elite_four_pyxis.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymLilith[] = INCGFX_U32("graphics/trainers/front_pics/leader_lilith.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymLilith[] = INCGFX_U16("graphics/trainers/palettes/leader_lilith.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymLorraine[] = INCGFX_U32("graphics/trainers/front_pics/leader_lorraine.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymLorraine[] = INCGFX_U16("graphics/trainers/palettes/leader_lorraine.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymBruce[] = INCGFX_U32("graphics/trainers/front_pics/leader_bruce.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymBruce[] = INCGFX_U16("graphics/trainers/palettes/leader_bruce.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymEdgar[] = INCGFX_U32("graphics/trainers/front_pics/leader_edgar.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymEdgar[] = INCGFX_U16("graphics/trainers/palettes/leader_edgar.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymAiren[] = INCGFX_U32("graphics/trainers/front_pics/leader_airen.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymAiren[] = INCGFX_U16("graphics/trainers/palettes/leader_airen.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymBernie[] = INCGFX_U32("graphics/trainers/front_pics/leader_bernie.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymBernie[] = INCGFX_U16("graphics/trainers/palettes/leader_bernie.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymBraian[] = INCGFX_U32("graphics/trainers/front_pics/leader_braian.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymBraian[] = INCGFX_U16("graphics/trainers/palettes/leader_braian.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_GymJules[] = INCGFX_U32("graphics/trainers/front_pics/leader_jules.png", ".4bpp.smol");
+const u16 gTrainerPalette_GymJules[] = INCGFX_U16("graphics/trainers/palettes/leader_jules.pal", ".gbapal");
+
 static const u8 gTrainerBackPic_None[] = INCGFX_U8("graphics/trainers/back_pics/none.png", ".4bpp");
 const u8 gTrainerBackPic_Brendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan.png", ".4bpp");
 const u16 gTrainerBackPicPalette_Brendan[] = INCBIN_U16("graphics/trainers/palettes/brendan_back.gbapal");
@@ -1227,5 +1281,77 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_PROTO_GRUNT_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoGruntM, gTrainerPalette_ProtoGruntM),
+    },
+    [TRAINER_PIC_PROTO_GRUNT_F] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoGruntF, gTrainerPalette_ProtoGruntF),
+    },
+    [TRAINER_PIC_PROTO_ADMIN_HAUMEA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoAdminHaumea, gTrainerPalette_ProtoAdminHaumea),
+    },
+    [TRAINER_PIC_PROTO_ADMIN_ERIS] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoAdminEris, gTrainerPalette_ProtoAdminEris),
+    },
+    [TRAINER_PIC_PROTO_ADMIN_CERES] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoAdminCeres, gTrainerPalette_ProtoAdminCeres),
+    },
+    [TRAINER_PIC_PROTO_LEADER_APOLLO] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ProtoLeaderApollo, gTrainerPalette_ProtoLeaderApollo),
+    },
+    [TRAINER_PIC_ELITE4_DAPHNE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Elite4Daphne, gTrainerPalette_Elite4Daphne),
+    },
+    [TRAINER_PIC_ELITE4_RAVEN] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Elite4Raven, gTrainerPalette_Elite4Raven),
+    },
+    [TRAINER_PIC_ELITE4_HAILEY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Elite4Hailey, gTrainerPalette_Elite4Hailey),
+    },
+    [TRAINER_PIC_ELITE4_PYXIS] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Elite4Pyxis, gTrainerPalette_Elite4Pyxis),
+    },
+    [TRAINER_PIC_GYM_LILITH] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymLilith, gTrainerPalette_GymLilith),
+    },
+    [TRAINER_PIC_GYM_LORRAINE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymLorraine, gTrainerPalette_GymLorraine),
+    },
+    [TRAINER_PIC_GYM_BRUCE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymBruce, gTrainerPalette_GymBruce),
+    },
+    [TRAINER_PIC_GYM_EDGAR] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymEdgar, gTrainerPalette_GymEdgar),
+    },
+    [TRAINER_PIC_GYM_AIREN] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymAiren, gTrainerPalette_GymAiren),
+    },
+    [TRAINER_PIC_GYM_BERNIE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymBernie, gTrainerPalette_GymBernie),
+    },
+    [TRAINER_PIC_GYM_BRAIAN] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymBraian, gTrainerPalette_GymBraian),
+    },
+    [TRAINER_PIC_GYM_JULES] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_GymJules, gTrainerPalette_GymJules),
     },
 };

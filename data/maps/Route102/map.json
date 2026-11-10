@@ -3,7 +3,6 @@
   "name": "Route102",
   "layout": "LAYOUT_ROUTE102",
   "music": "MUS_RG_ROUTE11",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_102",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -21,17 +20,17 @@
     },
     {
       "map": "MAP_ROSSANO_PASS_NORTH",
-      "offset": 4,
+      "offset": 12,
       "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
-      "x": 5,
-      "y": 16,
+      "x": 7,
+      "y": 12,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -41,20 +40,20 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 23,
-      "y": 5,
+      "x": 34,
+      "y": 18,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "RossanoFoothills_Trainer_Lass",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
-      "x": 47,
+      "x": 48,
       "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -67,8 +66,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
-      "y": 11,
+      "x": 39,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -79,91 +78,111 @@
       "flag": "FLAG_ITEM_ROSSANO_FOOTHILLS_HYPER_POTION"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 40,
+      "graphics_id": "OBJ_EVENT_GFX_PROTO_ADMIN_HAUMEA",
+      "x": 45,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "RossanoFoothills_Trainer_BirdKeeper",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_APRICORN_TREE",
+      "x": 54,
       "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "RossanoFoothills_Trainer_BirdKeeper",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "NULL",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 6,
-      "y": 10,
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 25,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_CutTree",
+      "script": "NULL",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 34,
-      "y": 20,
+      "x": 38,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_MT_CHIMNEY",
       "dest_warp_id": "0"
     },
     {
-      "x": 9,
+      "x": 15,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_MT_CHIMNEY",
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
-      "x": 15,
-      "y": 1,
+      "x": 18,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route102_EventScript_RouteSignPetalburg"
+      "script": "RossanoFoothills_Sign_RouteSign"
     },
     {
       "type": "sign",
-      "x": 32,
+      "x": 36,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RossanoFoothills_Sign_IgnisCave"
+    },
+    {
+      "type": "sign",
+      "x": 13,
       "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RossanoFoothills_Sign_IgnisCave"
     },
     {
-      "type": "sign",
-      "x": 9,
-      "y": 20,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RossanoFoothills_Sign_IgnisCave"
-    },
-    {
       "type": "hidden_item",
-      "x": 25,
-      "y": 4,
+      "x": 24,
+      "y": 24,
       "elevation": 0,
       "item": "ITEM_PERSIM_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_ROSSANO_FOOTHILLS_PERSIM_BERRY"
     },
     {
       "type": "hidden_item",
-      "x": 45,
-      "y": 16,
+      "x": 5,
+      "y": 10,
       "elevation": 0,
       "item": "ITEM_RELIC_COPPER",
       "flag": "FLAG_HIDDEN_ITEM_ROSSANO_FOOTHILLS_RELIC_COPPER"
+    },
+    {
+      "type": "hidden_item",
+      "x": 42,
+      "y": 31,
+      "elevation": 0,
+      "item": "ITEM_POTION",
+      "flag": "FLAG_HIDDEN_ITEM_ROSSANO_FOOTHILLS_POTION"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

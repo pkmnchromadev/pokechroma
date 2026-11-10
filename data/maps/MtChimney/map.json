@@ -3,7 +3,6 @@
   "name": "MtChimney",
   "layout": "LAYOUT_MT_CHIMNEY",
   "music": "MUS_MT_CHIMNEY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MT_CHIMNEY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_MT_CHIMNEY_ARCHIE",
@@ -54,8 +53,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "IgnisCave1F_ItemBall_EscapeRope",
-      "flag": "FLAG_ITEM_IGNIS_CAVE_1F_ESCAPE_ROPE"
+      "script": "IgnisCaveB1F_ItemBall_FireStone",
+      "flag": "FLAG_ITEM_IGNIS_CAVE_B1F_FIRE_STONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -150,14 +149,6 @@
   "coord_events": [],
   "bg_events": [
     {
-      "type": "sign",
-      "x": 24,
-      "y": 37,
-      "elevation": 3,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "MtChimney_EventScript_RouteSign"
-    },
-    {
       "type": "hidden_item",
       "x": 16,
       "y": 19,
@@ -165,5 +156,6 @@
       "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_IGNIS_CAVE_1F_POKEBALL"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

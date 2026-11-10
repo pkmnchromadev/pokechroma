@@ -668,59 +668,65 @@ PlayersHouse_Mapscript_DadEnterRoom_1:
 # 337 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	delay 10
 # 338 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	msgbox PlayersHouse_Mapscript_DadEnterRoom_Text_0, MSGBOX_AUTOCLOSE
+	setspeaker PlayersHouse_Mapscript_DadEnterRoom_Text_0
 # 339 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	closemessage
+	msgbox PlayersHouse_Mapscript_DadEnterRoom_Text_1, MSGBOX_AUTOCLOSE
 # 340 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	delay 10
+	closemessage
 # 341 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	applymovement 1, PlayersHouse_Movement_DadEnterRoom_1
+	delay 10
 # 342 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	waitmovement 0
+	applymovement 1, PlayersHouse_Movement_DadEnterRoom_1
 # 343 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	playse SE_EXIT
+	waitmovement 0
 # 344 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	removeobject 1
+	playse SE_EXIT
 # 345 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	setvar VAR_PLAYERSHOUSE_STATE, 1
+	removeobject 1
 # 346 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	setflag FLAG_PLAYERSHOUSE_DAD_STATE
+	setvar VAR_PLAYERSHOUSE_STATE, 1
 # 347 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setflag FLAG_PLAYERSHOUSE_DAD_STATE
 # 348 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	setflag FLAG_SYS_B_DASH
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 # 349 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+	setflag FLAG_SYS_B_DASH
+# 350 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	releaseall
 	end
 
 
-# 354 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-PlayersHouse_Movement_DadEnterRoom_0:
 # 355 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	walk_in_place_slow_right
+PlayersHouse_Movement_DadEnterRoom_0:
 # 356 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	delay_16
+	walk_in_place_slow_right
 # 357 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	walk_in_place_left
+	delay_16
 # 358 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	delay_8
+	walk_in_place_left
 # 359 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+	delay_8
+# 360 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 361 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-PlayersHouse_Movement_DadEnterRoom_1:
 # 362 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+PlayersHouse_Movement_DadEnterRoom_1:
+# 363 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	walk_in_place_slow_left
 	step_end
 
 PlayersHouse_Mapscript_DadEnterRoom_Text_0:
 # 338 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	.string "Dad: {COLOR GREEN}{PLAYER}{COLOR BLUE}!\n"
+	.string "Dad$"
+
+PlayersHouse_Mapscript_DadEnterRoom_Text_1:
+# 339 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
+	.string "{PLAYER}!{PAUSE 16}\n"
 	.string "You're gonna be late!\p"
-	.string "{COLOR DARK_GRAY}Dad: {COLOR GREEN}Professor Cypress{COLOR BLUE} is visiting town\n"
-	.string "and is looking for a new Trainer to be\l"
-	.string "her assistant!\p"
-	.string "{COLOR DARK_GRAY}Dad: {COLOR BLUE}Now, get ready and let your friend\n"
-	.string "{COLOR GREEN}Skip{COLOR BLUE} know about it too.\p"
+	.string "{COLOR GREEN}Prof. Cypress{COLOR DARK_GREY} is visiting town and is\n"
+	.string "looking for a new Trainer to be her\l"
+	.string "assistant!\p"
+	.string "Now, get ready and let your friend {COLOR GREEN}Skip{COLOR DARK_GREY}\n"
+	.string "know about it too.\p"
 	.string "Don't be late!$"

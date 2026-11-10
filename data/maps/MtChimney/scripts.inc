@@ -1697,9 +1697,9 @@ MtChimney_MapScripts::
 
 IgnisCave1F_Trainer_Hiker::
 # 856 "data/maps/MtChimney/scripts.pory"
-	trainerbattle_single TRAINER_HIKER_FERNANDO, IgnisCave1F_Trainer_Hiker_Text_0, MSGBOX_NPC
+	trainerbattle_single TRAINER_HIKER_FERNANDO, IgnisCave1F_Trainer_Hiker_Text_0, IgnisCave1F_Trainer_Hiker_Text_1
 # 857 "data/maps/MtChimney/scripts.pory"
-	msgbox IgnisCave1F_Trainer_Hiker_Text_1, MSGBOX_NPC
+	msgbox IgnisCave1F_Trainer_Hiker_Text_2, MSGBOX_NPC
 	end
 
 
@@ -1717,16 +1717,21 @@ IgnisCave1F_ItemBall_EscapeRope::
 
 IgnisCave1F_Trainer_Hiker_Text_0:
 # 856 "data/maps/MtChimney/scripts.pory"
-	.string "{COLOR BLUE}Ho!\n"
+	.string "Ho!\n"
 	.string "Spelunking is my favorite!$"
 
 IgnisCave1F_Trainer_Hiker_Text_1:
+# 856 "data/maps/MtChimney/scripts.pory"
+	.string "Phew...\n"
+	.string "It's a little toasty in here!$"
+
+IgnisCave1F_Trainer_Hiker_Text_2:
 # 857 "data/maps/MtChimney/scripts.pory"
-	.string "{COLOR BLUE}This cave here is used as a passage way\n"
-	.string "between {COLOR GREEN}Rossano Town{COLOR BLUE} and {COLOR GREEN}Treviso City{COLOR BLUE}.$"
+	.string "This cave here is used as a passage way\n"
+	.string "between {COLOR GREEN}Rossano Town{COLOR DARK_GREY} and {COLOR GREEN}Treviso City{COLOR DARK_GREY}.$"
 
 IgnisCave1F_Object_Engineer_Text_0:
 # 861 "data/maps/MtChimney/scripts.pory"
-	.string "{COLOR BLUE}I'm digging for fossils!\p"
+	.string "I'm digging for fossils!\p"
 	.string "Come back later, maybe I'll have some\n"
 	.string "relics to share!$"

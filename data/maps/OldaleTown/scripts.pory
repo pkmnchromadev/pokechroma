@@ -416,30 +416,30 @@ mapscripts OldaleTown_MapScripts {
 }
 
 script RossanoTown_Object_Boy {
-    msgbox(format("{COLOR GREEN}Rossano Town{COLOR BLUE} is an older settlement in {COLOR GREEN}Ryoko{COLOR BLUE}.\pThe Library is full of old books, dating back to when {COLOR GREEN}Ryoko{COLOR BLUE} was discovered."), MSGBOX_NPC)
+    msgbox(format("{COLOR GREEN}Rossano Town{COLOR DARK_GREY} is an older settlement in {COLOR GREEN}Ryoko{COLOR DARK_GREY}.\pThe Library is full of old books, some even dating back to when {COLOR GREEN}Ryoko{COLOR DARK_GREY} was first established."), MSGBOX_NPC)
     end
 }
 script RossanoTown_Object_Girl {
-    msgbox(format("{COLOR RED}I was raised here in {COLOR GREEN}Rossano{COLOR RED}.\pI've always wanted to be a Pokémon Trainer, but I don't ever feel like leaving town!"), MSGBOX_NPC)
+    msgbox(format("I was raised here in {COLOR GREEN}Rossano{COLOR DARK_GREY}.\pI've always wanted to be a Pokémon Trainer, but I don't ever feel like leaving town!"), MSGBOX_NPC)
     end
 }
 script RossanoTown_Object_Officer {
     lock
     faceplayer
     if (var(VAR_ROSSANO_TOWN_STATE) == 0) {
-        msgbox(format("{COLOR BLUE}Sorry kid, no one is leaving town.\pThere have been reports of a suspicious character in town."), MSGBOX_AUTOCLOSE)
+        msgbox(format("Sorry kid, no one is leaving town.\pThere are reports of some suspicious characters around.\pGo read a book or somethin'."), MSGBOX_AUTOCLOSE)
     } else {
-        msgbox(format("{COLOR BLUE}I'm stationed here outside the library to make sure no one ends up stealing books again."), MSGBOX_AUTOCLOSE)
+        msgbox(format("I'm now stationed outside of the library here to make sure no one else steals any books.\p...{PAUSE 16}\pChief said I gotta stay here for the rest of shift 'cause I let that crook slip by.\p...{PAUSE 16}\pIt's my first day, cut me some slack."), MSGBOX_AUTOCLOSE)
     }
     release
     end
 }
 script RossanoTown_Sign_TownSign {
-    msgbox(format("{COLOR LIGHT_BLUE}Rossano Town{COLOR DARK_GREY}\n{FONT_SMALL}“History in Text”"), MSGBOX_SIGN, MSGBOX_SUB_DEFAULT)
+    msgbox(format("{COLOR LIGHT_BLUE}- Rossano Town -{COLOR DARK_GREY}\n{FONT_SMALL}“History in Writing”"), MSGBOX_SIGN, MSGBOX_SUB_DEFAULT)
     end
 }
 script RossanoTown_Sign_LibrarySign {
-    msgbox(format("Library"), MSGBOX_SIGN, MSGBOX_SUB_METAL)
+    msgbox(format("{COLOR LIGHT_BLUE}Rossano Public Library"), MSGBOX_SIGN, MSGBOX_SUB_METAL)
     end
 }
 script RossanoTown_Sign_RouteSign {
@@ -460,13 +460,14 @@ script RossanoTown_Trigger_NoExitNeedLibrary {
     applymovement(OFFICER, Common_Movement_ExclamationMark)
     waitmovement(0)
     playse(SE_PIN)
-    msgbox(format("{COLOR BLUE}Hold it!"), MSGBOX_AUTOCLOSE)
+    msgbox(format("Hold it!"), MSGBOX_AUTOCLOSE)
+	waitse
     getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
     if (var(VAR_TEMP_0) == 5) {
         applymovement(OFFICER, RossanoTown_Movement_NoExitNeedLibrary_0)
         waitmovement(0)
     }
-    msgbox(format("{COLOR BLUE}Sorry kid, no one is leaving town.\pThere have been reports of a suspicious character in town."))
+    msgbox(format("Sorry kid, no one is leaving town.\pThere are reports of some suspicious characters around.\pGo read a book or somethin'."))
     applymovement(PLAYER, RossanoTown_Movement_NoExitNeedLibrary_p0)
     waitmovement(0)
     if (var(VAR_TEMP_0) == 5) {

@@ -896,96 +896,106 @@ RossanoTown_Trigger_NoExitNeedLibrary::
 # 463 "data/maps/OldaleTown/scripts.pory"
 	msgbox RossanoTown_Trigger_NoExitNeedLibrary_Text_0, MSGBOX_AUTOCLOSE
 # 464 "data/maps/OldaleTown/scripts.pory"
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	waitse
 # 465 "data/maps/OldaleTown/scripts.pory"
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+# 466 "data/maps/OldaleTown/scripts.pory"
 	compare VAR_TEMP_0, 5
 	goto_if_eq RossanoTown_Trigger_NoExitNeedLibrary_2
 RossanoTown_Trigger_NoExitNeedLibrary_1:
-# 469 "data/maps/OldaleTown/scripts.pory"
-	msgbox RossanoTown_Object_Officer_Text_0
 # 470 "data/maps/OldaleTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, RossanoTown_Movement_NoExitNeedLibrary_p0
+	msgbox RossanoTown_Object_Officer_Text_0
 # 471 "data/maps/OldaleTown/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, RossanoTown_Movement_NoExitNeedLibrary_p0
 # 472 "data/maps/OldaleTown/scripts.pory"
+	waitmovement 0
+# 473 "data/maps/OldaleTown/scripts.pory"
 	compare VAR_TEMP_0, 5
 	goto_if_eq RossanoTown_Trigger_NoExitNeedLibrary_5
 RossanoTown_Trigger_NoExitNeedLibrary_4:
-# 476 "data/maps/OldaleTown/scripts.pory"
-	closemessage
 # 477 "data/maps/OldaleTown/scripts.pory"
+	closemessage
+# 478 "data/maps/OldaleTown/scripts.pory"
 	releaseall
 	end
 
 RossanoTown_Trigger_NoExitNeedLibrary_2:
-# 466 "data/maps/OldaleTown/scripts.pory"
-	applymovement 2, RossanoTown_Movement_NoExitNeedLibrary_0
 # 467 "data/maps/OldaleTown/scripts.pory"
+	applymovement 2, RossanoTown_Movement_NoExitNeedLibrary_0
+# 468 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 	goto RossanoTown_Trigger_NoExitNeedLibrary_1
 
 RossanoTown_Trigger_NoExitNeedLibrary_5:
-# 473 "data/maps/OldaleTown/scripts.pory"
-	applymovement 2, RossanoTown_Movement_NoExitNeedLibrary_1
 # 474 "data/maps/OldaleTown/scripts.pory"
+	applymovement 2, RossanoTown_Movement_NoExitNeedLibrary_1
+# 475 "data/maps/OldaleTown/scripts.pory"
 	waitmovement 0
 	goto RossanoTown_Trigger_NoExitNeedLibrary_4
 
 
-# 480 "data/maps/OldaleTown/scripts.pory"
-RossanoTown_Movement_NoExitNeedLibrary_0:
 # 481 "data/maps/OldaleTown/scripts.pory"
+RossanoTown_Movement_NoExitNeedLibrary_0:
+# 482 "data/maps/OldaleTown/scripts.pory"
 	walk_right
 	step_end
 
-# 483 "data/maps/OldaleTown/scripts.pory"
-RossanoTown_Movement_NoExitNeedLibrary_p0:
 # 484 "data/maps/OldaleTown/scripts.pory"
+RossanoTown_Movement_NoExitNeedLibrary_p0:
+# 485 "data/maps/OldaleTown/scripts.pory"
 	walk_down
 	step_end
 
-# 486 "data/maps/OldaleTown/scripts.pory"
-RossanoTown_Movement_NoExitNeedLibrary_1:
 # 487 "data/maps/OldaleTown/scripts.pory"
-	walk_left
+RossanoTown_Movement_NoExitNeedLibrary_1:
 # 488 "data/maps/OldaleTown/scripts.pory"
+	walk_left
+# 489 "data/maps/OldaleTown/scripts.pory"
 	face_right
 	step_end
 
 RossanoTown_Object_Boy_Text_0:
 # 419 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR GREEN}Rossano Town{COLOR BLUE} is an older settlement in\n"
-	.string "{COLOR GREEN}Ryoko{COLOR BLUE}.\p"
-	.string "The Library is full of old books, dating\n"
-	.string "back to when {COLOR GREEN}Ryoko{COLOR BLUE} was discovered.$"
+	.string "{COLOR GREEN}Rossano Town{COLOR DARK_GREY} is an older settlement in\n"
+	.string "{COLOR GREEN}Ryoko{COLOR DARK_GREY}.\p"
+	.string "The Library is full of old books, some\n"
+	.string "even dating back to when {COLOR GREEN}Ryoko{COLOR DARK_GREY} was\l"
+	.string "first established.$"
 
 RossanoTown_Object_Girl_Text_0:
 # 423 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR RED}I was raised here in {COLOR GREEN}Rossano{COLOR RED}.\p"
+	.string "I was raised here in {COLOR GREEN}Rossano{COLOR DARK_GREY}.\p"
 	.string "I've always wanted to be a Pokémon\n"
 	.string "Trainer, but I don't ever feel like\l"
 	.string "leaving town!$"
 
 RossanoTown_Object_Officer_Text_0:
 # 430 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR BLUE}Sorry kid, no one is leaving town.\p"
-	.string "There have been reports of a\n"
-	.string "suspicious character in town.$"
+	.string "Sorry kid, no one is leaving town.\p"
+	.string "There are reports of some suspicious\n"
+	.string "characters around.\p"
+	.string "Go read a book or somethin'.$"
 
 RossanoTown_Object_Officer_Text_1:
 # 432 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR BLUE}I'm stationed here outside the library\n"
-	.string "to make sure no one ends up stealing\l"
-	.string "books again.$"
+	.string "I'm now stationed outside of the\n"
+	.string "library here to make sure no one else\l"
+	.string "steals any books.\p"
+	.string "...{PAUSE 16}\p"
+	.string "Chief said I gotta stay here for the\n"
+	.string "rest of shift 'cause I let that crook\l"
+	.string "slip by.\p"
+	.string "...{PAUSE 16}\p"
+	.string "It's my first day, cut me some slack.$"
 
 RossanoTown_Sign_TownSign_Text_0:
 # 438 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR LIGHT_BLUE}Rossano Town{COLOR DARK_GREY}\n"
-	.string "{FONT_SMALL}“History in Text”$"
+	.string "{COLOR LIGHT_BLUE}- Rossano Town -{COLOR DARK_GREY}\n"
+	.string "{FONT_SMALL}“History in Writing”$"
 
 RossanoTown_Sign_LibrarySign_Text_0:
 # 442 "data/maps/OldaleTown/scripts.pory"
-	.string "Library$"
+	.string "{COLOR LIGHT_BLUE}Rossano Public Library$"
 
 RossanoTown_Sign_RouteSign_Text_0:
 # 446 "data/maps/OldaleTown/scripts.pory"
@@ -993,4 +1003,4 @@ RossanoTown_Sign_RouteSign_Text_0:
 
 RossanoTown_Trigger_NoExitNeedLibrary_Text_0:
 # 463 "data/maps/OldaleTown/scripts.pory"
-	.string "{COLOR BLUE}Hold it!$"
+	.string "Hold it!$"

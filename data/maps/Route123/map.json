@@ -3,7 +3,6 @@
   "name": "Route123",
   "layout": "LAYOUT_ROUTE123",
   "music": "MUS_ROUTE122",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_123",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -783,14 +782,6 @@
       "script": "Route123_EventScript_RouteSign"
     },
     {
-      "type": "hidden_item",
-      "x": 75,
-      "y": 1,
-      "elevation": 3,
-      "item": "ITEM_SUPER_REPEL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_SUPER_REPEL"
-    },
-    {
       "type": "sign",
       "x": 20,
       "y": 7,
@@ -837,5 +828,6 @@
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

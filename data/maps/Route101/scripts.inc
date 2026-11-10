@@ -691,124 +691,152 @@ CanvasPath_EventScript_SkipCypressEncounter::
 	goto_if_eq CanvasPath_EventScript_SkipCypressEncounter_2
 CanvasPath_EventScript_SkipCypressEncounter_1:
 # 351 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_0, MSGBOX_AUTOCLOSE
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_0
 # 352 "data/maps/Route101/scripts.pory"
-	applymovement 7, CanvasPath_Movement_SkipCypressEncounter_0
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_1, MSGBOX_AUTOCLOSE
 # 353 "data/maps/Route101/scripts.pory"
-	delay 10
+	applymovement 7, CanvasPath_Movement_SkipCypressEncounter_0
 # 354 "data/maps/Route101/scripts.pory"
+	delay 10
+# 355 "data/maps/Route101/scripts.pory"
 	compare VAR_TEMP_0, 6
 	goto_if_eq CanvasPath_EventScript_SkipCypressEncounter_5
-# 357 "data/maps/Route101/scripts.pory"
+# 358 "data/maps/Route101/scripts.pory"
 	compare VAR_TEMP_0, 8
 	goto_if_eq CanvasPath_EventScript_SkipCypressEncounter_6
-# 361 "data/maps/Route101/scripts.pory"
+# 362 "data/maps/Route101/scripts.pory"
 	compare VAR_TEMP_0, 7
 	goto_if_eq CanvasPath_EventScript_SkipCypressEncounter_7
 CanvasPath_EventScript_SkipCypressEncounter_4:
-# 365 "data/maps/Route101/scripts.pory"
-	clearflag FLAG_CANVAS_TOWN_SKIP
 # 366 "data/maps/Route101/scripts.pory"
-	addobject 8, MAP_ROUTE101
+	clearflag FLAG_CANVAS_TOWN_SKIP
 # 367 "data/maps/Route101/scripts.pory"
-	setobjectxyperm 8, 17, 61
+	addobject 8, MAP_ROUTE101
 # 368 "data/maps/Route101/scripts.pory"
-	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm 8, 17, 61
 # 369 "data/maps/Route101/scripts.pory"
-	delay 8
+	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_RIGHT
 # 370 "data/maps/Route101/scripts.pory"
-	applymovement 7, Common_Movement_WalkInPlaceRight
+	delay 8
 # 371 "data/maps/Route101/scripts.pory"
-	waitmovement 0
+	applymovement 7, Common_Movement_WalkInPlaceRight
 # 372 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_1
+	waitmovement 0
 # 373 "data/maps/Route101/scripts.pory"
-	delay 12
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_0
 # 374 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_2, MSGBOX_AUTOCLOSE
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_2
 # 375 "data/maps/Route101/scripts.pory"
-	applymovement 7, Common_Movement_ExclamationMark
-# 376 "data/maps/Route101/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-# 377 "data/maps/Route101/scripts.pory"
-	waitmovement 0
-# 378 "data/maps/Route101/scripts.pory"
-	playse SE_PIN
-# 379 "data/maps/Route101/scripts.pory"
-	waitse
-# 380 "data/maps/Route101/scripts.pory"
-	playbgm MUS_RG_OAK, FALSE
-# 382 "data/maps/Route101/scripts.pory"
-	applymovement 8, CanvasPath_Movement_SkipCypressEncounter_1
-# 383 "data/maps/Route101/scripts.pory"
-	waitmovement 0
-# 384 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_3
-# 385 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_4
-# 386 "data/maps/Route101/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceDown
-# 387 "data/maps/Route101/scripts.pory"
-	waitmovement 0
-# 388 "data/maps/Route101/scripts.pory"
 	delay 12
-# 389 "data/maps/Route101/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceLeft
-# 390 "data/maps/Route101/scripts.pory"
-	waitmovement 0
-# 391 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_5, MSGBOX_DEFAULT
-# 392 "data/maps/Route101/scripts.pory"
+# 376 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_3
+# 377 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_4, MSGBOX_AUTOCLOSE
+# 378 "data/maps/Route101/scripts.pory"
 	applymovement 7, Common_Movement_ExclamationMark
-# 393 "data/maps/Route101/scripts.pory"
+# 379 "data/maps/Route101/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+# 380 "data/maps/Route101/scripts.pory"
 	waitmovement 0
-# 394 "data/maps/Route101/scripts.pory"
+# 381 "data/maps/Route101/scripts.pory"
 	playse SE_PIN
-# 395 "data/maps/Route101/scripts.pory"
+# 382 "data/maps/Route101/scripts.pory"
 	waitse
-# 396 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_6, MSGBOX_DEFAULT
-# 397 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_7, MSGBOX_DEFAULT
-# 398 "data/maps/Route101/scripts.pory"
+# 383 "data/maps/Route101/scripts.pory"
+	playbgm MUS_RG_OAK, FALSE
+# 385 "data/maps/Route101/scripts.pory"
+	applymovement 8, CanvasPath_Movement_SkipCypressEncounter_1
+# 386 "data/maps/Route101/scripts.pory"
 	waitmovement 0
-# 399 "data/maps/Route101/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceRight
-# 400 "data/maps/Route101/scripts.pory"
+# 387 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_3
+# 388 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_5
+# 389 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_0
+# 390 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_6
+# 391 "data/maps/Route101/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceDown
+# 392 "data/maps/Route101/scripts.pory"
 	waitmovement 0
-# 401 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_8, MSGBOX_DEFAULT
-# 402 "data/maps/Route101/scripts.pory"
-	delay 10
-# 403 "data/maps/Route101/scripts.pory"
+# 393 "data/maps/Route101/scripts.pory"
+	delay 12
+# 394 "data/maps/Route101/scripts.pory"
 	applymovement 8, Common_Movement_WalkInPlaceLeft
-# 404 "data/maps/Route101/scripts.pory"
+# 395 "data/maps/Route101/scripts.pory"
 	waitmovement 0
+# 396 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
+# 397 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_8, MSGBOX_DEFAULT
+# 398 "data/maps/Route101/scripts.pory"
+	applymovement 7, Common_Movement_ExclamationMark
+# 399 "data/maps/Route101/scripts.pory"
+	waitmovement 0
+# 400 "data/maps/Route101/scripts.pory"
+	playse SE_PIN
+# 401 "data/maps/Route101/scripts.pory"
+	waitse
+# 402 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_0
+# 403 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_9, MSGBOX_DEFAULT
+# 404 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
 # 405 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_9, MSGBOX_YESNO
-CanvasPath_EventScript_SkipCypressEncounter_12:
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_10, MSGBOX_DEFAULT
 # 406 "data/maps/Route101/scripts.pory"
-	compare VAR_RESULT, YES
-	goto_if_ne CanvasPath_EventScript_SkipCypressEncounter_13
+	waitmovement 0
+# 407 "data/maps/Route101/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceRight
+# 408 "data/maps/Route101/scripts.pory"
+	waitmovement 0
 # 409 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_11, MSGBOX_DEFAULT
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
 # 410 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_12
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_11, MSGBOX_DEFAULT
 # 411 "data/maps/Route101/scripts.pory"
-	closemessage
+	delay 10
 # 412 "data/maps/Route101/scripts.pory"
-	applymovement 8, CanvasPath_Movement_SkipCypressEncounter_2
+	applymovement 8, Common_Movement_WalkInPlaceLeft
 # 413 "data/maps/Route101/scripts.pory"
 	waitmovement 0
 # 414 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_13, MSGBOX_AUTOCLOSE
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
+# 415 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_12, MSGBOX_YESNO
+CanvasPath_EventScript_SkipCypressEncounter_12:
 # 416 "data/maps/Route101/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_ne CanvasPath_EventScript_SkipCypressEncounter_13
+# 420 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_0
+# 421 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_14, MSGBOX_DEFAULT
+# 422 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
+# 423 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_15
+# 424 "data/maps/Route101/scripts.pory"
+	closemessage
+# 425 "data/maps/Route101/scripts.pory"
+	applymovement 8, CanvasPath_Movement_SkipCypressEncounter_2
+# 426 "data/maps/Route101/scripts.pory"
+	waitmovement 0
+# 427 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
+# 428 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_16, MSGBOX_AUTOCLOSE
+# 430 "data/maps/Route101/scripts.pory"
 	setflag FLAG_CANVAS_TOWN_SKIP
-# 417 "data/maps/Route101/scripts.pory"
+# 431 "data/maps/Route101/scripts.pory"
 	addvar VAR_CANVAS_TOWN_STATE, 1
-# 418 "data/maps/Route101/scripts.pory"
+# 432 "data/maps/Route101/scripts.pory"
 	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 5, 6
-# 419 "data/maps/Route101/scripts.pory"
+# 433 "data/maps/Route101/scripts.pory"
+	waitstate
+# 434 "data/maps/Route101/scripts.pory"
 	releaseall
 	end
 
@@ -818,341 +846,354 @@ CanvasPath_EventScript_SkipCypressEncounter_2:
 	goto CanvasPath_EventScript_SkipCypressEncounter_1
 
 CanvasPath_EventScript_SkipCypressEncounter_5:
-# 355 "data/maps/Route101/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p1
 # 356 "data/maps/Route101/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p1
+# 357 "data/maps/Route101/scripts.pory"
 	waitmovement 0
 	goto CanvasPath_EventScript_SkipCypressEncounter_4
 
 CanvasPath_EventScript_SkipCypressEncounter_6:
-# 358 "data/maps/Route101/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p0
 # 359 "data/maps/Route101/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p0
 # 360 "data/maps/Route101/scripts.pory"
+	waitmovement 0
+# 361 "data/maps/Route101/scripts.pory"
 	delay 8
 	goto CanvasPath_EventScript_SkipCypressEncounter_4
 
 CanvasPath_EventScript_SkipCypressEncounter_7:
-# 362 "data/maps/Route101/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p2
 # 363 "data/maps/Route101/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, CanvasPath_Movement_SkipCypressEncounter_p2
+# 364 "data/maps/Route101/scripts.pory"
 	waitmovement 0
 	goto CanvasPath_EventScript_SkipCypressEncounter_4
 
 CanvasPath_EventScript_SkipCypressEncounter_13:
-# 407 "data/maps/Route101/scripts.pory"
-	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_10, MSGBOX_YESNO
+# 417 "data/maps/Route101/scripts.pory"
+	setspeaker CanvasPath_EventScript_SkipCypressEncounter_Text_7
+# 418 "data/maps/Route101/scripts.pory"
+	msgbox CanvasPath_EventScript_SkipCypressEncounter_Text_13, MSGBOX_YESNO
 	goto CanvasPath_EventScript_SkipCypressEncounter_12
 
 
-# 423 "data/maps/Route101/scripts.pory"
+# 438 "data/maps/Route101/scripts.pory"
 CanvasPath_Movement_SkipCypressEncounter_0:
-# 424 "data/maps/Route101/scripts.pory"
-	walk_up
-# 424 "data/maps/Route101/scripts.pory"
-	walk_up
-# 424 "data/maps/Route101/scripts.pory"
-	walk_up
-# 425 "data/maps/Route101/scripts.pory"
-	walk_right
-# 425 "data/maps/Route101/scripts.pory"
-	walk_right
-	step_end
-
-# 427 "data/maps/Route101/scripts.pory"
-CanvasPath_Movement_SkipCypressEncounter_p0:
-# 428 "data/maps/Route101/scripts.pory"
-	walk_up
-# 428 "data/maps/Route101/scripts.pory"
-	walk_up
-# 429 "data/maps/Route101/scripts.pory"
-	walk_right
-	step_end
-
-# 431 "data/maps/Route101/scripts.pory"
-CanvasPath_Movement_SkipCypressEncounter_p2:
-# 432 "data/maps/Route101/scripts.pory"
-	walk_up
-# 432 "data/maps/Route101/scripts.pory"
-	walk_up
-# 432 "data/maps/Route101/scripts.pory"
-	walk_up
-# 433 "data/maps/Route101/scripts.pory"
-	walk_right
-# 433 "data/maps/Route101/scripts.pory"
-	walk_right
-	step_end
-
-# 435 "data/maps/Route101/scripts.pory"
-CanvasPath_Movement_SkipCypressEncounter_p1:
-# 436 "data/maps/Route101/scripts.pory"
-	walk_up
-# 436 "data/maps/Route101/scripts.pory"
-	walk_up
-# 437 "data/maps/Route101/scripts.pory"
-	walk_right
-# 437 "data/maps/Route101/scripts.pory"
-	walk_right
-# 437 "data/maps/Route101/scripts.pory"
-	walk_right
-	step_end
-
 # 439 "data/maps/Route101/scripts.pory"
-CanvasPath_Movement_SkipCypressEncounter_1:
+	walk_up
+# 439 "data/maps/Route101/scripts.pory"
+	walk_up
+# 439 "data/maps/Route101/scripts.pory"
+	walk_up
 # 440 "data/maps/Route101/scripts.pory"
-	walk_left
+	walk_right
 # 440 "data/maps/Route101/scripts.pory"
-	walk_left
-# 440 "data/maps/Route101/scripts.pory"
-	walk_left
-# 440 "data/maps/Route101/scripts.pory"
-	walk_left
-# 440 "data/maps/Route101/scripts.pory"
-	walk_left
-# 440 "data/maps/Route101/scripts.pory"
-	walk_left
-# 440 "data/maps/Route101/scripts.pory"
-	walk_left
+	walk_right
 	step_end
 
 # 442 "data/maps/Route101/scripts.pory"
-CanvasPath_Movement_SkipCypressEncounter_2:
+CanvasPath_Movement_SkipCypressEncounter_p0:
 # 443 "data/maps/Route101/scripts.pory"
-	walk_in_place_up
+	walk_up
+# 443 "data/maps/Route101/scripts.pory"
+	walk_up
 # 444 "data/maps/Route101/scripts.pory"
-	delay_8
-# 445 "data/maps/Route101/scripts.pory"
-	walk_in_place_right
+	walk_right
+	step_end
+
 # 446 "data/maps/Route101/scripts.pory"
-	delay_8
+CanvasPath_Movement_SkipCypressEncounter_p2:
 # 447 "data/maps/Route101/scripts.pory"
-	walk_in_place_left
+	walk_up
+# 447 "data/maps/Route101/scripts.pory"
+	walk_up
+# 447 "data/maps/Route101/scripts.pory"
+	walk_up
 # 448 "data/maps/Route101/scripts.pory"
+	walk_right
+# 448 "data/maps/Route101/scripts.pory"
+	walk_right
+	step_end
+
+# 450 "data/maps/Route101/scripts.pory"
+CanvasPath_Movement_SkipCypressEncounter_p1:
+# 451 "data/maps/Route101/scripts.pory"
+	walk_up
+# 451 "data/maps/Route101/scripts.pory"
+	walk_up
+# 452 "data/maps/Route101/scripts.pory"
+	walk_right
+# 452 "data/maps/Route101/scripts.pory"
+	walk_right
+# 452 "data/maps/Route101/scripts.pory"
+	walk_right
+	step_end
+
+# 454 "data/maps/Route101/scripts.pory"
+CanvasPath_Movement_SkipCypressEncounter_1:
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+# 455 "data/maps/Route101/scripts.pory"
+	walk_left
+	step_end
+
+# 457 "data/maps/Route101/scripts.pory"
+CanvasPath_Movement_SkipCypressEncounter_2:
+# 458 "data/maps/Route101/scripts.pory"
+	walk_in_place_up
+# 459 "data/maps/Route101/scripts.pory"
+	delay_8
+# 460 "data/maps/Route101/scripts.pory"
+	walk_in_place_right
+# 461 "data/maps/Route101/scripts.pory"
+	delay_8
+# 462 "data/maps/Route101/scripts.pory"
+	walk_in_place_left
+# 463 "data/maps/Route101/scripts.pory"
 	delay_8
 	step_end
 
 CanvasPath_Sign_RouteSign_1::
-# 453 "data/maps/Route101/scripts.pory"
+# 468 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Sign_RouteSign_1_Text_0, MSGBOX_SIGN, MSGBOX_SUB_WOOD
 	end
 
 
 CanvasPath_Sign_RouteSign_2::
-# 457 "data/maps/Route101/scripts.pory"
+# 472 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Sign_RouteSign_2_Text_0, MSGBOX_SIGN, MSGBOX_SUB_WOOD
 	end
 
 
 CanvasPath_Object_MartEmployee::
-# 461 "data/maps/Route101/scripts.pory"
+# 476 "data/maps/Route101/scripts.pory"
 	lock
-# 462 "data/maps/Route101/scripts.pory"
+# 477 "data/maps/Route101/scripts.pory"
 	faceplayer
-# 463 "data/maps/Route101/scripts.pory"
+# 478 "data/maps/Route101/scripts.pory"
 	goto_if_unset FLAG_CANVAS_PATH_MART_EMPLOYEE, CanvasPath_Object_MartEmployee_2
-# 468 "data/maps/Route101/scripts.pory"
+# 483 "data/maps/Route101/scripts.pory"
 	faceplayer
-# 469 "data/maps/Route101/scripts.pory"
+# 484 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Object_MartEmployee_Text_1, MSGBOX_AUTOCLOSE
 CanvasPath_Object_MartEmployee_1:
-# 471 "data/maps/Route101/scripts.pory"
+# 486 "data/maps/Route101/scripts.pory"
 	releaseall
 	end
 
 CanvasPath_Object_MartEmployee_2:
-# 464 "data/maps/Route101/scripts.pory"
+# 479 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Object_MartEmployee_Text_0
-# 465 "data/maps/Route101/scripts.pory"
+# 480 "data/maps/Route101/scripts.pory"
 	giveitem ITEM_POTION, 1
-# 466 "data/maps/Route101/scripts.pory"
+# 481 "data/maps/Route101/scripts.pory"
 	setflag FLAG_CANVAS_PATH_MART_EMPLOYEE
 	goto CanvasPath_Object_MartEmployee_1
 
 
 CanvasPath_Object_OldWoman::
-# 475 "data/maps/Route101/scripts.pory"
+# 490 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Object_OldWoman_Text_0, MSGBOX_NPC
 	end
 
 
 CanvasPath_Object_Fisherman::
-# 479 "data/maps/Route101/scripts.pory"
+# 494 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Object_Fisherman_Text_0, MSGBOX_NPC
 	end
 
 
 CanvasPath_ItemBall_FullHeal::
-# 483 "data/maps/Route101/scripts.pory"
+# 498 "data/maps/Route101/scripts.pory"
 	finditem ITEM_FULL_HEAL
 	end
 
 
 CanvasPath_Trainer_Youngster::
-# 489 "data/maps/Route101/scripts.pory"
+# 504 "data/maps/Route101/scripts.pory"
 	trainerbattle_single TRAINER_YOUNGSTER_CODY, CanvasPath_Trainer_Youngster_Text_0, CanvasPath_Trainer_Youngster_Text_1
-# 490 "data/maps/Route101/scripts.pory"
+# 505 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Trainer_Youngster_Text_2, MSGBOX_NPC
 	end
 
 
 CanvasPath_Trainer_BugCatcher::
-# 494 "data/maps/Route101/scripts.pory"
+# 509 "data/maps/Route101/scripts.pory"
 	trainerbattle_single TRAINER_BUGCATCHER_ISAIAH, CanvasPath_Trainer_BugCatcher_Text_0, CanvasPath_Trainer_BugCatcher_Text_1
-# 495 "data/maps/Route101/scripts.pory"
+# 510 "data/maps/Route101/scripts.pory"
 	msgbox CanvasPath_Trainer_BugCatcher_Text_2, MSGBOX_NPC
 	end
 
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_0:
 # 351 "data/maps/Route101/scripts.pory"
-	.string "Skip: {COLOR BLUE}Took ya long enough!\p"
+	.string "Skip$"
+
+CanvasPath_EventScript_SkipCypressEncounter_Text_1:
+# 352 "data/maps/Route101/scripts.pory"
+	.string "Took ya long enough!\p"
 	.string "Okay{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.\n"
 	.string "It's time.\p"
 	.string "Come on {PLAYER}, watch me catch my\n"
 	.string "first Pokémon!$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_1:
-# 372 "data/maps/Route101/scripts.pory"
-	.string "Skip: {COLOR BLUE}Alright, all I have to do is walk\n"
-	.string "into the grass...$"
-
 CanvasPath_EventScript_SkipCypressEncounter_Text_2:
 # 374 "data/maps/Route101/scripts.pory"
-	.string "???: {COLOR RED}Stop right there!$"
+	.string "Alright, all I have to do is walk into the\n"
+	.string "grass...$"
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_3:
-# 384 "data/maps/Route101/scripts.pory"
-	.string "???: {COLOR RED}What do you two think you're\n"
-	.string "doing?$"
+# 376 "data/maps/Route101/scripts.pory"
+	.string "???$"
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_4:
-# 385 "data/maps/Route101/scripts.pory"
-	.string "Skip: {COLOR BLUE}P{PAUSE 5}-{PAUSE 10}Professor Cypress!$"
+# 377 "data/maps/Route101/scripts.pory"
+	.string "Stop right there!$"
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_5:
-# 391 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}You two don't seem to have a\n"
-	.string "Pokèmon between you.\p"
+# 388 "data/maps/Route101/scripts.pory"
+	.string "What do you two think you're doing?$"
+
+CanvasPath_EventScript_SkipCypressEncounter_Text_6:
+# 390 "data/maps/Route101/scripts.pory"
+	.string "P{PAUSE 5}-{PAUSE 10}Professor Cypress!$"
+
+CanvasPath_EventScript_SkipCypressEncounter_Text_7:
+# 396 "data/maps/Route101/scripts.pory"
+	.string "Cypress$"
+
+CanvasPath_EventScript_SkipCypressEncounter_Text_8:
+# 397 "data/maps/Route101/scripts.pory"
+	.string "You two don't seem to have a Pokèmon\n"
+	.string "between you.\p"
 	.string "What's the meaning of going into the\n"
 	.string "tall grass!\p"
 	.string "It worries me what people like that\n"
 	.string "would do to Pokèmon...$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_6:
-# 396 "data/maps/Route101/scripts.pory"
-	.string "Skip: {COLOR BLUE}No!{PAUSE 16}\n"
+CanvasPath_EventScript_SkipCypressEncounter_Text_9:
+# 403 "data/maps/Route101/scripts.pory"
+	.string "No!{PAUSE 16}\n"
 	.string "{PLAYER} had nothing to do with\l"
 	.string "running into the tall grass.\p"
 	.string "It was my idea{PAUSE 10}.{PAUSE 10}.{PAUSE 10}.{PAUSE 10}$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_7:
-# 397 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}Hm.{PAUSE 12}\n"
+CanvasPath_EventScript_SkipCypressEncounter_Text_10:
+# 405 "data/maps/Route101/scripts.pory"
+	.string "Hm.{PAUSE 12}\n"
 	.string "I can't knock your honesty.$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_8:
-# 401 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}{FONT_SMALL}... They tried to go in the tall\n"
-	.string "grass because they wanted Pokèmon...\p"
+CanvasPath_EventScript_SkipCypressEncounter_Text_11:
+# 410 "data/maps/Route101/scripts.pory"
+	.string "{FONT_SMALL}... They tried to go in the tall grass\n"
+	.string "because they wanted Pokèmon...\p"
 	.string "Hmm... What to do...?\p"
 	.string "Is it wise to set them on this path?$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_9:
-# 405 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}You two.\n"
+CanvasPath_EventScript_SkipCypressEncounter_Text_12:
+# 415 "data/maps/Route101/scripts.pory"
+	.string "You two.\n"
 	.string "Do you truly love Pokèmon?$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_10:
-# 407 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}...{PAUSE 12}\n"
+CanvasPath_EventScript_SkipCypressEncounter_Text_13:
+# 418 "data/maps/Route101/scripts.pory"
+	.string "...{PAUSE 12}\n"
 	.string "Sorry, I don't think I quiet heard that.\p"
 	.string "You two.\n"
 	.string "Do you truly love Pokèmon?$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_11:
-# 409 "data/maps/Route101/scripts.pory"
-	.string "Skip: {COLOR BLUE}Yes!\n"
+CanvasPath_EventScript_SkipCypressEncounter_Text_14:
+# 421 "data/maps/Route101/scripts.pory"
+	.string "Yes!\n"
 	.string "A thousand times yes!\p"
 	.string "Our answer will never change.$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_12:
-# 410 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}Very well then!\p"
+CanvasPath_EventScript_SkipCypressEncounter_Text_15:
+# 423 "data/maps/Route101/scripts.pory"
+	.string "Very well then!\p"
 	.string "I will entrust you two with your very\n"
 	.string "own Pokèmon.$"
 
-CanvasPath_EventScript_SkipCypressEncounter_Text_13:
-# 414 "data/maps/Route101/scripts.pory"
-	.string "Cypress: {COLOR RED}How about we bring this\n"
-	.string "somewhere safer?$"
+CanvasPath_EventScript_SkipCypressEncounter_Text_16:
+# 428 "data/maps/Route101/scripts.pory"
+	.string "How about we bring this somewhere\n"
+	.string "safer?$"
 
 CanvasPath_Sign_RouteSign_1_Text_0:
-# 453 "data/maps/Route101/scripts.pory"
-	.string "{COLOR LIGHT_GREEN}Canvas Path\p"
+# 468 "data/maps/Route101/scripts.pory"
+	.string "{COLOR LIGHT_GREEN}- Canvas Path -\p"
 	.string "{COLOR DARK_GREY}{UP_ARROW} Rossano Town\n"
 	.string "{DOWN_ARROW} Canvas Town$"
 
 CanvasPath_Sign_RouteSign_2_Text_0:
-# 457 "data/maps/Route101/scripts.pory"
-	.string "{COLOR LIGHT_GREEN}Canvas Path\p"
+# 472 "data/maps/Route101/scripts.pory"
+	.string "{COLOR LIGHT_GREEN}- Canvas Path -\p"
 	.string "{COLOR DARK_GREY}{LEFT_ARROW} Rossano Town\n"
 	.string "{DOWN_ARROW} Canvas Town$"
 
 CanvasPath_Object_MartEmployee_Text_0:
-# 464 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}Hey there trainer!\p"
+# 479 "data/maps/Route101/scripts.pory"
+	.string "Hey there trainer!\p"
 	.string "Every good trainer needs to heal up\n"
 	.string "once in a while.\p"
 	.string "Please visit the PokéCenter in {COLOR GREEN}Rossano\n"
-	.string "Town{COLOR BLUE} for all your medicine needs!\p"
+	.string "Town{COLOR DARK_GREY} for all your medicine needs!\p"
 	.string "Here, try a sample!$"
 
 CanvasPath_Object_MartEmployee_Text_1:
-# 469 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}Every good trainer needs to heal up\n"
+# 484 "data/maps/Route101/scripts.pory"
+	.string "Every good trainer needs to heal up\n"
 	.string "once in a while.\p"
 	.string "Potions and other medicines are readily\n"
 	.string "available for purchase at your local\l"
 	.string "PokéCenter$"
 
 CanvasPath_Object_OldWoman_Text_0:
-# 475 "data/maps/Route101/scripts.pory"
-	.string "{COLOR RED}I use to be a Pokémon Trainer back in my\n"
+# 490 "data/maps/Route101/scripts.pory"
+	.string "I use to be a Pokémon Trainer back in my\n"
 	.string "day.\p"
 	.string "Now I enjoy sitting here watching young\n"
 	.string "trainers battle.$"
 
 CanvasPath_Object_Fisherman_Text_0:
-# 479 "data/maps/Route101/scripts.pory"
-	.string "{COLOR RED}I've seen many other oceans and seas\n"
-	.string "all around the world, but byfar this is\l"
+# 494 "data/maps/Route101/scripts.pory"
+	.string "I've seen many other oceans and seas\n"
+	.string "all around the world, but by far this is\l"
 	.string "the bluest!$"
 
 CanvasPath_Trainer_Youngster_Text_0:
-# 489 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}Is this your first Pokémon battle?$"
+# 504 "data/maps/Route101/scripts.pory"
+	.string "Is this your first Pokémon battle?$"
 
 CanvasPath_Trainer_Youngster_Text_1:
-# 489 "data/maps/Route101/scripts.pory"
+# 504 "data/maps/Route101/scripts.pory"
 	.string "Wow!$"
 
 CanvasPath_Trainer_Youngster_Text_2:
-# 490 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}When you make eye contact with a\n"
+# 505 "data/maps/Route101/scripts.pory"
+	.string "When you make eye contact with a\n"
 	.string "Pokémon Trainer, you're in for a battle!$"
 
 CanvasPath_Trainer_BugCatcher_Text_0:
-# 494 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}Bugs!\n"
+# 509 "data/maps/Route101/scripts.pory"
+	.string "Bugs!\n"
 	.string "I love bugs!$"
 
 CanvasPath_Trainer_BugCatcher_Text_1:
-# 494 "data/maps/Route101/scripts.pory"
+# 509 "data/maps/Route101/scripts.pory"
 	.string "No!\n"
 	.string "My bugs!$"
 
 CanvasPath_Trainer_BugCatcher_Text_2:
-# 495 "data/maps/Route101/scripts.pory"
-	.string "{COLOR BLUE}Ryoko has plenty of bugs, especially\n"
+# 510 "data/maps/Route101/scripts.pory"
+	.string "Ryoko has plenty of bugs, especially\n"
 	.string "butterfly-like Pokémon!$"
