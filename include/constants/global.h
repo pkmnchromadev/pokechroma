@@ -112,9 +112,11 @@ enum Language
 // Bag constants
 #define BAG_ITEMS_COUNT 30
 #define BAG_KEYITEMS_COUNT 30
-#define BAG_POKEBALLS_COUNT 16
+#define BAG_POKEBALLS_COUNT 36 // includes Apricorns
 #define BAG_TMHM_COUNT 64
 #define BAG_BERRIES_COUNT 46
+#define BAG_MEDICINE_COUNT 30
+#define BAG_BATTLEITEMS_COUNT 30
 
 // Number of facilities for Ranking Hall.
 // 7 facilities for single mode + tower double mode + tower multi mode.

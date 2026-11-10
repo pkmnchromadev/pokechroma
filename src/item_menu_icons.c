@@ -91,7 +91,10 @@ static const union AnimCmd sSpriteAnim_Bag_Berries[] =
 static const union AnimCmd *const sBagSpriteAnimTable[] =
 {
     [POCKET_ITEMS]      = sSpriteAnim_Bag_Items,
+    // shortcut: Medicine/Battle Items reuse the Items frame; add frames to the bag sheet and their own AnimCmds when the art exists
+    [POCKET_MEDICINE]   = sSpriteAnim_Bag_Items,
     [POCKET_POKE_BALLS] = sSpriteAnim_Bag_Pokeballs,
+    [POCKET_BATTLE_ITEMS] = sSpriteAnim_Bag_Items,
     [POCKET_TM_HM]      = sSpriteAnim_Bag_TMsHMs,
     [POCKET_BERRIES]    = sSpriteAnim_Bag_Berries,
     [POCKET_KEY_ITEMS]  = sSpriteAnim_Bag_KeyItems,
@@ -371,7 +374,7 @@ void RemoveBagSprite(u8 id)
 void AddBagVisualSprite(u8 bagPocketId)
 {
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BAG];
-    *spriteId = CreateSprite(&sBagSpriteTemplate, 68, 66, 0);
+    *spriteId = CreateSprite(&sBagSpriteTemplate, 52, 38, 0);
     SetBagVisualPocketId(bagPocketId, FALSE);
 }
 
@@ -466,6 +469,70 @@ static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite)
         RemoveBagSprite(ITEMMENUSPRITE_BALL);
 }
 
+// Pocket icons: graphics/bag/pocket_icons.png is a vertical strip of 16x16 frames,
+// one per pocket in enum Pocket order, then the same again for the selected state.
+#define TAG_POCKET_ICONS 120
+#define POCKET_ICONS_X 13      // center of the first icon
+#define POCKET_ICONS_SPACING 13
+#define POCKET_ICONS_Y 74
+
+static const u8 sPocketIcons_Gfx[] = INCGFX_U8("graphics/bag/pocket_icons.png", ".4bpp");
+static const u16 sPocketIcons_Pal[] = INCGFX_U16("graphics/bag/pocket_icons.png", ".gbapal");
+
+static const struct OamData sPocketIconOamData =
+{
+    .shape = SPRITE_SHAPE(16x16),
+    .size = SPRITE_SIZE(16x16),
+    .priority = 1,
+};
+
+#define POCKET_ICON_FRAME(i) static const union AnimCmd sAnim_PocketIcon##i[] = { ANIMCMD_FRAME((i) * 4, 0), ANIMCMD_END };
+POCKET_ICON_FRAME(0) POCKET_ICON_FRAME(1) POCKET_ICON_FRAME(2) POCKET_ICON_FRAME(3) POCKET_ICON_FRAME(4)
+POCKET_ICON_FRAME(5) POCKET_ICON_FRAME(6) POCKET_ICON_FRAME(7) POCKET_ICON_FRAME(8) POCKET_ICON_FRAME(9)
+POCKET_ICON_FRAME(10) POCKET_ICON_FRAME(11) POCKET_ICON_FRAME(12) POCKET_ICON_FRAME(13)
+
+static const union AnimCmd *const sPocketIconAnimTable[] =
+{
+    sAnim_PocketIcon0, sAnim_PocketIcon1, sAnim_PocketIcon2, sAnim_PocketIcon3, sAnim_PocketIcon4,
+    sAnim_PocketIcon5, sAnim_PocketIcon6, sAnim_PocketIcon7, sAnim_PocketIcon8, sAnim_PocketIcon9,
+    sAnim_PocketIcon10, sAnim_PocketIcon11, sAnim_PocketIcon12, sAnim_PocketIcon13,
+};
+STATIC_ASSERT(ARRAY_COUNT(sPocketIconAnimTable) == POCKETS_COUNT * 2, PocketIconFramesMatchPockets);
+
+static const struct SpriteTemplate sPocketIconSpriteTemplate =
+{
+    .tileTag = TAG_POCKET_ICONS,
+    .paletteTag = TAG_POCKET_ICONS,
+    .oam = &sPocketIconOamData,
+    .anims = sPocketIconAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+void AddBagPocketIconSprites(void)
+{
+    const struct SpriteSheet sheet = {sPocketIcons_Gfx, sizeof(sPocketIcons_Gfx), TAG_POCKET_ICONS};
+    const struct SpritePalette palette = {sPocketIcons_Pal, TAG_POCKET_ICONS};
+    u32 i;
+
+    LoadSpriteSheet(&sheet);
+    LoadSpritePalette(&palette);
+    for (i = 0; i < POCKETS_COUNT; i++)
+    {
+        u8 spriteId = CreateSprite(&sPocketIconSpriteTemplate, POCKET_ICONS_X + i * POCKET_ICONS_SPACING, POCKET_ICONS_Y, 0);
+        gBagMenu->spriteIds[ITEMMENUSPRITE_POCKET_ICONS + i] = spriteId;
+        StartSpriteAnim(&gSprites[spriteId], i);
+    }
+}
+
+void SetBagPocketIconSelected(u8 pocketId, bool8 selected)
+{
+    u8 spriteId = gBagMenu->spriteIds[ITEMMENUSPRITE_POCKET_ICONS + pocketId];
+
+    if (spriteId != SPRITE_NONE)
+        StartSpriteAnim(&gSprites[spriteId], pocketId + (selected ? POCKETS_COUNT : 0));
+}
+
 void AddBagItemIconSprite(enum Item itemId, u8 id)
 {
     u8 *spriteId = &gBagMenu->spriteIds[id + ITEMMENUSPRITE_ITEM];
@@ -481,7 +548,7 @@ void AddBagItemIconSprite(enum Item itemId, u8 id)
         {
             *spriteId = iconSpriteId;
             gSprites[iconSpriteId].x2 = 24;
-            gSprites[iconSpriteId].y2 = 88;
+            gSprites[iconSpriteId].y2 = 142;
         }
     }
 }
@@ -518,7 +585,7 @@ void SetItemMenuSwapLineInvisibility(bool8 invisible)
 
 void UpdateItemMenuSwapLinePos(u8 y)
 {
-    UpdateSwapLineSpritesPos(&gBagMenu->spriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH | SWAP_LINE_HAS_MARGIN, 120, (y + 1) * 16);
+    UpdateSwapLineSpritesPos(&gBagMenu->spriteIds[ITEMMENUSPRITE_SWAP_LINE], ITEMMENU_SWAP_LINE_LENGTH | SWAP_LINE_HAS_MARGIN, 120, y * 16 + 8);
 }
 
 static void ArrangeBerryGfx(void *src, void *dest)

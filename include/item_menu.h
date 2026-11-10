@@ -48,12 +48,15 @@ enum BagSortOptions
 };
 
 #define ITEMMENU_SWAP_LINE_LENGTH 8  // Swap line is 8 sprites long
+#define POCKET_NAME_WIDTH 11 // in tiles; the name scroll buffer holds two names side by side
+#define POCKET_NAME_HEIGHT 3 // in tiles; 3 rows lets the text sit higher without clipping descenders
 enum {
     ITEMMENUSPRITE_BAG,
     ITEMMENUSPRITE_BALL,
     ITEMMENUSPRITE_ITEM,
     ITEMMENUSPRITE_ITEM_ALT, // Need two when selecting new item
-    ITEMMENUSPRITE_SWAP_LINE,
+    ITEMMENUSPRITE_POCKET_ICONS,
+    ITEMMENUSPRITE_SWAP_LINE = ITEMMENUSPRITE_POCKET_ICONS + POCKETS_COUNT,
     ITEMMENUSPRITE_COUNT = ITEMMENUSPRITE_SWAP_LINE + ITEMMENU_SWAP_LINE_LENGTH,
 };
 
@@ -90,7 +93,7 @@ struct BagMenu
     u8 numShownItems[POCKETS_COUNT];
     s16 graphicsLoadState;
     u8 unused2[14];
-    u8 ALIGNED(4) pocketNameBuffer[32][32];
+    u8 ALIGNED(4) pocketNameBuffer[POCKET_NAME_WIDTH * 2 * POCKET_NAME_HEIGHT][TILE_SIZE_4BPP];
     u8 unused3[4];
 };
 

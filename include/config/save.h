@@ -5,7 +5,7 @@
 #define SKIP_SAVE_CONFIRMATION              FALSE   // If TRUE, skips the "There is already a saved file" confirmation when overwriting a save.
 
 // SaveBlock1 configs
-#define FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1    FALSE   // Free up unused Pokédex seen flags (52 bytes).
+#define FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1    TRUE    // Free up unused Pokédex seen flags (52 bytes).
 #define FREE_TRAINER_HILL                   FALSE   // Frees up Trainer Hill data (28 bytes).
 #define FREE_TRAINER_TOWER                  FALSE   // Frees up Trainer Tower data (x bytes).
 #define FREE_MYSTERY_EVENT_BUFFERS          FALSE   // Frees up ramScript (1104 bytes).
