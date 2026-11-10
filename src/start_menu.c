@@ -23,6 +23,7 @@
 #include "link.h"
 #include "load_save.h"
 #include "main.h"
+#include "malloc.h"
 #include "menu.h"
 #include "new_game.h"
 #include "option_menu.h"
@@ -49,6 +50,7 @@
 #include "wild_encounter.h"
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
+#include "constants/script_menu.h"
 #include "constants/songs.h"
 
 // Menu actions
@@ -95,6 +97,9 @@ EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
+EWRAM_DATA static u8 sStartButtonSpriteIds[9] = {0};
+EWRAM_DATA static u8 sStartIconSpriteIds[9] = {0};
+EWRAM_DATA static bool8 sForPokenavTutorial = FALSE;
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -187,7 +192,188 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .baseBlock = 0x8
 };
 
-static const u8 sText_MenuDebug[] = _("DEBUG");
+static const u8 sText_MenuDebug[] = _("Debug");
+
+// Start menu buttons. Layout matches AddStartMenuWindow in menu.c.
+#define START_BUTTON_X          168 // left edge
+#define START_BUTTON_Y          6   // top edge of the first button
+#define START_BUTTON_SPACING    22  // 7 buttons evenly spaced down the screen
+#define START_BUTTON_TEXT_X     18  // text is centered between here and the button's right edge
+#define START_BUTTON_TEXT_WIDTH 44
+
+#define TAG_START_BUTTON        0x7A00
+#define TAG_START_BUTTON_HOVER  0x7A01
+#define TAG_START_ICONS         0x7A02 // + START_ICON_*, for both tiles and palette
+
+enum
+{
+    START_ICON_POKEDEX,
+    START_ICON_POKEMON,
+    START_ICON_BAG,
+    START_ICON_POKEGEAR,
+    START_ICON_TRAINER_CARD,
+    START_ICON_SAVE,
+    START_ICON_SETTINGS,
+    START_ICON_RETIRE,
+    START_ICON_DEBUG,
+    START_ICON_DEXNAV,
+};
+
+static const u32 sStartButton_Gfx[] = INCBIN_U32("graphics/start_menu/button.4bpp");
+static const u32 sStartButtonHover_Gfx[] = INCBIN_U32("graphics/start_menu/button_hover.4bpp");
+static const u16 sStartButton_Pal[] = INCBIN_U16("graphics/start_menu/button.gbapal");
+
+static const u32 sStartIcon_pokedex_Gfx[] = INCBIN_U32("graphics/start_menu/icons/pokedex.4bpp");
+static const u16 sStartIcon_pokedex_Pal[] = INCBIN_U16("graphics/start_menu/icons/pokedex.gbapal");
+static const u32 sStartIcon_pokemon_Gfx[] = INCBIN_U32("graphics/start_menu/icons/pokemon.4bpp");
+static const u16 sStartIcon_pokemon_Pal[] = INCBIN_U16("graphics/start_menu/icons/pokemon.gbapal");
+static const u32 sStartIcon_bag_Gfx[] = INCBIN_U32("graphics/start_menu/icons/bag.4bpp");
+static const u16 sStartIcon_bag_Pal[] = INCBIN_U16("graphics/start_menu/icons/bag.gbapal");
+static const u32 sStartIcon_pokegear_Gfx[] = INCBIN_U32("graphics/start_menu/icons/pokegear.4bpp");
+static const u16 sStartIcon_pokegear_Pal[] = INCBIN_U16("graphics/start_menu/icons/pokegear.gbapal");
+static const u32 sStartIcon_trainer_card_Gfx[] = INCBIN_U32("graphics/start_menu/icons/trainer_card.4bpp");
+static const u16 sStartIcon_trainer_card_Pal[] = INCBIN_U16("graphics/start_menu/icons/trainer_card.gbapal");
+static const u32 sStartIcon_save_Gfx[] = INCBIN_U32("graphics/start_menu/icons/save.4bpp");
+static const u16 sStartIcon_save_Pal[] = INCBIN_U16("graphics/start_menu/icons/save.gbapal");
+static const u32 sStartIcon_settings_Gfx[] = INCBIN_U32("graphics/start_menu/icons/settings.4bpp");
+static const u16 sStartIcon_settings_Pal[] = INCBIN_U16("graphics/start_menu/icons/settings.gbapal");
+static const u32 sStartIcon_retire_Gfx[] = INCBIN_U32("graphics/start_menu/icons/retire.4bpp");
+static const u16 sStartIcon_retire_Pal[] = INCBIN_U16("graphics/start_menu/icons/retire.gbapal");
+static const u32 sStartIcon_debug_Gfx[] = INCBIN_U32("graphics/start_menu/icons/debug.4bpp");
+static const u16 sStartIcon_debug_Pal[] = INCBIN_U16("graphics/start_menu/icons/debug.gbapal");
+static const u32 sStartIcon_dexnav_Gfx[] = INCBIN_U32("graphics/start_menu/icons/dexnav.4bpp");
+static const u16 sStartIcon_dexnav_Pal[] = INCBIN_U16("graphics/start_menu/icons/dexnav.gbapal");
+
+#define ICON_SHEET(id, name) [id] = {sStartIcon_##name##_Gfx, sizeof(sStartIcon_##name##_Gfx), TAG_START_ICONS + id}
+#define ICON_PAL(id, name)   [id] = {sStartIcon_##name##_Pal, TAG_START_ICONS + id}
+
+static const struct SpriteSheet sStartIconSheets[] =
+{
+    ICON_SHEET(START_ICON_POKEDEX, pokedex),
+    ICON_SHEET(START_ICON_POKEMON, pokemon),
+    ICON_SHEET(START_ICON_BAG, bag),
+    ICON_SHEET(START_ICON_POKEGEAR, pokegear),
+    ICON_SHEET(START_ICON_TRAINER_CARD, trainer_card),
+    ICON_SHEET(START_ICON_SAVE, save),
+    ICON_SHEET(START_ICON_SETTINGS, settings),
+    ICON_SHEET(START_ICON_RETIRE, retire),
+    ICON_SHEET(START_ICON_DEBUG, debug),
+    ICON_SHEET(START_ICON_DEXNAV, dexnav),
+};
+
+static const struct SpritePalette sStartIconPalettes[] =
+{
+    ICON_PAL(START_ICON_POKEDEX, pokedex),
+    ICON_PAL(START_ICON_POKEMON, pokemon),
+    ICON_PAL(START_ICON_BAG, bag),
+    ICON_PAL(START_ICON_POKEGEAR, pokegear),
+    ICON_PAL(START_ICON_TRAINER_CARD, trainer_card),
+    ICON_PAL(START_ICON_SAVE, save),
+    ICON_PAL(START_ICON_SETTINGS, settings),
+    ICON_PAL(START_ICON_RETIRE, retire),
+    ICON_PAL(START_ICON_DEBUG, debug),
+    ICON_PAL(START_ICON_DEXNAV, dexnav),
+};
+
+#undef ICON_SHEET
+#undef ICON_PAL
+
+static const struct SpritePalette sStartButtonPalette = {sStartButton_Pal, TAG_START_BUTTON};
+
+// button.png is 72x24 (the 64x16 button plus a 4px buffer on each side).
+// That isn't a GBA sprite size, so it's drawn as 6 pieces: {x, y, width, height} in tiles.
+static const u8 sStartButtonPieces[][4] =
+{
+    {0, 0, 4, 2}, {4, 0, 4, 2}, {8, 0, 1, 2},
+    {0, 2, 4, 1}, {4, 2, 4, 1}, {8, 2, 1, 1},
+};
+
+// Priority 1 keeps buttons above the map but under the BG0 text layer
+static const struct OamData sOam_StartButton =
+{
+    .shape = SPRITE_SHAPE(32x16),
+    .size = SPRITE_SIZE(32x16),
+    .priority = 1,
+};
+
+// Same pieces as sStartButtonPieces, positioned from the center of the 72x24 canvas
+static const struct Subsprite sSubsprites_StartButton[] =
+{
+    {.x = -36, .y = -12, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 0,  .priority = 1},
+    {.x =  -4, .y = -12, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 8,  .priority = 1},
+    {.x =  28, .y = -12, .shape = SPRITE_SHAPE(8x16),  .size = SPRITE_SIZE(8x16),  .tileOffset = 16, .priority = 1},
+    {.x = -36, .y =   4, .shape = SPRITE_SHAPE(32x8),  .size = SPRITE_SIZE(32x8),  .tileOffset = 18, .priority = 1},
+    {.x =  -4, .y =   4, .shape = SPRITE_SHAPE(32x8),  .size = SPRITE_SIZE(32x8),  .tileOffset = 22, .priority = 1},
+    {.x =  28, .y =   4, .shape = SPRITE_SHAPE(8x8),   .size = SPRITE_SIZE(8x8),   .tileOffset = 26, .priority = 1},
+};
+
+static const struct SubspriteTable sSubspriteTable_StartButton[] =
+{
+    {ARRAY_COUNT(sSubsprites_StartButton), sSubsprites_StartButton},
+};
+
+// Double-size affine so the icon can grow/rotate without being clipped
+static const struct OamData sOam_StartIcon =
+{
+    .affineMode = ST_OAM_AFFINE_DOUBLE,
+    .shape = SPRITE_SHAPE(16x16),
+    .size = SPRITE_SIZE(16x16),
+    .priority = 0,
+};
+
+enum
+{
+    START_ICON_ANIM_IDLE,
+    START_ICON_ANIM_HOVER,
+};
+
+static const union AffineAnimCmd sAffineAnim_StartIconIdle[] =
+{
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
+    AFFINEANIMCMD_END,
+};
+
+// Scale 0x100 = 1x, rotation 1 = ~1.4 degrees per frame
+static const union AffineAnimCmd sAffineAnim_StartIconHover[] =
+{
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0), // reset
+    AFFINEANIMCMD_FRAME(16, 16, 0, 4),       // pop up to 1.25x
+    AFFINEANIMCMD_FRAME(-8, -8, 0, 4),       // settle at 1.125x
+    AFFINEANIMCMD_FRAME(0, 0, 1, 4),         // sway between about +/-5.6 degrees
+    AFFINEANIMCMD_FRAME(0, 0, 0, 8),
+    AFFINEANIMCMD_FRAME(0, 0, -1, 8),
+    AFFINEANIMCMD_FRAME(0, 0, 0, 8),
+    AFFINEANIMCMD_FRAME(0, 0, 1, 4),
+    AFFINEANIMCMD_JUMP(3),
+};
+
+static const union AffineAnimCmd *const sAffineAnims_StartIcon[] =
+{
+    [START_ICON_ANIM_IDLE] = sAffineAnim_StartIconIdle,
+    [START_ICON_ANIM_HOVER] = sAffineAnim_StartIconHover,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_StartButton =
+{
+    .tileTag = TAG_START_BUTTON,
+    .paletteTag = TAG_START_BUTTON,
+    .oam = &sOam_StartButton,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_StartIcon =
+{
+    .tileTag = TAG_START_ICONS, // set per icon
+    .paletteTag = TAG_START_ICONS,
+    .oam = &sOam_StartIcon,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = sAffineAnims_StartIcon,
+    .callback = SpriteCallbackDummy,
+};
+
+static const u8 sStartMenuTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -206,6 +392,24 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]           = {sText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]          = {gText_MenuDexNav,  {.u8_void = StartMenuDexNavCallback}},
+};
+
+static const u8 sStartMenuIcons[] =
+{
+    [MENU_ACTION_POKEDEX]         = START_ICON_POKEDEX,
+    [MENU_ACTION_POKEMON]         = START_ICON_POKEMON,
+    [MENU_ACTION_BAG]             = START_ICON_BAG,
+    [MENU_ACTION_POKENAV]         = START_ICON_POKEGEAR,
+    [MENU_ACTION_PLAYER]          = START_ICON_TRAINER_CARD,
+    [MENU_ACTION_SAVE]            = START_ICON_SAVE,
+    [MENU_ACTION_OPTION]          = START_ICON_SETTINGS,
+    [MENU_ACTION_RETIRE_SAFARI]   = START_ICON_RETIRE,
+    [MENU_ACTION_PLAYER_LINK]     = START_ICON_TRAINER_CARD,
+    [MENU_ACTION_REST_FRONTIER]   = START_ICON_SAVE,
+    [MENU_ACTION_RETIRE_FRONTIER] = START_ICON_RETIRE,
+    [MENU_ACTION_PYRAMID_BAG]     = START_ICON_BAG,
+    [MENU_ACTION_DEBUG]           = START_ICON_DEBUG,
+    [MENU_ACTION_DEXNAV]          = START_ICON_DEXNAV,
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -256,6 +460,7 @@ static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
+static void BuildPokenavTutorialStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
 static void RemoveExtraStartMenuWindows(void);
@@ -284,7 +489,11 @@ static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
 
-    if (IsOverworldLinkActive() == TRUE)
+    if (sForPokenavTutorial)
+    {
+        BuildPokenavTutorialStartMenu();
+    }
+    else if (IsOverworldLinkActive() == TRUE)
     {
         BuildLinkModeStartMenu();
     }
@@ -333,15 +542,14 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
 
-    AddStartMenuAction(MENU_ACTION_BAG);
-
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+
+    AddStartMenuAction(MENU_ACTION_BAG);
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildDebugStartMenu(void)
@@ -351,9 +559,9 @@ static void BuildDebugStartMenu(void)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+    AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
@@ -367,37 +575,34 @@ static void BuildSafariZoneStartMenu(void)
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildLinkModeStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
-
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
     {
         AddStartMenuAction(MENU_ACTION_POKENAV);
     }
 
+    AddStartMenuAction(MENU_ACTION_BAG);
+
     AddStartMenuAction(MENU_ACTION_PLAYER_LINK);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildUnionRoomStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
-
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
     {
         AddStartMenuAction(MENU_ACTION_POKENAV);
     }
 
+    AddStartMenuAction(MENU_ACTION_BAG);
+
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePikeStartMenu(void)
@@ -406,7 +611,6 @@ static void BuildBattlePikeStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePyramidStartMenu(void)
@@ -417,7 +621,6 @@ static void BuildBattlePyramidStartMenu(void)
     AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
     AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildMultiPartnerRoomStartMenu(void)
@@ -425,7 +628,95 @@ static void BuildMultiPartnerRoomStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
+}
+
+static void UpdateStartMenuButtons(void)
+{
+    for (u32 i = 0; i < sNumStartMenuActions; i++)
+    {
+        bool32 hovered = (i == sStartMenuCursorPos);
+        gSprites[sStartButtonSpriteIds[i]].oam.tileNum = GetSpriteTileStartByTag(hovered ? TAG_START_BUTTON_HOVER : TAG_START_BUTTON);
+        StartSpriteAffineAnim(&gSprites[sStartIconSpriteIds[i]], hovered ? START_ICON_ANIM_HOVER : START_ICON_ANIM_IDLE);
+    }
+}
+
+// Reorders the 72x24 PNG's tiles into the order the button's sprite pieces read them in
+static void LoadStartButtonSheet(const u32 *gfx, u16 tag)
+{
+    u8 *buffer = AllocZeroed(27 * TILE_SIZE_4BPP);
+    struct SpriteSheet sheet = {buffer, 27 * TILE_SIZE_4BPP, tag};
+    u32 dest = 0;
+
+    for (u32 i = 0; i < ARRAY_COUNT(sStartButtonPieces); i++)
+    {
+        const u8 *piece = sStartButtonPieces[i];
+        for (u32 y = piece[1]; y < piece[1] + piece[3]; y++)
+        {
+            for (u32 x = piece[0]; x < piece[0] + piece[2]; x++)
+                memcpy(buffer + TILE_SIZE_4BPP * dest++, (const u8 *)gfx + TILE_SIZE_4BPP * (y * 9 + x), TILE_SIZE_4BPP);
+        }
+    }
+    LoadSpriteSheet(&sheet);
+    Free(buffer);
+}
+
+static void CreateStartMenuButtons(void)
+{
+    struct SpriteTemplate iconTemplate = sSpriteTemplate_StartIcon;
+
+    if (GetSpriteTileStartByTag(TAG_START_BUTTON) == TAG_NONE)
+        LoadStartButtonSheet(sStartButton_Gfx, TAG_START_BUTTON);
+    if (GetSpriteTileStartByTag(TAG_START_BUTTON_HOVER) == TAG_NONE)
+        LoadStartButtonSheet(sStartButtonHover_Gfx, TAG_START_BUTTON_HOVER);
+    LoadSpritePalette(&sStartButtonPalette);
+
+    for (u32 i = 0; i < sNumStartMenuActions; i++)
+    {
+        s16 y = START_BUTTON_Y + i * START_BUTTON_SPACING;
+        u32 icon = sStartMenuIcons[sCurrentStartMenuActions[i]];
+        u8 spriteId = CreateSprite(&sSpriteTemplate_StartButton, START_BUTTON_X + 32, y + 8, 0);
+        SetSubspriteTables(&gSprites[spriteId], sSubspriteTable_StartButton);
+        sStartButtonSpriteIds[i] = spriteId;
+
+        if (GetSpriteTileStartByTag(sStartIconSheets[icon].tag) == TAG_NONE)
+            LoadSpriteSheet(&sStartIconSheets[icon]);
+        LoadSpritePalette(&sStartIconPalettes[icon]);
+        iconTemplate.tileTag = iconTemplate.paletteTag = TAG_START_ICONS + icon;
+        sStartIconSpriteIds[i] = CreateSprite(&iconTemplate, START_BUTTON_X + 10, y + 8, 0);
+    }
+    UpdateStartMenuButtons();
+}
+
+static void DestroyStartMenuButtons(void)
+{
+    for (u32 i = 0; i < sNumStartMenuActions; i++)
+    {
+        DestroySprite(&gSprites[sStartButtonSpriteIds[i]]);
+        FreeSpriteOamMatrix(&gSprites[sStartIconSpriteIds[i]]);
+        DestroySprite(&gSprites[sStartIconSpriteIds[i]]);
+    }
+    FreeSpriteTilesByTag(TAG_START_BUTTON);
+    FreeSpriteTilesByTag(TAG_START_BUTTON_HOVER);
+    FreeSpritePaletteByTag(TAG_START_BUTTON);
+    for (u32 i = 0; i < ARRAY_COUNT(sStartIconSheets); i++)
+    {
+        FreeSpriteTilesByTag(sStartIconSheets[i].tag);
+        FreeSpritePaletteByTag(sStartIconPalettes[i].tag);
+    }
+}
+
+// Like the normal menu, but Pokégear always shows
+static void BuildPokenavTutorialStartMenu(void)
+{
+    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKEDEX);
+    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKEMON);
+    AddStartMenuAction(MENU_ACTION_POKENAV);
+    AddStartMenuAction(MENU_ACTION_BAG);
+    AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_SAVE);
+    AddStartMenuAction(MENU_ACTION_OPTION);
 }
 
 static void ShowSafariBallsWindow(void)
@@ -486,15 +777,16 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     do
     {
-        if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
-        {
-            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
-        }
-        else
-        {
-            StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
-            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
-        }
+        u32 fontId;
+        s32 width;
+
+        StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+        fontId = GetFontIdToFit(gStringVar4, FONT_NORMAL, 0, START_BUTTON_TEXT_WIDTH);
+        width = GetStringWidth(fontId, gStringVar4, 0);
+        AddTextPrinterParameterized3(GetStartMenuWindowId(), fontId,
+                                     START_BUTTON_TEXT_X + (START_BUTTON_TEXT_WIDTH - width) / 2,
+                                     START_BUTTON_Y + index * START_BUTTON_SPACING,
+                                     sStartMenuTextColors, TEXT_SKIP_DRAW, gStringVar4);
 
         index++;
         if (index >= sNumStartMenuActions)
@@ -526,7 +818,12 @@ static bool32 InitStartMenuStep(void)
         break;
     case 2:
         LoadMessageBoxAndBorderGfx();
-        DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
+        AddStartMenuWindow(sNumStartMenuActions);
+        PutWindowTilemap(GetStartMenuWindowId());
+        FillWindowPixelBuffer(GetStartMenuWindowId(), PIXEL_FILL(0));
+        if (sStartMenuCursorPos >= sNumStartMenuActions)
+            sStartMenuCursorPos = 0;
+        CreateStartMenuButtons();
         sInitStartMenuData[1] = 0;
         sInitStartMenuData[0]++;
         break;
@@ -542,8 +839,7 @@ static bool32 InitStartMenuStep(void)
             sInitStartMenuData[0]++;
         break;
     case 5:
-        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
-        CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
+        CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_FULL);
         return TRUE;
     }
 
@@ -624,19 +920,26 @@ void ShowStartMenu(void)
     LockPlayerFieldControls();
 }
 
-static bool8 HandleStartMenuInput(void)
+static void HandleStartMenuDpadInput(void)
 {
     if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(-1);
+        sStartMenuCursorPos = (sStartMenuCursorPos + sNumStartMenuActions - 1) % sNumStartMenuActions;
+        UpdateStartMenuButtons();
     }
 
     if (JOY_NEW(DPAD_DOWN))
     {
         PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(1);
+        sStartMenuCursorPos = (sStartMenuCursorPos + 1) % sNumStartMenuActions;
+        UpdateStartMenuButtons();
     }
+}
+
+static bool8 HandleStartMenuInput(void)
+{
+    HandleStartMenuDpadInput();
 
     if (JOY_NEW(A_BUTTON))
     {
@@ -818,6 +1121,7 @@ static void HideStartMenuDebug(void)
     PlaySE(SE_SELECT);
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
+    DestroyStartMenuButtons();
 }
 
 static bool8 StartMenuLinkModePlayerNameCallback(void)
@@ -1038,6 +1342,7 @@ static u8 SaveConfirmSaveCallback(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
     RemoveStartMenuWindow();
+    DestroyStartMenuButtons();
     ShowSaveInfoWindow();
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -1229,6 +1534,7 @@ static u8 BattlePyramidConfirmRetireCallback(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
     RemoveStartMenuWindow();
+    DestroyStartMenuButtons();
     ShowSaveMessage(gText_BattlePyramidConfirmRetire, BattlePyramidRetireYesNoCallback);
 
     return SAVE_IN_PROGRESS;
@@ -1482,6 +1788,7 @@ static void HideStartMenuWindow(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
+    DestroyStartMenuButtons();
     ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
 }
@@ -1510,4 +1817,35 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
     ShowSaveInfoWindow();
     gMenuCallback = SaveCallback;
     sSaveDialogCallback = SaveSavingMessageCallback;
+}
+
+static void Task_PokenavTutorialStartMenu(u8 taskId)
+{
+    HandleStartMenuDpadInput();
+
+    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        // MENU_ACTION_POKEDEX..OPTION are 0-6, the same values the old tutorial multichoice returned
+        if (JOY_NEW(A_BUTTON))
+            gSpecialVar_Result = sCurrentStartMenuActions[sStartMenuCursorPos];
+        else
+            gSpecialVar_Result = MULTI_B_PRESSED;
+
+        ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
+        RemoveStartMenuWindow();
+        DestroyStartMenuButtons();
+        sForPokenavTutorial = FALSE;
+        DestroyTask(taskId);
+        ScriptContext_Enable();
+    }
+}
+
+// Used by ScriptMenu_CreateStartMenuForPokenavTutorial; the result goes in VAR_RESULT
+void ShowPokenavTutorialStartMenu(void)
+{
+    sForPokenavTutorial = TRUE;
+    sStartMenuCursorPos = 0;
+    InitStartMenu();
+    CreateTask(Task_PokenavTutorialStartMenu, 80);
 }

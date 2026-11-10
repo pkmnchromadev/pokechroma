@@ -97,6 +97,8 @@ script RossanoLibrary_Object_GruntTakesBook {
     delay(8)
     applymovement(GRUNT, Common_Movement_ExclamationMark)
     waitmovement(0)
+    playse(SE_PIN)
+    waitse
     setspeaker("???")
     msgbox(format("H-{PAUSE 16}Hey kid!\NN-{PAUSE 16}Nothin' to see here!\pI'm not stealin' anything!\p{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.\N{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.{PAUSE 16}.\pOkay!\NFine!\pYou caught me!\pBut you're not tellin' anyone!"), MSGBOX_AUTOCLOSE)
     trainerbattle_no_intro(TRAINER_PROTO_GRUNT_1, format("Drats!\pBoss ain't gonna be happy about this ruckus..."))

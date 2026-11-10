@@ -1069,7 +1069,7 @@ CanvasPath_EventScript_SkipCypressEncounter_Text_6:
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_7:
 # 396 "data/maps/Route101/scripts.pory"
-	.string "Cypress$"
+	.string "Prof. Cypress$"
 
 CanvasPath_EventScript_SkipCypressEncounter_Text_8:
 # 397 "data/maps/Route101/scripts.pory"

@@ -208,6 +208,7 @@ enum
     MC_HEADER_GLACIA,
     MC_HEADER_DRAKE,
     MC_HEADER_WALLACE,
+    //new
     MC_HEADER_COUNT
 };
 

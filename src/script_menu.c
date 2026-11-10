@@ -8,6 +8,7 @@
 #include "palette.h"
 #include "script.h"
 #include "script_menu.h"
+#include "start_menu.h"
 #include "sound.h"
 #include "string_util.h"
 #include "strings.h"
@@ -61,8 +62,6 @@ static void DrawLinkServicesMultichoiceMenu(u8 multichoiceId);
 static void CreatePCMultichoice(void);
 static void CreateLilycoveSSTidalMultichoice(void);
 static bool8 IsPicboxClosed(void);
-static void CreateStartMenuForPokenavTutorial(void);
-static void InitMultichoiceNoWrap(bool8 ignoreBPress, u8 unusedCount, u8 windowId, u8 multichoiceId);
 static void MultichoiceDynamicEventDebug_OnInit(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventDebug_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventDebug_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
@@ -1091,40 +1090,13 @@ bool16 ScriptMenu_CreateStartMenuForPokenavTutorial(void)
     else
     {
         gSpecialVar_Result = 0xFF;
-        CreateStartMenuForPokenavTutorial();
+        ShowPokenavTutorialStartMenu();
         return TRUE;
     }
 }
 
-static void CreateStartMenuForPokenavTutorial(void)
-{
-    u8 windowId = CreateWindowFromRect(21, 0, 7, 18);
-    SetStandardWindowBorderStyle(windowId, FALSE);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionPokedex, 8, 9, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionPokemon, 8, 25, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionBag, 8, 41, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionPokenav, 8, 57, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gSaveBlock2Ptr->playerName, 8, 73, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionSave, 8, 89, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionOption, 8, 105, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_MenuOptionExit, 8, 121, TEXT_SKIP_DRAW, NULL);
-    InitMenuNormal(windowId, FONT_NORMAL, 0, 9, 16, ARRAY_COUNT(MultichoiceList_ForcedStartMenu), 0);
-    InitMultichoiceNoWrap(FALSE, ARRAY_COUNT(MultichoiceList_ForcedStartMenu), windowId, MULTI_FORCED_START_MENU);
-    CopyWindowToVram(windowId, COPYWIN_FULL);
-}
 
 #define tWindowId       data[6]
-
-static void InitMultichoiceNoWrap(bool8 ignoreBPress, u8 unusedCount, u8 windowId, u8 multichoiceId)
-{
-    u8 taskId;
-    sProcessInputDelay = 2;
-    taskId = CreateTask(Task_HandleMultichoiceInput, 80);
-    gTasks[taskId].tIgnoreBPress = ignoreBPress;
-    gTasks[taskId].tDoWrap = 0;
-    gTasks[taskId].tWindowId = windowId;
-    gTasks[taskId].tMultichoiceId = multichoiceId;
-}
 
 #undef tLeft
 #undef tTop

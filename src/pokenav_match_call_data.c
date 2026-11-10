@@ -176,16 +176,16 @@ static void MatchCall_GetNameAndDescByRematchIdx(u32, const u8 **, const u8 **);
 
 // .rodata
 
-static const struct MatchCallStructNPC sMrStoneMatchCallHeader =
+static const struct MatchCallStructNPC sMrStoneMatchCallHeader = // skip
 {
     .type = MC_TYPE_NPC,
-    .mapSec = MAPSEC_RUSTBORO_CITY,
+    .mapSec = MAPSEC_LITTLEROOT_TOWN,
     .flag = 0xFFFF,
     .desc = COMPOUND_STRING("Neighbor"),
     .name = COMPOUND_STRING("Skip"),
     .textData = (const match_call_text_data_t[]) {
-        { MatchCall_Text_MrStone1,  ALWAYS_AVAILABLE,                    FLAG_ENABLE_MR_STONE_POKENAV },
-        { MatchCall_Text_MrStone2,  FLAG_ENABLE_MR_STONE_POKENAV,        NO_FLAG_TO_SET },
+        { MatchCall_Text_MrStone1,  ALWAYS_AVAILABLE,                    FLAG_POKEGEAR_CALLED_SKIP_INTRO },
+        { MatchCall_Text_MrStone2,  FLAG_POKEGEAR_CALLED_SKIP_INTRO,     NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone3,  FLAG_DELIVERED_STEVEN_LETTER,        NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone4,  FLAG_RECEIVED_EXP_SHARE,             NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
@@ -227,7 +227,7 @@ static const struct MatchCallBirch sProfBirchMatchCallHeader =
     .mapSec = 0,
     .flag = FLAG_ENABLE_PROF_BIRCH_MATCH_CALL,
     .desc = COMPOUND_STRING("{PKMN} PROF."),
-    .name = COMPOUND_STRING("Prof. Cypress")
+    .name = COMPOUND_STRING("Cypress")
 };
 
 static const match_call_text_data_t sMomTextScripts[] = {
@@ -243,7 +243,7 @@ static const struct MatchCallStructNPC sMomMatchCallHeader =
     .mapSec = MAPSEC_LITTLEROOT_TOWN,
     .flag = FLAG_ENABLE_MOM_MATCH_CALL,
     .desc = COMPOUND_STRING("CALM & KIND"),
-    .name = COMPOUND_STRING("Mom"),
+    .name = COMPOUND_STRING("Dad"),
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_Mom1, ALWAYS_AVAILABLE,            NO_FLAG_TO_SET },
         { MatchCall_Text_Mom2, FLAG_DEFEATED_PETALBURG_GYM, NO_FLAG_TO_SET },
