@@ -243,6 +243,14 @@ static inline void *GetWindowFunc_DialogueFrame(void)
     return WindowFunc_DrawDialogueFrame; // pokechroma: custom sign art uses the dialogue frame layout
 }
 
+// The window's own tiles cover the last two columns, so draw tiles 11 and 12 over them.
+// shortcut: hides the rightmost 16px of the text area, widen the window if long lines clip.
+static void WindowFunc_DrawDialogueFrameRightGradient(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum)
+{
+    FillMenuTilemapBufferRect(bg, 11, left + width - 2, top, 1, height);
+    FillMenuTilemapBufferRect(bg, 12, left + width - 1, top, 1, height);
+}
+
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram)
 {
     sTileNum = DLG_WINDOW_BASE_TILE_NUM;
@@ -250,17 +258,39 @@ void DrawDialogueFrame(u8 windowId, bool8 copyToVram)
     CallWindowFunction(windowId, GetWindowFunc_DialogueFrame());
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     PutWindowTilemap(windowId);
+    if (IsDefaultMsgBoxLoaded())
+        CallWindowFunction(windowId, WindowFunc_DrawDialogueFrameRightGradient);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
+// Top or bottom edge of the dialogue frame; flip is 0 for the top and BG_TILE_V_FLIP(0) for the bottom.
+static void FillDialogueFrameRow(u8 bg, u8 left, u8 y, u8 width, u16 flip)
+{
+    if (IsDefaultMsgBoxLoaded())
+    {
+        // default message_box.png: 1 corner, 2, 3 (repeats), 4, 5, 6 corner
+        FillMenuTilemapBufferRect(bg, flip | 1, left - 2,         y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 2, left - 1,         y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 3, left,             y, width - 2, 1);
+        FillMenuTilemapBufferRect(bg, flip | 4, left + width - 2, y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 5, left + width - 1, y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 6, left + width,     y,         1, 1);
+    }
+    else
+    {
+        // sign/wood/metal variants keep the old layout
+        FillMenuTilemapBufferRect(bg, flip | 1, left - 2,         y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 3, left - 1,         y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 4, left,             y, width - 1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 5, left + width - 1, y,         1, 1);
+        FillMenuTilemapBufferRect(bg, flip | 6, left + width,     y,         1, 1);
+    }
+}
+
 static void WindowFunc_RedrawDialogueFrame(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum)
 {
-    FillMenuTilemapBufferRect(bg,  1, left - 2,         top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  3, left - 1,         top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  4, left,             top - 1, width - 1, 1);
-    FillMenuTilemapBufferRect(bg,  5, left + width - 1, top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  6, left + width,     top - 1,         1, 1);
+    FillDialogueFrameRow(bg, left, top - 1, width, 0);
 }
 
 void RedrawDialogueFrame(void)
@@ -315,19 +345,11 @@ static void WindowFunc_DrawStandardFrame(u8 bg, u8 left, u8 top, u8 width, u8 he
 
 static void WindowFunc_DrawDialogueFrame(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum)
 {
-    FillMenuTilemapBufferRect(bg,  1, left - 2,         top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  3, left - 1,         top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  4, left,             top - 1, width - 1, 1);
-    FillMenuTilemapBufferRect(bg,  5, left + width - 1, top - 1,         1, 1);
-    FillMenuTilemapBufferRect(bg,  6, left + width,     top - 1,         1, 1);
+    FillDialogueFrameRow(bg, left, top - 1, width, 0);
     FillMenuTilemapBufferRect(bg,  7, left - 2,         top,             1, 5);
     FillMenuTilemapBufferRect(bg,  9, left - 1,         top,     width + 1, 5);
     FillMenuTilemapBufferRect(bg, 10, left + width,     top,             1, 5);
-    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(1), left - 2,         top + height,         1, 1);
-    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(3), left - 1,         top + height,         1, 1);
-    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(4), left,             top + height, width - 1, 1);
-    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(5), left + width - 1, top + height,         1, 1);
-    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(6), left + width,     top + height,         1, 1);
+    FillDialogueFrameRow(bg, left, top + height, width, BG_TILE_V_FLIP(0));
 }
 
 static void WindowFunc_ClearStdWindowAndFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)

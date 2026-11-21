@@ -11,7 +11,7 @@ void SaveGame(void);
 void CB2_SetUpSaveAfterLinkBattle(void);
 void SaveForBattleTowerLink(void);
 void HideStartMenu(void);
-void ShowPokenavTutorialStartMenu(void);
+void StartMenu_ShowSaveDialog(bool32 pyramidRetire);
 void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 
 #endif // GUARD_START_MENU_H

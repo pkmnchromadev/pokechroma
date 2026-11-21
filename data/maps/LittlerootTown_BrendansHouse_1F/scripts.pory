@@ -508,7 +508,7 @@ script PlayersHouse_es_DadBeforeExit {
 	}
 	if (var(VAR_PLAYERSHOUSE_STATE) == 1) {
 		setspeaker("Dad")
-		msgbox(format("Wow... you've grown up so fast!\pNow that you're leaving home, I'd like you to take this."). MSGBOX_AUTOCLOSE)
+		msgbox(format("Wow... you've grown up so fast!\pNow that you're leaving home, I'd like you to take this."), MSGBOX_AUTOCLOSE)
 		waitmessage
 		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
 		msgbox(format("You receieved the {COLOR GREEN}PokéGear{COLOR DARK_GREY}!"), MSGBOX_DEFAULT)

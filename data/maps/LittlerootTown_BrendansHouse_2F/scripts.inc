@@ -722,11 +722,11 @@ PlayersHouse_Mapscript_DadEnterRoom_Text_0:
 
 PlayersHouse_Mapscript_DadEnterRoom_Text_1:
 # 339 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	.string "{PLAYER}!{PAUSE 16}\n"
+	.string "{PLAYER}{KUN}!{PAUSE 32}\n"
 	.string "You're gonna be late!\p"
 	.string "{COLOR GREEN}Prof. Cypress{COLOR DARK_GREY} is visiting town and is\n"
 	.string "looking for a new Trainer to be her\l"
 	.string "assistant!\p"
-	.string "Now, get ready and let your friend {COLOR GREEN}Skip{COLOR DARK_GREY}\n"
-	.string "know about it too.\p"
+	.string "Now, get ready and let your friend\n"
+	.string "{COLOR GREEN}Skip{COLOR DARK_GREY} know about it too.\p"
 	.string "Don't be late!$"

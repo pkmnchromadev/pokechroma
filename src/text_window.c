@@ -20,6 +20,12 @@
 // message box loading
 static EWRAM_DATA u8 sMsgBoxType; // EWRAM is NOLOAD: an initializer was never applied; 0 falls to the same default branch as MSGBOX_DEFAULT
 static EWRAM_DATA u8 sMsgBoxSubType = MSGBOX_SUB_DEFAULT;
+static EWRAM_DATA bool8 sDefaultMsgBoxLoaded;
+
+bool8 IsDefaultMsgBoxLoaded(void)
+{
+    return sDefaultMsgBoxLoaded;
+}
 static const u16 sStdTextWindow_Gfx[]  = INCGFX_U16("graphics/text_window/std.png", ".4bpp");
 
 const u8 gTextWindowFrame1_Gfx[] = INCGFX_U8("graphics/text_window/1.png", ".4bpp");
@@ -250,6 +256,8 @@ void SetMsgBox(u8 type, u8 subtype)
 // This method is an example. What you put here depends on what each type and subtype of t-box will look like
 void LoadMsgBox(const u8 **graphic, const u16 **palette)
 {
+    // LoadMsgBox resets the type below, so remember it for the frame drawing in menu.c
+    sDefaultMsgBoxLoaded = (sMsgBoxType != MSGBOX_SIGN);
     switch(sMsgBoxType)
     {
     case MSGBOX_SIGN: //The posters have 3 associated with them. This will be explained later in the tutorial.

@@ -25,6 +25,7 @@
 #include "constants/seagallop.h"
 #include "constants/songs.h"
 
+#include "pause_menu.h"
 #include "data/script_menu.h"
 
 struct DynamicListMenuEventArgs
@@ -1090,7 +1091,7 @@ bool16 ScriptMenu_CreateStartMenuForPokenavTutorial(void)
     else
     {
         gSpecialVar_Result = 0xFF;
-        ShowPokenavTutorialStartMenu();
+        PauseMenu_ShowForPokegearTutorial();
         return TRUE;
     }
 }

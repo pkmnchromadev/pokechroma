@@ -336,7 +336,7 @@ script PlayersHouse_Mapscript_DadEnterRoom {
 		playse(SE_PIN)
 		delay(10)
 		setspeaker("Dad")
-		msgbox(format("{PLAYER}!{PAUSE 16}\nYou're gonna be late!\p{COLOR GREEN}Prof. Cypress{COLOR DARK_GREY} is visiting town and is looking for a new Trainer to be her assistant!\pNow, get ready and let your friend {COLOR GREEN}Skip{COLOR DARK_GREY} know about it too.\pDon't be late!"), MSGBOX_AUTOCLOSE)
+		msgbox(format("{PLAYER}{KUN}!{PAUSE 32}\nYou're gonna be late!\p{COLOR GREEN}Prof. Cypress{COLOR DARK_GREY} is visiting town and is looking for a new Trainer to be her assistant!\pNow, get ready and let your friend\N{COLOR GREEN}Skip{COLOR DARK_GREY} know about it too.\pDon't be late!"), MSGBOX_AUTOCLOSE)
 		closemessage
 		delay(10)
 		applymovement(DAD, PlayersHouse_Movement_DadEnterRoom_1)

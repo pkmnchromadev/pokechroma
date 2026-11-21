@@ -28,6 +28,7 @@
 #include "option_menu.h"
 #include "overworld.h"
 #include "palette.h"
+#include "pause_menu.h"
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokenav.h"
@@ -97,7 +98,6 @@ EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
 EWRAM_DATA static u8 sStartIconSpriteIds[9] = {0};
-EWRAM_DATA static bool8 sForPokenavTutorial = FALSE;
 EWRAM_DATA static bool8 sStartMenuInDarkness = FALSE;
 
 // Menu action callbacks
@@ -420,13 +420,11 @@ static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
-static void BuildPokenavTutorialStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
 static void RemoveExtraStartMenuWindows(void);
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count);
 static bool32 InitStartMenuStep(void);
-static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
 static u8 RunSaveCallback(void);
@@ -449,11 +447,7 @@ static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
 
-    if (sForPokenavTutorial)
-    {
-        BuildPokenavTutorialStartMenu();
-    }
-    else if (IsOverworldLinkActive() == TRUE)
+    if (IsOverworldLinkActive() == TRUE)
     {
         BuildLinkModeStartMenu();
     }
@@ -687,20 +681,6 @@ static void DestroyStartMenuButtons(void)
     }
 }
 
-// Like the normal menu, but Pokégear always shows
-static void BuildPokenavTutorialStartMenu(void)
-{
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
-        AddStartMenuAction(MENU_ACTION_POKEDEX);
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
-        AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_POKENAV);
-    AddStartMenuAction(MENU_ACTION_BAG);
-    AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
-    AddStartMenuAction(MENU_ACTION_OPTION);
-}
-
 static void ShowSafariBallsWindow(void)
 {
     sSafariBallsWindowId = AddWindow(&sWindowTemplate_SafariBalls);
@@ -836,14 +816,6 @@ static bool32 InitStartMenuStep(void)
     return FALSE;
 }
 
-static void InitStartMenu(void)
-{
-    sInitStartMenuData[0] = 0;
-    sInitStartMenuData[1] = 0;
-    while (!InitStartMenuStep())
-        ;
-}
-
 static void StartMenuTask(u8 taskId)
 {
     if (InitStartMenuStep() == TRUE)
@@ -871,11 +843,17 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
     return TRUE;
 }
 
+// Link rooms and the Union Room keep this menu; everywhere else uses the pause menu (pause_menu.c)
+static bool32 UsePauseMenu(void)
+{
+    return !IsOverworldLinkActive() && !InUnionRoom();
+}
+
 void ShowReturnToFieldStartMenu(void)
 {
     sInitStartMenuData[0] = 0;
     sInitStartMenuData[1] = 0;
-    gFieldCallback2 = FieldCB_ReturnToFieldStartMenu;
+    gFieldCallback2 = UsePauseMenu() ? FieldCB_ReturnToFieldOpenPauseMenu : FieldCB_ReturnToFieldStartMenu;
 }
 
 void Task_ShowStartMenu(u8 taskId)
@@ -900,6 +878,11 @@ void Task_ShowStartMenu(u8 taskId)
 
 void ShowStartMenu(void)
 {
+    if (UsePauseMenu())
+    {
+        PauseMenu_Show();
+        return;
+    }
     if (!IsOverworldLinkActive())
     {
         FreezeObjectEvents();
@@ -1177,11 +1160,10 @@ static bool8 SaveCallback(void)
     {
     case SAVE_IN_PROGRESS:
         return FALSE;
-    case SAVE_CANCELED: // Back to start menu
+    case SAVE_CANCELED: // Back to the pause menu
         ClearDialogWindowAndFrameToTransparent(0, FALSE);
-        InitStartMenu();
-        gMenuCallback = HandleStartMenuInput;
-        return FALSE;
+        PauseMenu_Show();
+        return TRUE;
     case SAVE_SUCCESS:
     case SAVE_ERROR:    // Close start menu
         ClearDialogWindowAndFrameToTransparent(0, TRUE);
@@ -1204,10 +1186,8 @@ static bool8 BattlePyramidRetireStartCallback(void)
 
 static bool8 BattlePyramidRetireReturnCallback(void)
 {
-    InitStartMenu();
-    gMenuCallback = HandleStartMenuInput;
-
-    return FALSE;
+    PauseMenu_Show();
+    return TRUE;
 }
 
 static bool8 BattlePyramidRetireCallback(void)
@@ -1215,7 +1195,6 @@ static bool8 BattlePyramidRetireCallback(void)
     switch (RunSaveCallback())
     {
     case SAVE_SUCCESS: // No (Stay in battle pyramid)
-        RemoveExtraStartMenuWindows();
         gMenuCallback = BattlePyramidRetireReturnCallback;
         return FALSE;
     case SAVE_IN_PROGRESS:
@@ -1334,9 +1313,6 @@ static bool8 SaveErrorTimer(void)
 
 static u8 SaveConfirmSaveCallback(void)
 {
-    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
-    RemoveStartMenuWindow();
-    DestroyStartMenuButtons();
     ShowSaveInfoWindow();
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -1526,9 +1502,6 @@ static void InitBattlePyramidRetire(void)
 
 static u8 BattlePyramidConfirmRetireCallback(void)
 {
-    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
-    RemoveStartMenuWindow();
-    DestroyStartMenuButtons();
     ShowSaveMessage(gText_BattlePyramidConfirmRetire, BattlePyramidRetireYesNoCallback);
 
     return SAVE_IN_PROGRESS;
@@ -1813,33 +1786,9 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
     sSaveDialogCallback = SaveSavingMessageCallback;
 }
 
-static void Task_PokenavTutorialStartMenu(u8 taskId)
+// The save prompt (or Battle Pyramid retire prompt) for the pause menu, which reopens if it's backed out of
+void StartMenu_ShowSaveDialog(bool32 pyramidRetire)
 {
-    HandleStartMenuDpadInput();
-
-    if (JOY_NEW(A_BUTTON | B_BUTTON))
-    {
-        PlaySE(SE_SELECT);
-        // MENU_ACTION_POKEDEX..OPTION are 0-6, the same values the old tutorial multichoice returned
-        if (JOY_NEW(A_BUTTON))
-            gSpecialVar_Result = sCurrentStartMenuActions[sStartMenuCursorPos];
-        else
-            gSpecialVar_Result = MULTI_B_PRESSED;
-
-        ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
-        RemoveStartMenuWindow();
-        DestroyStartMenuButtons();
-        sForPokenavTutorial = FALSE;
-        DestroyTask(taskId);
-        ScriptContext_Enable();
-    }
-}
-
-// Used by ScriptMenu_CreateStartMenuForPokenavTutorial; the result goes in VAR_RESULT
-void ShowPokenavTutorialStartMenu(void)
-{
-    sForPokenavTutorial = TRUE;
-    sStartMenuCursorPos = 0;
-    InitStartMenu();
-    CreateTask(Task_PokenavTutorialStartMenu, 80);
+    gMenuCallback = pyramidRetire ? BattlePyramidRetireStartCallback : SaveStartCallback;
+    gTasks[CreateTask(Task_ShowStartMenu, 0x50)].data[0] = 1; // skip straight to running gMenuCallback
 }

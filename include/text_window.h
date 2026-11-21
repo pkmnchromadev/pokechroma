@@ -5,6 +5,7 @@
 
 void SetMsgBox(u8 type, u8 subtype);
 void LoadMsgBox(const u8 **graphic, const u16 **palette);
+bool8 IsDefaultMsgBoxLoaded(void);
 
 struct TilesPal
 {
