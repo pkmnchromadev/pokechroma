@@ -130,7 +130,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_101",
-      "name": "Canvas Path",
+      "name": "Route 1",
       "x": 15,
       "y": 11,
       "width": 1,
@@ -138,7 +138,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_102",
-      "name": "Rossano Foothills",
+      "name": "Route 2",
       "x": 13,
       "y": 11,
       "width": 1,

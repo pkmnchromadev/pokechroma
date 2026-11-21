@@ -546,6 +546,7 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
 #define OBJ_EVENT_PAL_GYM_BERNIE                  0x11A6
 #define OBJ_EVENT_PAL_GYM_BRAIAN                  0x11A7
 #define OBJ_EVENT_PAL_GYM_JULES                   0x11A8
+#define OBJ_EVENT_PAL_APRICORN_TREE               0x11A9
 // end
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -648,6 +649,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_BreakableRock, OBJ_EVENT_PAL_BREAKABLE_ROCK},
     {gObjectEventPal_CuttableTree, OBJ_EVENT_PAL_CUTTABLE_TREE},
     {gObjectEventPal_PushableBoulder, OBJ_EVENT_PAL_PUSHABLE_BOULDER},
+    {gObjectEventPal_ApricornTree, OBJ_EVENT_PAL_APRICORN_TREE},
     {gObjectEventPal_ItemBall, OBJ_EVENT_PAL_ITEM_BALL},
     {gFieldEffectObjectPal_MountainDisguise, FLD_EFF_PAL_MOUNTAIN_DISGUISE},
 #if IS_FRLG

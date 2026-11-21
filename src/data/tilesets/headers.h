@@ -1639,3 +1639,14 @@ const struct Tileset gTileset_GeneralChroma =
     .metatileAttributes = gMetatileAttributes_GeneralChroma,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_TrevisoCity2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_TrevisoCity2,
+    .palettes = gTilesetPalettes_TrevisoCity2,
+    .metatiles = gMetatiles_TrevisoCity2,
+    .metatileAttributes = gMetatileAttributes_TrevisoCity2,
+    .callback = NULL,
+};

@@ -4,10 +4,10 @@
     {
       "id": "LAYOUT_PETALBURG_CITY",
       "name": "PetalburgCity_Layout",
-      "width": 42,
-      "height": 32,
+      "width": 74,
+      "height": 36,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_TrevisoCity",
+      "secondary_tileset": "gTileset_TrevisoCity2",
       "border_filepath": "data/layouts/PetalburgCity/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgCity/map.bin",
       "layout_version": "emerald"
@@ -203,7 +203,7 @@
       "id": "LAYOUT_ROUTE103",
       "name": "Route103_Layout",
       "width": 86,
-      "height": 24,
+      "height": 46,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_TrevisoCity",
       "border_filepath": "data/layouts/Route103/border.bin",
@@ -213,7 +213,7 @@
     {
       "id": "LAYOUT_ROUTE104",
       "name": "Route104_Layout",
-      "width": 36,
+      "width": 64,
       "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CalcoridgeCity",
@@ -224,8 +224,8 @@
     {
       "id": "LAYOUT_ROUTE105",
       "name": "Route105_Layout",
-      "width": 40,
-      "height": 80,
+      "width": 60,
+      "height": 98,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_SebsertoDesert",
       "border_filepath": "data/layouts/Route105/border.bin",
@@ -4855,10 +4855,10 @@
     {
       "id": "LAYOUT_ROSSANO_PASS_NORTH",
       "name": "RossanoPass_North_Layout",
-      "width": 24,
+      "width": 60,
       "height": 32,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_TrevisoCity",
+      "secondary_tileset": "gTileset_TrevisoCity2",
       "border_filepath": "data/layouts/RossanoPass_North/border.bin",
       "blockdata_filepath": "data/layouts/RossanoPass_North/map.bin",
       "layout_version": "emerald"
@@ -4866,8 +4866,8 @@
     {
       "id": "LAYOUT_TREVISO_BRIDGE_LIGHTHOUSE_EXT",
       "name": "TrevisoBridge_LighthouseExt_Layout",
-      "width": 24,
-      "height": 26,
+      "width": 63,
+      "height": 28,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_TrevisoCity",
       "border_filepath": "data/layouts/TrevisoBridge_LighthouseExt/border.bin",

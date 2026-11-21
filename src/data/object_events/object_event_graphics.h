@@ -455,8 +455,6 @@ const u16 gObjectEventPal_StrangeBall[] = INCGFX_U16("graphics/object_events/pic
 const u32 gFieldEffectObjectPic_CaveDust[] = INCGFX_U32("graphics/field_effects/pics/cave_dust.png", ".4bpp");
 const u16 gFieldEffectObjectPalette_CaveDust[] = INCGFX_U16("graphics/field_effects/palettes/cave_dust.pal", ".gbapal");
 
-const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pics/misc/apricorn_tree.png", ".4bpp", "-mwidth 2 -mheight 2");
-
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
 
 #if IS_FRLG
@@ -708,5 +706,7 @@ const u16 gObjectEventPal_GymJules[] = INCBIN_U16("graphics/object_events/pics/p
 const u16 gObjectEventPal_CuttableTree[] = INCBIN_U16("graphics/object_events/pics/misc/cuttable_tree.gbapal"); // 
 const u16 gObjectEventPal_BreakableRock[] = INCBIN_U16("graphics/object_events/pics/misc/breakable_rock.gbapal"); // 
 const u16 gObjectEventPal_PushableBoulder[] = INCBIN_U16("graphics/object_events/pics/misc/pushable_boulder.gbapal"); // 
+const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
+const u16 gObjectEventPal_ApricornTree[] = INCBIN_U16("graphics/object_events/pics/misc/apricorn_tree.gbapal"); // 
 const u16 gFieldEffectObjectPal_MountainDisguise[] = INCBIN_U16("graphics/field_effects/pics/mountain_disguise.gbapal"); //
 const u16 gFieldEffectPal_Emotes[] = INCBIN_U16("graphics/field_effects/pics/emotes/emotions.gbapal");

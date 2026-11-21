@@ -219,112 +219,529 @@ Route102_Text_RouteSignPetalburg:
 # 110 "data/maps/Route102/scripts.pory"
 	.string "{LEFT_ARROW} PETALBURG CITY$"
 
+RossanoFoothills_trg_RivalBattle::
+# 119 "data/maps/Route102/scripts.pory"
+	lockall
+# 120 "data/maps/Route102/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceDown
+# 121 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 122 "data/maps/Route102/scripts.pory"
+	delay 30
+# 123 "data/maps/Route102/scripts.pory"
+	applymovement 8, Common_Movement_ExclamationMark
+# 124 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 125 "data/maps/Route102/scripts.pory"
+	playse SE_PIN
+# 126 "data/maps/Route102/scripts.pory"
+	waitse
+# 127 "data/maps/Route102/scripts.pory"
+	playbgm MUS_RG_ENCOUNTER_RIVAL, FALSE
+# 128 "data/maps/Route102/scripts.pory"
+	setspeaker RossanoFoothills_trg_RivalBattle_Text_0
+# 129 "data/maps/Route102/scripts.pory"
+	msgbox RossanoFoothills_trg_RivalBattle_Text_1, MSGBOX_AUTOCLOSE
+# 130 "data/maps/Route102/scripts.pory"
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+# 131 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 59
+	goto_if_eq RossanoFoothills_trg_RivalBattle_2
+# 136 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 60
+	goto_if_eq RossanoFoothills_trg_RivalBattle_3
+# 139 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 61
+	goto_if_eq RossanoFoothills_trg_RivalBattle_4
+# 144 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 62
+	goto_if_eq RossanoFoothills_trg_RivalBattle_5
+# 149 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 63
+	goto_if_eq RossanoFoothills_trg_RivalBattle_6
+RossanoFoothills_trg_RivalBattle_1:
+# 155 "data/maps/Route102/scripts.pory"
+	setspeaker RossanoFoothills_trg_RivalBattle_Text_0
+# 156 "data/maps/Route102/scripts.pory"
+	msgbox RossanoFoothills_trg_RivalBattle_Text_2, MSGBOX_AUTOCLOSE
+# 157 "data/maps/Route102/scripts.pory"
+	switch VAR_STARTER_MON
+# 158 "data/maps/Route102/scripts.pory"
+	case 0, RossanoFoothills_trg_RivalBattle_14
+# 160 "data/maps/Route102/scripts.pory"
+	case 1, RossanoFoothills_trg_RivalBattle_15
+# 162 "data/maps/Route102/scripts.pory"
+	case 2, RossanoFoothills_trg_RivalBattle_16
+RossanoFoothills_trg_RivalBattle_12:
+# 165 "data/maps/Route102/scripts.pory"
+	goto RossanoFoothills_es_RivalDefeat
+	end
+
+RossanoFoothills_trg_RivalBattle_2:
+# 132 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_0
+# 133 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 134 "data/maps/Route102/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+# 135 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_trg_RivalBattle_1
+
+RossanoFoothills_trg_RivalBattle_3:
+# 137 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_1
+# 138 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_trg_RivalBattle_1
+
+RossanoFoothills_trg_RivalBattle_4:
+# 140 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_2
+# 141 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 142 "data/maps/Route102/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+# 143 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_trg_RivalBattle_1
+
+RossanoFoothills_trg_RivalBattle_5:
+# 145 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_3
+# 146 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 147 "data/maps/Route102/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+# 148 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_trg_RivalBattle_1
+
+RossanoFoothills_trg_RivalBattle_6:
+# 150 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_4
+# 151 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+# 152 "data/maps/Route102/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+# 153 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_trg_RivalBattle_1
+
+RossanoFoothills_trg_RivalBattle_14:
+# 159 "data/maps/Route102/scripts.pory"
+	trainerbattle_no_intro TRAINER_RIVAL_SKIP_ROSSANO_2, RossanoFoothills_text_RivalDefeat
+	goto RossanoFoothills_trg_RivalBattle_12
+
+RossanoFoothills_trg_RivalBattle_15:
+# 161 "data/maps/Route102/scripts.pory"
+	trainerbattle_no_intro TRAINER_RIVAL_SKIP_ROSSANO_3, RossanoFoothills_text_RivalDefeat
+	goto RossanoFoothills_trg_RivalBattle_12
+
+RossanoFoothills_trg_RivalBattle_16:
+# 163 "data/maps/Route102/scripts.pory"
+	trainerbattle_no_intro TRAINER_RIVAL_SKIP_ROSSANO_1, RossanoFoothills_text_RivalDefeat
+	goto RossanoFoothills_trg_RivalBattle_12
+
+
+RossanoFoothills_es_RivalDefeat::
+# 170 "data/maps/Route102/scripts.pory"
+	lockall
+# 171 "data/maps/Route102/scripts.pory"
+	playbgm MUS_RG_RIVAL_EXIT, FALSE
+# 172 "data/maps/Route102/scripts.pory"
+	setspeaker RossanoFoothills_trg_RivalBattle_Text_0
+# 173 "data/maps/Route102/scripts.pory"
+	msgbox RossanoFoothills_es_RivalDefeat_Text_0, MSGBOX_AUTOCLOSE
+# 174 "data/maps/Route102/scripts.pory"
+	delay 30
+# 175 "data/maps/Route102/scripts.pory"
+	msgbox RossanoFoothills_es_RivalDefeat_Text_1, MSGBOX_AUTOCLOSE
+# 176 "data/maps/Route102/scripts.pory"
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+# 177 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 59
+	goto_if_eq RossanoFoothills_es_RivalDefeat_2
+# 180 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 60
+	goto_if_eq RossanoFoothills_es_RivalDefeat_3
+# 184 "data/maps/Route102/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceRight
+# 185 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+RossanoFoothills_es_RivalDefeat_1:
+# 187 "data/maps/Route102/scripts.pory"
+	removeitem ITEM_PARCEL
+# 188 "data/maps/Route102/scripts.pory"
+	delay 30
+# 189 "data/maps/Route102/scripts.pory"
+	setspeaker RossanoFoothills_trg_RivalBattle_Text_0
+# 190 "data/maps/Route102/scripts.pory"
+	msgbox RossanoFoothills_es_RivalDefeat_Text_2, MSGBOX_AUTOCLOSE
+# 191 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 60
+	goto_if_eq RossanoFoothills_es_RivalDefeat_8
+# 194 "data/maps/Route102/scripts.pory"
+	compare VAR_TEMP_0, 59
+	goto_if_eq RossanoFoothills_es_RivalDefeat_9
+# 198 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_7
+# 199 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+RossanoFoothills_es_RivalDefeat_7:
+# 201 "data/maps/Route102/scripts.pory"
+	fadenewbgm MUS_RG_ROUTE11
+# 202 "data/maps/Route102/scripts.pory"
+	setvar VAR_ROSSANO_FOOTHILLS_RIVAL_BATTLE, 1
+# 203 "data/maps/Route102/scripts.pory"
+	setflag FLAG_ROSSANO_FOOTHILLS_RIVAL_BATTLE
+# 204 "data/maps/Route102/scripts.pory"
+	removeobject 8
+# 205 "data/maps/Route102/scripts.pory"
+	releaseall
+	end
+
+RossanoFoothills_es_RivalDefeat_2:
+# 178 "data/maps/Route102/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceLeft
+# 179 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_es_RivalDefeat_1
+
+RossanoFoothills_es_RivalDefeat_3:
+# 181 "data/maps/Route102/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceDown
+# 182 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_es_RivalDefeat_1
+
+RossanoFoothills_es_RivalDefeat_8:
+# 192 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_5
+# 193 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_es_RivalDefeat_7
+
+RossanoFoothills_es_RivalDefeat_9:
+# 195 "data/maps/Route102/scripts.pory"
+	applymovement 8, RossanoFoothills_Movement_6
+# 196 "data/maps/Route102/scripts.pory"
+	waitmovement 0
+	goto RossanoFoothills_es_RivalDefeat_7
+
+
+# 213 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_0:
+# 214 "data/maps/Route102/scripts.pory"
+	walk_down
+# 214 "data/maps/Route102/scripts.pory"
+	walk_down
+# 214 "data/maps/Route102/scripts.pory"
+	walk_down
+# 215 "data/maps/Route102/scripts.pory"
+	walk_in_place_left
+	step_end
+
+# 218 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_1:
+# 219 "data/maps/Route102/scripts.pory"
+	walk_down
+# 219 "data/maps/Route102/scripts.pory"
+	walk_down
+	step_end
+
+# 222 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_2:
+# 223 "data/maps/Route102/scripts.pory"
+	walk_down
+# 223 "data/maps/Route102/scripts.pory"
+	walk_down
+# 223 "data/maps/Route102/scripts.pory"
+	walk_down
+# 224 "data/maps/Route102/scripts.pory"
+	walk_in_place_right
+	step_end
+
+# 227 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_3:
+# 228 "data/maps/Route102/scripts.pory"
+	walk_down
+# 228 "data/maps/Route102/scripts.pory"
+	walk_down
+# 228 "data/maps/Route102/scripts.pory"
+	walk_down
+# 229 "data/maps/Route102/scripts.pory"
+	walk_right
+	step_end
+
+# 232 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_4:
+# 233 "data/maps/Route102/scripts.pory"
+	walk_down
+# 233 "data/maps/Route102/scripts.pory"
+	walk_down
+# 233 "data/maps/Route102/scripts.pory"
+	walk_down
+# 234 "data/maps/Route102/scripts.pory"
+	walk_right
+# 234 "data/maps/Route102/scripts.pory"
+	walk_right
+	step_end
+
+# 237 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_5:
+# 238 "data/maps/Route102/scripts.pory"
+	walk_up
+# 238 "data/maps/Route102/scripts.pory"
+	walk_up
+# 238 "data/maps/Route102/scripts.pory"
+	walk_up
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+# 239 "data/maps/Route102/scripts.pory"
+	walk_left
+	step_end
+
+# 242 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_6:
+# 243 "data/maps/Route102/scripts.pory"
+	walk_up
+# 243 "data/maps/Route102/scripts.pory"
+	walk_up
+# 243 "data/maps/Route102/scripts.pory"
+	walk_up
+# 243 "data/maps/Route102/scripts.pory"
+	walk_up
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 244 "data/maps/Route102/scripts.pory"
+	walk_left
+# 245 "data/maps/Route102/scripts.pory"
+	walk_down
+# 245 "data/maps/Route102/scripts.pory"
+	walk_down
+# 246 "data/maps/Route102/scripts.pory"
+	walk_left
+# 246 "data/maps/Route102/scripts.pory"
+	walk_left
+# 246 "data/maps/Route102/scripts.pory"
+	walk_left
+	step_end
+
+# 249 "data/maps/Route102/scripts.pory"
+RossanoFoothills_Movement_7:
+# 250 "data/maps/Route102/scripts.pory"
+	walk_up
+# 250 "data/maps/Route102/scripts.pory"
+	walk_up
+# 250 "data/maps/Route102/scripts.pory"
+	walk_up
+# 250 "data/maps/Route102/scripts.pory"
+	walk_up
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+# 251 "data/maps/Route102/scripts.pory"
+	walk_left
+	step_end
+
 RossanoFoothills_Sign_IgnisCave::
-# 115 "data/maps/Route102/scripts.pory"
+# 256 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Sign_IgnisCave_Text_0, MSGBOX_SIGN, MSGBOX_SUB_WOOD
 	end
 
 
 RossanoFoothills_Sign_RouteSign::
-# 119 "data/maps/Route102/scripts.pory"
+# 260 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Sign_RouteSign_Text_0, MSGBOX_SIGN, MSGBOX_SUB_WOOD
 	end
 
 
 RossanoFoothills_Object_Boy::
-# 124 "data/maps/Route102/scripts.pory"
+# 265 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Object_Boy_Text_0, MSGBOX_NPC
 	end
 
 
 RossanoFoothills_ItemBall_HyperPotion::
-# 128 "data/maps/Route102/scripts.pory"
+# 269 "data/maps/Route102/scripts.pory"
 	finditem ITEM_HYPER_POTION
 	end
 
 
 RossanoFoothills_Trainer_BirdKeeper::
-# 133 "data/maps/Route102/scripts.pory"
+# 274 "data/maps/Route102/scripts.pory"
 	trainerbattle_single TRAINER_BIRDKEEPER_CICERO, RossanoFoothills_Trainer_BirdKeeper_Text_0, RossanoFoothills_Trainer_BirdKeeper_Text_1
-# 134 "data/maps/Route102/scripts.pory"
+# 275 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Trainer_BirdKeeper_Text_2, MSGBOX_NPC
 	end
 
 
 RossanoFoothills_Trainer_BugCatcher::
-# 138 "data/maps/Route102/scripts.pory"
+# 279 "data/maps/Route102/scripts.pory"
 	trainerbattle_single TRAINER_BUGCATCHER_GABRIEL, RossanoFoothills_Trainer_BugCatcher_Text_0, RossanoFoothills_Trainer_BugCatcher_Text_1
-# 139 "data/maps/Route102/scripts.pory"
+# 280 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Trainer_BugCatcher_Text_2, MSGBOX_NPC
 	end
 
 
 RossanoFoothills_Trainer_Lass::
-# 143 "data/maps/Route102/scripts.pory"
-	trainerbattle_single TRAINER_LASS_ELENA, RossanoFoothills_Trainer_Lass_Text_0, RossanoFoothills_Trainer_Lass_Text_1
-# 144 "data/maps/Route102/scripts.pory"
+# 284 "data/maps/Route102/scripts.pory"
+	trainerbattle_single TRAINER_AROMALADY_JESSI, RossanoFoothills_Trainer_Lass_Text_0, RossanoFoothills_Trainer_Lass_Text_1
+# 285 "data/maps/Route102/scripts.pory"
 	msgbox RossanoFoothills_Trainer_Lass_Text_2, MSGBOX_NPC
 	end
 
 
+RossanoFoothills_trg_RivalBattle_Text_0:
+# 128 "data/maps/Route102/scripts.pory"
+	.string "Skip$"
+
+RossanoFoothills_trg_RivalBattle_Text_1:
+# 129 "data/maps/Route102/scripts.pory"
+	.string "Hey there's the slowpoke!$"
+
+RossanoFoothills_trg_RivalBattle_Text_2:
+# 156 "data/maps/Route102/scripts.pory"
+	.string "Took ya long enough!\n"
+	.string "Did the Professor give you an earful?\p"
+	.string "Keepin' it real, I couldn't sit around\n"
+	.string "for some lousy speech.\p"
+	.string "“Take care of your Pokémon...”\n"
+	.string "Blah blah blah\p"
+	.string "{PLAYER}!\n"
+	.string "My dream has finally come true!\p"
+	.string "Today marks the start of my journey to\n"
+	.string "become the best Pokémon Trainer\l"
+	.string "in all of Ryoko.\p"
+	.string "And you'll be my training buddy!\p"
+	.string "With your help, I can get stronger!\p"
+	.string "So let me wipe the floor with your face!$"
+
+RossanoFoothills_es_RivalDefeat_Text_0:
+# 173 "data/maps/Route102/scripts.pory"
+	.string "Tsk!{PAUSE 20}\n"
+	.string "I need to train more.\p"
+	.string "It was a fine battle...\n"
+	.string "but we're both just getting started.\p"
+	.string "What?\n"
+	.string "You got somethin' for me?$"
+
+RossanoFoothills_es_RivalDefeat_Text_1:
+# 175 "data/maps/Route102/scripts.pory"
+	.string "You handed over the {COLOR GREEN}Parcel$"
+
+RossanoFoothills_es_RivalDefeat_Text_2:
+# 190 "data/maps/Route102/scripts.pory"
+	.string "So, Prof. Cypress wants us to complete\n"
+	.string "the Pokédex too?\p"
+	.string "I guess I can beat you in that too.\n"
+	.string "Ha!\p"
+	.string "Alright, that'll be so easy.\p"
+	.string "I stocked up on a bunch of Potions at\n"
+	.string "the Pokécenter, I heard that there's a\l"
+	.string "cave up ahead.\p"
+	.string "Apparently it's some sort of inactive\n"
+	.string "lava chamber.\p"
+	.string "Whatever, I'm not worried.\p"
+	.string "That'll just give my Pokémon some much\n"
+	.string "needed training.\p"
+	.string "See ya later, slowpoke!$"
+
 RossanoFoothills_Sign_IgnisCave_Text_0:
-# 115 "data/maps/Route102/scripts.pory"
+# 256 "data/maps/Route102/scripts.pory"
 	.string "{COLOR LIGHT_GREEN}- Ignis Cave -\n"
 	.string "{FONT_SMALL}Inactive Lava Chambers Ahead$"
 
 RossanoFoothills_Sign_RouteSign_Text_0:
-# 119 "data/maps/Route102/scripts.pory"
+# 260 "data/maps/Route102/scripts.pory"
 	.string "{COLOR LIGHT_GREEN}- Rossano Foothills -\p"
 	.string "{COLOR DARK_GREY}{UP_ARROW} Treviso City\n"
 	.string "{DOWN_ARROW} Ignis Cave$"
 
 RossanoFoothills_Object_Boy_Text_0:
-# 124 "data/maps/Route102/scripts.pory"
+# 265 "data/maps/Route102/scripts.pory"
 	.string "You can find all sorts of Pokémon\n"
 	.string "between cities and towns.\p"
 	.string "{COLOR GREEN}Ryoko{COLOR DARK_GREY} has a vast diversity between\n"
 	.string "Pokémon in {COLOR GREEN}West Ryoko{COLOR DARK_GREY} and {COLOR GREEN}East Ryoko{COLOR DARK_GREY}.$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_0:
-# 133 "data/maps/Route102/scripts.pory"
+# 274 "data/maps/Route102/scripts.pory"
 	.string "Caw!{PAUSE 16}\n"
 	.string "Caw!\p"
 	.string "Feathered friends, we have some prey!$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_1:
-# 133 "data/maps/Route102/scripts.pory"
+# 274 "data/maps/Route102/scripts.pory"
 	.string "Caaaw!$"
 
 RossanoFoothills_Trainer_BirdKeeper_Text_2:
-# 134 "data/maps/Route102/scripts.pory"
+# 275 "data/maps/Route102/scripts.pory"
 	.string "Caw!{PAUSE 16}\n"
 	.string "Caw!\p"
 	.string "What do you think of my bird call?$"
 
 RossanoFoothills_Trainer_BugCatcher_Text_0:
-# 138 "data/maps/Route102/scripts.pory"
+# 279 "data/maps/Route102/scripts.pory"
 	.string "Have you found any rare bugs?$"
 
 RossanoFoothills_Trainer_BugCatcher_Text_1:
-# 138 "data/maps/Route102/scripts.pory"
+# 279 "data/maps/Route102/scripts.pory"
 	.string "Always more critters to find!$"
 
 RossanoFoothills_Trainer_BugCatcher_Text_2:
-# 139 "data/maps/Route102/scripts.pory"
+# 280 "data/maps/Route102/scripts.pory"
 	.string "You can find critters all around Ryoko,\n"
 	.string "in all sorts and sizes!$"
 
 RossanoFoothills_Trainer_Lass_Text_0:
-# 143 "data/maps/Route102/scripts.pory"
+# 284 "data/maps/Route102/scripts.pory"
 	.string "Hey!\n"
 	.string "You looked at me funny!$"
 
 RossanoFoothills_Trainer_Lass_Text_1:
-# 143 "data/maps/Route102/scripts.pory"
+# 284 "data/maps/Route102/scripts.pory"
 	.string "Okay...\n"
 	.string "I saw you first...$"
 
 RossanoFoothills_Trainer_Lass_Text_2:
-# 144 "data/maps/Route102/scripts.pory"
+# 285 "data/maps/Route102/scripts.pory"
 	.string "When a trainer sees you, be ready to\n"
 	.string "battle!$"
+
+RossanoFoothills_text_RivalDefeat::
+# 209 "data/maps/Route102/scripts.pory"
+	.string "What?\n"
+	.string "I thought I picked the better Pokémon!$"

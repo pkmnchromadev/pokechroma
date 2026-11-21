@@ -85,24 +85,24 @@ Double Battle: No
 === TRAINER_YOUNGSTER_CODY ===
 Name: Cody
 Class: Youngster
-Pic: youngster
+Pic: youngster_frlg
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Try To Faint
 
 Poochyena
-Level: 3
+Level: 2
 
 
 === TRAINER_BUGCATCHER_ISAIAH ===
 Name: Isaiah
 Class: Bug Catcher
-Pic: bug_catcher
+Pic: bug_catcher_frlg
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Try To Faint
 
 Scatterbug
 Level: 2
@@ -118,7 +118,7 @@ Pic: proto_grunt_m
 Gender: Male
 Music: Aqua
 Double Battle: No
-AI: Risky
+AI: Try To Faint
 
 Salandit
 Level: 4
@@ -128,7 +128,7 @@ Nature: Adamant
 === TRAINER_BIRDKEEPER_CICERO ===
 Name: Cicero
 Class: Bird Keeper
-Pic: bird_keeper
+Pic: bird_keeper_frlg
 Gender: Male
 Music: Cool
 Double Battle: No
@@ -138,7 +138,7 @@ Spearow
 Level: 3
 
 Fletchling
-Level: 4
+Level: 3
 
 
 === TRAINER_HIKER_FERNANDO ===
@@ -148,10 +148,10 @@ Pic: hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Rolycoly
-Level: 5
+Level: 4
 
 
 === TRAINER_HIKER_JONATHAN ===
@@ -164,10 +164,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Rolycoly
-Level: 4
+Level: 3
 
 Rockruff
-Level: 5
+Level: 4
 
 
 === TRAINER_BLACKBELT_JACKSON ===
@@ -177,7 +177,7 @@ Pic: black_belt
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Mienfoo
 Level: 5
@@ -189,14 +189,14 @@ Level: 5
 === TRAINER_BUGCATCHER_GABRIEL ===
 Name: Gabriel
 Class: Bug Catcher
-Pic: bug_catcher
+Pic: bug_catcher_frlg
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Caterpie
-Level: 3
+Level: 4
 
 Metapod
 Level: 5
@@ -205,17 +205,17 @@ Butterfree
 Level: 6
 
 
-=== TRAINER_LASS_ELENA ===
-Name: GABRIELLE
-Class: Pkmn Breeder
-Pic: pokemon_breeder_f
+=== TRAINER_AROMALADY_JESSI ===
+Name: Jessi
+Class: Aroma Lady
+Pic: aroma_lady_frlg
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Oddish
-Level: 4
+Level: 3
 
 Budew
 Level: 4
@@ -228,7 +228,7 @@ Pic: twins
 Gender: Female
 Music: Twins
 Double Battle: Yes
-AI: Check Bad Move
+AI: Double Battle / Prediction
 
 Teddiursa
 Level: 7
@@ -237,55 +237,64 @@ Spewpa
 Level: 7
 
 
-=== TRAINER_MARCEL ===
-Name: MARCEL
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_RIVAL_SKIP_ROSSANO_1 ===
+Name: Skip
+Class: Rival
+Pic: wally
 Gender: Male
-Music: Cool
+Music: Intense
 Double Battle: No
-Items: Hyper Potion
-AI: Basic Trainer
+Mugshot: Green
+Items: Potion
+AI: Smart Trainer
 
-Manectric
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Rowlet (M)
+Level: 6
+IVs: 6 HP / 8 Atk / 6 Def / 8 SpA / 8 SpD / 6 Spe
 
-Shiftry
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Teddiursa (F)
+Level: 5
+IVs: 6 HP / 0 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
-=== TRAINER_ALBERTO ===
-Name: ALBERTO
-Class: Bird Keeper
-Pic: Bird Keeper
+=== TRAINER_RIVAL_SKIP_ROSSANO_2 ===
+Name: Skip
+Class: Rival
+Pic: wally
 Gender: Male
-Music: Cool
+Music: Intense
 Double Battle: No
-AI: Check Bad Move
+Mugshot: Green
+Items: Potion
+AI: Smart Trainer
 
-Pelipper
-Level: 30
+Chimchar (F)
+Level: 6
+IVs: 6 HP / 8 Atk / 6 Def / 8 SpA / 8 SpD / 6 Spe
 
-Xatu
-Level: 30
+Teddiursa (F)
+Level: 5
+IVs: 6 HP / 0 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
-=== TRAINER_ED ===
-Name: ED
-Class: Collector
-Pic: Collector
+=== TRAINER_RIVAL_SKIP_ROSSANO_3 ===
+Name: Skip
+Class: Rival
+Pic: wally
 Gender: Male
-Music: Suspicious
+Music: Intense
 Double Battle: No
-AI: Check Bad Move
+Mugshot: Green
+Items: Potion
+AI: Smart Trainer
 
-Zangoose
-Level: 30
+Froakie (M)
+Level: 6
+IVs: 6 HP / 8 Atk / 6 Def / 8 SpA / 8 SpD / 6 Spe
 
-Seviper
-Level: 30
+Teddiursa (F)
+Level: 5
+IVs: 6 HP / 0 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
@@ -1466,7 +1475,7 @@ Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
-=== TRAINER_EDGAR ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3GAR ===
 Name: EDGAR
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -4196,7 +4205,7 @@ Level: 38
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
-=== TRAINER_EDWARD ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WARD ===
 Name: EDWARD
 Class: Psychic
 Pic: Psychic M
@@ -6344,7 +6353,7 @@ Level: 36
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
-=== TRAINER_EDDIE ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3DIE ===
 Name: EDDIE
 Class: Youngster
 Pic: Youngster
@@ -7560,7 +7569,7 @@ Xatu
 Level: 33
 
 
-=== TRAINER_EDWARDO ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WARDO ===
 Name: EDWARDO
 Class: Bird Keeper
 Pic: Bird Keeper
@@ -9114,7 +9123,7 @@ Level: 12
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 
-=== TRAINER_EDMOND ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3MOND ===
 Name: EDMOND
 Class: Sailor
 Pic: Sailor
@@ -9490,7 +9499,7 @@ Level: 33
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 
-=== TRAINER_EDWIN_1 ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WIN_1 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9544,7 +9553,7 @@ Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
-=== TRAINER_EDWIN_2 ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WIN_2 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9560,7 +9569,7 @@ Nuzleaf
 Level: 26
 
 
-=== TRAINER_EDWIN_3 ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WIN_3 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9576,7 +9585,7 @@ Nuzleaf
 Level: 29
 
 
-=== TRAINER_EDWIN_4 ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WIN_4 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9592,7 +9601,7 @@ Nuzleaf
 Level: 32
 
 
-=== TRAINER_EDWIN_5 ===
+=== TRAINER_RIVAL_SKIP_ROSSANO_3WIN_5 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector

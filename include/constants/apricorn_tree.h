@@ -84,6 +84,7 @@ enum ApricornType
 
 // Trees
 #define APRICORN_TREE_NONE 0
+#define APRICORN_TREE_ROUTE2_RED 1
 
 #define APRICORN_TREE_COUNT 64
 

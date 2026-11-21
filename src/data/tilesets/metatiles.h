@@ -434,3 +434,6 @@ const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_GeneralChroma[] = INCBIN_U16("data/tilesets/primary/general_chroma/metatiles.bin");
 const u16 gMetatileAttributes_GeneralChroma[] = INCBIN_U16("data/tilesets/primary/general_chroma/metatile_attributes.bin");
+
+const u16 gMetatiles_TrevisoCity2[] = INCBIN_U16("data/tilesets/secondary/treviso_city_2/metatiles.bin");
+const u16 gMetatileAttributes_TrevisoCity2[] = INCBIN_U16("data/tilesets/secondary/treviso_city_2/metatile_attributes.bin");

@@ -111,6 +111,147 @@ Route102_Text_RouteSignPetalburg:
 
 `
 
+const SKIP = 8
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+
+script RossanoFoothills_trg_RivalBattle {
+	lockall
+	applymovement(SKIP, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	delay(30)
+	applymovement(SKIP, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	playse(SE_PIN)
+	waitse
+	playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
+	setspeaker("Skip")
+	msgbox(format("Hey there's the slowpoke!"), MSGBOX_AUTOCLOSE)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if (var(VAR_TEMP_0) == 59) {
+		applymovement(SKIP, RossanoFoothills_Movement_0)
+		waitmovement(0)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceRight)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 60) {
+		applymovement(SKIP, RossanoFoothills_Movement_1)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 61) {
+		applymovement(SKIP, RossanoFoothills_Movement_2)
+		waitmovement(0)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 62) {
+		applymovement(SKIP, RossanoFoothills_Movement_3)
+		waitmovement(0)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 63) {
+		applymovement(SKIP, RossanoFoothills_Movement_4)
+		waitmovement(0)
+		applymovement(PLAYER, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+	}
+	setspeaker("Skip")
+	msgbox(format("Took ya long enough!\NDid the Professor give you an earful?\pKeepin' it real, I couldn't sit around for some lousy speech.\p“Take care of your Pokémon...”\NBlah blah blah\p{PLAYER}!\NMy dream has finally come true!\pToday marks the start of my journey to become the best Pokémon Trainer\Nin all of Ryoko.\pAnd you'll be my training buddy!\pWith your help, I can get stronger!\pSo let me wipe the floor with your face!"), MSGBOX_AUTOCLOSE)
+	switch (var(VAR_STARTER_MON)) {
+		case 0: // player chose rowlet
+			trainerbattle_no_intro(TRAINER_RIVAL_SKIP_ROSSANO_2, RossanoFoothills_text_RivalDefeat)
+		case 1: // player chose chimchar
+			trainerbattle_no_intro(TRAINER_RIVAL_SKIP_ROSSANO_3, RossanoFoothills_text_RivalDefeat)
+		case 2: // player chose froakie
+			trainerbattle_no_intro(TRAINER_RIVAL_SKIP_ROSSANO_1, RossanoFoothills_text_RivalDefeat)
+	}
+	goto(RossanoFoothills_es_RivalDefeat)
+	end
+}
+
+script RossanoFoothills_es_RivalDefeat {
+	lockall
+	playbgm(MUS_RG_RIVAL_EXIT, FALSE)
+	setspeaker("Skip")
+	msgbox(format("Tsk!{PAUSE 20}\NI need to train more.\pIt was a fine battle...\Nbut we're both just getting started.\pWhat?\NYou got somethin' for me?"), MSGBOX_AUTOCLOSE)
+	delay(30)
+	msgbox(format("You handed over the {COLOR GREEN}Parcel"), MSGBOX_AUTOCLOSE)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if (var(VAR_TEMP_0) == 59) {
+		applymovement(SKIP, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 60) {
+		applymovement(SKIP, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+	} else {
+		applymovement(SKIP, Common_Movement_WalkInPlaceRight)
+		waitmovement(0)
+	}
+	removeitem(ITEM_PARCEL)
+	delay(30)
+	setspeaker("Skip")
+	msgbox(format("So, Prof. Cypress wants us to complete the Pokédex too?\pI guess I can beat you in that too.\NHa!\pAlright, that'll be so easy.\pI stocked up on a bunch of Potions at the Pokécenter, I heard that there's a cave up ahead.\pApparently it's some sort of inactive lava chamber.\pWhatever, I'm not worried.\pThat'll just give my Pokémon some much needed training.\pSee ya later, slowpoke!"), MSGBOX_AUTOCLOSE)
+	if (var(VAR_TEMP_0) == 60) {
+		applymovement(SKIP, RossanoFoothills_Movement_5)
+		waitmovement(0)
+	} elif (var(VAR_TEMP_0) == 59) {
+		applymovement(SKIP, RossanoFoothills_Movement_6)
+		waitmovement(0)
+	} else {
+		applymovement(SKIP, RossanoFoothills_Movement_7)
+		waitmovement(0)
+	}
+	fadenewbgm(MUS_RG_ROUTE11)
+	setvar(VAR_ROSSANO_FOOTHILLS_RIVAL_BATTLE, 1)
+	setflag(FLAG_ROSSANO_FOOTHILLS_RIVAL_BATTLE)
+	removeobject(SKIP)
+	releaseall
+	end
+}
+
+text RossanoFoothills_text_RivalDefeat {
+	format("What?\NI thought I picked the better Pokémon!")
+}
+
+movement RossanoFoothills_Movement_0 {
+	walk_down * 3
+	walk_in_place_left
+}
+
+movement RossanoFoothills_Movement_1 {
+	walk_down * 2
+}
+
+movement RossanoFoothills_Movement_2 {
+	walk_down * 3
+	walk_in_place_right
+}
+
+movement RossanoFoothills_Movement_3 {
+	walk_down * 3
+	walk_right
+}
+
+movement RossanoFoothills_Movement_4 {
+	walk_down * 3
+	walk_right * 2
+}
+
+movement RossanoFoothills_Movement_5 {
+	walk_up * 3
+	walk_left * 8
+}
+
+movement RossanoFoothills_Movement_6 {
+	walk_up * 4
+	walk_left * 6
+	walk_down * 2
+	walk_left * 3
+}
+
+movement RossanoFoothills_Movement_7 {
+	walk_up * 4
+	walk_left * 8
+}
+
+
 script RossanoFoothills_Sign_IgnisCave {
     msgbox(format("{COLOR LIGHT_GREEN}- Ignis Cave -\n{FONT_SMALL}Inactive Lava Chambers Ahead"), MSGBOX_SIGN, MSGBOX_SUB_WOOD)
 	end
@@ -140,7 +281,7 @@ script RossanoFoothills_Trainer_BugCatcher {
 	end
 }
 script RossanoFoothills_Trainer_Lass {
-	trainerbattle_single(TRAINER_LASS_ELENA, format("Hey!\NYou looked at me funny!"), format("Okay...\NI saw you first..."))
+	trainerbattle_single(TRAINER_AROMALADY_JESSI, format("Hey!\NYou looked at me funny!"), format("Okay...\NI saw you first..."))
 	msgbox(format("When a trainer sees you, be ready to battle!"), MSGBOX_NPC)
 	end
 }

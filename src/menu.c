@@ -393,8 +393,9 @@ void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 u8 AddStartMenuWindow(u8 numActions)
 {
     if (sStartMenuWindowId == WINDOW_NONE)
-        // Transparent text layer over the start menu button sprites: 16px buttons, 22px apart
-        sStartMenuWindowId = AddWindowParameterized(0, 21, 0, 8, (numActions * 11 + 3) / 4, 15, 0x139);
+        // Start menu buttons + text: 9 tiles wide, tall enough for numActions 24px buttons 22px apart.
+        // Tiles 0x21D-0x2D0 sit after the std window frame, clear of the message box (0x194-0x1FF)
+        sStartMenuWindowId = AddWindowParameterized(0, 21, 0, 9, (numActions * 22 + 4 + 7) / 8, 13, 0x21D);
     return sStartMenuWindowId;
 }
 

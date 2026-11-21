@@ -14,5 +14,11 @@ const struct ApricornTree gApricornTrees[APRICORN_TREE_COUNT] =
         .maximum = 1,
         .apricornType = APRICORN_RED,
     },
+    [APRICORN_TREE_ROUTE2_RED] =
+    {
+        .minimum = 1,
+        .maximum = 3,
+        .apricornType = APRICORN_RED,
+    },
     #endif
 };

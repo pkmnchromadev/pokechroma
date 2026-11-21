@@ -2132,6 +2132,22 @@ static enum BattlerId GetBattlerFromPlayerPartyId(u32 partyId)
     return MAX_BATTLERS_COUNT;
 }
 
+// TRUE if a later exp getter is share-only and will gain exp, with no other sent-out mon still to print.
+static bool32 WillTeamShareExpAfter(u32 orderId)
+{
+    for (u32 i = orderId + 1; i < PARTY_SIZE && gBattleStruct->expGettersOrder[i] < PARTY_SIZE; i++)
+    {
+        u32 monId = gBattleStruct->expGettersOrder[i];
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][monId];
+
+        if (gBattleStruct->expSentInMons & (1u << monId))
+            return FALSE;
+        if (IsValidForBattle(mon) && GetMonData(mon, MON_DATA_LEVEL) != MAX_LEVEL)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 static void Cmd_getexp(void)
 {
     CMD_ARGS(u8 battler);
@@ -2316,14 +2332,25 @@ static void Cmd_getexp(void)
                         stringId = STRINGID_EMPTYSTRING4;
                     }
 
-                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, 0, *expMonId);
-                    // buffer 'gained' or 'gained a boosted'
+                    // Exp message names the fainted Pokémon ("Wild X gave ..."), not the receiver.
+                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattlerFainted, gBattlerPartyIndexes[gBattlerFainted]);
+                    // buffer 'gave' or 'gave a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, stringId);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleStruct->battlerExpReward);
 
                     if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
                     {
-                        PrepareStringBattle(STRINGID_PKMNGAINEDEXP, 0);
+                        // Fold "Everyone got their share!" into the last sent-out mon's message.
+                        if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted && WillTeamShareExpAfter(gBattleStruct->expOrderId))
+                        {
+                            gLastUsedItem = ITEM_EXP_SHARE;
+                            PrepareStringBattle(STRINGID_PKMNGAVEEXPTEAM, 0);
+                            gBattleStruct->teamGotExpMsgPrinted = TRUE;
+                        }
+                        else
+                        {
+                            PrepareStringBattle(STRINGID_PKMNGAINEDEXP, 0);
+                        }
                     }
                     else if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted) // Print 'the rest of your team got exp' message once, when all of the sent-in mons were given experience
                     {

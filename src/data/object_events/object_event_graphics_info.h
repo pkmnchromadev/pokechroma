@@ -4542,18 +4542,18 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BallLight = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_APRICORN_TREE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 128,
+    .size = 256,
     .width = 16,
-    .height = 16,
+    .height = 32,
     .paletteSlot = PALSLOT_NPC_3,
     .shadowSize = SHADOW_SIZE_S,
     .inanimate = TRUE,
     .compressed = FALSE,
     .tracks = TRACKS_NONE,
-    .oam = &gObjectEventBaseOam_16x16,
-    .subspriteTables = sOamTables_16x16,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Inanimate,
     .images = sPicTable_ApricornTree,
 };

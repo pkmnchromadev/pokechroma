@@ -2660,6 +2660,10 @@ void BtlController_HandlePrintString(enum BattlerId battler)
 {
     u16 *stringId;
 
+    // "X used Y!" may still be printing while the move animation plays; don't overwrite it.
+    if (IsTextPrinterActiveOnWindow(B_WIN_MSG))
+        return;
+
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
     stringId = (u16 *)(&gBattleResources->bufferA[battler][2]);
@@ -2694,7 +2698,11 @@ void BtlController_HandlePrintString(enum BattlerId battler)
         }
     }
 
-    gBattlerControllerFuncs[battler] = Controller_WaitForString;
+    // Let the move animation start while the attack string is still printing.
+    if (*stringId == STRINGID_USEDMOVE && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
+        gBattlerControllerFuncs[battler] = BtlController_Complete;
+    else
+        gBattlerControllerFuncs[battler] = Controller_WaitForString;
     if (ShouldUpdateTvData(battler))
         BattleTv_SetDataBasedOnString(*stringId);
     if (IsControllerPlayer(battler)

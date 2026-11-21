@@ -161,7 +161,7 @@ Route110_EventScript_PlayerRidingAcroBike::
 	end
 
 Route110_EventScript_Edward::
-	trainerbattle_single TRAINER_EDWARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
+	trainerbattle_single TRAINER_RIVAL_SKIP_ROSSANO_3WARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
 	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -171,7 +171,7 @@ Route110_EventScript_Jaclyn::
 	end
 
 Route110_EventScript_Edwin::
-	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_RIVAL_SKIP_ROSSANO_3WIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_EdwinRematch
 	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
@@ -182,12 +182,12 @@ Route110_EventScript_EdwinRegisterMatchCallAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_EdwinRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_EDWIN_1
+	register_matchcall TRAINER_RIVAL_SKIP_ROSSANO_3WIN_1
 	release
 	end
 
 Route110_EventScript_EdwinRematch::
-	trainerbattle_rematch TRAINER_EDWIN_1, Route110_Text_EdwinRematchIntro, Route110_Text_EdwinRematchDefeated
+	trainerbattle_rematch TRAINER_RIVAL_SKIP_ROSSANO_3WIN_1, Route110_Text_EdwinRematchIntro, Route110_Text_EdwinRematchDefeated
 	msgbox Route110_Text_EdwinRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 

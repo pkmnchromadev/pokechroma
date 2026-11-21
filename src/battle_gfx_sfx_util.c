@@ -604,7 +604,7 @@ bool8 IsBattleSEPlaying(enum BattlerId battler)
     if (IsSEPlaying())
     {
         gBattleSpritesDataPtr->healthBoxesData[battler].soundTimer++;
-        if (gBattleSpritesDataPtr->healthBoxesData[battler].soundTimer < 30)
+        if (gBattleSpritesDataPtr->healthBoxesData[battler].soundTimer < 8) // vanilla 30; shorter wait before anims start
             return TRUE;
 
         m4aMPlayStop(&gMPlayInfo_SE1);

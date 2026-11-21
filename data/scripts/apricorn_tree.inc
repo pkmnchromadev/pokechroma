@@ -54,21 +54,18 @@ ApricornTree_EventScript_PocketFull::
 	end
 
 ApricornTree_EventScript_CancelPickingApricorn::
-	message ApricornTree_Text_ApricornLeftUnpicked
-	waitmessage
-	waitbuttonpress
 	release
 	end
 
 ApricornTree_Text_Intro:
-	.string "It's an Apricorn Tree!$"
+	.string "It's a fruit-bearing tree.$"
 
 ApricornTree_Text_Empty:
-	.string "There are no Apricorns…$"
+	.string "There's nothing here…$"
 
 ApricornTree_Text_WantToPick:
-	.string "…It's {STR_VAR_2} {STR_VAR_1}!\n"
-	.string "Do you want to pick the\l"
+	.string "Hey it's {STR_VAR_2} {STR_VAR_1}!\p"
+	.string "Do you want to pick the\n"
 	.string "{STR_VAR_1}?$"
 
 ApricornTree_Text_PickedTheApricorn:
@@ -76,14 +73,11 @@ ApricornTree_Text_PickedTheApricorn:
 	.string "{STR_VAR_2} {STR_VAR_1}.$"
 
 ApricornTree_Text_PutAwayApricorn:
-	.string "{PLAYER} put away the\n"
-	.string "{STR_VAR_1} in\l"
-	.string "the BAG's {STR_VAR_3} POCKET.$"
+	.string "{PLAYER} put away the {STR_VAR_1}\n"
+	.string "in the {STR_VAR_3} Pocket.$"
 
 ApricornTree_Text_PocketFull:
-	.string "The BAG's {STR_VAR_3} POCKET is full.\p"
-	.string "{PLAYER} gave up on the\n"
-	.string "{STR_VAR_1}…$"
+	.string "The Bag's {STR_VAR_3} Pocket is full.$"
 
 ApricornTree_Text_ApricornLeftUnpicked:
 	.string "{PLAYER} gave up on the\n"

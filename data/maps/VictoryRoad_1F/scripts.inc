@@ -94,7 +94,7 @@ VictoryRoad_1F_EventScript_RematchWally::
 	end
 
 VictoryRoad_1F_EventScript_Edgar::
-	trainerbattle_single TRAINER_EDGAR, VictoryRoad_1F_Text_EdgarIntro, VictoryRoad_1F_Text_EdgarDefeat
+	trainerbattle_single TRAINER_RIVAL_SKIP_ROSSANO_3GAR, VictoryRoad_1F_Text_EdgarIntro, VictoryRoad_1F_Text_EdgarDefeat
 	msgbox VictoryRoad_1F_Text_EdgarPostBattle, MSGBOX_AUTOCLOSE
 	end
 

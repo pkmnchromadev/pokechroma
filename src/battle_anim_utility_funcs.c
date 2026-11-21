@@ -500,12 +500,12 @@ static void StatsChangeAnimation_Step2(u8 taskId)
     if (!sAnimStatsChangeData->aSharply)
     {
         gTasks[taskId].tTargetBlend = 10;
-        gTasks[taskId].tWaitTime = 20;
+        gTasks[taskId].tWaitTime = 15; // vanilla 20
     }
     else
     {
-        gTasks[taskId].tTargetBlend = 13;
-        gTasks[taskId].tWaitTime = 30;
+        gTasks[taskId].tTargetBlend = 10;
+        gTasks[taskId].tWaitTime = 20; // vanilla 30
     }
 
     gTasks[taskId].tAnimSpriteId1 = spriteId;
@@ -528,8 +528,8 @@ static void StatsChangeAnimation_Step3(u8 taskId)
     switch (gTasks[taskId].tState)
     {
     case 0:
-        // Fade in
-        if (gTasks[taskId].tFadeTimer++ > 0)
+        // Fade in (one step per frame; vanilla is every other frame)
+        if (gTasks[taskId].tFadeTimer++ >= 0)
         {
             gTasks[taskId].tFadeTimer = 0;
             gTasks[taskId].tBlend++;
@@ -545,7 +545,7 @@ static void StatsChangeAnimation_Step3(u8 taskId)
         break;
     case 2:
         // Fade out
-        if (gTasks[taskId].tFadeTimer++ > 0)
+        if (gTasks[taskId].tFadeTimer++ >= 0)
         {
             gTasks[taskId].tFadeTimer = 0;
             gTasks[taskId].tBlend--;

@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ROUTE105",
-      "offset": -8,
+      "offset": -28,
       "direction": "up"
     }
   ],
@@ -163,8 +163,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 9,
-      "y": 6,
+      "x": 7,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F",
       "dest_warp_id": "0"

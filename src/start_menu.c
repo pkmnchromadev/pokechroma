@@ -23,7 +23,6 @@
 #include "link.h"
 #include "load_save.h"
 #include "main.h"
-#include "malloc.h"
 #include "menu.h"
 #include "new_game.h"
 #include "option_menu.h"
@@ -97,9 +96,9 @@ EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
-EWRAM_DATA static u8 sStartButtonSpriteIds[9] = {0};
 EWRAM_DATA static u8 sStartIconSpriteIds[9] = {0};
 EWRAM_DATA static bool8 sForPokenavTutorial = FALSE;
+EWRAM_DATA static bool8 sStartMenuInDarkness = FALSE;
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -196,13 +195,16 @@ static const u8 sText_MenuDebug[] = _("Debug");
 
 // Start menu buttons. Layout matches AddStartMenuWindow in menu.c.
 #define START_BUTTON_X          168 // left edge
-#define START_BUTTON_Y          6   // top edge of the first button
-#define START_BUTTON_SPACING    22  // 7 buttons evenly spaced down the screen
-#define START_BUTTON_TEXT_X     18  // text is centered between here and the button's right edge
-#define START_BUTTON_TEXT_WIDTH 44
-
-#define TAG_START_BUTTON        0x7A00
-#define TAG_START_BUTTON_HOVER  0x7A01
+#define START_BUTTON_Y          2   // top edge of the first button's 24px canvas
+#define START_BUTTON_SPACING    22  // 7 buttons evenly spaced down the screen; the 2px transparent edges overlap
+#define START_BUTTON_WIDTH      72  // must be a multiple of 8, at least 16
+#define START_BUTTON_HEIGHT     24
+#define START_BUTTON_ICON_X     12  // icon center, from the button's left edge
+#define START_BUTTON_TEXT_X     24  // text is centered between here and START_BUTTON_TEXT_X + START_BUTTON_TEXT_WIDTH
+#define START_BUTTON_TEXT_WIDTH 42
+#define START_BUTTON_TEXT_Y     4   // from the top of the button's canvas
+#define START_MENU_PAL          13  // BG palette for the buttons and their text (menu.pal)
+#define START_MENU_DARK_LEFT    152 // in flash darkness, the screen right of this shows the menu layers
 #define TAG_START_ICONS         0x7A02 // + START_ICON_*, for both tiles and palette
 
 enum
@@ -219,9 +221,10 @@ enum
     START_ICON_DEXNAV,
 };
 
-static const u32 sStartButton_Gfx[] = INCBIN_U32("graphics/start_menu/button.4bpp");
-static const u32 sStartButtonHover_Gfx[] = INCBIN_U32("graphics/start_menu/button_hover.4bpp");
-static const u16 sStartButton_Pal[] = INCBIN_U16("graphics/start_menu/button.gbapal");
+// 24x24 = 3x3 tiles: the middle column is repeated to stretch the button to START_BUTTON_WIDTH
+static const u32 sStartButton_Gfx[] = INCBIN_U32("graphics/start_menu/button2.4bpp");
+static const u32 sStartButtonHover_Gfx[] = INCBIN_U32("graphics/start_menu/button_hover2.4bpp");
+static const u16 sStartMenu_Pal[] = INCBIN_U16("graphics/start_menu/menu.gbapal");
 
 static const u32 sStartIcon_pokedex_Gfx[] = INCBIN_U32("graphics/start_menu/icons/pokedex.4bpp");
 static const u16 sStartIcon_pokedex_Pal[] = INCBIN_U16("graphics/start_menu/icons/pokedex.gbapal");
@@ -278,46 +281,12 @@ static const struct SpritePalette sStartIconPalettes[] =
 #undef ICON_SHEET
 #undef ICON_PAL
 
-static const struct SpritePalette sStartButtonPalette = {sStartButton_Pal, TAG_START_BUTTON};
-
-// button.png is 72x24 (the 64x16 button plus a 4px buffer on each side).
-// That isn't a GBA sprite size, so it's drawn as 6 pieces: {x, y, width, height} in tiles.
-static const u8 sStartButtonPieces[][4] =
-{
-    {0, 0, 4, 2}, {4, 0, 4, 2}, {8, 0, 1, 2},
-    {0, 2, 4, 1}, {4, 2, 4, 1}, {8, 2, 1, 1},
-};
-
-// Priority 1 keeps buttons above the map but under the BG0 text layer
-static const struct OamData sOam_StartButton =
-{
-    .shape = SPRITE_SHAPE(32x16),
-    .size = SPRITE_SIZE(32x16),
-    .priority = 1,
-};
-
-// Same pieces as sStartButtonPieces, positioned from the center of the 72x24 canvas
-static const struct Subsprite sSubsprites_StartButton[] =
-{
-    {.x = -36, .y = -12, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 0,  .priority = 1},
-    {.x =  -4, .y = -12, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 8,  .priority = 1},
-    {.x =  28, .y = -12, .shape = SPRITE_SHAPE(8x16),  .size = SPRITE_SIZE(8x16),  .tileOffset = 16, .priority = 1},
-    {.x = -36, .y =   4, .shape = SPRITE_SHAPE(32x8),  .size = SPRITE_SIZE(32x8),  .tileOffset = 18, .priority = 1},
-    {.x =  -4, .y =   4, .shape = SPRITE_SHAPE(32x8),  .size = SPRITE_SIZE(32x8),  .tileOffset = 22, .priority = 1},
-    {.x =  28, .y =   4, .shape = SPRITE_SHAPE(8x8),   .size = SPRITE_SIZE(8x8),   .tileOffset = 26, .priority = 1},
-};
-
-static const struct SubspriteTable sSubspriteTable_StartButton[] =
-{
-    {ARRAY_COUNT(sSubsprites_StartButton), sSubsprites_StartButton},
-};
-
-// Double-size affine so the icon can grow/rotate without being clipped
+// Icon PNGs are 32x32. Double-size affine so they can grow/rotate without being clipped
 static const struct OamData sOam_StartIcon =
 {
     .affineMode = ST_OAM_AFFINE_DOUBLE,
-    .shape = SPRITE_SHAPE(16x16),
-    .size = SPRITE_SIZE(16x16),
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
     .priority = 0,
 };
 
@@ -353,16 +322,6 @@ static const union AffineAnimCmd *const sAffineAnims_StartIcon[] =
     [START_ICON_ANIM_HOVER] = sAffineAnim_StartIconHover,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_StartButton =
-{
-    .tileTag = TAG_START_BUTTON,
-    .paletteTag = TAG_START_BUTTON,
-    .oam = &sOam_StartButton,
-    .anims = gDummySpriteAnimTable,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
 static const struct SpriteTemplate sSpriteTemplate_StartIcon =
 {
     .tileTag = TAG_START_ICONS, // set per icon
@@ -373,7 +332,8 @@ static const struct SpriteTemplate sSpriteTemplate_StartIcon =
     .callback = SpriteCallbackDummy,
 };
 
-static const u8 sStartMenuTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
+// Indexes into menu.pal
+static const u8 sStartMenuTextColors[] = {TEXT_COLOR_TRANSPARENT, 1, 2};
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -634,55 +594,73 @@ static void UpdateStartMenuButtons(void)
 {
     for (u32 i = 0; i < sNumStartMenuActions; i++)
     {
-        bool32 hovered = (i == sStartMenuCursorPos);
-        gSprites[sStartButtonSpriteIds[i]].oam.tileNum = GetSpriteTileStartByTag(hovered ? TAG_START_BUTTON_HOVER : TAG_START_BUTTON);
-        StartSpriteAffineAnim(&gSprites[sStartIconSpriteIds[i]], hovered ? START_ICON_ANIM_HOVER : START_ICON_ANIM_IDLE);
+        StartSpriteAffineAnim(&gSprites[sStartIconSpriteIds[i]], i == sStartMenuCursorPos ? START_ICON_ANIM_HOVER : START_ICON_ANIM_IDLE);
     }
 }
 
-// Reorders the 72x24 PNG's tiles into the order the button's sprite pieces read them in
-static void LoadStartButtonSheet(const u32 *gfx, u16 tag)
+// Draws a button into the start menu window, stretching the 3x3-tile art to START_BUTTON_WIDTH
+// Copies a whole 8-pixel tile row (one u32 at 4bpp) at a time instead of BlitBitmapRectToWindow's per-pixel loop.
+// Rows only this button covers are overwritten, which also wipes its old label, so it can be redrawn in place.
+// Rows it shares with a neighbor (the top and bottom START_BUTTON_HEIGHT - START_BUTTON_SPACING) keep color 0
+// transparent, so neighbors don't erase each other.
+static void DrawStartMenuButton(u32 index)
 {
-    u8 *buffer = AllocZeroed(27 * TILE_SIZE_4BPP);
-    struct SpriteSheet sheet = {buffer, 27 * TILE_SIZE_4BPP, tag};
-    u32 dest = 0;
+    const u32 *gfx = (index == sStartMenuCursorPos) ? sStartButtonHover_Gfx : sStartButton_Gfx;
+    u32 windowId = GetStartMenuWindowId();
+    u32 *dest = (u32 *)gWindows[windowId].tileData;
+    u32 windowWidth = gWindows[windowId].window.width;
+    u32 top = START_BUTTON_Y + index * START_BUTTON_SPACING;
 
-    for (u32 i = 0; i < ARRAY_COUNT(sStartButtonPieces); i++)
+    for (u32 row = 0; row < START_BUTTON_HEIGHT; row++)
     {
-        const u8 *piece = sStartButtonPieces[i];
-        for (u32 y = piece[1]; y < piece[1] + piece[3]; y++)
+        u32 y = top + row;
+        bool32 shared = ((s32)row < START_BUTTON_HEIGHT - START_BUTTON_SPACING || row >= START_BUTTON_SPACING);
+        for (u32 col = 0; col < START_BUTTON_WIDTH / 8; col++)
         {
-            for (u32 x = piece[0]; x < piece[0] + piece[2]; x++)
-                memcpy(buffer + TILE_SIZE_4BPP * dest++, (const u8 *)gfx + TILE_SIZE_4BPP * (y * 9 + x), TILE_SIZE_4BPP);
+            u32 srcCol = (col == 0) ? 0 : (col == START_BUTTON_WIDTH / 8 - 1) ? 2 : 1;
+            u32 src = gfx[((row / 8) * 3 + srcCol) * 8 + row % 8];
+            u32 *dst = &dest[((y / 8) * windowWidth + col) * 8 + y % 8];
+            u32 mask = src | (src >> 1);
+
+            if (!shared)
+            {
+                *dst = src;
+                continue;
+            }
+            mask = ((mask | (mask >> 2)) & 0x11111111) * 0xF; // 0xF in every nibble that isn't color 0
+            *dst = (*dst & ~mask) | src;
         }
     }
-    LoadSpriteSheet(&sheet);
-    Free(buffer);
 }
 
+// The buttons themselves are drawn in the BG0 text window (see PrintStartMenuActions); only the icons are sprites
 static void CreateStartMenuButtons(void)
 {
     struct SpriteTemplate iconTemplate = sSpriteTemplate_StartIcon;
 
-    if (GetSpriteTileStartByTag(TAG_START_BUTTON) == TAG_NONE)
-        LoadStartButtonSheet(sStartButton_Gfx, TAG_START_BUTTON);
-    if (GetSpriteTileStartByTag(TAG_START_BUTTON_HOVER) == TAG_NONE)
-        LoadStartButtonSheet(sStartButtonHover_Gfx, TAG_START_BUTTON_HOVER);
-    LoadSpritePalette(&sStartButtonPalette);
+    LoadPalette(sStartMenu_Pal, BG_PLTT_ID(START_MENU_PAL), PLTT_SIZE_4BPP);
+
+    // Flash darkness hides everything outside WIN0's circle except BG0. Use the otherwise empty WIN1
+    // to also show sprites (the icons) on the menu's side of the screen, keeping the map there dark.
+    sStartMenuInDarkness = (GetFlashLevel() > 0 || InBattlePyramid());
+    if (sStartMenuInDarkness)
+    {
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG0 | WININ_WIN1_OBJ);
+        SetGpuReg(REG_OFFSET_WIN1H, WIN_RANGE(START_MENU_DARK_LEFT, DISPLAY_WIDTH));
+        SetGpuReg(REG_OFFSET_WIN1V, WIN_RANGE(0, DISPLAY_HEIGHT));
+    }
 
     for (u32 i = 0; i < sNumStartMenuActions; i++)
     {
         s16 y = START_BUTTON_Y + i * START_BUTTON_SPACING;
         u32 icon = sStartMenuIcons[sCurrentStartMenuActions[i]];
-        u8 spriteId = CreateSprite(&sSpriteTemplate_StartButton, START_BUTTON_X + 32, y + 8, 0);
-        SetSubspriteTables(&gSprites[spriteId], sSubspriteTable_StartButton);
-        sStartButtonSpriteIds[i] = spriteId;
 
         if (GetSpriteTileStartByTag(sStartIconSheets[icon].tag) == TAG_NONE)
             LoadSpriteSheet(&sStartIconSheets[icon]);
         LoadSpritePalette(&sStartIconPalettes[icon]);
         iconTemplate.tileTag = iconTemplate.paletteTag = TAG_START_ICONS + icon;
-        sStartIconSpriteIds[i] = CreateSprite(&iconTemplate, START_BUTTON_X + 10, y + 8, 0);
+        sStartIconSpriteIds[i] = CreateSprite(&iconTemplate, START_BUTTON_X + START_BUTTON_ICON_X, y + START_BUTTON_HEIGHT / 2, 0);
+        gSprites[sStartIconSpriteIds[i]].invisible = TRUE; // shown once the buttons are drawn, in InitStartMenuStep
     }
     UpdateStartMenuButtons();
 }
@@ -691,13 +669,17 @@ static void DestroyStartMenuButtons(void)
 {
     for (u32 i = 0; i < sNumStartMenuActions; i++)
     {
-        DestroySprite(&gSprites[sStartButtonSpriteIds[i]]);
         FreeSpriteOamMatrix(&gSprites[sStartIconSpriteIds[i]]);
         DestroySprite(&gSprites[sStartIconSpriteIds[i]]);
     }
-    FreeSpriteTilesByTag(TAG_START_BUTTON);
-    FreeSpriteTilesByTag(TAG_START_BUTTON_HOVER);
-    FreeSpritePaletteByTag(TAG_START_BUTTON);
+    if (sStartMenuInDarkness)
+    {
+        // Back to how InitOverworldGraphicsRegisters leaves them
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG_ALL | WININ_WIN1_OBJ);
+        SetGpuReg(REG_OFFSET_WIN1H, WIN_RANGE(255, 255));
+        SetGpuReg(REG_OFFSET_WIN1V, WIN_RANGE(255, 255));
+        sStartMenuInDarkness = FALSE;
+    }
     for (u32 i = 0; i < ARRAY_COUNT(sStartIconSheets); i++)
     {
         FreeSpriteTilesByTag(sStartIconSheets[i].tag);
@@ -771,22 +753,28 @@ static void RemoveExtraStartMenuWindows(void)
     }
 }
 
+static void DrawStartMenuAction(u32 index)
+{
+    u32 fontId;
+    s32 width;
+
+    DrawStartMenuButton(index);
+    StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+    fontId = GetFontIdToFit(gStringVar4, FONT_NORMAL, 0, START_BUTTON_TEXT_WIDTH);
+    width = GetStringWidth(fontId, gStringVar4, 0);
+    AddTextPrinterParameterized3(GetStartMenuWindowId(), fontId,
+                                 START_BUTTON_TEXT_X + (START_BUTTON_TEXT_WIDTH - width) / 2,
+                                 START_BUTTON_Y + index * START_BUTTON_SPACING + START_BUTTON_TEXT_Y,
+                                 sStartMenuTextColors, TEXT_SKIP_DRAW, gStringVar4);
+}
+
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 {
     s8 index = *pIndex;
 
     do
     {
-        u32 fontId;
-        s32 width;
-
-        StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
-        fontId = GetFontIdToFit(gStringVar4, FONT_NORMAL, 0, START_BUTTON_TEXT_WIDTH);
-        width = GetStringWidth(fontId, gStringVar4, 0);
-        AddTextPrinterParameterized3(GetStartMenuWindowId(), fontId,
-                                     START_BUTTON_TEXT_X + (START_BUTTON_TEXT_WIDTH - width) / 2,
-                                     START_BUTTON_Y + index * START_BUTTON_SPACING,
-                                     sStartMenuTextColors, TEXT_SKIP_DRAW, gStringVar4);
+        DrawStartMenuAction(index);
 
         index++;
         if (index >= sNumStartMenuActions)
@@ -840,6 +828,8 @@ static bool32 InitStartMenuStep(void)
         break;
     case 5:
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_FULL);
+        for (u32 i = 0; i < sNumStartMenuActions; i++)
+            gSprites[sStartIconSpriteIds[i]].invisible = FALSE;
         return TRUE;
     }
 
@@ -922,19 +912,23 @@ void ShowStartMenu(void)
 
 static void HandleStartMenuDpadInput(void)
 {
-    if (JOY_NEW(DPAD_UP))
-    {
-        PlaySE(SE_SELECT);
-        sStartMenuCursorPos = (sStartMenuCursorPos + sNumStartMenuActions - 1) % sNumStartMenuActions;
-        UpdateStartMenuButtons();
-    }
+    u32 oldPos = sStartMenuCursorPos;
 
-    if (JOY_NEW(DPAD_DOWN))
-    {
-        PlaySE(SE_SELECT);
+    if (JOY_NEW(DPAD_UP))
+        sStartMenuCursorPos = (sStartMenuCursorPos + sNumStartMenuActions - 1) % sNumStartMenuActions;
+    else if (JOY_NEW(DPAD_DOWN))
         sStartMenuCursorPos = (sStartMenuCursorPos + 1) % sNumStartMenuActions;
-        UpdateStartMenuButtons();
-    }
+    else
+        return;
+
+    PlaySE(SE_SELECT);
+    UpdateStartMenuButtons();
+    if (oldPos == sStartMenuCursorPos)
+        return;
+    // Only the buttons that lost and gained the hover change
+    DrawStartMenuAction(oldPos);
+    DrawStartMenuAction(sStartMenuCursorPos);
+    CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_GFX);
 }
 
 static bool8 HandleStartMenuInput(void)

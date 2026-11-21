@@ -20,7 +20,7 @@
     },
     {
       "map": "MAP_ROUTE105",
-      "offset": 0,
+      "offset": -20,
       "direction": "down"
     }
   ],

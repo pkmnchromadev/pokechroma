@@ -15,15 +15,15 @@
   "connections": [
     {
       "map": "MAP_ROUTE103",
-      "offset": -52,
+      "offset": -27,
       "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 14,
-      "y": 6,
+      "x": 26,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -36,8 +36,8 @@
   ],
   "warp_events": [
     {
-      "x": 11,
-      "y": 12,
+      "x": 52,
+      "y": 11,
       "elevation": 0,
       "dest_map": "MAP_TREVISO_BRIDGE_LIGHTHOUSE_EXT",
       "dest_warp_id": "0"
@@ -47,8 +47,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 13,
-      "y": 15,
+      "x": 55,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "NULL"

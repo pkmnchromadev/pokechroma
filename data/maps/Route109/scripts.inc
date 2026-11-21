@@ -390,7 +390,7 @@ Route109_EventScript_Huey::
 	end
 
 Route109_EventScript_Edmond::
-	trainerbattle_single TRAINER_EDMOND, Route109_Text_EdmondIntro, Route109_Text_EdmondDefeated
+	trainerbattle_single TRAINER_RIVAL_SKIP_ROSSANO_3MOND, Route109_Text_EdmondIntro, Route109_Text_EdmondDefeated
 	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
 	end
 

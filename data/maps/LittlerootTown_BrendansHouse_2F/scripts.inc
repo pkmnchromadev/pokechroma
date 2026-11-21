@@ -623,7 +623,7 @@ Common_Text_LookCloserAtMap: @ 81F8820
 # 312 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	.string "{PLAYER} took a closer look at the\n"
 # 313 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	.string "HOENN region map.$"
+	.string "Ryoko region map.$"
 # 314 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 
 # 315 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"

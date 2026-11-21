@@ -6,7 +6,7 @@ static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
     {gText_Exit},
 };
 
-const u8 gText_Info2[] = _("INFO");
+const u8 gText_Info2[] = _("Info");
 
 static const struct MenuAction MultichoiceList_EnterInfo[] =
 {
@@ -216,9 +216,9 @@ static const struct MenuAction MultichoiceList_Mechadoll5_Q3[] =
 
 static const struct MenuAction MultichoiceList_VendingMachine[] =
 {
-    {COMPOUND_STRING("FRESH WATER{CLEAR_TO 72}¥200")},
-    {COMPOUND_STRING("SODA POP{CLEAR_TO 72}¥300")},
-    {COMPOUND_STRING("LEMONADE{CLEAR_TO 72}¥350")},
+    {COMPOUND_STRING("Fresh Water{CLEAR_TO 72}¥200")},
+    {COMPOUND_STRING("Soda Pop{CLEAR_TO 72}¥300")},
+    {COMPOUND_STRING("Lemonade{CLEAR_TO 72}¥350")},
     {gText_Exit},
 };
 
@@ -722,9 +722,9 @@ static const struct MenuAction MultichoiceList_BattlePyramidRules[] =
 
 static const struct MenuAction MultichoiceList_BattlePikeRules[] =
 {
-    {COMPOUND_STRING("PokéGear AND BAG")},
-    {COMPOUND_STRING("HELD ITEMS")},
-    {COMPOUND_STRING("Pokémon ORDER")},
+    {COMPOUND_STRING("PokéGear and Bag")},
+    {COMPOUND_STRING("Held Items")},
+    {COMPOUND_STRING("Pokémon Order")},
     {gText_Exit},
 };
 
@@ -971,9 +971,9 @@ static const struct MenuAction sMultichoiceList_CeladonVendingMachine[] = {
     {gText_Exit}
 };
 
-const u8 sText_FreshWater[] = _("FRESH WATER");
-const u8 sText_SodaPop[] = _("SODA POP");
-const u8 sText_Lemonade[] = _("LEMONADE");
+const u8 sText_FreshWater[] = _("Fresh Water");
+const u8 sText_SodaPop[] = _("Soda Pop");
+const u8 sText_Lemonade[] = _("Lemonade");
 
 static const struct MenuAction sMultichoiceList_ThirstyGirlFreshWater[] = {
     {sText_FreshWater},
@@ -1304,23 +1304,23 @@ const u8 *const gStdStrings[] =
     [STDSTRING_SMART] = gText_Smart,
     [STDSTRING_TOUGH] = gText_Tough,
     [STDSTRING_NORMAL] = gText_Normal,
-    [STDSTRING_SUPER] = COMPOUND_STRING("SUPER"),
-    [STDSTRING_HYPER] = COMPOUND_STRING("HYPER"),
-    [STDSTRING_MASTER] = COMPOUND_STRING("MASTER"),
-    [STDSTRING_COOL2] = COMPOUND_STRING("COOL"),
-    [STDSTRING_BEAUTY2] = COMPOUND_STRING("BEAUTY"),
-    [STDSTRING_CUTE2] = COMPOUND_STRING("CUTE"),
-    [STDSTRING_SMART2] = COMPOUND_STRING("SMART"),
-    [STDSTRING_TOUGH2] = COMPOUND_STRING("TOUGH"),
-    [STDSTRING_ITEMS] = COMPOUND_STRING("ITEMS"),
-    [STDSTRING_KEYITEMS] = COMPOUND_STRING("KEY ITEMS"),
-    [STDSTRING_POKEBALLS] = COMPOUND_STRING("POKé BALLS"),
+    [STDSTRING_SUPER] = COMPOUND_STRING("Super"),
+    [STDSTRING_HYPER] = COMPOUND_STRING("Hyper"),
+    [STDSTRING_MASTER] = COMPOUND_STRING("Master"),
+    [STDSTRING_COOL2] = COMPOUND_STRING("Cool"),
+    [STDSTRING_BEAUTY2] = COMPOUND_STRING("Beauty"),
+    [STDSTRING_CUTE2] = COMPOUND_STRING("Cute"),
+    [STDSTRING_SMART2] = COMPOUND_STRING("Smart"),
+    [STDSTRING_TOUGH2] = COMPOUND_STRING("Tough"),
+    [STDSTRING_ITEMS] = COMPOUND_STRING("Items"),
+    [STDSTRING_KEYITEMS] = COMPOUND_STRING("Key Items"),
+    [STDSTRING_POKEBALLS] = COMPOUND_STRING("Poké Balls"),
     [STDSTRING_TMHMS] = COMPOUND_STRING("TMs & HMs"),
-    [STDSTRING_BERRIES] = COMPOUND_STRING("BERRIES"),
-    [STDSTRING_SINGLE] = COMPOUND_STRING("SINGLE"),
-    [STDSTRING_DOUBLE] = COMPOUND_STRING("DOUBLE"),
-    [STDSTRING_MULTI] = COMPOUND_STRING("MULTI"),
-    [STDSTRING_MULTI_LINK] = COMPOUND_STRING("MULTI-LINK"),
+    [STDSTRING_BERRIES] = COMPOUND_STRING("Berries"),
+    [STDSTRING_SINGLE] = COMPOUND_STRING("Single"),
+    [STDSTRING_DOUBLE] = COMPOUND_STRING("Double"),
+    [STDSTRING_MULTI] = COMPOUND_STRING("Multi"),
+    [STDSTRING_MULTI_LINK] = COMPOUND_STRING("Multi-link"),
     [STDSTRING_BATTLE_TOWER] = gText_BattleTower2,
     [STDSTRING_BATTLE_DOME] = gText_BattleDome,
     [STDSTRING_BATTLE_FACTORY] = gText_BattleFactory,
@@ -1336,9 +1336,9 @@ const u8 *const gStdStrings[] =
     [STDSTRING_MARSH_BADGE]   = gText_Marshbadge,
     [STDSTRING_VOLCANO_BADGE] = gText_Volcanobadge,
     [STDSTRING_EARTH_BADGE]   = gText_Earthbadge,
-    [STDSTRING_COINS]         = COMPOUND_STRING("COINS"),
-    [STDSTRING_MEDICINE]      = COMPOUND_STRING("MEDICINE"),
-    [STDSTRING_BATTLEITEMS]   = COMPOUND_STRING("BATTLE ITEMS"),
+    [STDSTRING_COINS]         = COMPOUND_STRING("Coins"),
+    [STDSTRING_MEDICINE]      = COMPOUND_STRING("Medicine"),
+    [STDSTRING_BATTLEITEMS]   = COMPOUND_STRING("Battle Items"),
 };
 
 static const u8 sLinkServicesMultichoiceIds[] =

@@ -23,8 +23,8 @@
     {
       "id": "HEAL_LOCATION_PETALBURG_CITY",
       "map": "MAP_PETALBURG_CITY",
-      "x": 20,
-      "y": 25,
+      "x": 34,
+      "y": 29,
       "respawn_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_PETALBURG_NURSE"
     },
@@ -131,8 +131,8 @@
     {
       "id": "HEAL_LOCATION_LAVARIDGE_TOWN",
       "map": "MAP_LAVARIDGE_TOWN",
-      "x": 9,
-      "y": 7,
+      "x": 7,
+      "y": 23,
       "respawn_map": "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_LAVARIDGE_NURSE"
     },
